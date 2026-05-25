@@ -1,0 +1,1847 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wondy – Clown · Performer · Sognatore</title>
+  <meta name="description" content="Wondy – clown, attore e sognatore. Spettacoli per feste private, villaggi e parchi a tema." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Great+Vibes&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ══════════════════════════════════════
+       RESET & VARIABLES
+    ══════════════════════════════════════ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #080808;
+      --bg2:       #111111;
+      --bg3:       #1a1410;
+      --gold:      #c9a84c;
+      --gold-lt:   #e8cc87;
+      --red:       #b02020;
+      --red-lt:    #d42e2e;
+      --cream:     #f0e6d3;
+      --cream-dk:  #c8b89a;
+      --serif:     'Playfair Display', Georgia, serif;
+      --script:    'Great Vibes', cursive;
+      --body:      'Lato', sans-serif;
+      --nav-h:     72px;
+    }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      background: var(--bg);
+      color: var(--cream);
+      font-family: var(--body);
+      font-weight: 300;
+      line-height: 1.75;
+      overflow-x: hidden;
+    }
+    img { display: block; max-width: 100%; }
+    a   { color: inherit; text-decoration: none; }
+
+    /* ══════════════════════════════════════
+       UTILITIES
+    ══════════════════════════════════════ */
+    .container { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+
+    .section-title {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      color: var(--gold);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    .section-rule {
+      width: 56px; height: 2px;
+      background: var(--red);
+      margin: 0 auto 52px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 13px 32px;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-family: var(--body);
+      font-size: .72rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background .22s, color .22s;
+      background: transparent;
+      white-space: nowrap;
+    }
+    .btn:hover { background: var(--gold); color: var(--bg); }
+    .btn-red  { background: var(--red); border-color: var(--red); color: #fff; }
+    .btn-red:hover { background: var(--red-lt); border-color: var(--red-lt); color: #fff; }
+    .btn-full { width: 100%; text-align: center; display: block; }
+
+    /* icone SVG */
+    .si { display:inline-block; width:1em; height:1em; fill:currentColor; vertical-align:middle; }
+    .si-nav  { width:18px; height:18px; }
+    .si-foot { width:20px; height:20px; }
+    .si-hub  { width:36px; height:36px; }
+
+    /* colori brand nelle card social hub */
+    .soc-card[data-brand="instagram"] .si-hub { fill: #c13584; }
+    .soc-card[data-brand="facebook"]  .si-hub { fill: #1877f2; }
+    .soc-card[data-brand="youtube"]   .si-hub { fill: #ff0000; }
+    .soc-card[data-brand="whatsapp"]  .si-hub { fill: #25d366; }
+
+    /* image helper */
+    .cover-img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center;
+      display: block;
+    }
+
+    /* ══════════════════════════════════════
+       NAVIGATION
+    ══════════════════════════════════════ */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      height: var(--nav-h);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 40px;
+      transition: background .35s, box-shadow .35s;
+    }
+    nav.scrolled {
+      background: rgba(8,8,8,.97);
+      box-shadow: 0 2px 24px rgba(0,0,0,.7);
+    }
+
+    /* logo */
+    .nav-logo { display: flex; align-items: center; }
+    .nav-logo img {
+      height: 50px; width: auto;
+      mix-blend-mode: screen;
+      filter: drop-shadow(0 0 6px rgba(201,168,76,.2));
+    }
+
+    /* links */
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a {
+      font-size: .7rem; letter-spacing: .2em;
+      text-transform: uppercase; color: var(--cream-dk);
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+
+    /* right cluster: social + lang toggle */
+    .nav-right { display: flex; align-items: center; gap: 20px; }
+    .nav-social { display: flex; gap: 14px; }
+    .nav-social a { font-size: 1rem; color: var(--cream-dk); transition: color .2s; }
+    .nav-social a:hover { color: var(--gold); }
+
+    /* language toggle */
+    .lang-toggle {
+      display: flex; align-items: center; gap: 0;
+      border: 1px solid #333; overflow: hidden;
+    }
+    .lang-btn {
+      padding: 5px 10px;
+      font-size: .62rem; letter-spacing: .15em;
+      cursor: pointer; border: none; background: transparent;
+      color: var(--cream-dk); font-family: var(--body);
+      transition: background .2s, color .2s;
+    }
+    .lang-btn.active { background: var(--gold); color: var(--bg); }
+    .lang-btn:not(.active):hover { color: var(--gold); }
+
+    /* hamburger */
+    .nav-burger {
+      display: none; flex-direction: column;
+      gap: 5px; cursor: pointer; padding: 4px;
+    }
+    .nav-burger span {
+      width: 24px; height: 1px;
+      background: var(--cream); display: block;
+      transition: transform .3s, opacity .3s;
+    }
+    .nav-burger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    .nav-burger.open span:nth-child(2) { opacity: 0; }
+    .nav-burger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+    /* mobile nav overlay */
+    .nav-mobile {
+      display: none;
+      position: fixed; top: var(--nav-h); left: 0; right: 0;
+      background: rgba(8,8,8,.98);
+      padding: 32px 24px 40px;
+      z-index: 199;
+      flex-direction: column; align-items: center; gap: 0;
+      border-top: 1px solid #1e1e1e;
+    }
+    .nav-mobile.open { display: flex; }
+    .nav-mobile a, .nav-mobile .nav-mobile-lang {
+      width: 100%; text-align: center;
+      padding: 16px 0;
+      border-bottom: 1px solid #1a1a1a;
+      font-size: .75rem; letter-spacing: .2em;
+      text-transform: uppercase; color: var(--cream-dk);
+    }
+    .nav-mobile a:last-child { border-bottom: none; }
+    .nav-mobile a:hover { color: var(--gold); }
+    .nav-mobile-lang {
+      display: flex; justify-content: center; gap: 0;
+      margin-top: 24px;
+    }
+
+    /* ══════════════════════════════════════
+       HERO
+    ══════════════════════════════════════ */
+    #home {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: calc(var(--nav-h) + 48px) 40px 80px;
+      background:
+        linear-gradient(to right, rgba(8,8,8,.92) 45%, rgba(8,8,8,.4) 75%, rgba(8,8,8,.15) 100%),
+        url('assets/foto-finale.jpg') center center / cover no-repeat;
+      position: relative; overflow: hidden;
+    }
+    #home::before {
+      content: '';
+      position: absolute; inset: 0; pointer-events: none;
+      background-image:
+        radial-gradient(circle at 72% 18%, rgba(201,168,76,.18) 0%, transparent 25%),
+        radial-gradient(circle at 82% 62%, rgba(201,168,76,.10) 0%, transparent 20%),
+        radial-gradient(circle at 90% 40%, rgba(176,32,32,.10) 0%, transparent 18%);
+    }
+
+    .hero-content { max-width: 580px; position: relative; z-index: 1; }
+
+    .hero-label {
+      font-size: .68rem; letter-spacing: .35em;
+      text-transform: uppercase; color: var(--cream-dk);
+      margin-bottom: 14px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .hero-label::before { content: ''; width: 28px; height: 1px; background: var(--red); }
+
+    .hero-logo img {
+      max-width: 420px; width: 100%; height: auto;
+      mix-blend-mode: screen;
+      filter: drop-shadow(0 0 28px rgba(201,168,76,.22));
+      margin-bottom: 6px;
+    }
+
+    .hero-sub {
+      font-family: var(--serif);
+      font-size: clamp(.6rem, 1.4vw, .78rem);
+      letter-spacing: .38em;
+      color: var(--cream-dk);
+      text-transform: uppercase;
+      margin-bottom: 32px;
+    }
+    .hero-sub span { color: var(--red); }
+
+    .hero-quote {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(.95rem, 2.2vw, 1.2rem);
+      color: var(--cream);
+      margin-bottom: 44px;
+      border-left: 2px solid var(--red);
+      padding-left: 18px;
+      line-height: 1.6;
+    }
+
+    .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
+    .btn-play {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: .72rem; letter-spacing: .16em; text-transform: uppercase;
+      color: var(--cream);
+    }
+    .play-icon {
+      width: 42px; height: 42px; border-radius: 50%;
+      border: 1px solid rgba(201,168,76,.45);
+      display: flex; align-items: center; justify-content: center;
+      font-size: .75rem; color: var(--gold);
+      transition: background .22s, color .22s;
+      flex-shrink: 0;
+    }
+    .btn-play:hover .play-icon { background: var(--gold); color: var(--bg); }
+
+    .hero-scroll {
+      position: absolute; right: 36px; top: 50%;
+      transform: translateY(-50%) rotate(90deg);
+      font-size: .58rem; letter-spacing: .28em;
+      text-transform: uppercase; color: var(--cream-dk);
+      display: flex; align-items: center; gap: 10px;
+      white-space: nowrap;
+    }
+    .hero-scroll::after { content: ''; width: 36px; height: 1px; background: var(--cream-dk); }
+
+    /* ══════════════════════════════════════
+       BIO
+    ══════════════════════════════════════ */
+    #bio { padding: 96px 0; background: var(--bg2); }
+
+    .bio-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px; align-items: center;
+    }
+    .bio-text h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.6rem, 3.5vw, 2.3rem);
+      color: var(--gold); margin-bottom: 8px;
+    }
+    .bio-rule { width: 38px; height: 2px; background: var(--red); margin-bottom: 26px; }
+    .bio-text p { color: var(--cream-dk); font-size: .92rem; margin-bottom: 18px; }
+    .bio-sig { font-family: var(--script); font-size: 2.4rem; color: var(--gold); margin-top: 28px; }
+
+    .bio-photos {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+    }
+    .bio-photos .p1 { aspect-ratio: 3/5; grid-row: span 2; overflow: hidden; }
+    .bio-photos .p2, .bio-photos .p3 { aspect-ratio: 3/4; overflow: hidden; }
+
+    /* ══════════════════════════════════════
+       SPETTACOLI
+    ══════════════════════════════════════ */
+    #spettacoli { padding: 96px 0; background: var(--bg); }
+
+    .show-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3px; margin-top: 52px;
+    }
+    .show-card { position: relative; overflow: hidden; aspect-ratio: 2/3; cursor: pointer; }
+    .show-card .ph { height: 100%; }
+    .show-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(8,8,8,.95) 0%, rgba(8,8,8,.25) 65%, transparent 100%);
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 24px 20px;
+      transition: background .3s;
+    }
+    .show-card:hover .show-overlay { background: linear-gradient(to top, rgba(8,8,8,.98) 0%, rgba(8,8,8,.55) 65%, rgba(8,8,8,.15) 100%); }
+    .show-title { font-family: var(--script); font-size: 2rem; color: var(--gold-lt); line-height: 1; margin-bottom: 6px; }
+    .show-tags  { font-size: .62rem; letter-spacing: .18em; text-transform: uppercase; color: var(--cream-dk); margin-bottom: 14px; }
+    .show-more  {
+      font-size: .62rem; letter-spacing: .18em; text-transform: uppercase;
+      color: var(--gold); border-bottom: 1px solid var(--gold);
+      display: inline-block; padding-bottom: 2px;
+      opacity: 0; transform: translateY(6px);
+      transition: opacity .3s, transform .3s;
+    }
+    .show-card:hover .show-more { opacity: 1; transform: translateY(0); }
+
+    /* ══════════════════════════════════════
+       PACCHETTI
+    ══════════════════════════════════════ */
+    #pacchetti { padding: 96px 0; background: var(--bg3); }
+
+    .pack-intro {
+      text-align: center; max-width: 580px;
+      margin: 0 auto 52px;
+      color: var(--cream-dk); font-size: .92rem;
+    }
+
+    .pack-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3px;
+    }
+
+    .pack-card {
+      background: #0d0d0d;
+      padding: 40px 28px;
+      border: 1px solid #1c1c1c;
+      transition: border-color .3s;
+      display: flex; flex-direction: column;
+    }
+    .pack-card:hover { border-color: rgba(201,168,76,.3); }
+    .pack-card.featured {
+      background: #100d08;
+      border-color: rgba(201,168,76,.32);
+      position: relative;
+    }
+    .pack-card.featured::before {
+      content: attr(data-badge);
+      position: absolute; top: -1px; left: 50%; transform: translateX(-50%);
+      background: var(--gold); color: var(--bg);
+      font-size: .58rem; letter-spacing: .18em; text-transform: uppercase;
+      padding: 4px 16px; white-space: nowrap;
+    }
+
+    .pack-emoji { font-size: 1.8rem; margin-bottom: 14px; }
+    .pack-name {
+      font-family: var(--serif);
+      font-size: 1.3rem; color: var(--gold);
+      letter-spacing: .1em; text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .pack-desc {
+      font-size: .86rem; color: var(--cream-dk);
+      line-height: 1.8; margin-bottom: 24px; flex: 1;
+    }
+    .pack-list { list-style: none; margin-bottom: 28px; }
+    .pack-list li {
+      font-size: .82rem; color: var(--cream-dk);
+      padding: 7px 0; border-bottom: 1px solid #1e1e1e;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .pack-list li::before { content: '✦'; color: var(--gold); font-size: .48rem; flex-shrink: 0; }
+    .pack-note { font-size: .7rem; color: #555; font-style: italic; margin-top: 14px; }
+
+    /* ══════════════════════════════════════
+       GALLERY – SLIDESHOW
+    ══════════════════════════════════════ */
+    #gallery { padding: 96px 0; background: var(--bg); }
+
+    .slideshow {
+      position: relative;
+      max-width: 1140px; margin: 52px auto 0;
+      overflow: hidden;
+      aspect-ratio: 16/7;
+      background: #111;
+    }
+    .slides {
+      display: flex;
+      height: 100%;
+      transition: transform .55s cubic-bezier(.4,0,.2,1);
+    }
+    .slide {
+      min-width: 100%; height: 100%;
+      position: relative; overflow: hidden; flex-shrink: 0;
+    }
+    .slide img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center;
+      display: block;
+    }
+    /* frecce */
+    .slide-arrow {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      z-index: 10; background: rgba(8,8,8,.55);
+      border: 1px solid rgba(201,168,76,.3);
+      color: var(--gold); font-size: 1.4rem;
+      width: 44px; height: 44px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: background .2s;
+      user-select: none;
+    }
+    .slide-arrow:hover { background: rgba(201,168,76,.25); }
+    .slide-prev { left: 16px; }
+    .slide-next { right: 16px; }
+    /* dots */
+    .slide-dots {
+      position: absolute; bottom: 14px; left: 50%;
+      transform: translateX(-50%);
+      display: flex; gap: 8px; z-index: 10;
+    }
+    .dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: rgba(255,255,255,.35);
+      cursor: pointer; transition: background .25s, transform .25s;
+      border: none;
+    }
+    .dot.active { background: var(--gold); transform: scale(1.25); }
+
+    .gal-cta { text-align: center; margin-top: 28px; }
+
+    /* ══════════════════════════════════════
+       CALENDARIO
+    ══════════════════════════════════════ */
+    #calendario { padding: 96px 0; background: var(--bg2); }
+
+    .stagioni {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 3px; margin-top: 52px;
+    }
+    .stagione {
+      padding: 36px 24px; background: #0d0d0d;
+      border-top: 3px solid #1e1e1e;
+      transition: border-top-color .3s;
+    }
+    .stagione:hover { border-top-color: var(--gold); }
+    .stag-icon { font-size: 1.8rem; margin-bottom: 14px; }
+    .stag-period {
+      font-size: .62rem; letter-spacing: .25em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 10px;
+    }
+    .stag-title {
+      font-family: var(--serif);
+      font-size: 1.1rem; color: var(--cream); margin-bottom: 10px;
+    }
+    .stag-desc { font-size: .84rem; color: var(--cream-dk); line-height: 1.7; }
+    .stag-tag {
+      display: inline-block; margin-top: 18px;
+      font-size: .58rem; letter-spacing: .2em; text-transform: uppercase;
+      color: var(--red-lt); border: 1px solid rgba(176,32,32,.35);
+      padding: 4px 12px;
+    }
+    .cal-cta { text-align: center; margin-top: 52px; }
+    .cal-cta p { color: var(--cream-dk); font-size: .88rem; margin-bottom: 18px; }
+
+    /* ══════════════════════════════════════
+       VIDEO
+    ══════════════════════════════════════ */
+    #video { padding: 96px 0; background: var(--bg); }
+
+    /* featured embed */
+    .video-featured {
+      max-width: 860px; margin: 52px auto 0;
+      aspect-ratio: 16/9; background: #111; position: relative;
+    }
+    .video-featured iframe { width: 100%; height: 100%; border: none; display: block; }
+    .video-featured-label {
+      font-size: .62rem; letter-spacing: .22em; text-transform: uppercase;
+      color: var(--gold); margin-top: 12px; text-align: center;
+    }
+
+    /* card grid */
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 4px; margin-top: 4px;
+    }
+    .vid-card {
+      position: relative; overflow: hidden;
+      aspect-ratio: 16/9; cursor: pointer;
+      background: #111;
+    }
+    .vid-thumb {
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+      transition: transform .4s, filter .4s;
+      filter: brightness(.7);
+    }
+    .vid-card:hover .vid-thumb { transform: scale(1.05); filter: brightness(.5); }
+
+    .vid-card-overlay {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 10px; padding: 16px;
+    }
+    .vid-play {
+      width: 44px; height: 44px; border-radius: 50%;
+      border: 2px solid rgba(255,255,255,.7);
+      display: flex; align-items: center; justify-content: center;
+      font-size: .8rem; color: #fff;
+      transition: background .25s, border-color .25s;
+      flex-shrink: 0;
+    }
+    .vid-card:hover .vid-play { background: var(--red); border-color: var(--red); }
+    .vid-label {
+      font-size: .65rem; letter-spacing: .12em;
+      text-transform: uppercase; color: #fff;
+      text-align: center; line-height: 1.4;
+      text-shadow: 0 1px 4px rgba(0,0,0,.8);
+    }
+
+    /* Facebook link card */
+    .vid-card.fb-card { cursor: pointer; }
+    .vid-card.fb-card .vid-play { background: #1877f2; border-color: #1877f2; }
+    .vid-card.fb-card:hover .vid-play { background: #145dbf; border-color: #145dbf; }
+
+    .video-cta { text-align: center; margin-top: 36px; }
+
+    @media (max-width: 960px) {
+      .video-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .video-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* ══════════════════════════════════════
+       SOCIAL HUB
+    ══════════════════════════════════════ */
+    #social-hub { padding: 80px 0; background: var(--bg2); }
+
+    .social-hub-inner { text-align: center; max-width: 680px; margin: 0 auto; }
+    .social-hub-inner h2 { font-family: var(--serif); font-size: clamp(1.6rem,4vw,2.4rem); color: var(--gold); margin-bottom: 10px; }
+    .social-hub-inner p  { color: var(--cream-dk); font-size: .95rem; margin-bottom: 44px; }
+
+    .social-cards {
+      display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+    }
+    .soc-card {
+      display: flex; flex-direction: column; align-items: center; gap: 10px;
+      padding: 28px 32px; border: 1px solid #222;
+      min-width: 140px; flex: 1; max-width: 180px;
+      transition: border-color .25s, transform .25s;
+      cursor: pointer;
+    }
+    .soc-card:hover { border-color: var(--gold); transform: translateY(-4px); }
+    .soc-card .soc-icon { font-size: 2rem; }
+    .soc-card .soc-name {
+      font-size: .65rem; letter-spacing: .2em;
+      text-transform: uppercase; color: var(--gold);
+    }
+    .soc-card .soc-handle { font-size: .8rem; color: var(--cream-dk); }
+    .soc-card .soc-cta {
+      font-size: .6rem; letter-spacing: .18em;
+      text-transform: uppercase; color: var(--cream-dk);
+      border-bottom: 1px solid #333; padding-bottom: 2px;
+      transition: color .2s, border-color .2s;
+    }
+    .soc-card:hover .soc-cta { color: var(--gold); border-color: var(--gold); }
+
+    @media (max-width: 600px) {
+      .social-cards { gap: 8px; }
+      .soc-card { padding: 22px 20px; min-width: 110px; }
+    }
+
+    /* ══════════════════════════════════════
+       RECENSIONI
+    ══════════════════════════════════════ */
+    #recensioni { padding: 88px 0; background: var(--bg); }
+
+    .rec-badge {
+      display: flex; align-items: center; justify-content: center;
+      gap: 14px; margin-bottom: 44px;
+    }
+    .rec-badge-stars { color: var(--gold); font-size: 1.25rem; letter-spacing: 3px; }
+    .rec-badge-text {
+      font-size: .72rem; letter-spacing: .2em; text-transform: uppercase;
+      color: var(--cream-dk);
+    }
+    .rec-badge-text strong { color: var(--gold); }
+    .rec-badge-sep { color: #333; font-size: 1.2rem; }
+
+    .rec-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+
+    .rec-card {
+      background: var(--bg2);
+      border: 1px solid #1e1e1e;
+      padding: 28px 24px 24px;
+      transition: border-color .25s, transform .25s;
+    }
+    .rec-card:hover { border-color: var(--gold); transform: translateY(-3px); }
+
+    .rec-stars { color: var(--gold); font-size: .9rem; letter-spacing: 2px; margin-bottom: 14px; }
+
+    .rec-text {
+      font-size: .88rem; line-height: 1.7;
+      color: var(--cream-dk);
+      font-style: italic;
+      margin-bottom: 18px;
+    }
+    .rec-text::before { content: '\201C'; color: var(--red); font-size: 1.4rem; line-height: 0; vertical-align: -.22em; margin-right: 2px; }
+    .rec-text::after  { content: '\201D'; color: var(--red); font-size: 1.4rem; line-height: 0; vertical-align: -.22em; margin-left:  2px; }
+
+    .rec-author {
+      font-size: .7rem; letter-spacing: .15em; text-transform: uppercase;
+      color: var(--gold);
+    }
+    .rec-location { font-size: .65rem; color: #555; margin-top: 2px; }
+
+    .rec-cta-row { text-align: center; }
+
+    @media (max-width: 960px) {
+      .rec-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .rec-grid { grid-template-columns: 1fr; gap: 16px; }
+      .rec-badge { flex-direction: column; gap: 6px; }
+    }
+
+    /* ══════════════════════════════════════
+       QUOTE
+    ══════════════════════════════════════ */
+    .quote-sec {
+      padding: 76px 24px;
+      background: var(--bg3); text-align: center;
+    }
+    .big-quote {
+      font-family: var(--serif); font-style: italic;
+      font-size: clamp(1.1rem, 2.8vw, 1.8rem);
+      color: var(--cream); max-width: 740px;
+      margin: 0 auto; line-height: 1.65;
+    }
+    .big-quote::before { content: '\201C'; color: var(--red); font-size: 3.5rem; line-height: 0; vertical-align: -.28em; margin-right: 4px; }
+    .big-quote::after  { content: '\201D'; color: var(--red); font-size: 3.5rem; line-height: 0; vertical-align: -.28em; margin-left:  4px; }
+    .quote-attr { margin-top: 18px; font-size: .68rem; letter-spacing: .25em; text-transform: uppercase; color: var(--gold); }
+
+    /* ══════════════════════════════════════
+       CONTATTI
+    ══════════════════════════════════════ */
+    #contatti { padding: 96px 0; background: var(--bg2); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px; align-items: start;
+    }
+
+    .contact-info h3 {
+      font-family: var(--serif);
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      color: var(--gold); margin-bottom: 20px; line-height: 1.3;
+    }
+    .contact-info > p { color: var(--cream-dk); font-size: .9rem; margin-bottom: 32px; }
+
+    .c-item { display: flex; gap: 16px; align-items: flex-start; margin-bottom: 22px; }
+    .c-icon { font-size: 1.1rem; margin-top: 3px; }
+    .c-label { font-size: .62rem; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
+    .c-val   { font-size: .88rem; color: var(--cream-dk); }
+
+
+    /* WhatsApp + vCard buttons */
+    .contact-ctas { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 28px; }
+    .wa-btn {
+      display: inline-flex; align-items: center; gap: 9px;
+      padding: 13px 22px;
+      background: #25D366; color: #fff;
+      font-family: var(--body); font-size: .72rem;
+      letter-spacing: .15em; text-transform: uppercase;
+      border: none; cursor: pointer;
+      transition: background .22s; white-space: nowrap;
+    }
+    .wa-btn:hover { background: #1ebe5d; color: #fff; }
+    .wa-btn svg { width: 18px; height: 18px; fill: #fff; flex-shrink: 0; }
+    .vc-btn {
+      display: inline-flex; align-items: center; gap: 9px;
+      padding: 13px 22px;
+      background: transparent; color: var(--cream-dk);
+      font-family: var(--body); font-size: .72rem;
+      letter-spacing: .15em; text-transform: uppercase;
+      border: 1px solid #2a2a2a; cursor: pointer;
+      transition: border-color .22s, color .22s; white-space: nowrap;
+    }
+    .vc-btn:hover { border-color: var(--gold); color: var(--gold); }
+    .vc-btn svg { width: 16px; height: 16px; fill: currentColor; flex-shrink: 0; }
+
+    /* tabs */
+    .form-tabs { display: flex; margin-bottom: 28px; }
+    .ftab {
+      flex: 1; padding: 11px;
+      text-align: center; font-size: .68rem; letter-spacing: .18em;
+      text-transform: uppercase; cursor: pointer;
+      border: 1px solid #2a2a2a; background: transparent;
+      color: var(--cream-dk); font-family: var(--body);
+      transition: background .2s, color .2s, border-color .2s;
+    }
+    .ftab.active { background: var(--gold); color: var(--bg); border-color: var(--gold); }
+    .ftab:not(.active):hover { color: var(--gold); border-color: var(--gold); }
+
+    .form-panel { display: none; }
+    .form-panel.active { display: block; }
+
+    .frow { margin-bottom: 18px; }
+    .frow label {
+      display: block; font-size: .62rem;
+      letter-spacing: .2em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 7px;
+    }
+    .frow input, .frow select, .frow textarea {
+      width: 100%; background: #111;
+      border: 1px solid #2a2a2a; color: var(--cream);
+      padding: 11px 14px; font-family: var(--body);
+      font-size: .88rem; outline: none;
+      transition: border-color .2s;
+    }
+    .frow input:focus, .frow select:focus, .frow textarea:focus { border-color: var(--gold); }
+    .frow textarea { min-height: 96px; resize: vertical; }
+    .frow select option { background: #111; }
+
+    /* ══════════════════════════════════════
+       FOOTER
+    ══════════════════════════════════════ */
+    footer {
+      background: #040404;
+      padding: 56px 0 28px;
+      border-top: 1px solid #181818;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 56px; margin-bottom: 44px;
+    }
+    .footer-logo img { height: 56px; mix-blend-mode: screen; margin-bottom: 14px; }
+    .footer-brand p { font-size: .85rem; color: var(--cream-dk); margin-bottom: 22px; }
+
+    .nl-form { display: flex; }
+    .nl-form input {
+      flex: 1; background: #111; border: 1px solid #2a2a2a; border-right: none;
+      color: var(--cream); padding: 11px 14px; font-family: var(--body);
+      font-size: .85rem; outline: none;
+    }
+    .nl-form button {
+      background: var(--red); border: none;
+      color: #fff; padding: 11px 16px;
+      cursor: pointer; font-size: .9rem;
+      transition: background .2s;
+    }
+    .nl-form button:hover { background: var(--red-lt); }
+
+    .fcol h4 {
+      font-size: .62rem; letter-spacing: .25em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 18px;
+    }
+    .fcol a, .fcol p {
+      display: block; font-size: .84rem;
+      color: var(--cream-dk); margin-bottom: 10px;
+      transition: color .2s;
+    }
+    .fcol a:hover { color: var(--gold); }
+    .footer-social { display: flex; gap: 14px; margin-top: 6px; }
+    .footer-social a { font-size: 1.2rem; }
+
+    .footer-bottom {
+      border-top: 1px solid #181818; padding-top: 22px;
+      display: flex; justify-content: space-between;
+      align-items: center; flex-wrap: wrap; gap: 10px;
+    }
+    .footer-bottom p, .footer-bottom a { font-size: .72rem; color: #444; }
+    .footer-bottom a { transition: color .2s; }
+    .footer-bottom a:hover { color: var(--gold); }
+    .footer-legal { display: flex; gap: 20px; }
+
+    /* ══════════════════════════════════════
+       RESPONSIVE — TABLET (≤ 960px)
+    ══════════════════════════════════════ */
+    @media (max-width: 960px) {
+      nav { padding: 0 24px; }
+      .nav-links, .nav-right { display: none; }
+      .nav-burger { display: flex; }
+
+      #home { padding: calc(var(--nav-h) + 32px) 24px 64px; }
+      .hero-logo img { max-width: 320px; }
+      .hero-scroll { display: none; }
+
+      .bio-grid { grid-template-columns: 1fr; gap: 40px; }
+      .bio-photos {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: auto;
+      }
+      .bio-photos .p1 { grid-row: auto; aspect-ratio: 1; }
+      .bio-photos .p2, .bio-photos .p3 { aspect-ratio: 1; }
+
+      .show-grid { grid-template-columns: 1fr 1fr; }
+      .show-card { aspect-ratio: 3/4; }
+
+      .pack-grid { grid-template-columns: 1fr; gap: 3px; }
+      .pack-card.featured { margin: 0; }
+      .pack-card.featured::before { display: none; }
+
+      .gal-grid {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: 180px 180px;
+      }
+      .gal-grid .g.w2 { grid-column: span 1; }
+      .gal-grid .g.t2 { grid-row: span 1; }
+
+      .stagioni { grid-template-columns: repeat(2, 1fr); }
+
+      .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .footer-brand { grid-column: span 2; }
+    }
+
+    /* ══════════════════════════════════════
+       RESPONSIVE — MOBILE (≤ 600px)
+    ══════════════════════════════════════ */
+    @media (max-width: 600px) {
+      :root { --nav-h: 64px; }
+
+      #home { padding: calc(var(--nav-h) + 24px) 20px 52px; }
+      .hero-logo img { max-width: 260px; }
+      .hero-ctas { flex-direction: column; align-items: flex-start; }
+
+      .show-grid { grid-template-columns: 1fr; }
+      .show-card { aspect-ratio: 4/3; }
+
+      .gal-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+      }
+      .gal-grid .g { aspect-ratio: 1; }
+      .gal-grid .g.w2 { grid-column: span 1; }
+      .gal-grid .g.t2 { grid-row: span 1; }
+      .gal-grid .ph { height: 100%; aspect-ratio: unset; }
+
+      .stagioni { grid-template-columns: 1fr; }
+
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-brand { grid-column: span 1; }
+
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SVG sprite + defs (nascosto) -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none;">
+    <defs>
+      <linearGradient id="ig-grad" x1="0%" y1="100%" x2="100%" y2="0%">
+        <stop offset="0%"   stop-color="#f09433"/>
+        <stop offset="25%"  stop-color="#e6683c"/>
+        <stop offset="50%"  stop-color="#dc2743"/>
+        <stop offset="75%"  stop-color="#cc2366"/>
+        <stop offset="100%" stop-color="#bc1888"/>
+      </linearGradient>
+    </defs>
+    <symbol id="si-instagram" viewBox="0 0 24 24">
+      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.209-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+    </symbol>
+    <symbol id="si-facebook" viewBox="0 0 24 24">
+      <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+    </symbol>
+    <symbol id="si-youtube" viewBox="0 0 24 24">
+      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+    </symbol>
+    <symbol id="si-whatsapp" viewBox="0 0 24 24">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
+    </symbol>
+  </svg>
+
+  <!-- ══════════ NAVBAR ══════════ -->
+  <nav id="navbar">
+    <a href="#home" class="nav-logo">
+      <img src="assets/logo.png" alt="Wondy" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="#bio"        data-i18n="nav_bio">Bio</a></li>
+      <li><a href="#pacchetti"  data-i18n="nav_pack">Pacchetti</a></li>
+      <li><a href="#gallery"    data-i18n="nav_gal">Gallery</a></li>
+      <li><a href="#video"      data-i18n="nav_vid">Video</a></li>
+      <li><a href="#recensioni" data-i18n="nav_rec">Recensioni</a></li>
+      <li><a href="#contatti"   data-i18n="nav_contact">Contatti</a></li>
+    </ul>
+    <div class="nav-right">
+      <div class="nav-social">
+        <a href="https://www.instagram.com/Wondy_real" target="_blank" aria-label="Instagram"><svg class="si si-nav"><use href="#si-instagram"/></svg></a>
+        <a href="https://www.youtube.com/@wondychannel"  target="_blank" aria-label="YouTube"><svg class="si si-nav"><use href="#si-youtube"/></svg></a>
+        <a href="https://www.facebook.com/clownwondy/"  target="_blank" aria-label="Facebook"><svg class="si si-nav"><use href="#si-facebook"/></svg></a>
+      </div>
+      <div class="lang-toggle">
+        <button class="lang-btn active" onclick="setLang('it',this)">IT</button>
+        <button class="lang-btn"        onclick="setLang('en',this)">EN</button>
+      </div>
+    </div>
+    <div class="nav-burger" id="burger" onclick="toggleMobileNav()">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- mobile nav -->
+  <div class="nav-mobile" id="mobileNav">
+    <a href="#bio"        onclick="closeMobileNav()" data-i18n="nav_bio">Bio</a>
+    <a href="#pacchetti"  onclick="closeMobileNav()" data-i18n="nav_pack">Pacchetti</a>
+    <a href="#gallery"    onclick="closeMobileNav()" data-i18n="nav_gal">Gallery</a>
+    <a href="#video"      onclick="closeMobileNav()" data-i18n="nav_vid">Video</a>
+    <a href="#recensioni" onclick="closeMobileNav()" data-i18n="nav_rec">Recensioni</a>
+    <a href="#contatti"   onclick="closeMobileNav()" data-i18n="nav_contact">Contatti</a>
+    <div class="nav-mobile-lang">
+      <div class="lang-toggle">
+        <button class="lang-btn active" id="mlang-it" onclick="setLang('it', document.querySelector('.lang-btn'))">IT</button>
+        <button class="lang-btn"        id="mlang-en" onclick="setLang('en', document.querySelector('.lang-btn:last-child'))">EN</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════ HERO ══════════ -->
+  <section id="home">
+    <div class="hero-content">
+      <p class="hero-label" data-i18n="hero_label">Thomas Lucaccini è</p>
+      <div class="hero-logo">
+        <img src="assets/logo.png" alt="Wondy" />
+      </div>
+      <p class="hero-sub">
+        <span data-i18n="hero_sub1">Clown</span>
+        <span style="color:var(--red)"> · </span>
+        <span data-i18n="hero_sub2">Performer</span>
+        <span style="color:var(--red)"> · </span>
+        <span data-i18n="hero_sub3">Sognatore</span>
+      </p>
+      <blockquote class="hero-quote" data-i18n-html="hero_quote">
+        "Faccio ridere<br>per ricordare che siamo vivi."
+      </blockquote>
+      <div class="hero-ctas">
+        <a href="https://www.youtube.com/@wondychannel" target="_blank" class="btn-play">
+          <span class="play-icon">▶</span>
+          <span data-i18n="hero_cta_video">Guarda il trailer</span>
+        </a>
+        <a href="#pacchetti" class="btn" data-i18n="hero_cta_book">Prenota una festa</a>
+      </div>
+    </div>
+    <div class="hero-scroll" data-i18n="hero_scroll">Scopri di più</div>
+  </section>
+
+  <!-- ══════════ BIO ══════════ -->
+  <section id="bio">
+    <div class="container">
+      <div class="bio-grid">
+        <div class="bio-text">
+          <h2 data-i18n="bio_title">Chi sono</h2>
+          <div class="bio-rule"></div>
+          <p data-i18n="bio_p1">
+            Sono Wondy. Vengo da Wonderland — un mondo magico che esiste da qualche parte tra il sogno e la realtà — e ogni tanto trovo un passaggio segreto per atterrare qui sulla terra, insieme ai miei compagni di avventura: l'orsetto Odi e la scimmietta Lola.
+          </p>
+          <p data-i18n="bio_p2">
+            Racconto storie senza parole, con il linguaggio universale del corpo, del gesto e dell'emozione. Ogni spettacolo è un viaggio tra comicità, poesia e umanità. Perché ridere non è mai solo ridere — è ricordare che siamo vivi.
+          </p>
+          <p data-i18n="bio_p3">
+            Dietro la maschera c'è Thomas Lucaccini, circus performer con anni di palcoscenico tra teatri, villaggi, parchi e feste private. Giocoleria, acrobatica, clownerie: le discipline cambiano, ma l'obiettivo è sempre lo stesso — portare stupore.
+          </p>
+          <div class="bio-sig">Wondy</div>
+        </div>
+        <div class="bio-photos">
+          <div class="p1" style="overflow:hidden;">
+            <img src="assets/foto-backstage.jpg" alt="Thomas allo specchio, trucco da clown" class="cover-img" loading="lazy" />
+          </div>
+          <div class="p2" style="overflow:hidden;">
+            <img src="assets/foto-closeup.jpg" alt="Wondy, close-up trucco" class="cover-img" loading="lazy" />
+          </div>
+          <div class="p3" style="overflow:hidden;">
+            <img src="assets/foto-odi.jpg" alt="Wondy con Odi l'orsetto" class="cover-img" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════ PACCHETTI ══════════ -->
+  <section id="pacchetti">
+    <div class="container">
+      <h2 class="section-title" data-i18n="pack_title">Pacchetti Feste</h2>
+      <div class="section-rule"></div>
+      <p class="pack-intro" data-i18n="pack_intro">
+        Trasforma il compleanno del tuo bambino in un'esperienza che non dimenticherà mai. Scegli il pacchetto su misura per la tua festa.
+      </p>
+      <div class="pack-grid">
+
+        <!-- SURPRISE -->
+        <div class="pack-card">
+          <div class="pack-emoji">🎁</div>
+          <div class="pack-name" data-i18n="p1_name">Surprise</div>
+          <p class="pack-desc" data-i18n="p1_desc">
+            Immagina lo stupore degli invitati quando Wondy apparirà all'improvviso da un gigantesco pacco regalo, accompagnato da musica ed effetti speciali!
+          </p>
+          <ul class="pack-list">
+            <li data-i18n="p1_f1">Ingresso a sorpresa da pacco regalo</li>
+            <li data-i18n="p1_f2">Gag magiche e momenti comici</li>
+            <li data-i18n="p1_f3">Giochi interattivi con i bambini</li>
+            <li data-i18n="p1_f4">Accompagnamento al momento della torta</li>
+            <li data-i18n="p1_f5">Regalino esclusivo firmato Wondy</li>
+          </ul>
+          <a href="#contatti" class="btn btn-full" data-i18n="pack_cta">Richiedi info</a>
+        </div>
+
+        <!-- FANTASY -->
+        <div class="pack-card featured" data-badge="⭐ Il più scelto">
+          <div class="pack-emoji">🎭</div>
+          <div class="pack-name" data-i18n="p2_name">Fantasy</div>
+          <p class="pack-desc" data-i18n="p2_desc">
+            Tutto il divertimento del pacchetto Surprise, arricchito da uno spettacolo magico di circa 30 minuti con area scenica allestita ad hoc.
+          </p>
+          <ul class="pack-list">
+            <li data-i18n="p1_f1">Ingresso a sorpresa da pacco regalo</li>
+            <li data-i18n="p2_f2">Show di circa 30 minuti</li>
+            <li data-i18n="p2_f3">Area scenica con fondale e tappeto</li>
+            <li data-i18n="p2_f4">Magia, comicità e fantasia</li>
+            <li data-i18n="p1_f5">Regalino esclusivo firmato Wondy</li>
+          </ul>
+          <a href="#contatti" class="btn btn-red btn-full" data-i18n="pack_cta">Richiedi info</a>
+          <p class="pack-note" data-i18n="pack_note">* Spazio minimo 4×5 m per l'area spettacolo</p>
+        </div>
+
+        <!-- WONDY PACK -->
+        <div class="pack-card">
+          <div class="pack-emoji">✨</div>
+          <div class="pack-name" data-i18n="p3_name">Wondy</div>
+          <p class="pack-desc" data-i18n="p3_desc">
+            Lo spettacolo che incanta grandi e piccini. Un'esperienza straordinaria con scenografie personalizzate e uno show completo di circa un'ora.
+          </p>
+          <ul class="pack-list">
+            <li data-i18n="p1_f1">Ingresso a sorpresa da pacco regalo</li>
+            <li data-i18n="p3_f2">Show completo di circa 1 ora</li>
+            <li data-i18n="p3_f3">Scenografie personalizzate</li>
+            <li data-i18n="p3_f4">Magia, illusionismo e interazione</li>
+            <li data-i18n="p1_f5">Regalino esclusivo firmato Wondy</li>
+          </ul>
+          <a href="#contatti" class="btn btn-full" data-i18n="pack_cta">Richiedi info</a>
+          <p class="pack-note" data-i18n="pack_note">* Spazio minimo 4×5 m per l'area spettacolo</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ GALLERY ══════════ -->
+  <section id="gallery">
+    <div class="container">
+      <h2 class="section-title" data-i18n="gal_title">Gallery</h2>
+      <div class="section-rule"></div>
+    </div>
+    <div class="slideshow" id="gallery-slideshow">
+      <div class="slides" id="slides">
+        <div class="slide"><img src="assets/foto-finale.jpg"       alt="Wondy – braccia aperte sul palco" /></div>
+        <div class="slide"><img src="assets/foto-corda.jpg"        alt="Wondy – numero con la corda" /></div>
+        <div class="slide"><img src="assets/foto-fiore.jpg"        alt="Wondy – equilibrio fiore sul naso" style="object-position:top center;" /></div>
+        <div class="slide"><img src="assets/foto-bambino.jpg"      alt="Wondy – interazione con un bambino" /></div>
+        <div class="slide"><img src="assets/foto-odi.jpg"          alt="Wondy con Odi l'orsetto" /></div>
+        <div class="slide"><img src="assets/foto-closeup.jpg"      alt="Wondy – close-up naso rosso" /></div>
+        <div class="slide"><img src="assets/foto-backstage.jpg"    alt="Wondy – backstage trucco" /></div>
+        <div class="slide"><img src="assets/foto-palco-cestino.jpg" alt="Wondy – sul palco UniCiClo" /></div>
+      </div>
+      <button class="slide-arrow slide-prev" onclick="slideTo(currentSlide-1)">‹</button>
+      <button class="slide-arrow slide-next" onclick="slideTo(currentSlide+1)">›</button>
+      <div class="slide-dots" id="slide-dots"></div>
+    </div>
+    <div class="gal-cta">
+      <a href="https://www.instagram.com/Wondy_real" target="_blank" class="btn" data-i18n="gal_cta">Vedi tutto su Instagram</a>
+    </div>
+  </section>
+
+  <!-- ══════════ CALENDARIO ══════════ -->
+  <section id="calendario">
+    <div class="container">
+      <h2 class="section-title" data-i18n="cal_title">Dove trovare Wondy</h2>
+      <div class="section-rule"></div>
+      <div class="stagioni">
+        <div class="stagione">
+          <div class="stag-icon">❄️</div>
+          <div class="stag-period" data-i18n="s1_period">Inverno</div>
+          <div class="stag-title" data-i18n="s1_title">Feste & Compleanni</div>
+          <p class="stag-desc" data-i18n="s1_desc">Wondy porta la magia nelle feste private. Compleanni, party a tema, eventi familiari — con i pacchetti Surprise, Fantasy e Wondy.</p>
+          <span class="stag-tag" data-i18n="s1_tag">Su prenotazione</span>
+        </div>
+        <div class="stagione">
+          <div class="stag-icon">☀️</div>
+          <div class="stag-period" data-i18n="s2_period">Estate</div>
+          <div class="stag-title" data-i18n="s2_title">Villaggi & Resort</div>
+          <p class="stag-desc" data-i18n="s2_desc">Per 4-5 mesi Wondy anima i villaggi turistici con show quotidiani, attività per bambini e spettacoli serali per tutta la famiglia.</p>
+          <span class="stag-tag" data-i18n="s2_tag">Luglio – Settembre</span>
+        </div>
+        <div class="stagione">
+          <div class="stag-icon">🎃</div>
+          <div class="stag-period" data-i18n="s3_period">Ottobre</div>
+          <div class="stag-title" data-i18n="s3_title">Halloween nei Parchi</div>
+          <p class="stag-desc" data-i18n="s3_desc">Parchi a tema, eventi speciali Halloween. Wondy trasforma l'atmosfera con la sua ironia e fa ridere anche il più coraggioso degli spettatori.</p>
+          <span class="stag-tag" data-i18n="s3_tag">Parchi a tema</span>
+        </div>
+        <div class="stagione">
+          <div class="stag-icon">🎄</div>
+          <div class="stag-period" data-i18n="s4_period">Nov / Dic</div>
+          <div class="stag-title" data-i18n="s4_title">Natale nei Parchi</div>
+          <p class="stag-desc" data-i18n="s4_desc">Villaggi di Natale e parchi a tema natalizi. La magia del Natale incontra la magia di Wondy per uno spettacolo che scalda il cuore.</p>
+          <span class="stag-tag" data-i18n="s4_tag">Parchi natalizi</span>
+        </div>
+      </div>
+      <div class="cal-cta">
+        <p data-i18n="cal_cta_p">Sei un organizzatore o direttore artistico? Contattaci per collaborazioni e disponibilità.</p>
+        <a href="#contatti" class="btn" data-i18n="cal_cta_btn">Richiedi disponibilità</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ VIDEO ══════════ -->
+  <section id="video">
+    <div class="container">
+      <h2 class="section-title" data-i18n="vid_title">Video</h2>
+      <div class="section-rule"></div>
+
+      <!-- Featured: One Man Show – click-to-play -->
+      <div class="video-featured" id="featured-video" style="cursor:pointer;"
+           onclick="loadFeatured()">
+        <img src="https://img.youtube.com/vi/f3_3FB400Eo/maxresdefault.jpg"
+             alt="One Man Show 2022"
+             style="width:100%;height:100%;object-fit:cover;display:block;" />
+        <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:rgba(0,0,0,.35);">
+          <div style="width:64px;height:64px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;font-size:1.4rem;color:#fff;transition:transform .2s;" id="featured-play">▶</div>
+          <span style="font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:#fff;" data-i18n="vid_play_hint">Clicca per riprodurre</span>
+        </div>
+      </div>
+      <p class="video-featured-label" data-i18n="vid_featured">One Man Show 2022 – "I misteri del magico baule"</p>
+
+      <!-- Card grid -->
+      <div class="video-grid">
+
+        <!-- Showreel – Facebook link -->
+        <div class="vid-card fb-card" onclick="window.open('https://www.facebook.com/watch/?v=4269333196453638','_blank')">
+          <img src="https://img.youtube.com/vi/f3_3FB400Eo/mqdefault.jpg"
+               alt="Showreel Wondy" class="vid-thumb" loading="lazy" />
+          <div class="vid-card-overlay">
+            <div class="vid-play">▶</div>
+            <div class="vid-label" data-i18n="vid_showreel">Showreel<br><span style="opacity:.7;font-size:.9em">su Facebook</span></div>
+          </div>
+        </div>
+
+        <!-- Intervista -->
+        <div class="vid-card" data-yt="51c3Z2w9t4o">
+          <img src="https://img.youtube.com/vi/51c3Z2w9t4o/mqdefault.jpg"
+               alt="Intervista a Wondy" class="vid-thumb" loading="lazy" />
+          <div class="vid-card-overlay">
+            <div class="vid-play">▶</div>
+            <div class="vid-label" data-i18n="vid_interview">Intervista a Wondy</div>
+          </div>
+        </div>
+
+        <!-- Elfo Wondy -->
+        <div class="vid-card" data-yt="-xBQY_5WdR0">
+          <img src="https://img.youtube.com/vi/-xBQY_5WdR0/mqdefault.jpg"
+               alt="Servizio TV: Elfo Wondy" class="vid-thumb" loading="lazy" />
+          <div class="vid-card-overlay">
+            <div class="vid-play">▶</div>
+            <div class="vid-label" data-i18n="vid_elfo">Servizio TV<br>Elfo Wondy</div>
+          </div>
+        </div>
+
+        <!-- RTL -->
+        <div class="vid-card" data-yt="8kXTL5kP_1o">
+          <img src="https://img.youtube.com/vi/8kXTL5kP_1o/mqdefault.jpg"
+               alt="Wondy su RTL" class="vid-thumb" loading="lazy" />
+          <div class="vid-card-overlay">
+            <div class="vid-play">▶</div>
+            <div class="vid-label" data-i18n="vid_rtl">Wondy su RTL</div>
+          </div>
+        </div>
+
+        <!-- Primo Appuntamento -->
+        <div class="vid-card" data-yt="qr-mfzTyweU">
+          <img src="https://img.youtube.com/vi/qr-mfzTyweU/mqdefault.jpg"
+               alt="Wondy a Primo Appuntamento" class="vid-thumb" loading="lazy" />
+          <div class="vid-card-overlay">
+            <div class="vid-play">▶</div>
+            <div class="vid-label" data-i18n="vid_primo">Wondy a<br>Primo Appuntamento</div>
+          </div>
+        </div>
+
+        <!-- SkyTG24 -->
+        <div class="vid-card" data-yt="3Mmw_NgB5R8">
+          <img src="https://img.youtube.com/vi/3Mmw_NgB5R8/mqdefault.jpg"
+               alt="Servizio SkyTG24 – Elfo Wondy" class="vid-thumb" loading="lazy" />
+          <div class="vid-card-overlay">
+            <div class="vid-play">▶</div>
+            <div class="vid-label" data-i18n="vid_sky">SkyTG24<br>Elfo Wondy</div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="video-cta">
+        <a href="https://www.youtube.com/@wondychannel" target="_blank" class="btn" data-i18n="vid_cta">Tutti i video su YouTube</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ SOCIAL HUB ══════════ -->
+  <section id="social-hub">
+    <div class="container">
+      <div class="social-hub-inner">
+        <h2 data-i18n="soc_title">Seguimi per gli aggiornamenti</h2>
+        <p data-i18n="soc_sub">Il sito racconta chi è Wondy. Per le date, le foto di repertorio e le novità in tempo reale, passa dai social — è lì che succede tutto.</p>
+        <div class="social-cards">
+          <a class="soc-card" data-brand="instagram" href="https://www.instagram.com/Wondy_real" target="_blank" rel="noopener">
+            <svg class="si si-hub"><use href="#si-instagram"/></svg>
+            <div class="soc-name">Instagram</div>
+            <div class="soc-handle">@Wondy_real</div>
+            <div class="soc-cta" data-i18n="soc_follow">Seguimi</div>
+          </a>
+          <a class="soc-card" data-brand="facebook" href="https://www.facebook.com/clownwondy/" target="_blank" rel="noopener">
+            <svg class="si si-hub"><use href="#si-facebook"/></svg>
+            <div class="soc-name">Facebook</div>
+            <div class="soc-handle">Clown Wondy</div>
+            <div class="soc-cta" data-i18n="soc_follow">Seguimi</div>
+          </a>
+          <a class="soc-card" data-brand="youtube" href="https://www.youtube.com/@wondychannel" target="_blank" rel="noopener">
+            <svg class="si si-hub"><use href="#si-youtube"/></svg>
+            <div class="soc-name">YouTube</div>
+            <div class="soc-handle">@wondychannel</div>
+            <div class="soc-cta" data-i18n="soc_sub_btn">Iscriviti</div>
+          </a>
+          <a class="soc-card" data-brand="whatsapp" href="https://wa.me/393338044348" target="_blank" rel="noopener">
+            <svg class="si si-hub"><use href="#si-whatsapp"/></svg>
+            <div class="soc-name">WhatsApp</div>
+            <div class="soc-handle">333 804 4348</div>
+            <div class="soc-cta" data-i18n="soc_write">Scrivimi</div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ RECENSIONI ══════════ -->
+  <section id="recensioni">
+    <div class="container">
+      <h2 class="section-title" data-i18n="rec_title">Cosa dicono di Wondy</h2>
+      <div class="section-rule"></div>
+
+      <!-- badge: stelle + conteggio -->
+      <div class="rec-badge">
+        <div class="rec-badge-stars">★★★★★</div>
+        <div class="rec-badge-sep">·</div>
+        <div class="rec-badge-text"><strong data-i18n="rec_pct">100% positive</strong> <span data-i18n="rec_count">· 62 recensioni su Facebook</span></div>
+      </div>
+
+      <div class="rec-grid">
+
+        <div class="rec-card">
+          <div class="rec-stars">★★★★★</div>
+          <p class="rec-text">Superlativo! Ho riso di gusto, ho visto bambini con gli occhi sgranati meravigliati, ho visto adulti tornare bambini. Uno spettacolo unico che esprime grande professionalità.</p>
+          <div class="rec-author">Alberto Personeni</div>
+          <div class="rec-location">Tanka Village</div>
+        </div>
+
+        <div class="rec-card">
+          <div class="rec-stars">★★★★★</div>
+          <p class="rec-text">Unico, speciale, le sue esibizioni non vorresti mai che finiscano. Grazie.</p>
+          <div class="rec-author">Luigi Carena</div>
+        </div>
+
+        <div class="rec-card">
+          <div class="rec-stars">★★★★★</div>
+          <p class="rec-text">Un mix tra Chaplin, Stan Laurel, e i più grandi clown del momento. Uno spettacolo all'altezza dei più grandi parchi di divertimento del mondo.</p>
+          <div class="rec-author">Stefano Meroni</div>
+          <div class="rec-location">Tanka Village</div>
+        </div>
+
+        <div class="rec-card">
+          <div class="rec-stars">★★★★★</div>
+          <p class="rec-text">La magia del suo spettacolo ci ha donato la consapevolezza che esistono persone speciali che illuminano il mondo. Grazie Wondy!</p>
+          <div class="rec-author">Ge de Riggi</div>
+          <div class="rec-location">Tanka Village</div>
+        </div>
+
+        <div class="rec-card">
+          <div class="rec-stars">★★★★★</div>
+          <p class="rec-text">Ha grande talento, personalità, carisma, una inarrestabile simpatia e tanta improvvisazione! Unico!</p>
+          <div class="rec-author">Claudio Bellini</div>
+        </div>
+
+        <div class="rec-card">
+          <div class="rec-stars">★★★★★</div>
+          <p class="rec-text">Thomas un vero artista, ieri sera al Voi Colonna Village è stato fantastico! Lo consiglio vivamente!</p>
+          <div class="rec-author">Michele Trotta</div>
+          <div class="rec-location">Voi Colonna Village</div>
+        </div>
+
+      </div><!-- /rec-grid -->
+
+      <div class="rec-cta-row">
+        <a class="btn" href="https://www.facebook.com/clownwondy/reviews" target="_blank" rel="noopener" data-i18n="rec_cta">Leggi tutte le 62 recensioni su Facebook →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ QUOTE ══════════ -->
+  <div class="quote-sec">
+    <p class="big-quote" data-i18n="quote_text">Il clown vede il mondo con stupore, lo trasforma con poesia, lo restituisce con un sorriso.</p>
+    <p class="quote-attr">— Wondy</p>
+  </div>
+
+  <!-- ══════════ CONTATTI ══════════ -->
+  <section id="contatti">
+    <div class="container">
+      <h2 class="section-title" data-i18n="contact_title">Contatti</h2>
+      <div class="section-rule"></div>
+      <div class="contact-grid">
+
+        <div class="contact-info">
+          <h3 data-i18n="contact_h3">Scriviamo insieme qualcosa di speciale.</h3>
+          <p data-i18n="contact_p">Che si tratti di un compleanno da ricordare, di un'estate in villaggio o di un parco a tema — Wondy è pronto. Compila il modulo o scrivici direttamente.</p>
+          <div class="c-item">
+            <div class="c-icon">📧</div>
+            <div>
+              <div class="c-label">Email</div>
+              <div class="c-val"><a href="mailto:officialwondy@gmail.com" style="color:inherit;">officialwondy@gmail.com</a></div>
+            </div>
+          </div>
+          <div class="c-item">
+            <div class="c-icon">📱</div>
+            <div>
+              <div class="c-label">WhatsApp / Tel</div>
+              <div class="c-val">+39 333 804 4348</div>
+            </div>
+          </div>
+          <div class="contact-ctas">
+            <a class="wa-btn" href="https://wa.me/393338044348" target="_blank" rel="noopener">
+              <svg class="si" style="width:18px;height:18px;fill:#fff;"><use href="#si-whatsapp"/></svg>
+              <span data-i18n="cta_wa">Scrivici su WhatsApp</span>
+            </a>
+            <a class="vc-btn" href="assets/wondy.vcf" download="Wondy.vcf">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+              <span data-i18n="cta_vc">Salva contatto</span>
+            </a>
+          </div>
+          <div class="c-item">
+            <div class="c-icon">📍</div>
+            <div>
+              <div class="c-label" data-i18n="contact_avail_label">Disponibilità</div>
+              <div class="c-val" data-i18n="contact_avail_val">Teatri · Festival · Villaggi · Parchi · Feste private</div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="form-tabs">
+            <button class="ftab active" onclick="switchTab('privato',this)" data-i18n="tab_private">Festa Privata</button>
+            <button class="ftab"        onclick="switchTab('pro',this)"     data-i18n="tab_pro">Struttura / Parco</button>
+          </div>
+
+          <!-- FORM PRIVATO -->
+          <form class="form-panel active" id="panel-privato"
+                action="https://formspree.io/f/XXXXXXXX" method="POST">
+            <input type="hidden" name="tipo" value="Festa Privata" />
+            <div class="frow">
+              <label data-i18n="f_name">Nome e cognome *</label>
+              <input type="text" name="nome" required />
+            </div>
+            <div class="frow">
+              <label data-i18n="f_email">Email *</label>
+              <input type="email" name="email" required />
+            </div>
+            <div class="frow">
+              <label data-i18n="f_phone">Telefono</label>
+              <input type="tel" name="telefono" />
+            </div>
+            <div class="frow">
+              <label data-i18n="f_pack">Pacchetto di interesse</label>
+              <select name="pacchetto">
+                <option value="" data-i18n="f_select">— Seleziona —</option>
+                <option>🎁 Pacchetto Surprise</option>
+                <option>🎭 Pacchetto Fantasy</option>
+                <option>✨ Pacchetto Wondy</option>
+                <option data-i18n="f_notsure">Non so ancora</option>
+              </select>
+            </div>
+            <div class="frow">
+              <label data-i18n="f_date">Data dell'evento</label>
+              <input type="date" name="data" />
+            </div>
+            <div class="frow">
+              <label data-i18n="f_msg">Messaggio</label>
+              <textarea name="messaggio" data-i18n-placeholder="f_msg_ph"></textarea>
+            </div>
+            <button type="submit" class="btn btn-red btn-full" data-i18n="f_send">Invia richiesta</button>
+          </form>
+
+          <!-- FORM PRO -->
+          <form class="form-panel" id="panel-pro"
+                action="https://formspree.io/f/XXXXXXXX" method="POST">
+            <input type="hidden" name="tipo" value="Struttura/Parco" />
+            <div class="frow">
+              <label data-i18n="f_contact">Referente *</label>
+              <input type="text" name="nome" required />
+            </div>
+            <div class="frow">
+              <label data-i18n="f_org">Struttura / Organizzazione *</label>
+              <input type="text" name="struttura" required />
+            </div>
+            <div class="frow">
+              <label data-i18n="f_email">Email *</label>
+              <input type="email" name="email" required />
+            </div>
+            <div class="frow">
+              <label data-i18n="f_collab">Tipo di collaborazione</label>
+              <select name="tipo-collaborazione">
+                <option value="" data-i18n="f_select">— Seleziona —</option>
+                <option data-i18n="f_col1">Villaggio turistico (stagione estiva)</option>
+                <option data-i18n="f_col2">Parco a tema (Halloween)</option>
+                <option data-i18n="f_col3">Parco a tema (Natale)</option>
+                <option data-i18n="f_col4">Festival / evento</option>
+                <option data-i18n="f_col5">Altro</option>
+              </select>
+            </div>
+            <div class="frow">
+              <label data-i18n="f_period">Periodo indicativo</label>
+              <input type="text" name="periodo" data-i18n-placeholder="f_period_ph" />
+            </div>
+            <div class="frow">
+              <label data-i18n="f_msg">Messaggio</label>
+              <textarea name="messaggio" data-i18n-placeholder="f_msg_pro_ph"></textarea>
+            </div>
+            <button type="submit" class="btn btn-full" data-i18n="f_send">Invia richiesta</button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ FOOTER ══════════ -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo"><img src="assets/logo.png" alt="Wondy" /></div>
+          <p data-i18n="footer_tagline">Clown · Performer · Sognatore. Disponibile per feste, festival, villaggi e parchi a tema.</p>
+          <p style="font-size:.82rem;color:var(--cream-dk);margin-bottom:16px;" data-i18n="footer_social_note">Per novità e aggiornamenti seguimi sui social.</p>
+          <div class="footer-social">
+            <a href="https://www.instagram.com/Wondy_real" target="_blank" aria-label="Instagram"><svg class="si si-foot"><use href="#si-instagram"/></svg></a>
+            <a href="https://www.youtube.com/@wondychannel"  target="_blank" aria-label="YouTube"><svg class="si si-foot"><use href="#si-youtube"/></svg></a>
+            <a href="https://www.facebook.com/clownwondy/"  target="_blank" aria-label="Facebook"><svg class="si si-foot"><use href="#si-facebook"/></svg></a>
+          </div>
+        </div>
+        <div class="fcol">
+          <h4 data-i18n="footer_nav">Navigazione</h4>
+          <a href="#bio"        data-i18n="nav_bio">Bio</a>
+          <a href="#spettacoli" data-i18n="nav_show">Spettacoli</a>
+          <a href="#pacchetti"  data-i18n="nav_pack">Pacchetti</a>
+          <a href="#gallery"    data-i18n="nav_gal">Gallery</a>
+          <a href="#video"      data-i18n="nav_vid">Video</a>
+          <a href="#recensioni" data-i18n="nav_rec">Recensioni</a>
+          <a href="#contatti"   data-i18n="nav_contact">Contatti</a>
+        </div>
+        <div class="fcol">
+          <h4 data-i18n="footer_follow">Seguimi</h4>
+          <div class="footer-social">
+            <a href="https://www.instagram.com/Wondy_real" target="_blank" aria-label="Instagram"><svg class="si si-foot"><use href="#si-instagram"/></svg></a>
+            <a href="https://www.youtube.com/@wondychannel"  target="_blank" aria-label="YouTube"><svg class="si si-foot"><use href="#si-youtube"/></svg></a>
+            <a href="https://www.facebook.com/clownwondy/"  target="_blank" aria-label="Facebook"><svg class="si si-foot"><use href="#si-facebook"/></svg></a>
+          </div>
+          <br>
+          <h4>Booking</h4>
+          <a href="mailto:officialwondy@gmail.com" style="color:var(--cream-dk);">officialwondy@gmail.com</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 Wondy – Thomas Lucaccini. <span data-i18n="footer_rights">Tutti i diritti riservati.</span></p>
+        <div class="footer-legal">
+          <a href="#" data-i18n="footer_privacy">Privacy Policy</a>
+          <a href="#" data-i18n="footer_cookie">Cookie Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ══════════════════════════════════════
+       JAVASCRIPT
+  ══════════════════════════════════════ -->
+  <script>
+  /* ── TRANSLATIONS ── */
+  const T = {
+    it: {
+      nav_bio:'Bio', nav_show:'Spettacoli', nav_pack:'Pacchetti',
+      nav_gal:'Gallery', nav_vid:'Video', nav_rec:'Recensioni', nav_contact:'Contatti',
+
+      hero_label:'Thomas Lucaccini è',
+      hero_sub1:'Clown', hero_sub2:'Performer', hero_sub3:'Sognatore',
+      hero_quote:'"Faccio ridere<br>per ricordare che siamo vivi."',
+      hero_cta_video:'Guarda il trailer', hero_cta_book:'Prenota una festa',
+      hero_scroll:'Scopri di più',
+
+      bio_title:'Chi sono',
+      bio_p1:'Sono Wondy. Vengo da Wonderland — un mondo magico che esiste da qualche parte tra il sogno e la realtà — e ogni tanto trovo un passaggio segreto per atterrare qui sulla terra, insieme ai miei compagni di avventura: l\'orsetto Odi e la scimmietta Lola.',
+      bio_p2:'Racconto storie senza parole, con il linguaggio universale del corpo, del gesto e dell\'emozione. Ogni spettacolo è un viaggio tra comicità, poesia e umanità. Perché ridere non è mai solo ridere — è ricordare che siamo vivi.',
+      bio_p3:'Dietro la maschera c\'è Thomas Lucaccini, circus performer con anni di palcoscenico tra teatri, villaggi, parchi e feste private. Giocoleria, acrobatica, clownerie: le discipline cambiano, ma l\'obiettivo è sempre lo stesso — portare stupore.',
+
+      show_title:'Spettacoli', show_more:'Scopri di più',
+      show1_tags:'Teatro · Clownerie · Musica',
+      show2_tags:'Clownerie · Interazione · Energia',
+      show3_tags:'Clownerie · Poesia · Emozione',
+
+      pack_title:'Pacchetti Feste',
+      pack_intro:'Trasforma il compleanno del tuo bambino in un\'esperienza che non dimenticherà mai. Scegli il pacchetto su misura per la tua festa.',
+      pack_cta:'Richiedi info',
+      pack_note:'* Spazio minimo 4×5 m per l\'area spettacolo',
+
+      p1_name:'Surprise', p1_desc:'Immagina lo stupore degli invitati quando Wondy apparirà all\'improvviso da un gigantesco pacco regalo, accompagnato da musica ed effetti speciali!',
+      p1_f1:'Ingresso a sorpresa da pacco regalo', p1_f2:'Gag magiche e momenti comici',
+      p1_f3:'Giochi interattivi con i bambini', p1_f4:'Accompagnamento al momento della torta',
+      p1_f5:'Regalino esclusivo firmato Wondy',
+
+      p2_name:'Fantasy', p2_desc:'Tutto il divertimento del pacchetto Surprise, arricchito da uno spettacolo magico di circa 30 minuti con area scenica allestita ad hoc.',
+      p2_f2:'Show di circa 30 minuti', p2_f3:'Area scenica con fondale e tappeto',
+      p2_f4:'Magia, comicità e fantasia',
+
+      p3_name:'Wondy', p3_desc:'Lo spettacolo che incanta grandi e piccini. Un\'esperienza straordinaria con scenografie personalizzate e uno show completo di circa un\'ora.',
+      p3_f2:'Show completo di circa 1 ora', p3_f3:'Scenografie personalizzate',
+      p3_f4:'Magia, illusionismo e interazione',
+
+      gal_title:'Gallery', gal_cta:'Vedi tutto su Instagram',
+
+      cal_title:'Dove trovare Wondy',
+      s1_period:'Inverno', s1_title:'Feste & Compleanni',
+      s1_desc:'Wondy porta la magia nelle feste private. Compleanni, party a tema, eventi familiari — con i pacchetti Surprise, Fantasy e Wondy.',
+      s1_tag:'Su prenotazione',
+      s2_period:'Estate', s2_title:'Villaggi & Resort',
+      s2_desc:'Per 4-5 mesi Wondy anima i villaggi turistici con show quotidiani, attività per bambini e spettacoli serali per tutta la famiglia.',
+      s2_tag:'Luglio – Settembre',
+      s3_period:'Ottobre', s3_title:'Halloween nei Parchi',
+      s3_desc:'Parchi a tema, eventi speciali Halloween. Wondy trasforma l\'atmosfera con la sua ironia e fa ridere anche il più coraggioso degli spettatori.',
+      s3_tag:'Parchi a tema',
+      s4_period:'Nov / Dic', s4_title:'Natale nei Parchi',
+      s4_desc:'Villaggi di Natale e parchi a tema natalizi. La magia del Natale incontra la magia di Wondy per uno spettacolo che scalda il cuore.',
+      s4_tag:'Parchi natalizi',
+      cal_cta_p:'Sei un organizzatore o direttore artistico? Contattaci per collaborazioni e disponibilità.',
+      cal_cta_btn:'Richiedi disponibilità',
+
+      vid_title:'Video', vid_cta:'Tutti i video su YouTube',
+      vid_play_hint:'Guarda su YouTube',
+      vid_featured:'One Man Show 2022 – "I misteri del magico baule"',
+      vid_showreel:'Showreel', vid_interview:'Intervista a Wondy',
+      vid_elfo:'Servizio TV · Elfo Wondy', vid_rtl:'Wondy su RTL',
+      vid_primo:'Wondy a Primo Appuntamento', vid_sky:'SkyTG24 · Elfo Wondy',
+
+      quote_text:'Il clown vede il mondo con stupore, lo trasforma con poesia, lo restituisce con un sorriso.',
+
+      contact_title:'Contatti',
+      contact_h3:'Scriviamo insieme qualcosa di speciale.',
+      contact_p:'Che si tratti di un compleanno da ricordare, di un\'estate in villaggio o di un parco a tema — Wondy è pronto. Compila il modulo o scrivici direttamente.',
+      contact_avail_label:'Disponibilità',
+      contact_avail_val:'Teatri · Festival · Villaggi · Parchi · Feste private',
+
+      tab_private:'Festa Privata', tab_pro:'Struttura / Parco',
+      f_name:'Nome e cognome *', f_email:'Email *', f_phone:'Telefono',
+      f_pack:'Pacchetto di interesse', f_select:'— Seleziona —',
+      f_notsure:'Non so ancora, voglio informazioni',
+      f_date:'Data dell\'evento', f_msg:'Messaggio',
+      f_msg_ph:'Età del bambino, numero ospiti, luogo della festa...',
+      f_send:'Invia richiesta',
+      f_contact:'Referente *', f_org:'Struttura / Organizzazione *',
+      f_collab:'Tipo di collaborazione',
+      f_col1:'Villaggio turistico (stagione estiva)', f_col2:'Parco a tema (Halloween)',
+      f_col3:'Parco a tema (Natale)', f_col4:'Festival / evento', f_col5:'Altro',
+      f_period:'Periodo indicativo', f_period_ph:'es. luglio–agosto 2026',
+      f_msg_pro_ph:'Descrivi brevemente la struttura e le tue esigenze...',
+
+      footer_tagline:'Clown · Performer · Sognatore. Disponibile per feste, festival, villaggi e parchi a tema.',
+      footer_social_note:'Per novità e aggiornamenti seguimi sui social.',
+      footer_nav:'Navigazione', footer_follow:'Seguimi',
+      soc_title:'Seguimi per gli aggiornamenti',
+      soc_sub:'Il sito racconta chi è Wondy. Per le date, le foto di repertorio e le novità in tempo reale, passa dai social — è lì che succede tutto.',
+      soc_follow:'Seguimi', soc_sub_btn:'Iscriviti', soc_write:'Scrivimi',
+      rec_title:'Cosa dicono di Wondy',
+      rec_pct:'100% positive', rec_count:'· 62 recensioni su Facebook',
+      rec_cta:'Leggi tutte le 62 recensioni su Facebook →',
+      footer_rights:'Tutti i diritti riservati.',
+      footer_privacy:'Privacy Policy', footer_cookie:'Cookie Policy',
+      cta_wa:'Scrivici su WhatsApp', cta_vc:'Salva contatto',
+    },
+
+    en: {
+      nav_bio:'Bio', nav_show:'Shows', nav_pack:'Packages',
+      nav_gal:'Gallery', nav_vid:'Video', nav_rec:'Reviews', nav_contact:'Contact',
+
+      hero_label:'Thomas Lucaccini is',
+      hero_sub1:'Clown', hero_sub2:'Performer', hero_sub3:'Dreamer',
+      hero_quote:'"I make people laugh<br>to remind them we\'re alive."',
+      hero_cta_video:'Watch the trailer', hero_cta_book:'Book a party',
+      hero_scroll:'Discover more',
+
+      bio_title:'About',
+      bio_p1:'I\'m Wondy. I come from Wonderland — a magical world that exists somewhere between dreams and reality — and every now and then I find a secret passage to land here on Earth, together with my adventure companions: Odi the teddy bear and Lola the little monkey.',
+      bio_p2:'I tell stories without words, using the universal language of the body, gesture and emotion. Every show is a journey through comedy, poetry and humanity. Because laughter is never just laughter — it\'s a reminder that we\'re alive.',
+      bio_p3:'Behind the mask is Thomas Lucaccini, a circus performer with years on stage across theatres, holiday villages, theme parks and private parties. Juggling, acrobatics, clownery: the disciplines change, but the goal is always the same — to bring wonder.',
+
+      show_title:'Shows', show_more:'Find out more',
+      show1_tags:'Theatre · Clownery · Music',
+      show2_tags:'Clownery · Interaction · Energy',
+      show3_tags:'Clownery · Poetry · Emotion',
+
+      pack_title:'Party Packages',
+      pack_intro:'Turn your child\'s birthday into an experience they\'ll never forget. Choose the perfect package for your celebration.',
+      pack_cta:'Get in touch',
+      pack_note:'* Minimum space 4×5 m required for the performance area',
+
+      p1_name:'Surprise', p1_desc:'Imagine the guests\' amazement when Wondy appears out of nowhere from a giant gift box, with music and special effects!',
+      p1_f1:'Surprise entrance from a giant gift box', p1_f2:'Magic gags and comic moments',
+      p1_f3:'Interactive games with the children', p1_f4:'Cake-cutting moment with Wondy',
+      p1_f5:'Exclusive Wondy gift for every child',
+
+      p2_name:'Fantasy', p2_desc:'All the fun of the Surprise package, enriched by a ~30-minute magic show with a fully set-up performance area.',
+      p2_f2:'~30-minute show', p2_f3:'Performance area with backdrop and mat',
+      p2_f4:'Magic, comedy and fantasy',
+
+      p3_name:'Wondy', p3_desc:'The show that enchants young and old alike. An extraordinary experience with custom scenography and a full ~1-hour performance.',
+      p3_f2:'Full ~1-hour show', p3_f3:'Custom scenography',
+      p3_f4:'Magic, illusion and audience interaction',
+
+      gal_title:'Gallery', gal_cta:'See more on Instagram',
+
+      cal_title:'Find Wondy',
+      s1_period:'Winter', s1_title:'Parties & Birthdays',
+      s1_desc:'Wondy brings magic to private parties. Birthdays, themed parties, family events — with the Surprise, Fantasy and Wondy packages.',
+      s1_tag:'Available on request',
+      s2_period:'Summer', s2_title:'Holiday Villages & Resorts',
+      s2_desc:'For 4-5 months Wondy entertains holiday villages with daily shows, children\'s activities and evening performances for the whole family.',
+      s2_tag:'July – September',
+      s3_period:'October', s3_title:'Halloween Theme Parks',
+      s3_desc:'Theme parks, special Halloween events. Wondy transforms the atmosphere with his wit and makes even the bravest audience member laugh.',
+      s3_tag:'Theme parks',
+      s4_period:'Nov / Dec', s4_title:'Christmas Theme Parks',
+      s4_desc:'Christmas villages and festive theme parks. The magic of Christmas meets the magic of Wondy for a show that warms the heart.',
+      s4_tag:'Christmas parks',
+      cal_cta_p:'Are you an event organiser or artistic director? Contact us about collaborations and availability.',
+      cal_cta_btn:'Check availability',
+
+      vid_title:'Video', vid_cta:'All videos on YouTube',
+      vid_play_hint:'Watch on YouTube',
+      vid_featured:'One Man Show 2022 – "The Mysteries of the Magic Trunk"',
+      vid_showreel:'Showreel', vid_interview:'Interview with Wondy',
+      vid_elfo:'TV Feature · Wondy the Elf', vid_rtl:'Wondy on RTL',
+      vid_primo:'Wondy on First Dates Italy', vid_sky:'SkyTG24 · Wondy the Elf',
+
+      quote_text:'The clown sees the world with wonder, transforms it with poetry, gives it back with a smile.',
+
+      contact_title:'Contact',
+      contact_h3:'Let\'s create something special together.',
+      contact_p:'Whether it\'s a birthday to remember, a summer at a resort, or a theme park — Wondy is ready. Fill in the form or write to us directly.',
+      contact_avail_label:'Availability',
+      contact_avail_val:'Theatres · Festivals · Resorts · Parks · Private parties',
+
+      tab_private:'Private Party', tab_pro:'Venue / Park',
+      f_name:'Full name *', f_email:'Email *', f_phone:'Phone',
+      f_pack:'Package of interest', f_select:'— Select —',
+      f_notsure:'Not sure yet, I\'d like more info',
+      f_date:'Event date', f_msg:'Message',
+      f_msg_ph:'Child\'s age, number of guests, party location...',
+      f_send:'Send request',
+      f_contact:'Contact person *', f_org:'Venue / Organisation *',
+      f_collab:'Type of collaboration',
+      f_col1:'Holiday village (summer season)', f_col2:'Theme park (Halloween)',
+      f_col3:'Theme park (Christmas)', f_col4:'Festival / event', f_col5:'Other',
+      f_period:'Approximate period', f_period_ph:'e.g. July–August 2026',
+      f_msg_pro_ph:'Briefly describe the venue and your requirements...',
+
+      footer_tagline:'Clown · Performer · Dreamer. Available for parties, festivals, resorts and theme parks.',
+      footer_social_note:'Follow me on social media for news and updates.',
+      footer_nav:'Navigation', footer_follow:'Follow me',
+      soc_title:'Follow me for updates',
+      soc_sub:'This site tells you who Wondy is. For show dates, photos and real-time news, head to the socials — that\'s where it all happens.',
+      soc_follow:'Follow', soc_sub_btn:'Subscribe', soc_write:'Message me',
+      rec_title:'What people say about Wondy',
+      rec_pct:'100% positive', rec_count:'· 62 reviews on Facebook',
+      rec_cta:'Read all 62 reviews on Facebook →',
+      footer_rights:'All rights reserved.',
+      footer_privacy:'Privacy Policy', footer_cookie:'Cookie Policy',
+      cta_wa:'Message on WhatsApp', cta_vc:'Save contact',
+    }
+  };
+
+  let currentLang = 'it';
+
+  function applyLang(lang) {
+    currentLang = lang;
+    document.documentElement.lang = lang;
+
+    // textContent
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.dataset.i18n;
+      if (T[lang][key] !== undefined) el.textContent = T[lang][key];
+    });
+
+    // innerHTML (for <br> etc.)
+    document.querySelectorAll('[data-i18n-html]').forEach(el => {
+      const key = el.dataset.i18nHtml;
+      if (T[lang][key] !== undefined) el.innerHTML = T[lang][key];
+    });
+
+    // placeholders
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+      const key = el.dataset.i18nPlaceholder;
+      if (T[lang][key] !== undefined) el.placeholder = T[lang][key];
+    });
+
+    // featured badge
+    const featured = document.querySelector('.pack-card.featured');
+    if (featured) featured.dataset.badge = lang === 'it' ? '⭐ Il più scelto' : '⭐ Most popular';
+
+    // update all lang buttons
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.textContent.trim().toLowerCase() === lang);
+    });
+  }
+
+  function setLang(lang) { applyLang(lang); }
+
+  /* ── NAVBAR SCROLL ── */
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  /* ── MOBILE NAV ── */
+  const burger    = document.getElementById('burger');
+  const mobileNav = document.getElementById('mobileNav');
+
+  function toggleMobileNav() {
+    const open = mobileNav.classList.toggle('open');
+    burger.classList.toggle('open', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+  function closeMobileNav() {
+    mobileNav.classList.remove('open');
+    burger.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  /* ── FORM TABS ── */
+  function switchTab(panel, btn) {
+    document.querySelectorAll('.ftab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.form-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.ftab').forEach(t => {
+      if (t === btn) t.classList.add('active');
+    });
+    document.getElementById('panel-' + panel).classList.add('active');
+  }
+
+  /* ── FEATURED VIDEO ── */
+  function loadFeatured() {
+    window.open('https://www.youtube.com/watch?v=f3_3FB400Eo', '_blank');
+  }
+
+  /* ── SLIDESHOW ── */
+  const slidesEl  = document.getElementById('slides');
+  const dotsEl    = document.getElementById('slide-dots');
+  const totalSlides = document.querySelectorAll('.slide').length;
+  let currentSlide  = 0;
+  let slideTimer;
+
+  // crea dots
+  for (let i = 0; i < totalSlides; i++) {
+    const d = document.createElement('button');
+    d.className = 'dot' + (i === 0 ? ' active' : '');
+    d.setAttribute('aria-label', 'Slide ' + (i+1));
+    d.onclick = () => slideTo(i);
+    dotsEl.appendChild(d);
+  }
+
+  function slideTo(n) {
+    currentSlide = ((n % totalSlides) + totalSlides) % totalSlides;
+    slidesEl.style.transform = `translateX(-${currentSlide * 100}%)`;
+    document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === currentSlide));
+    resetTimer();
+  }
+
+  function resetTimer() {
+    clearInterval(slideTimer);
+    slideTimer = setInterval(() => slideTo(currentSlide + 1), 3200);
+  }
+
+  // touch/swipe
+  let touchStartX = 0;
+  const ss = document.getElementById('gallery-slideshow');
+  ss.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, {passive:true});
+  ss.addEventListener('touchend',   e => {
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(dx) > 40) slideTo(currentSlide + (dx < 0 ? 1 : -1));
+  });
+
+  resetTimer();
+
+  /* ── VIDEO CLICK-TO-PLAY ── */
+  document.querySelectorAll('.vid-card[data-yt]').forEach(card => {
+    card.addEventListener('click', () => {
+      window.open('https://www.youtube.com/watch?v=' + card.dataset.yt, '_blank');
+    });
+  });
+
+  /* ── INIT ── */
+  applyLang('it');
+  </script>
+</body>
+</html>
