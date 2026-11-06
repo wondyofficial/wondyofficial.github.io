@@ -257,7 +257,8 @@ body[data-mode="privato"] .only-azienda, body[data-mode="azienda"] .only-privato
 .cal-day--loading { animation: pulse 1.2s ease-in-out infinite; background: #F1EADF; }
 @keyframes pulse { 50% { opacity: .5; } }
 .cal-day.is-selected { background: var(--red); color: #fff; border-color: var(--red-deep); box-shadow: 0 6px 14px -8px rgba(126, 33, 28, .9); }
-.cal-day.is-selected::after { content: "✓"; position: absolute; top: 2px; right: 5px; font-size: .7rem; color: var(--gold-light); }
+.cal-day.is-selected::after { content: "✓"; position: absolute; top: 3px; right: 6px; font-size: .8rem; color: var(--gold-light); }
+.cal-day.is-selected .cal-num { font-weight: 700; }
 .cal-num { line-height: 1; }
 .cal-mark { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
 
@@ -442,3 +443,12 @@ body[data-current="aziende"] .topbar { background: rgba(31, 26, 46, .92); border
 .card-link--book { background: linear-gradient(135deg, #FFF8E6, #FCEFD2); outline-color: var(--gold); }
 .card-link--book .book { width: 30px; height: 30px; flex: none; color: var(--gold-text); }
 .card-link__tag { font: 600 .68rem var(--caps); letter-spacing: .12em; text-transform: uppercase; color: var(--red); font-style: normal; margin-bottom: 2px; }
+
+/* ---------- telefoni stretti (360px) ---------- */
+@media (max-width: 370px) {
+  .column { padding-inline: 14px; }
+  .topbar, .sticky-bar { margin-inline: -14px; }
+}
+.hint-wa { margin: 8px 0 0; font-size: .9rem; color: var(--ink-soft); }
+.hint-wa a { color: var(--red); font-weight: 600; }
+.hint-wa a:not([href]) { pointer-events: none; color: inherit; }

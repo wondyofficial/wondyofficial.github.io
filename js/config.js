@@ -15,7 +15,7 @@ window.CONFIG = {
   /* Finché il calendario non è collegato:
      true  = mostra date DIMOSTRATIVE (utile per provare il sito)
      false = al pubblico mostra "calendario in aggiornamento" e manda al modulo */
-  demoMode: true,
+  demoMode: false,
 
   /* --- Formspree (dove arrivano le richieste) -----------------
      es. "https://formspree.io/f/abcdwxyz". Finché è vuoto, il
@@ -33,7 +33,7 @@ window.CONFIG = {
   contacts: {
     instagram: "wondy_real",
     whatsapp: "393755718877",   // prefisso 39 senza +
-    email: "wondymanagment@gmail.com",
+    email: "wondymanagement@gmail.com",
     tiktok: "",            // username, facoltativo
     youtube: ""            // URL del canale, facoltativo
   },

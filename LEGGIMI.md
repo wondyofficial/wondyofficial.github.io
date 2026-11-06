@@ -30,16 +30,16 @@ Finché manca, il sito mostra la scritta "Wondy" dorata.
 
 ## 3. Formspree (dove arrivano le richieste)
 
-1. Vai su <https://formspree.io> → **Get started** → registrati con `wondymanagment@gmail.com`
+1. Vai su <https://formspree.io> → **Get started** → registrati con `wondymanagement@gmail.com`
    e conferma l'email ricevuta.
-2. **+ New Form** → nome "Richieste sito Wondy" → email di destinazione `wondymanagment@gmail.com` → **Create**.
+2. **+ New Form** → nome "Richieste sito Wondy" → email di destinazione `wondymanagement@gmail.com` → **Create**.
 3. Copia l'**endpoint** che compare, del tipo `https://formspree.io/f/abcdwxyz`.
 4. In `js/config.js` incollalo in `formspreeEndpoint: "https://formspree.io/f/abcdwxyz",`.
 5. Consigliato, nelle impostazioni del form su Formspree:
    - **Settings → Restrict to domain**: `wondyofficial.github.io` (blocca chi usa il modulo da altri siti).
    - lascia attivo il filtro antispam.
 6. Prova: invia una richiesta dal sito e controlla la posta. **La prima richiesta va confermata**
-   dall'email che Formspree manda a `wondymanagment@gmail.com`.
+   dall'email che Formspree manda a `wondymanagement@gmail.com`.
 
 Il piano gratuito ha un limite di invii al mese (vedi formspree.io/plans).
 Senza endpoint il sito non si blocca: propone di inviare il riepilogo via WhatsApp o email.

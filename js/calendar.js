@@ -37,9 +37,9 @@
     return guess - offsetMin(t) * 60000;
   }
   function todayRome() {
-    const [y, m, d] = new Intl.DateTimeFormat("en-CA", { timeZone: TZ, year: "numeric", month: "2-digit", day: "2-digit" })
-      .format(new Date()).split("-").map(Number);
-    return { y, m, d };
+    const p = {};
+    partsFmt.formatToParts(new Date()).forEach((x) => { p[x.type] = x.value; });
+    return { y: +p.year, m: +p.month, d: +p.day };
   }
   const keyOf = (y, m, d) => `${y}-${pad(m)}-${pad(d)}`;
   function parseKey(k) { const [y, m, d] = k.split("-").map(Number); return { y, m, d }; }
@@ -242,7 +242,7 @@
     })
     .catch(() => {
       days = buildDays([], true);
-      setStatus("error", "Non riesco a leggere il calendario in questo momento. Scegli comunque il giorno: ti confermo io la disponibilità.");
+      setStatus("error", "Non riesco a leggere il calendario in questo momento. Scegli comunque il giorno: la disponibilità ti viene confermata nella risposta alla richiesta.");
     })
     .finally(() => {
       /* scarta i giorni salvati in precedenza che nel frattempo non sono più disponibili */
