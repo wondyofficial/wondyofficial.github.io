@@ -20,7 +20,7 @@ window.CONFIG = {
   /* --- Formspree (dove arrivano le richieste) -----------------
      es. "https://formspree.io/f/abcdwxyz". Finché è vuoto, il
      modulo propone di copiare la richiesta e inviarla su Instagram. */
-  formspreeEndpoint: "",
+  formspreeEndpoint: "https://formspree.io/f/meaawoda",
 
   /* --- Calendario ------------------------------------------ */
   timeZone: "Europe/Rome",
