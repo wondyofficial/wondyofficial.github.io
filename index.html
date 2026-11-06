@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Wondy · Thomas Lucaccini</title>
+  <meta name="description" content="Wondy, il clown funambolo di Thomas Lucaccini. Verifica subito la disponibilità e richiedi un preventivo per feste private ed eventi aziendali.">
+  <meta name="theme-color" content="#F6EFE3">
+  <meta property="og:title" content="Wondy · Thomas Lucaccini">
+  <meta property="og:description" content="Clown, funambolo, giocoliere. Verifica la disponibilità e richiedi una data.">
+  <meta property="og:image" content="assets/logo-wondy.png">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script defer src="js/config.js"></script>
+  <script defer src="js/app.js"></script>
+  <script defer src="js/calendar.js"></script>
+  <script defer src="js/form.js"></script>
+</head>
+<body data-mode="privato">
+
+<!-- Simboli SVG riutilizzati -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 1.5 14 10l8.5 2-8.5 2-2 8.5-2-8.5L1.5 12 10 10z" fill="currentColor"/></symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/><circle cx="12" cy="15" r="1.6" fill="currentColor" stroke="none"/></g></symbol>
+  <symbol id="i-quill" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 3C11 4 6 10 5 20"/><path d="M20 3c-1 6-5 10-11 11"/><path d="M4 21h7"/></g></symbol>
+  <symbol id="i-ig" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none"/></g></symbol>
+  <symbol id="i-wa" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M4 20l1.2-4A8.5 8.5 0 1 1 8.3 19z"/><path d="M9 8.5c0 3.5 3 6.5 6.5 6.5l1-1.5-2-1-1 .8c-1-.5-2-1.5-2.4-2.5l.8-1-1-2z" fill="currentColor" stroke="none"/></g></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="3.5" y="5.5" width="17" height="13" rx="2"/><path d="M4 7l8 6 8-6"/></g></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M4 5.5C6.5 4 9.5 4 12 6c2.5-2 5.5-2 8-.5V19c-2.5-1.5-5.5-1.5-8 .5-2.5-2-5.5-2-8-.5z"/><path d="M12 6v13.5"/><circle cx="7.5" cy="10" r="1" fill="currentColor"/><circle cx="16.5" cy="10" r="1" fill="#9E2B25" stroke="none"/></g></symbol>
+  <symbol id="i-out" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-back" viewBox="0 0 24 24"><path d="M19 12H6M11 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-flourish" viewBox="0 0 240 24"><g fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><path d="M4 12h86M150 12h86"/><path d="M120 4l5 8-5 8-5-8z" fill="currentColor"/><path d="M110 12c-6-7-14-7-16 0 2 7 10 7 16 0zM130 12c6-7 14-7 16 0-2 7-10 7-16 0z"/></g></symbol>
+</svg>
+
+<div class="stage" aria-hidden="true"><span class="curtain curtain--l"></span><span class="curtain curtain--r"></span><span class="spot"></span></div>
+
+<main class="column">
+
+<!-- =========================================================
+     HOME
+     ========================================================= -->
+<section class="view view--home" data-view="home" aria-labelledby="home-title">
+  <header class="hero">
+    <h1 id="home-title" class="logo" aria-label="Wondy · Thomas Lucaccini">
+      <img data-logo src="assets/logo-wondy.png" alt="Wondy · Thomas Lucaccini" width="1100" height="360">
+      <span class="logo__text" aria-hidden="true"><span class="logo__name">Wondy</span><span class="logo__sub">Thomas Lucaccini</span></span>
+    </h1>
+    <p class="eyebrow">Clown · Funambolo · Giocoliere · Mimo</p>
+    <p class="bio">Compleanni, feste private ed <em>eventi aziendali</em>, da Pisa.<br><span class="bio__poem">Entra in scena, e tutto il resto sparisce.</span></p>
+  </header>
+
+  <nav class="links" aria-label="Menu principale">
+    <a class="ticket" href="#calendario">
+      <span class="ticket__stub" aria-hidden="true"><span class="roman">I</span><svg class="ico"><use href="#i-cal"/></svg></span>
+      <span class="ticket__body"><strong>Verifica disponibilità</strong><small>Vedi subito i giorni liberi</small></span>
+      <svg class="ticket__arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
+    </a>
+    <a class="ticket" href="#richiesta">
+      <span class="ticket__stub" aria-hidden="true"><span class="roman">II</span><svg class="ico"><use href="#i-quill"/></svg></span>
+      <span class="ticket__body"><strong>Richiedi un preventivo</strong><small>Feste private e aziende</small></span>
+      <svg class="ticket__arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
+    </a>
+
+    <svg class="flourish" aria-hidden="true"><use href="#i-flourish"/></svg>
+
+    <a class="card-link" href="#pacchetti"><svg class="star" aria-hidden="true"><use href="#i-star"/></svg><span>Pacchetti per feste<small>Surprise · Fantasy · Wondy</small></span><svg class="arr" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    <a class="card-link" href="#aziende"><svg class="star" aria-hidden="true"><use href="#i-star"/></svg><span>Aziende ed eventi<small>Family day, inaugurazioni, villaggi</small></span><svg class="arr" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    <a class="card-link" href="#chi-sono"><svg class="star" aria-hidden="true"><use href="#i-star"/></svg><span>Chi è Wondy<small>Thomas Lucaccini, da Pisa</small></span><svg class="arr" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    <a class="card-link" href="#faq"><svg class="star" aria-hidden="true"><use href="#i-star"/></svg><span>Domande frequenti<small>Spazio, pioggia, prenotazione</small></span><svg class="arr" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+
+    <a class="card-link card-link--book" href="https://amzn.eu/d/0if972Qw" target="_blank" rel="noopener"><svg class="book" aria-hidden="true"><use href="#i-book"/></svg><span><em class="card-link__tag">Il libro di Wondy</em>Wondy Paint<small>Summer Coloring Book · su Amazon</small></span><svg class="arr" aria-hidden="true"><use href="#i-out"/></svg></a>
+
+    <div class="socials">
+      <a class="social" data-instagram href="https://www.instagram.com/wondy_real/" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-ig"/></svg><span data-instagram-handle>@wondy_real</span></a>
+      <a class="social" data-whatsapp target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg><span>WhatsApp</span><em data-soon>presto</em></a>
+      <a class="social social--span" data-email href="#"><svg aria-hidden="true"><use href="#i-mail"/></svg><span>Scrivi una email</span></a>
+    </div>
+  </nav>
+
+  <footer class="credits">
+    <p class="eyebrow eyebrow--small">Visto in scena a</p>
+    <p class="credits__list">Gardaland <span>✦</span> Tanka Village <span>✦</span> VOI Colonna</p>
+    <p class="fineprint">© <span id="year"></span> Wondy · Thomas Lucaccini · <a href="privacy.html">Privacy</a></p>
+  </footer>
+</section>
+
+<!-- =========================================================
+     CALENDARIO
+     ========================================================= -->
+<section class="view" data-view="calendario" data-title="Disponibilità" hidden aria-labelledby="cal-h">
+  <div class="topbar"><a class="back" href="#home" data-back><svg aria-hidden="true"><use href="#i-back"/></svg>Indietro</a><span class="topbar__title">Disponibilità</span><a class="topbar__logo" href="#home" aria-label="Home">W</a></div>
+
+  <div class="view__head">
+    <p class="eyebrow"><span class="roman">I</span> Il calendario</p>
+    <h2 id="cal-h">Quando vuoi <em>Wondy</em>?</h2>
+    <p class="lead">Tocca un giorno libero: il modulo si compila da solo.</p>
+    <p class="hint-wa">Non trovi il giorno che vuoi? <a data-whatsapp target="_blank" rel="noopener">Scrivimi su WhatsApp</a>: a volte si libera un posto.</p>
+  </div>
+
+  <div class="switch" data-mode-switch role="group" aria-label="Tipo di evento">
+    <button type="button" data-mode="privato">Festa privata</button>
+    <button type="button" data-mode="azienda">Azienda / evento</button>
+  </div>
+  <p class="mode-note only-azienda">Tocca tutti i giorni che vi interessano, poi continuate con la richiesta.</p>
+
+  <div id="cal" class="cal">
+    <p class="cal-status" data-cal-status role="status" aria-live="polite" hidden></p>
+    <div class="cal-head">
+      <button type="button" class="cal-nav" data-cal-prev aria-label="Mese precedente">‹</button>
+      <h3 class="cal-title" data-cal-title aria-live="polite"></h3>
+      <button type="button" class="cal-nav" data-cal-next aria-label="Mese successivo">›</button>
+    </div>
+    <div class="cal-week" aria-hidden="true"><span>L</span><span>M</span><span>M</span><span>G</span><span>V</span><span class="we">S</span><span class="we">D</span></div>
+    <div class="cal-grid" data-cal-grid></div>
+    <ul class="legend" aria-label="Legenda">
+      <li><i class="sw sw--libero"></i>Libero</li>
+      <li><i class="sw sw--occupato"></i>Occupato</li>
+      <li><i class="sw sw--chiuso"></i>Non prenotabile</li>
+    </ul>
+  </div>
+
+  <p class="small-note">Disponibilità aggiornata dal calendario di Wondy. La data si blocca solo alla conferma del preventivo.</p>
+
+  <div class="sticky-bar" data-cal-bar hidden>
+    <div class="sticky-bar__row">
+      <span data-bar-count></span>
+      <button type="button" class="btn btn--link btn--small" data-bar-clear>Svuota</button>
+    </div>
+    <label class="check check--inline"><input type="checkbox" data-opt48> Chiedo di tenere la data in opzione per 48 ore</label>
+    <a class="btn btn--primary" href="#richiesta?tipo=azienda">Continua con la richiesta</a>
+  </div>
+</section>
+
+<!-- =========================================================
+     RICHIESTA / PREVENTIVO
+     ========================================================= -->
+<section class="view" data-view="richiesta" data-title="Richiesta" hidden aria-labelledby="req-h">
+  <div class="topbar"><a class="back" href="#home" data-back><svg aria-hidden="true"><use href="#i-back"/></svg>Indietro</a><span class="topbar__title">Richiesta</span><a class="topbar__logo" href="#home" aria-label="Home">W</a></div>
+
+  <div class="view__head">
+    <p class="eyebrow"><span class="roman">II</span> Il preventivo</p>
+    <h2 id="req-h">Raccontami il tuo <em>evento</em></h2>
+    <p class="lead only-privato">Due minuti, e ti rispondo entro 24 ore.</p>
+    <p class="lead only-azienda">Riceverete un preventivo scritto entro 48 ore lavorative.</p>
+  </div>
+
+  <div class="switch" data-mode-switch role="group" aria-label="Tipo di evento">
+    <button type="button" data-mode="privato">Festa privata</button>
+    <button type="button" data-mode="azienda">Azienda / evento</button>
+  </div>
+
+  <form id="richiesta-form" class="form" novalidate>
+    <div class="errors" data-errors tabindex="-1" role="alert" hidden></div>
+    <input type="hidden" name="tipo_cliente" data-label="Tipo di cliente">
+    <div class="hp" aria-hidden="true"><label>Non compilare <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
+
+    <fieldset class="group">
+      <legend class="group__title"><span class="roman">i</span> Quando</legend>
+      <div class="dates" data-dates></div>
+      <div class="manual" data-manual-date>
+        <div class="field">
+          <label for="f-data">Data dell'evento *</label>
+          <input id="f-data" type="date" name="data_manuale" required data-required="Scegli una data dal calendario o inseriscila qui.">
+          <p class="field__error" aria-live="polite"></p>
+        </div>
+      </div>
+    </fieldset>
+
+    <!-- ---------- FESTA PRIVATA ---------- -->
+    <fieldset class="group" data-for="privato">
+      <legend class="group__title"><span class="roman">ii</span> La festa</legend>
+
+      <fieldset class="field">
+        <legend>Pacchetto *</legend>
+        <div class="choices choices--cards">
+          <label class="choice"><input type="radio" id="f-pac" name="pacchetto" value="Surprise" required data-label="Pacchetto" data-required="Scegli un pacchetto (va bene anche “consigliami tu”)."><span><strong>Surprise</strong><small>Ingresso a sorpresa, giochi e un regalo per ogni bambino</small></span></label>
+          <label class="choice"><input type="radio" name="pacchetto" value="Fantasy"><span><strong>Fantasy</strong><small>Surprise + spettacolo di magia di circa 30 minuti</small></span></label>
+          <label class="choice"><input type="radio" name="pacchetto" value="Wondy"><span><strong>Wondy</strong><small>Ingresso a sorpresa + show di circa un'ora</small></span></label>
+          <label class="choice"><input type="radio" name="pacchetto" value="Consigliami tu"><span><strong>Consigliami tu</strong><small>Decidiamo insieme</small></span></label>
+        </div>
+        <p class="field__error" aria-live="polite"></p>
+      </fieldset>
+
+      <div class="row">
+        <div class="field">
+          <label for="f-fest">Nome del festeggiato</label>
+          <input id="f-fest" name="festeggiato" autocomplete="off" data-label="Festeggiato" placeholder="Così Wondy lo chiama per nome">
+        </div>
+        <div class="field field--short">
+          <label for="f-eta">Anni che compie</label>
+          <input id="f-eta" name="eta_festeggiato" type="number" inputmode="numeric" min="1" max="99" data-label="Età" data-range="Inserisci un'età tra 1 e 99.">
+          <p class="field__error" aria-live="polite"></p>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="f-bimbi">Quanti bambini, più o meno?</label>
+        <select id="f-bimbi" name="numero_bambini" data-label="Bambini">
+          <option value="">Seleziona</option><option>Fino a 10</option><option>10–20</option><option>20–30</option><option>30–50</option><option>Più di 50</option>
+        </select>
+      </div>
+
+      <fieldset class="field">
+        <legend>Dove si svolge?</legend>
+        <div class="choices choices--pills">
+          <label class="pill"><input type="radio" name="location" value="Casa" data-label="Location"><span>Casa</span></label>
+          <label class="pill"><input type="radio" name="location" value="Giardino"><span>Giardino</span></label>
+          <label class="pill"><input type="radio" name="location" value="Sala feste"><span>Sala feste</span></label>
+          <label class="pill"><input type="radio" name="location" value="Ristorante / locale"><span>Locale</span></label>
+          <label class="pill"><input type="radio" name="location" value="Altro"><span>Altro</span></label>
+        </div>
+      </fieldset>
+
+      <fieldset class="field">
+        <legend>Al chiuso o all'aperto?</legend>
+        <div class="choices choices--pills">
+          <label class="pill"><input type="radio" name="interno_esterno" value="Al chiuso" data-label="Ambiente"><span>Al chiuso</span></label>
+          <label class="pill"><input type="radio" name="interno_esterno" value="All'aperto"><span>All'aperto</span></label>
+          <label class="pill"><input type="radio" name="interno_esterno" value="All'aperto, con piano B al chiuso"><span>Aperto + piano B</span></label>
+        </div>
+      </fieldset>
+
+      <fieldset class="field">
+        <legend>C'è uno spazio libero di circa 4×5 metri?</legend>
+        <p class="hint">Più o meno un salotto grande sgombro. Serve per Fantasy e Wondy.</p>
+        <div class="choices choices--pills">
+          <label class="pill"><input type="radio" name="spazio_4x5" value="Sì" data-label="Spazio 4×5 m"><span>Sì</span></label>
+          <label class="pill"><input type="radio" name="spazio_4x5" value="No"><span>No</span></label>
+          <label class="pill"><input type="radio" name="spazio_4x5" value="Non so"><span>Non so</span></label>
+        </div>
+        <p class="warn" data-space-warning hidden>Senza spazio 4×5 lo show completo è difficile: nessun problema, nel preventivo ti propongo l'alternativa giusta.</p>
+      </fieldset>
+
+      <div class="field field--short">
+        <label for="f-ora">Ora di inizio (se la sai)</label>
+        <input id="f-ora" type="time" name="ora_inizio" data-label="Ora inizio">
+      </div>
+    </fieldset>
+
+    <!-- ---------- AZIENDA ---------- -->
+    <fieldset class="group" data-for="azienda" disabled hidden>
+      <legend class="group__title"><span class="roman">ii</span> L'evento</legend>
+
+      <div class="field">
+        <label for="f-rs">Azienda / ente *</label>
+        <input id="f-rs" name="ragione_sociale" required autocomplete="organization" data-label="Ragione sociale" data-required="Indica l'azienda o l'ente.">
+        <p class="field__error" aria-live="polite"></p>
+      </div>
+      <div class="row">
+        <div class="field">
+          <label for="f-piva">Partita IVA</label>
+          <input id="f-piva" name="partita_iva" inputmode="numeric" pattern="(IT)? ?[0-9]{11}" data-label="P.IVA" data-pattern="La partita IVA ha 11 cifre.">
+          <p class="field__error" aria-live="polite"></p>
+        </div>
+        <div class="field">
+          <label for="f-ruolo">Il tuo ruolo</label>
+          <input id="f-ruolo" name="ruolo" autocomplete="organization-title" data-label="Ruolo" placeholder="es. Event manager">
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="f-tipo">Tipo di evento *</label>
+        <select id="f-tipo" name="tipo_evento" required data-label="Tipo di evento" data-required="Scegli il tipo di evento.">
+          <option value="">Seleziona</option>
+          <option>Family day</option><option>Festa di Natale aziendale</option><option>Inaugurazione / apertura</option>
+          <option>Centro commerciale</option><option>Fiera / stand</option><option>Hotel / villaggio turistico</option>
+          <option>Evento pubblico / comune</option><option>Altro</option>
+        </select>
+        <p class="field__error" aria-live="polite"></p>
+      </div>
+
+      <fieldset class="field">
+        <legend>Formati che vi interessano</legend>
+        <div class="choices choices--checks">
+          <label class="check"><input type="checkbox" name="formati" value="Walking act" data-label="Formati"> Walking act / animazione itinerante</label>
+          <label class="check"><input type="checkbox" name="formati" value="Show su palco"> Show su palco (30, 45 o 60 min)</label>
+          <label class="check"><input type="checkbox" name="formati" value="Meet & greet e foto"> Meet & greet e foto</label>
+          <label class="check"><input type="checkbox" name="formati" value="Laboratorio di circo"> Laboratorio di circo per bambini</label>
+          <label class="check"><input type="checkbox" name="formati" value="Personalizzazione brand"> Personalizzazione con il vostro brand</label>
+          <label class="check"><input type="checkbox" name="formati" value="Da valutare"> Non so, consigliatemi</label>
+        </div>
+      </fieldset>
+
+      <div class="row">
+        <div class="field">
+          <label for="f-part">Partecipanti previsti</label>
+          <input id="f-part" name="partecipanti" type="number" inputmode="numeric" min="1" data-label="Partecipanti">
+        </div>
+        <div class="field">
+          <label for="f-rep">Repliche al giorno</label>
+          <select id="f-rep" name="repliche" data-label="Repliche"><option value="">—</option><option>1</option><option>2</option><option>3</option><option>4 o più</option></select>
+        </div>
+      </div>
+
+      <fieldset class="field">
+        <legend>Ambiente</legend>
+        <div class="choices choices--pills">
+          <label class="pill"><input type="radio" name="ambiente" value="Indoor" data-label="Ambiente"><span>Indoor</span></label>
+          <label class="pill"><input type="radio" name="ambiente" value="Outdoor"><span>Outdoor</span></label>
+          <label class="pill"><input type="radio" name="ambiente" value="Outdoor con piano B"><span>Outdoor + piano B</span></label>
+        </div>
+      </fieldset>
+
+      <div class="row">
+        <div class="field">
+          <label for="f-palco">Palco / audio</label>
+          <select id="f-palco" name="palco_audio" data-label="Palco e audio"><option value="">—</option><option>Palco e audio presenti</option><option>Solo audio</option><option>Nessuno</option><option>Da valutare</option></select>
+        </div>
+        <div class="field">
+          <label for="f-budget">Budget indicativo</label>
+          <select id="f-budget" name="budget" data-label="Budget"><option value="">Preferisco non dirlo</option><option>Fino a 1.000 €</option><option>1.000–2.500 €</option><option>2.500–5.000 €</option><option>Oltre 5.000 €</option><option>Da definire</option></select>
+        </div>
+      </div>
+      <div class="field">
+        <label for="f-loc">Location (nome e indirizzo)</label>
+        <input id="f-loc" name="location_evento" data-label="Location" autocomplete="off" placeholder="es. Centro commerciale X, via…">
+      </div>
+      <div class="row">
+        <div class="field">
+          <label for="f-acc">Orari di accesso / montaggio</label>
+          <input id="f-acc" name="orari_accesso" data-label="Orari accesso" placeholder="es. dalle 14:00">
+        </div>
+        <div class="field">
+          <label for="f-trasf">Trasferta / alloggio</label>
+          <select id="f-trasf" name="trasferta" data-label="Trasferta"><option value="">—</option><option>Non serve</option><option>A vostro carico</option><option>Da includere nel preventivo</option><option>Da valutare</option></select>
+        </div>
+      </div>
+      <div class="field">
+        <label for="f-sdi">Codice SDI o PEC (per la fattura)</label>
+        <input id="f-sdi" name="sdi_pec" data-label="SDI / PEC" autocomplete="off">
+      </div>
+      <label class="check"><input type="checkbox" name="opzione_48h" value="si"> Chiedo di tenere la data in opzione per 48 ore</label>
+    </fieldset>
+
+    <!-- ---------- CONTATTI ---------- -->
+    <fieldset class="group">
+      <legend class="group__title"><span class="roman">iii</span> I tuoi contatti</legend>
+      <div class="field">
+        <label for="f-nome">Nome e cognome *</label>
+        <input id="f-nome" name="nome" required autocomplete="name" data-label="Nome" data-required="Come ti chiami?">
+        <p class="field__error" aria-live="polite"></p>
+      </div>
+      <div class="field">
+        <label for="f-tel">Telefono / WhatsApp *</label>
+        <input id="f-tel" name="telefono" type="tel" required inputmode="tel" autocomplete="tel" pattern="[+0-9 .\(\)\/\-]{6,20}" data-label="Telefono" data-required="Lasciami un numero per risponderti." data-pattern="Controlla il numero di telefono.">
+        <p class="field__error" aria-live="polite"></p>
+      </div>
+      <div class="field">
+        <label for="f-email">Email *</label>
+        <input id="f-email" name="email" type="email" required autocomplete="email" data-label="Email" data-required="Serve per mandarti il riepilogo e il preventivo.">
+        <p class="field__error" aria-live="polite"></p>
+      </div>
+      <fieldset class="field">
+        <legend>Come preferisci essere ricontattato?</legend>
+        <div class="choices choices--pills">
+          <label class="pill"><input type="radio" name="contatto_preferito" value="WhatsApp" checked data-label="Contatto preferito"><span>WhatsApp</span></label>
+          <label class="pill"><input type="radio" name="contatto_preferito" value="Telefonata"><span>Telefonata</span></label>
+          <label class="pill"><input type="radio" name="contatto_preferito" value="Email"><span>Email</span></label>
+        </div>
+      </fieldset>
+      <div class="field">
+        <label for="f-comune">Comune dell'evento *</label>
+        <input id="f-comune" name="comune" required autocomplete="address-level2" data-label="Comune" data-required="In che comune si svolge?" placeholder="es. Pisa">
+        <p class="field__error" aria-live="polite"></p>
+      </div>
+      <div class="field">
+        <label for="f-note">Altro da raccontarmi?</label>
+        <textarea id="f-note" name="note" rows="3" data-label="Note" placeholder="Tema della festa, sorprese, orari di accesso…"></textarea>
+      </div>
+      <div class="field">
+        <label class="check"><input id="f-priv" type="checkbox" name="privacy" required data-required="Serve il consenso per poterti rispondere."> Ho letto l'<a href="privacy.html" target="_blank">informativa privacy</a> e acconsento al trattamento dei dati per gestire la richiesta. *</label>
+        <p class="field__error" aria-live="polite"></p>
+      </div>
+    </fieldset>
+
+    <button type="submit" class="btn btn--primary btn--big"><span data-submit-label>Invia la richiesta</span></button>
+    <p class="send-status" data-send-status role="status" aria-live="polite"></p>
+    <p class="small-note">È una richiesta, non una prenotazione: la data si conferma insieme.</p>
+  </form>
+
+  <div id="richiesta-done" class="done" hidden aria-live="polite"></div>
+</section>
+
+<!-- =========================================================
+     PACCHETTI
+     ========================================================= -->
+<section class="view" data-view="pacchetti" data-title="Pacchetti feste" hidden aria-labelledby="pac-h">
+  <div class="topbar"><a class="back" href="#home" data-back><svg aria-hidden="true"><use href="#i-back"/></svg>Indietro</a><span class="topbar__title">Pacchetti</span><a class="topbar__logo" href="#home" aria-label="Home">W</a></div>
+  <div class="view__head">
+    <p class="eyebrow">Feste private</p>
+    <h2 id="pac-h">Tre modi per far <em>entrare la magia</em></h2>
+    <p class="lead">Ogni festa inizia con un ingresso a sorpresa. Poi scegli quanto spettacolo vuoi.</p>
+    <p class="badge">Preventivo gratuito · risposta entro 24 ore</p>
+  </div>
+
+  <article class="pack">
+    <header class="pack__head"><span class="roman">I</span><h3>Surprise</h3><p class="pack__tag">La sorpresa</p></header>
+    <ul class="pack__list"><li>Ingresso a sorpresa di Wondy</li><li>Giochi con tutti i bambini</li><li>Un regalo per ogni bambino</li></ul>
+    <p class="pack__meta">Spazio: nessuna esigenza particolare</p>
+    <a class="btn btn--ghost" href="#calendario?tipo=privato" data-pick-pacchetto="Surprise">Scegli Surprise</a>
+  </article>
+
+  <article class="pack">
+    <header class="pack__head"><span class="roman">II</span><h3>Fantasy</h3><p class="pack__tag">La magia</p></header>
+    <ul class="pack__list"><li>Tutto il pacchetto Surprise</li><li>Spettacolo di magia di circa 30 minuti</li></ul>
+    <p class="pack__meta">Spazio libero: almeno 4×5 m</p>
+    <a class="btn btn--ghost" href="#calendario?tipo=privato" data-pick-pacchetto="Fantasy">Scegli Fantasy</a>
+  </article>
+
+  <article class="pack pack--star">
+    <p class="pack__ribbon">Lo spettacolo completo</p>
+    <header class="pack__head"><span class="roman">III</span><h3>Wondy</h3><p class="pack__tag">Lo show</p></header>
+    <ul class="pack__list"><li>Ingresso a sorpresa</li><li>Show di circa un'ora: clownerie, giocoleria, equilibrio e magia</li><li>Area scenica completa</li></ul>
+    <p class="pack__meta">Spazio libero: almeno 4×5 m</p>
+    <a class="btn btn--primary" href="#calendario?tipo=privato" data-pick-pacchetto="Wondy">Scegli Wondy</a>
+  </article>
+
+  <div class="space-box">
+    <svg viewBox="0 0 120 90" aria-hidden="true"><rect x="10" y="10" width="100" height="70" rx="3" fill="none" stroke="currentColor" stroke-dasharray="4 3"/><text x="60" y="8" text-anchor="middle" font-size="7" fill="currentColor">5 metri</text><text x="116" y="47" font-size="7" fill="currentColor" transform="rotate(90 116 47)" text-anchor="middle">4 metri</text><circle cx="60" cy="45" r="7" fill="currentColor" opacity=".2"/><path d="M53 36h14l-3-8h-8z" fill="currentColor" opacity=".55"/></svg>
+    <p><strong>Quanto è 4×5 metri?</strong> Più o meno un salotto grande sgombro, o un angolo di giardino. Se non sei sicuro, nel modulo puoi rispondere “non so”.</p>
+  </div>
+  <a class="btn btn--primary btn--big" href="#calendario?tipo=privato">Verifica la tua data</a>
+</section>
+
+<!-- =========================================================
+     AZIENDE
+     ========================================================= -->
+<section class="view view--night" data-view="aziende" data-title="Aziende ed eventi" hidden aria-labelledby="biz-h">
+  <div class="topbar"><a class="back" href="#home" data-back><svg aria-hidden="true"><use href="#i-back"/></svg>Indietro</a><span class="topbar__title">Aziende</span><a class="topbar__logo" href="#home" aria-label="Home">W</a></div>
+  <div class="view__head">
+    <p class="eyebrow">Aziende · Enti · Strutture</p>
+    <h2 id="biz-h">Meraviglia <em>su misura</em> per il vostro evento</h2>
+    <p class="lead">Un artista di circo e teatro, abituato ai palchi dei parchi e dei villaggi turistici, per family day, inaugurazioni e grandi eventi.</p>
+  </div>
+
+  <h3 class="sub">I formati</h3>
+  <ul class="formats">
+    <li><strong>Walking act</strong><span>Animazione itinerante tra il pubblico, ideale per inaugurazioni e centri commerciali.</span></li>
+    <li><strong>Show su palco</strong><span>30, 45 o 60 minuti di clownerie, giocoleria, equilibrio e magia.</span></li>
+    <li><strong>Meet &amp; greet</strong><span>Foto e incontro con Wondy, perfetto per family day e feste di Natale.</span></li>
+    <li><strong>Laboratori di circo</strong><span>Giocoleria ed equilibrio per i più piccoli.</span></li>
+    <li><strong>Più repliche e più giorni</strong><span>Programmi per fiere, weekend promozionali e stagioni nei villaggi.</span></li>
+    <li><strong>Personalizzazione</strong><span>Colori, prodotto o messaggio del brand dentro lo spettacolo.</span></li>
+  </ul>
+
+  <h3 class="sub">Ideale per</h3>
+  <p class="tags"><span>Family day</span><span>Natale aziendale</span><span>Inaugurazioni</span><span>Centri commerciali</span><span>Fiere</span><span>Hotel e villaggi</span><span>Eventi comunali</span></p>
+
+  <h3 class="sub">Visto in scena</h3>
+  <ul class="refs">
+    <li><strong>Gardaland</strong><span>“Il Circo di Wondy”, 2021</span></li>
+    <li><strong>Tanka Village</strong><span>“Qui per magia”, scritto e interpretato da Thomas</span></li>
+    <li><strong>VOI Colonna</strong><span>“Il magico mondo di Wondy”</span></li>
+  </ul>
+
+  <h3 class="sub">Come lavoriamo</h3>
+  <ul class="promise">
+    <li>Preventivo scritto entro 48 ore lavorative</li>
+    <li>Possibilità di tenere una data in opzione</li>
+    <li>Scheda tecnica con spazi, tempi di montaggio ed esigenze</li>
+    <li>Documentazione amministrativa per il vostro ufficio acquisti: su richiesta, insieme al preventivo</li>
+  </ul>
+  <p class="techline">Area scenica minima 4×5 m · show da 30 a 60 minuti</p>
+  <a class="card-link card-link--night" data-techsheet href="#"><svg class="star" aria-hidden="true"><use href="#i-star"/></svg><span>Scheda tecnica<small>Scarica il PDF</small></span><svg class="arr" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+
+  <div class="stack">
+    <a class="btn btn--primary btn--big" href="#calendario?tipo=azienda">Verifica le date</a>
+    <a class="btn btn--ghost" href="#richiesta?tipo=azienda">Richiedi un preventivo</a>
+  </div>
+</section>
+
+<!-- =========================================================
+     CHI SONO
+     ========================================================= -->
+<section class="view" data-view="chi-sono" data-title="Chi è Wondy" hidden aria-labelledby="bio-h">
+  <div class="topbar"><a class="back" href="#home" data-back><svg aria-hidden="true"><use href="#i-back"/></svg>Indietro</a><span class="topbar__title">Chi è Wondy</span><a class="topbar__logo" href="#home" aria-label="Home">W</a></div>
+  <figure class="portrait">
+    <div class="portrait__frame">
+      <!-- Sostituisci con: <img src="assets/thomas.jpg" alt="Thomas Lucaccini nei panni di Wondy"> -->
+      <svg viewBox="0 0 120 150" aria-hidden="true" class="portrait__ph"><ellipse cx="60" cy="150" rx="46" ry="34" fill="currentColor" opacity=".18"/><circle cx="60" cy="78" r="26" fill="currentColor" opacity=".18"/><rect x="40" y="30" width="40" height="30" rx="3" fill="currentColor" opacity=".55"/><rect x="30" y="56" width="60" height="7" rx="3.5" fill="currentColor" opacity=".55"/><circle cx="60" cy="84" r="6" fill="#9E2B25"/></svg>
+    </div>
+    <figcaption>Guarda Wondy in azione su Instagram ↓</figcaption>
+  </figure>
+  <div class="view__head">
+    <p class="eyebrow">Thomas Lucaccini · Pisa, 1998</p>
+    <h2 id="bio-h">Un clown, un filo, <em>un pizzico di magia</em></h2>
+  </div>
+  <div class="prose">
+    <p>Wondy è il personaggio creato e interpretato da Thomas Lucaccini, artista pisano formato tra circo e teatro. Clown, funambolo, giocoliere, mimo e ballerino, porta in scena uno spettacolo in cui il silenzio di un equilibrio vale quanto la risata più forte.</p>
+    <p>Ha portato Wondy sui palchi di Gardaland con “Il Circo di Wondy”, nei villaggi turistici con “Il magico mondo di Wondy” e con “Qui per magia”, uno spettacolo che ha scritto e interpretato.</p>
+    <p>Oggi Wondy entra anche nelle feste di compleanno e negli eventi aziendali, con la stessa cura di un vero palcoscenico.</p>
+  </div>
+  <p class="disciplines">Clown <span>✦</span> Funambolo <span>✦</span> Giocoliere <span>✦</span> Mimo <span>✦</span> Ballerino</p>
+  <a class="social social--wide" data-instagram href="https://www.instagram.com/wondy_real/" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-ig"/></svg><span>Guarda i video su Instagram</span></a>
+  <a class="btn btn--primary btn--big" href="#calendario">Verifica disponibilità</a>
+</section>
+
+<!-- =========================================================
+     FAQ
+     ========================================================= -->
+<section class="view" data-view="faq" data-title="Domande frequenti" hidden aria-labelledby="faq-h">
+  <div class="topbar"><a class="back" href="#home" data-back><svg aria-hidden="true"><use href="#i-back"/></svg>Indietro</a><span class="topbar__title">FAQ</span><a class="topbar__logo" href="#home" aria-label="Home">W</a></div>
+  <div class="view__head">
+    <p class="eyebrow">Domande frequenti</p>
+    <h2 id="faq-h">Tutto quello che <em>vorresti sapere</em></h2>
+  </div>
+  <div class="faq">
+    <details><summary>Quanto costa?</summary><p>Ogni evento è diverso: il prezzo dipende dal pacchetto, dalla data e dalla distanza. Compila la richiesta (due minuti): per le feste private ti rispondo entro 24 ore, alle aziende invio un preventivo scritto entro 48 ore lavorative. Sempre gratis e senza impegno.</p></details>
+    <details><summary>Quanto spazio serve?</summary><p>Per il pacchetto Surprise basta lo spazio della festa. Per Fantasy e Wondy serve un'area libera di circa 4×5 metri, più o meno un salotto grande sgombro.</p></details>
+    <details><summary>E se piove?</summary><p>Se c'è uno spazio al chiuso, lo spettacolo si sposta lì. Se non c'è, ne parliamo prima dell'evento per trovare insieme la soluzione migliore. Nel modulo puoi indicare “all'aperto + piano B”.</p></details>
+    <details><summary>Per che età è adatto?</summary><p>Lo spettacolo è pensato per i bambini, ma fa ridere anche i grandi. Indica l'età del festeggiato e dei bambini: Wondy adatta giochi e numeri al pubblico.</p></details>
+    <details><summary>In quali zone lavori?</summary><p>Wondy parte da Pisa. Indica il comune dell'evento: nel preventivo trovi anche l'eventuale trasferta.</p></details>
+    <details><summary>Come si conferma la data?</summary><p>Il calendario mostra le date libere, ma la data si blocca solo quando confermiamo insieme il preventivo. Le aziende possono chiedere di tenerla in opzione per 48 ore.</p></details>
+    <details><summary>Cosa devo preparare io?</summary><p>Lo spazio libero e i bambini pronti alla sorpresa. Tutti i dettagli pratici te li scrivo insieme al preventivo.</p></details>
+  </div>
+  <a class="btn btn--primary btn--big" href="#richiesta">Fai una domanda o richiedi una data</a>
+  <a class="social social--wide" data-instagram href="https://www.instagram.com/wondy_real/" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-ig"/></svg><span>Scrivimi su Instagram</span></a>
+</section>
+
+</main>
+</body>
+</html>
