@@ -200,8 +200,10 @@
   html.fam-printing, html.fam-printing body { background: #fff !important; color: #000 !important; min-height: 0 !important; }
   html.fam-printing body::before, html.fam-printing body::after { display: none !important; }
   html.fam-printing body > :not(#fam-print-root) { display: none !important; }
-  html.fam-printing #fam-print-root { display: block !important; width: 194mm; height: 280mm; margin: 0 auto; overflow: hidden; break-inside: avoid; }
-  html.fam-printing #fam-print-root svg { width: 100%; height: 100%; display: block; }
+  html.fam-printing body { margin: 0 !important; padding: 0 !important; min-width: 0 !important; width: auto !important; }
+  /* larghezza relativa: Safari su iPhone impagina la stampa alla larghezza dello schermo, non del foglio */
+  html.fam-printing #fam-print-root { display: block !important; width: 96%; max-width: 194mm; margin: 0 auto; break-inside: avoid; page-break-inside: avoid; }
+  html.fam-printing #fam-print-root svg { width: 100%; height: auto; aspect-ratio: 210 / 297; display: block; }
   /* stampa dal menu del browser senza pulsante: niente animazioni né pezzi interattivi */
   .fam-story__nav, .fam-form, .fam-index { display: none !important; }
 }
