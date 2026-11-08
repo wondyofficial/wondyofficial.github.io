@@ -18,16 +18,16 @@
   <noscript><style>.reveal { opacity: 1 !important; transform: none !important; } .roles__list li { background-size: 100% 100% !important; }</style></noscript>
   <link rel="preload" as="image" href="assets/foto/benvenuti-m.jpg" media="(max-width: 759px)">
   <link rel="preload" as="image" href="assets/foto/benvenuti.jpg" media="(min-width: 760px)">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/giochi.css">
-  <link rel="stylesheet" href="css/i18n.css">
-  <script defer src="js/config.js"></script>
-  <script defer src="js/app.js"></script>
-  <script defer src="js/calendar.js"></script>
-  <script defer src="js/form.js"></script>
-  <script defer src="js/wondy.js"></script>
-  <script defer src="js/giochi.js"></script>
-  <script defer src="js/i18n.js"></script>
+  <link rel="stylesheet" href="css/style.css?v=20261108b">
+  <link rel="stylesheet" href="css/giochi.css?v=20261108b">
+  <link rel="stylesheet" href="css/i18n.css?v=20261108b">
+  <script defer src="js/config.js?v=20261108b"></script>
+  <script defer src="js/app.js?v=20261108b"></script>
+  <script defer src="js/calendar.js?v=20261108b"></script>
+  <script defer src="js/form.js?v=20261108b"></script>
+  <script defer src="js/wondy.js?v=20261108b"></script>
+  <script defer src="js/giochi.js?v=20261108b"></script>
+  <script defer src="js/i18n.js?v=20261108b"></script>
 </head>
 <body>
 
@@ -184,7 +184,7 @@
     <a class="card-link reveal" href="#chi-sono"><svg class="prop" aria-hidden="true"><use href="#game-i-orso"/></svg><span>Chi è Wondy<small>Thomas Lucaccini, da Pisa</small></span><svg class="arr" aria-hidden="true"><use href="#i-arrow"/></svg></a>
     <a class="card-link reveal" href="#faq"><svg class="prop" aria-hidden="true"><use href="#game-i-trombetta"/></svg><span>Domande frequenti<small>Spazio, pioggia, prenotazione</small></span><svg class="arr" aria-hidden="true"><use href="#i-arrow"/></svg></a>
 
-    <a class="card-link card-link--games reveal" href="#giochi"><svg class="prop" aria-hidden="true"><use href="#game-i-palla"/></svg><span>Giochi per bambini<small>Acchiappa il naso · Giocoleria · Memory</small></span><svg class="arr" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    <a class="card-link card-link--games reveal" href="#giochi"><svg class="prop" aria-hidden="true"><use href="#game-i-palla"/></svg><span>Giochi per bambini<small>Naso · Giocoleria · Memory · Colora</small></span><svg class="arr" aria-hidden="true"><use href="#i-arrow"/></svg></a>
 
     <a class="book reveal" href="https://amzn.eu/d/0if972Qw" target="_blank" rel="noopener">
       <img src="assets/foto/libro.jpg" alt="" width="420" height="560" loading="lazy">
@@ -585,7 +585,7 @@
   <div class="view__head">
     <p class="eyebrow">Il circo in tasca <span aria-hidden="true">✦</span> dai 4 ai 10 anni</p>
     <h2 id="game-h">Gioca con <em>Wondy</em></h2>
-    <p class="lead">Tre giochi piccoli piccoli, da fare insieme a mamma e papà.</p>
+    <p class="lead">Quattro giochi piccoli piccoli, da fare insieme a mamma e papà.</p>
   </div>
 
   <!-- icone dei giochi, disegnate a mano in SVG -->
@@ -629,6 +629,13 @@
         <p class="game-pick__record">Record: <b data-game-record="memory">–</b></p>
         <button class="btn btn--primary" type="button" data-game-play="memory" aria-label="Gioca a Memory del circo">Gioca</button>
       </article>
+      <article class="game-pick" aria-labelledby="game-t-colora">
+        <svg class="game-pick__icon" aria-hidden="true"><use href="#game-i-wondy"/></svg>
+        <h3 id="game-t-colora">Colora Wondy</h3>
+        <p class="game-pick__how">Scegli un colore e tocca Wondy!</p>
+        <p class="game-pick__record">Dal libro <b>Wondy Paint</b> · il disegno resta salvato</p>
+        <button class="btn btn--primary" type="button" data-game-play="colora" aria-label="Gioca a Colora Wondy">Gioca</button>
+      </article>
     </div>
 
     <!-- il gioco in corso -->
@@ -669,6 +676,89 @@
       </div>
     </div>
 
+    <template data-game-colora>
+      <p class="game-colora__tip">Scegli un colore, poi tocca Wondy! <span aria-hidden="true">✿</span></p>
+      <svg class="game-colora__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 200" role="group" aria-label="Wondy da colorare">
+        <g stroke="#1A1220" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round">
+          <!-- sfondo -->
+          <rect data-zona="sfondo" x="1" y="1" width="148" height="198" rx="10" fill="#FFFFFF"/>
+          <!-- girasole -->
+          <path class="game-fix" d="M126 58 Q122 120 128 198" fill="none" stroke="#3F8A35" stroke-width="2.6"/>
+          <path d="M125 112 Q137 104 143 92 Q130 94 125 106 Z" fill="#5DAE4A"/>
+          <path d="M124 140 Q112 132 108 120 Q120 124 124 136 Z" fill="#5DAE4A"/>
+          <g data-zona="petali" fill="#FFFFFF">
+            <g transform="translate(126 42)">
+              <ellipse rx="5" ry="9.5" transform="translate(0 -12)"/><ellipse rx="5" ry="9.5" transform="rotate(45) translate(0 -12)"/>
+              <ellipse rx="5" ry="9.5" transform="rotate(90) translate(0 -12)"/><ellipse rx="5" ry="9.5" transform="rotate(135) translate(0 -12)"/>
+              <ellipse rx="5" ry="9.5" transform="rotate(180) translate(0 -12)"/><ellipse rx="5" ry="9.5" transform="rotate(225) translate(0 -12)"/>
+              <ellipse rx="5" ry="9.5" transform="rotate(270) translate(0 -12)"/><ellipse rx="5" ry="9.5" transform="rotate(315) translate(0 -12)"/>
+            </g>
+          </g>
+          <circle cx="126" cy="42" r="7.5" fill="#7A4A1E"/>
+          <g class="game-fix" fill="#3E220F" stroke="none"><circle cx="123.5" cy="40" r="1.2"/><circle cx="128" cy="39.5" r="1.2"/><circle cx="128.5" cy="44.5" r="1.2"/><circle cx="124" cy="45" r="1.2"/></g>
+
+          <!-- Wondy: stessa sagoma dell'avatar del sito, semplificata -->
+          <g transform="translate(15 12)">
+            <!-- pantaloni a sbuffo -->
+            <path data-zona="pantaloni" fill="#FFFFFF" d="M42 121 C38 132 36 146 41 160 L47 162 L55 160 C56 150 58 142 60 136 C62 142 64 150 65 160 L73 162 L79 160 C84 146 82 132 78 121 Z"/>
+            <path data-zona="pantaloni" fill="#FFFFFF" d="M42 159 Q48 163 55 159 L55 165 L42 165 Z M65 159 Q72 163 78 159 L78 165 L65 165 Z"/>
+            <path class="game-fix" d="M44 150 Q48 153 45 157 M49 148 Q53 151 50 156 M76 150 Q72 153 75 157 M71 148 Q67 151 70 156 M60 128 L60 138" fill="none" stroke-width=".8"/>
+            <rect x="43.5" y="164" width="10" height="4" rx="1.2" fill="#FFFFFF"/><rect x="66.5" y="164" width="10" height="4" rx="1.2" fill="#FFFFFF"/>
+            <!-- scarpe -->
+            <path data-zona="scarpe" fill="#FFFFFF" d="M31 177 C31 169 38 166 46 167 C53 167 56 170 56 176 L56 178 L31 178 Z"/>
+            <path data-zona="scarpe" fill="#FFFFFF" d="M89 177 C89 169 82 166 74 167 C67 167 64 170 64 176 L64 178 L89 178 Z"/>
+            <rect x="30" y="177" width="27" height="3.4" rx="1.7" fill="#2A2233"/><rect x="63" y="177" width="27" height="3.4" rx="1.7" fill="#2A2233"/>
+            <path class="game-fix" d="M45 169 L50 171 M45 172 L50 170 M70 169 L75 171 M70 172 L75 170" fill="none" stroke-width=".8"/>
+            <!-- avambracci (camicia) -->
+            <path data-zona="camicia" fill="#FFFFFF" d="M37 99 L44 103 L38.5 115 L31.5 111.5 Z"/>
+            <path data-zona="camicia" fill="#FFFFFF" d="M83 99 L76 103 L81.5 115 L88.5 111.5 Z"/>
+            <!-- busto: camicia e gilet -->
+            <path data-zona="camicia" fill="#FFFFFF" d="M46 86 C52 84 68 84 74 86 L79 123 L41 123 Z"/>
+            <path data-zona="gilet" fill="#FFFFFF" d="M46 86 C49 85 52 85 54 86 L60 104 L60 124 L41 123 Z"/>
+            <path data-zona="gilet" fill="#FFFFFF" d="M74 86 C71 85 68 85 66 86 L60 104 L60 124 L79 123 Z"/>
+            <g class="game-fix" fill="#D8352B" stroke-width=".7"><circle cx="57.6" cy="109" r="1.8"/><circle cx="57.6" cy="115" r="1.8"/><circle cx="57.6" cy="121" r="1.8"/></g>
+            <!-- maniche a sbuffo -->
+            <path data-zona="camicia" fill="#FFFFFF" d="M47 88 C39 88 35 95 36 102 C37 106 40 107 43 106 C46 101 48 95 47 88 Z"/>
+            <path data-zona="camicia" fill="#FFFFFF" d="M73 88 C81 88 85 95 84 102 C83 106 80 107 77 106 C74 101 72 95 73 88 Z"/>
+            <!-- mani -->
+            <circle data-zona="viso" fill="#FFFFFF" cx="34" cy="116.5" r="4.6"/>
+            <circle data-zona="viso" fill="#FFFFFF" cx="86" cy="116.5" r="4.6"/>
+            <!-- collo, colletto e papillon -->
+            <rect data-zona="viso" fill="#FFFFFF" x="55" y="73" width="10" height="12" rx="3"/>
+            <path data-zona="camicia" fill="#FFFFFF" d="M53 83 L60 89 L56 91 Z M67 83 L60 89 L64 91 Z"/>
+            <path data-zona="papillon" fill="#FFFFFF" d="M60 88 L48 82 C46 86 46 90.5 48 94.5 Z"/>
+            <path data-zona="papillon" fill="#FFFFFF" d="M60 88 L72 82 C74 86 74 90.5 72 94.5 Z"/>
+            <rect data-zona="papillon" fill="#FFFFFF" x="57" y="85" width="6" height="6" rx="1.6"/>
+            <!-- testa -->
+            <path data-zona="viso" fill="#FFFFFF" d="M38.5 44 C33 42 31.5 50 34 55 C35.5 58 38 58.5 39.5 57 Z"/>
+            <path data-zona="viso" fill="#FFFFFF" d="M81.5 44 C87 42 88.5 50 86 55 C84.5 58 82 58.5 80.5 57 Z"/>
+            <path data-zona="viso" fill="#FFFFFF" d="M39 44 C39 29 48 22 60 22 C72 22 81 29 81 44 C81 60 74 76 60 77.5 C46 76 39 60 39 44Z"/>
+            <path data-zona="capelli" fill="#FFFFFF" d="M38.5 46 C37 37 38.5 28 44 23 C47 18 52 15.5 57 15 C63 13 72 13.5 78 17 C84 20.5 86 28 84.5 35 C84 39 83 43 81.5 46 C80 38 77 33.5 71 31 C64 33.5 55 33.5 48 31 C43 34 40.5 39.5 38.5 46 Z"/>
+            <path data-zona="capelli" fill="#FFFFFF" d="M47 21 C49 13 56 8 66 7.5 C75 7 82 10 85 15 C83 12 78 11.5 74 13 C79 14.5 82 18.5 83 23 C77 18 70 16.5 63 17.5 C57 18 51 19.5 47 21 Z"/>
+            <!-- occhi, sopracciglia, guance, bocca: dettagli fissi -->
+            <g class="game-fix">
+              <path d="M44.5 37.5 Q49.5 33 54.5 36.4 M65.5 36.4 Q70.5 33 75.5 37.5" fill="none" stroke-width="1.6"/>
+              <ellipse cx="49.3" cy="45.6" rx="7" ry="6.4" fill="#FFFFFF" stroke-width=".9"/>
+              <ellipse cx="70.7" cy="45.6" rx="7" ry="6.4" fill="#FFFFFF" stroke-width=".9"/>
+              <circle cx="49.5" cy="46.4" r="3" fill="#1A1220" stroke="none"/><circle cx="70.5" cy="46.4" r="3" fill="#1A1220" stroke="none"/>
+              <circle cx="48.4" cy="45.2" r="1" fill="#FFFFFF" stroke="none"/><circle cx="69.4" cy="45.2" r="1" fill="#FFFFFF" stroke="none"/>
+              <ellipse cx="44.5" cy="60" rx="4.6" ry="3" fill="#FF7E95" opacity=".5" stroke="none"/>
+              <ellipse cx="75.5" cy="60" rx="4.6" ry="3" fill="#FF7E95" opacity=".5" stroke="none"/>
+              <path d="M51.5 65.2 Q60 75 68.5 65.2 Q60 67.6 51.5 65.2Z" fill="#7A1F2B" stroke-width=".9"/>
+            </g>
+            <!-- naso da clown -->
+            <circle data-zona="naso" fill="#FFFFFF" cx="60" cy="58" r="7.2"/>
+            <ellipse class="game-fix" cx="57.7" cy="55.6" rx="2" ry="1.4" fill="#FFFFFF" opacity=".8" stroke="none" transform="rotate(-30 57.7 55.6)"/>
+          </g>
+        </g>
+      </svg>
+      <div class="game-palette" role="group" aria-label="Colori" data-colora-palette></div>
+      <div class="game-colora__actions">
+        <button class="btn btn--ghost" type="button" data-colora-reset aria-label="Ricomincia: cancella i colori">Ricomincia</button>
+        <button class="btn btn--primary" type="button" data-colora-veri aria-label="Colora con i colori veri di Wondy">Colori veri di Wondy</button>
+        <button class="btn btn--ghost game-colora__save" type="button" data-colora-salva aria-label="Salva il disegno come immagine">Salva il disegno</button>
+      </div>
+    </template>
     <p class="sr-only" aria-live="polite" data-game-live></p>
   </div>
 </section>

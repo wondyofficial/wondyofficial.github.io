@@ -241,3 +241,31 @@
   .game-spark, .game-float { display: none; }
   .game-ball.is-new { outline: 3px dashed var(--gold-light); outline-offset: 4px; border-radius: 50%; }
 }
+
+/* ---------- gioco 4: Colora Wondy ---------- */
+.game-area--colora { height: auto; padding: 26px 14px 16px; touch-action: manipulation; }
+.game-colora__tip { margin: 0 0 12px; text-align: center; font-weight: 600; color: var(--gold-light); }
+.game-colora__svg {
+  display: block; width: 100%; max-width: 340px; height: auto; margin: 0 auto; border-radius: 14px;
+  box-shadow: 0 0 0 1px var(--line-strong), 0 14px 30px -16px rgba(0, 0, 0, .9);
+}
+.game-colora__svg [data-zona] { cursor: pointer; transition: fill .25s ease; }
+.game-colora__svg [data-zona]:focus { outline: none; }
+.game-colora__svg [data-zona]:focus-visible { stroke: var(--gold); stroke-width: 2.6; }
+.game-colora__svg .game-fix { pointer-events: none; }
+.game-colora__svg .is-pop { transform-box: fill-box; transform-origin: center; animation: game-fill .38s var(--spring); }
+.game-palette { display: grid; grid-template-columns: repeat(5, 1fr); justify-items: center; gap: 12px 8px; max-width: 340px; margin: 18px auto 0; }
+.game-dot {
+  width: 52px; height: 52px; padding: 0; border-radius: 50%; cursor: pointer; background: var(--c);
+  border: 3px solid rgba(244, 238, 228, .3);
+  box-shadow: inset 0 -6px 0 rgba(0, 0, 0, .18), 0 4px 10px -4px rgba(0, 0, 0, .8);
+  transition: transform .22s var(--spring), box-shadow .2s;
+}
+.game-dot[aria-pressed="true"] {
+  border-color: var(--bg); transform: scale(1.12);
+  box-shadow: 0 0 0 3px var(--gold-light), 0 0 18px rgba(243, 213, 138, .55);
+}
+.game-colora__actions { display: grid; grid-template-columns: 1fr 1.4fr; gap: 10px; max-width: 340px; margin: 18px auto 0; }
+.game-colora__actions .btn { min-height: 52px; padding: 10px 12px; font-size: .95rem; }
+.game-colora__save { grid-column: 1 / -1; }
+@keyframes game-fill { 40% { transform: scale(1.07); } }

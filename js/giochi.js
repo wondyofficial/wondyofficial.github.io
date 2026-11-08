@@ -131,6 +131,11 @@
     const r = nodo.getBoundingClientRect(), b = board.getBoundingClientRect();
     return { x: r.left - b.left + r.width / 2, y: r.top - b.top + r.height / 2 };
   }
+  /* punto dello schermo (clientX/Y) in coordinate del tabellone */
+  function relativo(x, y) {
+    const b = board.getBoundingClientRect();
+    return { x: x - b.left, y: y - b.top };
+  }
   function annuncia(testo) {
     live.textContent = "";
     setTimeout(() => { live.textContent = testo; }, 40);
@@ -138,7 +143,7 @@
 
   /* ---------- interfaccia comune passata a ogni gioco ---------- */
   const ctx = {
-    suono, lento, festa, galleggia, centro, annuncia,
+    suono, lento, festa, galleggia, centro, relativo, annuncia,
     punti(v) {
       elPunti.textContent = v;
       if (!lento()) { elPunti.classList.remove("is-bump"); void elPunti.offsetWidth; elPunti.classList.add("is-bump"); }
@@ -495,12 +500,206 @@
   }
 
   /* ============================================================
+     GIOCO 4 · COLORA WONDY (dal libro "Wondy Paint")
+     Si sceglie un colore dalla tavolozza e si tocca una zona del disegno.
+     "Colori veri di Wondy" riempie tutto con i colori del costume.
+     Il disegno resta salvato sul telefono; si può scaricare come PNG.
+     ============================================================ */
+  const TAVOLOZZA = [
+    { nome: "Rosso", hex: "#D8352B" }, { nome: "Nero velluto", hex: "#1E1828" },
+    { nome: "Bianco", hex: "#FFFFFF" }, { nome: "Oro", hex: "#E2B04A" },
+    { nome: "Rosa pelle", hex: "#F6CDB4" }, { nome: "Azzurro", hex: "#4FA3E0" },
+    { nome: "Verde", hex: "#5DBB63" }, { nome: "Viola", hex: "#9B6ADE" },
+    { nome: "Rosa", hex: "#F08DB8" }, { nome: "Arancione", hex: "#F39A3B" }
+  ];
+  const ZONE = {
+    sfondo: "lo sfondo", petali: "il girasole", capelli: "i capelli", viso: "il viso", naso: "il naso",
+    papillon: "il papillon", gilet: "il gilet", camicia: "la camicia", pantaloni: "i pantaloni", scarpe: "le scarpe"
+  };
+  const COLORI_VERI = {
+    sfondo: "#4FA3E0", petali: "#E2B04A", capelli: "#1E1828", viso: "#F6CDB4", naso: "#D8352B",
+    papillon: "#D8352B", gilet: "#1E1828", camicia: "#FFFFFF", pantaloni: "#D8352B", scarpe: "#D8352B"
+  };
+  const FOGLIO = "#FFFFFF"; // colore del foglio bianco
+
+  function creaColora(ctx, campo) {
+    const nulla = { avvia() {}, pausa() {}, riprendi() {}, ferma() {}, inCorso: () => false };
+    const modello = root.querySelector("template[data-game-colora]");
+    if (!modello) return nulla;
+    campo.append(modello.content.cloneNode(true));
+
+    const svg = campo.querySelector(".game-colora__svg");
+    const tavolozza = campo.querySelector("[data-colora-palette]");
+    const nomiZone = Object.keys(ZONE);
+    let scelto = TAVOLOZZA[0].hex, timer = [];
+
+    // stato salvato: colori delle zone e zone già toccate
+    let stato;
+    try { stato = JSON.parse(memoria.get("colora")) || {}; } catch (e) { stato = {}; }
+    stato = { colori: stato.colori || {}, toccate: Array.isArray(stato.toccate) ? stato.toccate : [], finito: !!stato.finito };
+    const salva = () => memoria.set("colora", JSON.stringify(stato));
+
+    // tavolozza a bollini
+    TAVOLOZZA.forEach((c) => {
+      const b = el("button", "game-dot");
+      b.type = "button";
+      b.style.setProperty("--c", c.hex);
+      b.setAttribute("aria-label", c.nome);
+      b.setAttribute("aria-pressed", String(c.hex === scelto));
+      b.addEventListener("click", () => {
+        scelto = c.hex;
+        $$(".game-dot", tavolozza).forEach((d) => d.setAttribute("aria-pressed", String(d === b)));
+        ctx.suono.sblocca();
+        ctx.suono.suona("giro");
+      });
+      tavolozza.append(b);
+    });
+
+    // una parte per zona diventa raggiungibile anche con la tastiera
+    nomiZone.forEach((z) => {
+      const p = svg.querySelector(`[data-zona="${z}"]`);
+      if (!p) return;
+      p.setAttribute("tabindex", "0");
+      p.setAttribute("role", "button");
+      p.setAttribute("aria-label", "Colora " + ZONE[z]);
+    });
+
+    function riempi(z, hex, anima) {
+      $$(`[data-zona="${z}"]`, svg).forEach((p) => {
+        p.setAttribute("fill", hex);
+        if (anima && !ctx.lento() && z !== "sfondo") {
+          p.classList.remove("is-pop"); void p.getBoundingClientRect(); p.classList.add("is-pop");
+        }
+      });
+      stato.colori[z] = hex;
+    }
+    function aggiorna() {
+      ctx.punti(stato.toccate.length);
+      ctx.info(`su ${nomiZone.length}`);
+    }
+    function festaGrande(quante) { // stelline sparse su tutto il disegno
+      const c = ctx.centro(svg), r = svg.getBoundingClientRect();
+      for (let i = 0; i < quante; i++) {
+        ctx.festa(c.x + rnd(-0.42, 0.42) * r.width, c.y + rnd(-0.42, 0.42) * r.height, 4, ["✦", "★", "♥"]);
+      }
+    }
+
+    function colora(z, pos) {
+      ctx.suono.sblocca();
+      riempi(z, scelto, true);
+      if (!stato.toccate.includes(z)) stato.toccate.push(z);
+      ctx.suono.suona("pop", stato.toccate.length);
+      if (pos) ctx.festa(pos.x, pos.y, 5, ["✦", "✦", "♥"]);
+      aggiorna();
+      if (stato.toccate.length === nomiZone.length && !stato.finito) {
+        stato.finito = true;
+        festaGrande(6);
+        ctx.suono.suona("fine");
+        ctx.annuncia("Che capolavoro! Hai colorato tutto Wondy.");
+      }
+      salva();
+    }
+
+    svg.addEventListener("click", (e) => {
+      const p = e.target.closest("[data-zona]");
+      if (!p) return;
+      const pos = e.detail > 0 ? ctx.relativo(e.clientX, e.clientY) : ctx.centro(p);
+      colora(p.getAttribute("data-zona"), pos);
+    });
+    svg.addEventListener("keydown", (e) => {
+      if (e.key !== "Enter" && e.key !== " ") return;
+      const z = e.target.getAttribute && e.target.getAttribute("data-zona");
+      if (!z) return;
+      e.preventDefault();
+      colora(z, ctx.centro(e.target));
+    });
+
+    campo.querySelector("[data-colora-reset]").addEventListener("click", () => {
+      timer.forEach(clearTimeout); timer = [];
+      nomiZone.forEach((z) => riempi(z, FOGLIO, false));
+      stato = { colori: {}, toccate: [], finito: false };
+      salva(); aggiorna();
+      ctx.suono.sblocca(); ctx.suono.suona("tromba");
+      ctx.annuncia("Foglio bianco: si ricomincia!");
+    });
+
+    campo.querySelector("[data-colora-veri]").addEventListener("click", () => {
+      ctx.suono.sblocca();
+      timer.forEach(clearTimeout); timer = [];
+      const passo = ctx.lento() ? 0 : 90; // le zone si colorano una dopo l'altra
+      nomiZone.forEach((z, i) => {
+        timer.push(setTimeout(() => { riempi(z, COLORI_VERI[z], true); ctx.suono.suona("pop", i); }, i * passo));
+      });
+      timer.push(setTimeout(() => {
+        stato.toccate = nomiZone.slice();
+        stato.finito = true;
+        salva(); aggiorna();
+        festaGrande(8);
+        ctx.suono.suona("fine");
+        ctx.annuncia("Ecco Wondy con i suoi colori veri!");
+      }, nomiZone.length * passo));
+    });
+
+    campo.querySelector("[data-colora-salva]").addEventListener("click", esporta);
+
+    /* PNG generato in locale: SVG → immagine → canvas → file. Nessun dato esce dal telefono. */
+    function esporta() {
+      const errore = () => ctx.annuncia("Su questo telefono non riesco a salvare il disegno.");
+      try {
+        const copia = svg.cloneNode(true);
+        copia.querySelectorAll("[tabindex], .is-pop").forEach((n) => {
+          n.removeAttribute("tabindex"); n.removeAttribute("role"); n.removeAttribute("aria-label"); n.classList.remove("is-pop");
+        });
+        copia.setAttribute("width", "750");
+        copia.setAttribute("height", "1000");
+        const testo = new XMLSerializer().serializeToString(copia);
+        const img = new Image();
+        img.onerror = errore;
+        img.onload = () => {
+          const tela = document.createElement("canvas");
+          tela.width = 750; tela.height = 1000;
+          const g = tela.getContext("2d");
+          g.fillStyle = "#FFFFFF";
+          g.fillRect(0, 0, tela.width, tela.height);
+          g.drawImage(img, 0, 0, tela.width, tela.height);
+          tela.toBlob((blob) => {
+            if (!blob) { errore(); return; }
+            const url = URL.createObjectURL(blob);
+            const a = el("a");
+            a.href = url;
+            a.download = "wondy-colorato.png";
+            document.body.append(a);
+            a.click();
+            a.remove();
+            setTimeout(() => URL.revokeObjectURL(url), 5000);
+            ctx.annuncia("Disegno salvato!");
+          }, "image/png");
+        };
+        img.src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(testo);
+      } catch (e) { errore(); }
+    }
+
+    return {
+      avvia() {
+        nomiZone.forEach((z) => riempi(z, stato.colori[z] || FOGLIO, false)); // riprende il disegno salvato
+        aggiorna();
+        ctx.annuncia("Scegli un colore, poi tocca una parte di Wondy.");
+      },
+      pausa() {}, riprendi() {}, // non c'è tempo che scorre
+      ferma() { timer.forEach(clearTimeout); timer = []; },
+      inCorso: () => false,
+      primo: () => tavolozza.querySelector('[aria-pressed="true"]')
+    };
+  }
+
+  /* ============================================================
      REGIA: menu, avvio, pausa, schermata finale, record
      ============================================================ */
   const GIOCHI = {
     naso: { etichetta: "Nasi", crea: creaNaso },
     palline: { etichetta: "Lanci", crea: creaGiocoleria },
-    memory: { etichetta: "Mosse", crea: creaMemory }
+    memory: { etichetta: "Mosse", crea: creaMemory },
+    colora: { etichetta: "Colorati", crea: creaColora }
   };
   let attivo = null; // { id, gioco, opzioni }
 

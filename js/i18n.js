@@ -366,6 +366,53 @@ Scegli il giorno che preferisci: ti confermo la disponibilità al più presto. |
 Grazie! Ti rispondo al più presto con disponibilità e preventivo. | Thank you! I'll get back to you as soon as possible with availability and a quote. | Merci ! Je vous réponds au plus vite avec disponibilités et devis. | Danke! Ich antworte dir so schnell wie möglich mit Verfügbarkeit und Angebot. | ¡Gracias! Te respondo lo antes posible con disponibilidad y presupuesto. | Ти благодарам! Ќе ти одговорам што е можно побрзо со достапност и понуда.
 Note | Notes | Remarques | Anmerkungen | Notas | Забелешки
 Tema della festa, sorprese, orari di accesso… | Party theme, surprises, access times… | Thème de la fête, surprises, horaires d'accès… | Motto der Feier, Überraschungen, Zugangszeiten… | Temática de la fiesta, sorpresas, horarios de acceso… | Тема на забавата, изненадувања, време на пристап…
+Quattro giochi piccoli piccoli, da fare insieme a mamma e papà. | Four teeny-tiny games to play together with Mum and Dad. | Quatre tout petits jeux, à faire avec papa et maman. | Vier klitzekleine Spiele für dich, Mama und Papa. | Cuatro juegos chiquititos para jugar con mamá y papá. | Четири мали-мали игри за играње заедно со мама и тато.
+Giochi per bambini<small>Naso · Giocoleria · Memory · Colora</small> | Games for kids<small>Nose · Juggling · Memory · Colouring</small> | Jeux pour enfants<small>Nez · Jonglage · Memory · Coloriage</small> | Spiele für Kinder<small>Nase · Jonglieren · Memory · Ausmalen</small> | Juegos para niños<small>Nariz · Malabares · Memory · Colorear</small> | Игри за деца<small>Нос · Жонглирање · Мемори · Боење</small>
+Naso · Giocoleria · Memory · Colora | Nose · Juggling · Memory · Colouring | Nez · Jonglage · Memory · Coloriage | Nase · Jonglieren · Memory · Ausmalen | Nariz · Malabares · Memory · Colorear | Нос · Жонглирање · Мемори · Боење
+Tira la corda: si apre il sipario | Pull the rope: the curtain opens | Tire la corde : le rideau s'ouvre | Zieh am Seil: Der Vorhang geht auf | Tira de la cuerda: se abre el telón | Повлечи го јажето: завесата се отвора
+Colora Wondy | Colour in Wondy | Colorie Wondy | Mal Wondy aus | Colorea a Wondy | Обој го Wondy
+Scegli un colore e tocca Wondy! | Pick a colour and tap Wondy! | Choisis une couleur et touche Wondy ! | Such dir eine Farbe aus und tipp Wondy an! | ¡Elige un color y toca a Wondy! | Избери боја и допри го Wondy!
+Dal libro <b>Wondy Paint</b> · il disegno resta salvato | From the book <b>Wondy Paint</b> · your drawing stays saved | Tiré du livre <b>Wondy Paint</b> · ton dessin reste enregistré | Aus dem Buch <b>Wondy Paint</b> · dein Bild bleibt gespeichert | Del libro <b>Wondy Paint</b> · tu dibujo se queda guardado | Од книгата <b>Wondy Paint</b> · цртежот останува зачуван
+Dal libro | From the book | Tiré du livre | Aus dem Buch | Del libro | Од книгата
+· il disegno resta salvato | · your drawing stays saved | · ton dessin reste enregistré | · dein Bild bleibt gespeichert | · tu dibujo se queda guardado | · цртежот останува зачуван
+Gioca a Colora Wondy | Play Colour in Wondy | Jouer à Colorie Wondy | Mal Wondy aus spielen | Jugar a Colorea a Wondy | Играј „Обој го Wondy“
+Scegli un colore, poi tocca Wondy! <span aria-hidden="true">✿</span> | Pick a colour, then tap Wondy! <span aria-hidden="true">✿</span> | Choisis une couleur, puis touche Wondy ! <span aria-hidden="true">✿</span> | Such dir eine Farbe aus, dann tipp Wondy an! <span aria-hidden="true">✿</span> | ¡Elige un color y luego toca a Wondy! <span aria-hidden="true">✿</span> | Избери боја, па допри го Wondy! <span aria-hidden="true">✿</span>
+Scegli un colore, poi tocca Wondy! | Pick a colour, then tap Wondy! | Choisis une couleur, puis touche Wondy ! | Such dir eine Farbe aus, dann tipp Wondy an! | ¡Elige un color y luego toca a Wondy! | Избери боја, па допри го Wondy!
+Wondy da colorare | Wondy to colour in | Wondy à colorier | Wondy zum Ausmalen | Wondy para colorear | Wondy за боење
+Colori | Colours | Couleurs | Farben | Colores | Бои
+Ricomincia: cancella i colori | Start over: clear the colours | Recommencer : effacer les couleurs | Neu anfangen: Farben löschen | Empezar de nuevo: borrar los colores | Почни одново: избриши ги боите
+Ricomincia | Start over | Recommencer | Neu anfangen | Empezar de nuevo | Почни одново
+Colora con i colori veri di Wondy | Colour with Wondy's real colours | Colorier avec les vraies couleurs de Wondy | Mit Wondys echten Farben ausmalen | Colorear con los colores de verdad de Wondy | Обој со вистинските бои на Wondy
+Colori veri di Wondy | Wondy's real colours | Les vraies couleurs de Wondy | Wondys echte Farben | Los colores de verdad de Wondy | Вистинските бои на Wondy
+Salva il disegno come immagine | Save the drawing as an image | Enregistrer le dessin en image | Bild als Datei speichern | Guardar el dibujo como imagen | Зачувај го цртежот како слика
+Salva il disegno | Save the drawing | Enregistrer le dessin | Bild speichern | Guardar el dibujo | Зачувај го цртежот
+Rosso | Red | Rouge | Rot | Rojo | Црвена
+Nero velluto | Velvet black | Noir velours | Samtschwarz | Negro terciopelo | Кадифено црна
+Bianco | White | Blanc | Weiß | Blanco | Бела
+Oro | Gold | Or | Gold | = | Златна
+Rosa pelle | Skin pink | Rose chair | Hautrosa | Rosa piel | Телесно розова
+Azzurro | Sky blue | Bleu ciel | Himmelblau | Celeste | Небесно сина
+Verde | Green | Vert | Grün | = | Зелена
+Viola | Purple | Violet | Lila | Morado | Виолетова
+Rosa | Pink | Rose | = | = | Розова
+Arancione | Orange | Orange | Orange | Naranja | Портокалова
+Colora lo sfondo | Colour the background | Colorie le fond | Mal den Hintergrund aus | Colorea el fondo | Обој ја позадината
+Colora il girasole | Colour the sunflower | Colorie le tournesol | Mal die Sonnenblume aus | Colorea el girasol | Обој го сончогледот
+Colora i capelli | Colour the hair | Colorie les cheveux | Mal die Haare aus | Colorea el pelo | Обој ја косата
+Colora il viso | Colour the face | Colorie le visage | Mal das Gesicht aus | Colorea la cara | Обој го лицето
+Colora il naso | Colour the nose | Colorie le nez | Mal die Nase aus | Colorea la nariz | Обој го носот
+Colora il papillon | Colour the bow tie | Colorie le nœud papillon | Mal die Fliege aus | Colorea la pajarita | Обој ја папионката
+Colora il gilet | Colour the waistcoat | Colorie le gilet | Mal die Weste aus | Colorea el chaleco | Обој го елекот
+Colora la camicia | Colour the shirt | Colorie la chemise | Mal das Hemd aus | Colorea la camisa | Обој ја кошулата
+Colora i pantaloni | Colour the trousers | Colorie le pantalon | Mal die Hose aus | Colorea los pantalones | Обој ги панталоните
+Colora le scarpe | Colour the shoes | Colorie les chaussures | Mal die Schuhe aus | Colorea los zapatos | Обој ги чевлите
+Che capolavoro! Hai colorato tutto Wondy. | What a masterpiece! You've coloured in all of Wondy. | Quel chef-d'œuvre ! Tu as colorié tout Wondy. | Was für ein Meisterwerk! Du hast Wondy ganz ausgemalt. | ¡Qué obra maestra! Has coloreado a Wondy entero. | Какво ремек-дело! Го обои целиот Wondy.
+Foglio bianco: si ricomincia! | Blank page: let's start again! | Page blanche : on recommence ! | Leeres Blatt: Es geht von vorne los! | Hoja en blanco: ¡empezamos de nuevo! | Празен лист: почнуваме одново!
+Ecco Wondy con i suoi colori veri! | Here's Wondy in his real colours! | Voici Wondy avec ses vraies couleurs ! | Hier ist Wondy in seinen echten Farben! | ¡Aquí está Wondy con sus colores de verdad! | Еве го Wondy со неговите вистински бои!
+Su questo telefono non riesco a salvare il disegno. | I can't save the drawing on this phone. | Je n'arrive pas à enregistrer le dessin sur ce téléphone. | Auf diesem Handy kann ich das Bild nicht speichern. | En este teléfono no puedo guardar el dibujo. | На овој телефон не можам да го зачувам цртежот.
+Disegno salvato! | Drawing saved! | Dessin enregistré ! | Bild gespeichert! | ¡Dibujo guardado! | Цртежот е зачуван!
+Scegli un colore, poi tocca una parte di Wondy. | Pick a colour, then tap a part of Wondy. | Choisis une couleur, puis touche une partie de Wondy. | Such dir eine Farbe aus und tipp dann auf einen Teil von Wondy. | Elige un color y luego toca una parte de Wondy. | Избери боја, па допри дел од Wondy.
+Colorati | Coloured | Coloriés | Ausgemalt | Coloreados | Обоени
 `;
 
   /* ---------- costruzione delle tabelle ---------- */
@@ -419,6 +466,7 @@ Tema della festa, sorprese, orari di accesso… | Party theme, surprises, access
         : new Intl.DateTimeFormat(LOC[L], { month: "long", year: "numeric", timeZone: "UTC" }).format(Date.UTC(+m[2], MESI.indexOf(m[1]), 15))],
     [/^Rimuovi (.+)$/, (m) => pick({ en: "Remove $1", fr: "Retirer $1", de: "$1 entfernen", es: "Quitar $1", mk: "Отстрани $1" }, m)],
     [/^(.+) \(da verificare\)$/, (m) => pick({ en: "$1 (to be checked)", fr: "$1 (à vérifier)", de: "$1 (zu prüfen)", es: "$1 (por verificar)", mk: "$1 (да се провери)" }, m)],
+    [/^su (\d+)$/, (m) => pick({ en: "of $1", fr: "sur $1", de: "von $1", es: "de $1", mk: "од $1" }, m)],
     [/^Tempo (\d+)$/, (m) => pick({ en: "Time $1", fr: "Temps $1", de: "Zeit $1", es: "Tiempo $1", mk: "Време $1" }, m)],
     [/^Coppie (\d+)\/(\d+)$/, (m) => pick({ en: "Pairs $1/$2", fr: "Paires $1/$2", de: "Paare $1/$2", es: "Parejas $1/$2", mk: "Парови $1/$2" }, m)],
     [/^Record: (.+)$/, (m) => dict("Record:") + " " + T(m[1])],
@@ -439,6 +487,7 @@ Tema della festa, sorprese, orari di accesso… | Party theme, surprises, access
   const ATT = new WeakMap();  // elemento → { attributo: { o, t } }
   const INLINE = /^(EM|STRONG|B|I|BR|SMALL|SPAN)$/;
   const SKIP = "script,style,noscript,textarea,template,svg,.lang-switch,.cal-week,[data-i18n-skip]";
+  const SKIP_ATTR = "script,style,noscript,template,.lang-switch,[data-i18n-skip]"; // negli svg si traducono solo gli attributi (aria-label)
   const hasLetters = (s) => /\p{L}/u.test(s);
   const toIt = (s) => (D[s] ? s : REV[s] || (REV[s + " *"] ? REV[s + " *"].replace(/ \*$/, "") : s));
 
@@ -502,6 +551,7 @@ Tema della festa, sorprese, orari di accesso… | Party theme, surprises, access
     if (node.nodeType === 3) { doText(node); return; }
     if (node.nodeType !== 1) return;
     if (node.nodeName === "TEXTAREA") { doAttrs(node); return; } // solo placeholder e data-label
+    if (node instanceof SVGElement) { doAttrs(node); node.querySelectorAll("[aria-label]").forEach(doAttrs); return; }
     if (node.matches(SKIP)) return;
     doAttrs(node);
     if (doBlock(node)) return;
@@ -533,9 +583,9 @@ Tema della festa, sorprese, orari di accesso… | Party theme, surprises, access
   const mo = new MutationObserver((recs) => {
     mo.disconnect(); // le nostre modifiche non generano nuovi eventi: niente loop
     for (const r of recs) {
-      if (r.type === "childList") r.addedNodes.forEach((n) => { if (n.isConnected && !skipped(n)) walk(n); });
+      if (r.type === "childList") r.addedNodes.forEach((n) => { if (n.isConnected && !(n.parentElement && n.parentElement.closest(SKIP))) walk(n); });
       else if (r.type === "characterData") { if (r.target.isConnected && !skipped(r.target)) doText(r.target); }
-      else if (r.target.isConnected && (r.target.nodeName === "TEXTAREA" || !skipped(r.target))) doAttrs(r.target);
+      else if (r.target.isConnected && !r.target.closest(SKIP_ATTR)) doAttrs(r.target);
     }
     mo.observe(document.body, OPTS);
   });
