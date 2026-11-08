@@ -62,6 +62,31 @@
     for (let i = 0; i < 10; i++) el("ellipse", { cx, cy: cy - r * .72, rx: r * .24, ry: r * .42, transform: `rotate(${i * 36} ${cx} ${cy})`, fill: "#fff", stroke: "#000", "stroke-width": ".6" }, g);
     el("circle", { cx, cy, r: r * .42, fill: "#fff", stroke: "#000", "stroke-width": ".7" }, g);
   }
+  /* firma discreta di Wondy: indirizzo del sito e Instagram, incastonati nella cornice in basso */
+  const SIGN = "wondyofficial.github.io  ·  @wondy_real";
+  /* logo ufficiale (760 × 249). Sui fogli in bianco e nero diventa nero pieno, come i contorni */
+  const LOGO = "assets/logo-wondy.png", LOGO_R = 760 / 249;
+  let logoN = 0; // id del filtro diverso per ogni foglio: un filtro dentro un foglio nascosto non funziona
+  function logo(g, cx, cy, h, black) {
+    const w = h * LOGO_R, a = { href: LOGO, x: cx - w / 2, y: cy - h / 2, width: w, height: h, preserveAspectRatio: "xMidYMid meet" };
+    if (black) {
+      const svg = g.ownerSVGElement || g;
+      let f = svg.querySelector("filter.fam-logo-nero");
+      if (!f) {
+        f = el("filter", { id: "fam-logo-nero-" + ++logoN, class: "fam-logo-nero", "color-interpolation-filters": "sRGB" }, el("defs", {}, svg));
+        el("feColorMatrix", { type: "matrix", values: "0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0" }, f);
+      }
+      a.filter = `url(#${f.id})`;
+    }
+    return el("image", a, g);
+  }
+  /* attenzione: il rettangolo copre ciò che sta sotto (sull'invito, la riga dello spettacolo finisce poco sopra):
+     se si ingrandisce la firma o si abbassa quella riga, ricontrollare che nulla venga tagliato */
+  function hallmark(g, cx, y, size, color, bg) {
+    const w = SIGN.length * size * 0.55 + size * 2;
+    el("rect", { x: cx - w / 2, y: y - size * .6, width: w, height: size * 1.2, fill: bg }, g);
+    el("text", { x: cx, y: y + size * .36, "font-size": size, "text-anchor": "middle", "letter-spacing": size * .04, "font-family": "'Instrument Sans', system-ui, sans-serif", fill: color }, g, SIGN);
+  }
   /* testo che si restringe se il nome è lungo */
   function fitText(g, x, y, txt, max, maxW, attrs) {
     const size = Math.min(max, maxW / Math.max(1, txt.length * 0.72));
@@ -113,9 +138,10 @@
     // data e firma
     el("path", { d: "M30 262H90M120 262H180", stroke: "#000", "stroke-width": ".5" }, s);
     el("text", { x: 60, y: 258, "font-size": "6", "text-anchor": "middle", "font-family": "'Cormorant Garamond', Georgia, serif", "font-weight": "600", fill: "#000" }, s, date ? fmtLong(date) : "");
-    el("text", { x: 150, y: 258, "font-size": "10", "text-anchor": "middle", "font-family": "'Cormorant Garamond', Georgia, serif", "font-style": "italic", "font-weight": "600", fill: "#000" }, s, "Wondy");
+    logo(s, 150, 253.5, 12, true);
     el("text", { x: 60, y: 268, "font-size": "3.6", "text-anchor": "middle", "letter-spacing": ".4", fill: "#000" }, s, "DATA");
     el("text", { x: 150, y: 268, "font-size": "3.6", "text-anchor": "middle", "letter-spacing": ".4", fill: "#000" }, s, "IL MIMO");
+    hallmark(s, 105, 289, 3, "#000", "#fff");
     return s;
   }
 
@@ -145,6 +171,8 @@
     el("text", { x: 140, y: 256, "font-size": "14", "font-weight": "700", "text-anchor": "middle", fill: "#fff", stroke: "#000", "stroke-width": ".6" }, s, "FESTA!");
     el("text", { x: 140, y: 266, "font-size": "6", "text-anchor": "middle", "font-family": "'Cormorant Garamond', Georgia, serif", "font-weight": "600", fill: "#000" }, s, fmtLong(festa));
     star(s, 30, 30, 5); star(s, 180, 30, 5); star(s, 100, 276, 3);
+    logo(s, 140, 276, 11, true);
+    hallmark(s, 105, 289, 3, "#000", "#fff");
     return s;
   }
 
@@ -177,6 +205,8 @@
       el("path", { d: `M${x0} ${top}H${x1}V${bot}A${w / 2} ${w / 2.4} 0 0 1 ${x0} ${bot}Z`, fill: i % 2 ? "#fff" : RED }, aw);
     }
     el("path", { d: `M${AL - 3} ${top}H${AR + 3}`, stroke: INK, "stroke-width": "1.2", "stroke-linecap": "round" }, g);
+    el("rect", { x: 38.5, y: 1.6, width: 23, height: 3.4, fill: col ? "#FFF8EC" : "#fff" }, g);
+    logo(g, 50, 4.2, 6.4, !col);
     // "Per ______" da scrivere a mano
     el("text", { x: 12, y: 31, "font-size": "4.4", "font-family": SERIF, "font-style": "italic", "font-weight": "600", fill: INK }, g, t.per);
     el("path", { d: `M${14 + t.per.length * 2.1} 31.6H88`, stroke: INK, "stroke-width": ".3" }, g);
@@ -236,9 +266,10 @@
       }
     });
     // chiusura
-    if (d.show) fitText(g, 50, 138.6, t.show, 3.9, 80, { "font-family": TITLE_F, "font-weight": "700", fill: col ? RED : INK });
-    else { star(g, 42, 137, 1.6); star(g, 50, 136.6, 2.2); star(g, 58, 137, 1.6); }
+    if (d.show) fitText(g, 50, 137.6, t.show, 3.9, 80, { "font-family": TITLE_F, "font-weight": "700", fill: col ? RED : INK });
+    else { star(g, 42, 136.2, 1.6); star(g, 50, 135.8, 2.2); star(g, 58, 136.2, 1.6); }
     if (col) g.querySelectorAll(":scope > path[stroke-linejoin]").forEach((e) => e.setAttribute("fill", FILLG));
+    hallmark(g, 50, INV_H - 3.2, 2.4, INK, col ? "#FFF8EC" : "#fff");
   }
   function buildInvitePreview(d) {
     const s = el("svg", { xmlns: SVGNS, viewBox: `0 0 100 ${INV_H}`, "aria-hidden": "true", "font-family": "Cinzel, Georgia, serif" });
@@ -257,23 +288,38 @@
     return s;
   }
 
+  /* il logo caricato una volta sola, per il biglietto e prima di stampare */
+  let logoP = null;
+  function logoImg() {
+    if (!logoP) logoP = new Promise((ok) => { const i = new Image(); i.onload = () => ok(i); i.onerror = () => ok(null); i.src = LOGO; });
+    return logoP;
+  }
+
   /* ---------- stampa: solo il foglio scelto ---------- */
   function printSheet(svg) {
     document.getElementById("fam-print-root")?.remove();
     const root = document.createElement("div");
     root.id = "fam-print-root";
-    root.appendChild(svg.cloneNode(true));
+    const copia = svg.cloneNode(true);
+    copia.querySelectorAll("filter.fam-logo-nero").forEach((f) => {
+      const id = "fam-logo-nero-" + ++logoN, old = f.id;
+      f.id = id;
+      copia.querySelectorAll(`[filter="url(#${old})"]`).forEach((n) => n.setAttribute("filter", `url(#${id})`));
+    });
+    root.appendChild(copia);
     document.body.appendChild(root);
     document.documentElement.classList.add("fam-printing");
     const done = () => { root.remove(); document.documentElement.classList.remove("fam-printing"); };
     addEventListener("afterprint", done, { once: true });
     const go = () => window.print();
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(go, go); else go();
+    const fonts = document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve();
+    Promise.all([fonts, logoImg()]).then(go, go);
   }
 
   /* ---------- BIGLIETTO (canvas → PNG) ---------- */
   async function drawTicket(cv, nome, festa) {
     try { await Promise.all(["700 100px Cinzel", "600 40px Cinzel", "italic 600 40px 'Cormorant Garamond'", "500 30px 'Instrument Sans'"].map((f) => document.fonts.load(f))); } catch (e) {}
+    const lg = await logoImg(); // prima di cancellare la tela: due disegni in parallelo non si sovrappongono
     const c = cv.getContext("2d");
     const Wd = cv.width, H = cv.height, SPLIT = 1030, R = 34;
     c.clearRect(0, 0, Wd, H);
@@ -300,8 +346,8 @@
     gold.addColorStop(0, "#FBE7A1"); gold.addColorStop(.45, "#E2B04A"); gold.addColorStop(.7, "#A8741F"); gold.addColorStop(1, "#F0CF77");
     const mid = (SPLIT - 12) / 2 + 6;
     c.textAlign = "center"; c.textBaseline = "alphabetic";
-    c.fillStyle = "#E2B04A"; c.font = "600 34px Cinzel, Georgia, serif";
-    spaced(c, "IL CIRCO DI WONDY", mid, 118, 6);
+    if (lg) c.drawImage(lg, mid - 110, 52, 220, 220 / LOGO_R);
+    else { c.fillStyle = "#E2B04A"; c.font = "600 34px Cinzel, Georgia, serif"; spaced(c, "IL CIRCO DI WONDY", mid, 118, 6); }
     c.fillStyle = "#BDB3CC"; c.font = "italic 600 40px 'Cormorant Garamond', Georgia, serif";
     c.fillText("Biglietto ricordo · ingresso d'onore per", mid, 178);
     const txt = (nome || "il festeggiato").toUpperCase();
@@ -329,6 +375,8 @@
     c.fillStyle = "#BDB3CC"; c.font = "italic 600 34px 'Cormorant Garamond', Georgia, serif"; c.fillText("posto in prima fila", sx, 446);
     c.fillStyle = "#F3D58A"; c.font = "500 24px 'Instrument Sans', system-ui, sans-serif";
     c.fillText("N° " + (festa ? pad(festa.getDate()) + pad(festa.getMonth() + 1) : "0001"), sx, 520);
+    c.fillStyle = "#8E84A3"; c.font = "500 19px 'Instrument Sans', system-ui, sans-serif";
+    c.fillText("wondyofficial.github.io", sx, 556);
     cv.setAttribute("aria-label", `Biglietto ricordo del Circo di Wondy per ${nome || "il festeggiato"}${festa ? ", festa del " + fmtLong(festa) : ""}`);
   }
   function dot(c, x, y, r) { c.beginPath(); c.arc(x, y, r, 0, Math.PI * 2); c.fill(); }

@@ -665,11 +665,16 @@
         img.onerror = errore;
         img.onload = () => {
           const tela = document.createElement("canvas");
-          tela.width = 750; tela.height = 1000;
+          /* 40 px in più sotto il disegno per la firma discreta di Wondy: non copre mai il disegno */
+          tela.width = 750; tela.height = 1040;
           const g = tela.getContext("2d");
           g.fillStyle = "#FFFFFF";
           g.fillRect(0, 0, tela.width, tela.height);
-          g.drawImage(img, 0, 0, tela.width, tela.height);
+          g.drawImage(img, 0, 0, 750, 1000);
+          g.fillStyle = "#777"; g.font = "500 17px 'Instrument Sans', system-ui, sans-serif"; g.textAlign = "center";
+          g.fillText("wondyofficial.github.io  ·  @wondy_real", 375, 1026);
+          const lg = document.querySelector(".deskbar__logo img");
+          if (lg && lg.complete && lg.naturalWidth) g.drawImage(lg, 18, 1007, 30 * lg.naturalWidth / lg.naturalHeight, 30);
           tela.toBlob((blob) => {
             if (!blob) { errore(); return; }
             const url = URL.createObjectURL(blob);
