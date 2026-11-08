@@ -66,7 +66,6 @@
 .game-hud__score b { display: block; font: 700 1.75rem/1 var(--display); letter-spacing: 0; color: var(--text); font-variant-numeric: tabular-nums; }
 .game-hud__score b.is-bump { animation: game-bump .3s var(--spring); }
 .game-hud__info { justify-self: end; margin: 0; font: 600 .95rem var(--sans); color: var(--gold-light); font-variant-numeric: tabular-nums; text-align: right; }
-.game-hud__info.is-urgent { color: #FF8A7F; animation: game-tick 1s ease-in-out infinite; }
 
 /* ---------- il tabellone (palcoscenico) ---------- */
 .game-board {
@@ -217,7 +216,6 @@
 @keyframes game-gone { to { transform: scale(0); opacity: 0; } }
 @keyframes game-wobble { from { transform: rotate(-6deg); } to { transform: rotate(6deg); } }
 @keyframes game-bump { 40% { transform: scale(1.3); } }
-@keyframes game-tick { 50% { transform: scale(1.12); } }
 @keyframes game-go { 0% { transform: scale(.4); opacity: 0; } 25% { transform: scale(1.1); opacity: 1; } 70% { opacity: 1; } 100% { transform: scale(1.3); opacity: 0; } }
 @keyframes game-squash { 0% { transform: scale(1.2, .8); } 100% { transform: scale(1); } }
 @keyframes game-blink { from { opacity: 1; transform: scale(1); } to { opacity: .45; transform: scale(1.12); } }
@@ -269,3 +267,80 @@
 .game-colora__actions .btn { min-height: 52px; padding: 10px 12px; font-size: .95rem; }
 .game-colora__save { grid-column: 1 / -1; }
 @keyframes game-fill { 40% { transform: scale(1.07); } }
+
+/* ============================================================
+   Meno pressione: stelline raccolte, "Ho finito", pausa gentile
+   ============================================================ */
+.game-stars {
+  display: flex; align-items: center; justify-content: center; gap: 8px; margin: 0 0 14px; padding: 10px 16px;
+  border-radius: 999px; border: 1px solid var(--line); background: rgba(226, 176, 74, .07);
+  color: var(--text); font-size: .98rem;
+}
+.game-stars b { font: 700 1.2rem var(--display); color: var(--gold-light); }
+.game-stars span { color: var(--gold); }
+.game-modes { grid-column: 1 / -1; display: flex; gap: 8px; margin: 12px 0 0; padding: 0; border: 0; min-width: 0; }
+.game-hud .game-done { grid-column: 3; grid-row: 1; }
+.game-done {
+  justify-self: end; min-height: 48px; padding: 0 16px; border-radius: 999px; cursor: pointer;
+  border: 1.5px solid var(--gold); background: rgba(226, 176, 74, .14); color: var(--gold-light);
+  font-size: .95rem; font-weight: 600;
+}
+.game-yawn__text { margin: 0; max-width: 300px; font-size: 1.1rem; line-height: 1.4; color: var(--text); }
+.game-face--yawn { width: 84px; height: 84px; animation: game-yawn 2.4s ease-in-out infinite; }
+@keyframes game-yawn { 0%, 100% { transform: rotate(0) scale(1); } 40% { transform: rotate(-8deg) scale(1.06, .94); } 60% { transform: rotate(-8deg) scale(.96, 1.08); } }
+
+/* ============================================================
+   Attività 5: Respiro col palloncino
+   ============================================================ */
+.game-area--respiro { height: auto; min-height: 440px; padding: 30px 16px 20px; touch-action: manipulation; }
+.game-breath { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 6px; }
+.game-breath__word { margin: 0; min-height: 1.2em; font: 600 2.4rem/1.1 var(--serif); color: var(--gold-light); }
+.game-balloon { width: 180px; height: 270px; }
+.game-balloon svg { width: 100%; height: 100%; overflow: visible; }
+.game-balloon__body {
+  transform-box: fill-box; transform-origin: 50% 100%;
+  transform: scale(.5); transition: transform 4s ease-in-out;
+}
+.game-balloon.is-full .game-balloon__body { transform: scale(1); }
+.game-breath__count { margin: 0; min-height: 1.3em; font: 700 1.6rem var(--display); color: var(--text); }
+.game-breath__hint { margin: 0; font-size: 1.15rem; color: var(--muted); }
+
+/* ============================================================
+   Attività 6: Specchio mimo
+   ============================================================ */
+.game-area--specchio { height: auto; padding: 30px 16px 20px; touch-action: manipulation; }
+.game-mirror { display: grid; gap: 16px; justify-items: center; text-align: center; }
+.game-mirror__how { margin: 0; font: 600 1.25rem/1.3 var(--serif); color: var(--gold-light); }
+.game-mirror__card {
+  position: relative; width: 100%; max-width: 280px; aspect-ratio: 4 / 5; padding: 0; border: 0;
+  background: none; cursor: pointer; perspective: 900px; border-radius: 18px;
+}
+.game-mirror__inner { position: absolute; inset: 0; transform-style: preserve-3d; transition: transform .45s var(--spring); }
+.game-mirror__card.is-open .game-mirror__inner { transform: rotateY(180deg); }
+.game-mirror__face {
+  position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px;
+  padding: 18px; border-radius: 18px; border: 2px solid var(--gold);
+  -webkit-backface-visibility: hidden; backface-visibility: hidden;
+}
+.game-mirror__back {
+  color: var(--gold-light);
+  background: radial-gradient(circle at 50% 30%, #C8382D, #7A1A15 62%, #4A0F0C);
+  box-shadow: inset 0 0 0 5px rgba(0, 0, 0, .2), inset 0 0 0 7px rgba(243, 213, 138, .35);
+}
+.game-mirror__back b { font: 700 3.4rem var(--display); }
+.game-mirror__back small { font-size: 1rem; font-weight: 600; }
+.game-mirror__front {
+  transform: rotateY(180deg); color: var(--gold); --game-ball-2: var(--red-bright);
+  background: linear-gradient(165deg, #FBF6EC, #E9DDC6);
+}
+.game-mirror__icon { width: 60%; aspect-ratio: 1; }
+.game-mirror__icon svg { width: 100%; height: 100%; }
+.game-mirror__text { font: 600 1.45rem/1.2 var(--serif); color: #1A1220; }
+.game-mirror .btn { max-width: 280px; }
+
+/* movimento ridotto: il palloncino si muove lo stesso, lento e senza rimbalzi;
+   la carta si gira senza animazione */
+@media (prefers-reduced-motion: reduce) {
+  .game-app .game-balloon__body { transition: transform 4s ease-in-out !important; }
+  .game-face--yawn { animation: none; }
+}

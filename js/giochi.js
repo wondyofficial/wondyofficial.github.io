@@ -1,10 +1,12 @@
 /* ============================================================
    WONDY · I minigiochi del circo
-   - "Acchiappa il naso", "Giocoleria", "Memory del circo"
+   - "Acchiappa il naso", "Giocoleria", "Memory del circo", "Colora Wondy",
+     "Respiro col palloncino", "Specchio mimo"
    - JavaScript vanilla, nessuna libreria, nessuna risorsa esterna
    - I giochi si mettono in pausa quando la schermata non è "giochi"
      o la pagina non è visibile: nessun ciclo gira se non si gioca.
-   - Record salvati solo sul telefono (localStorage, chiavi "wondy-game-…").
+   - Niente record da battere: solo "stelline raccolte" in tutti i giochi,
+     salvate sul telefono (localStorage, chiavi "wondy-game-…"). Audio spento di predefinito.
    ============================================================ */
 (() => {
   "use strict";
@@ -37,7 +39,7 @@
     return lista;
   }
 
-  /* ---------- memoria sul telefono (solo record e preferenza audio) ---------- */
+  /* ---------- memoria sul telefono (stelline, disegno, preferenza audio) ---------- */
   const PREFISSO = "wondy-game-";
   const memoria = {
     get(k) { try { return localStorage.getItem(PREFISSO + k); } catch (e) { return null; } },
@@ -47,7 +49,7 @@
   /* ---------- suoni brevissimi con WebAudio ----------
      Il contesto audio nasce solo dentro un tocco dell'utente (sblocca). */
   const suono = {
-    acceso: memoria.get("audio") !== "off",
+    acceso: memoria.get("audio") === "on", // spento di predefinito
     ctx: null,
     sblocca() {
       if (!this.acceso) return;
@@ -103,12 +105,14 @@
   const btnAudio = $("[data-game-audio]");
 
   /* ---------- effetti: stelline, cuori, "+1" ---------- */
-  function festa(x, y, quanti = 6, simboli = ["✦", "♥", "★"]) {
+  /* Un solo effetto alla volta: ogni nuova festa toglie quella di prima. */
+  function festa(x, y, quanti = 6, simboli = ["✦", "♥", "★"], raggio = 72) {
     if (lento()) return; // con movimento ridotto niente effetti
+    fx.replaceChildren();
     for (let i = 0; i < quanti; i++) {
       const s = el("span", "game-spark" + (i % 3 === 1 ? " game-spark--red" : ""), simboli[i % simboli.length]);
       const ang = (i / quanti) * Math.PI * 2 + rnd(-0.3, 0.3);
-      const dist = rnd(36, 72);
+      const dist = rnd(raggio * 0.5, raggio);
       s.style.left = x + "px";
       s.style.top = y + "px";
       s.style.setProperty("--dx", Math.cos(ang) * dist + "px");
@@ -120,6 +124,7 @@
   }
   function galleggia(x, y, testo) {
     if (lento()) return;
+    fx.replaceChildren();
     const s = el("span", "game-float", testo);
     s.style.left = x + "px";
     s.style.top = y + "px";
@@ -148,20 +153,21 @@
       elPunti.textContent = v;
       if (!lento()) { elPunti.classList.remove("is-bump"); void elPunti.offsetWidth; elPunti.classList.add("is-bump"); }
     },
-    info(testo, urgente) {
-      elInfo.textContent = testo;
-      elInfo.classList.toggle("is-urgent", !!urgente);
-    },
+    info(testo) { elInfo.textContent = testo; }, // sempre neutro: niente conto alla rovescia rosso
     finito(risultato) { mostraFine(risultato); }
   };
 
   /* ============================================================
      GIOCO 1 · ACCHIAPPA IL NASO
      Nasi rossi spuntano qua e là: toccali prima che spariscano.
-     30 secondi. Il naso d'oro vale 3. Nessuna penalità se ne scappa uno.
+     Modalità "Piccoli" (predefinita): niente tempo, un naso alla volta,
+     velocità fissa e lenta; si smette quando si vuole con "Ho finito".
+     Modalità "Sfida": 30 secondi, nasi sempre più svelti, naso d'oro che vale 3.
+     Nessuna penalità se un naso scappa.
      ============================================================ */
-  function creaNaso(ctx, campo) {
+  function creaNaso(ctx, campo, opzioni) {
     const DURATA = 30000;
+    const piccoli = opzioni.modo !== "sfida";
     const COLONNE = 3, RIGHE = 4; // caselle in cui può spuntare un naso
     let tempo = 0, ultimo = 0, raf = 0, corre = false, chiuso = false;
     let punti = 0, prossimo = 900, nasi = [], secondi = -1;
@@ -180,15 +186,16 @@
       const libere = caselleLibere();
       if (!libere.length) return;
       const casella = libere[Math.floor(Math.random() * libere.length)];
-      const oro = tempo > 4000 && Math.random() < 0.12;
+      const oro = !piccoli && tempo > 4000 && Math.random() < 0.12;
       const b = el("button", "game-nose" + (oro ? " game-nose--gold" : ""), icona(oro ? "naso-oro" : "naso"));
       b.type = "button";
       b.setAttribute("aria-label", oro ? "Naso d'oro, vale 3" : "Naso rosso");
       const col = casella % COLONNE, riga = Math.floor(casella / COLONNE);
       b.style.left = ((col + 0.5) / COLONNE) * 100 + rnd(-7, 7) + "%";
       b.style.top = ((riga + 0.5) / RIGHE) * 100 + rnd(-5, 5) + "%";
-      // ogni naso resta un po' meno, man mano che passa il tempo
-      const vita = (1800 - 750 * (tempo / DURATA)) * (ctx.lento() ? 1.5 : 1);
+      // Piccoli: ogni naso resta a lungo, sempre uguale. Sfida: un po' meno man mano.
+      const base = piccoli ? 3200 : 1800 - 750 * (tempo / DURATA);
+      const vita = base * (ctx.lento() ? 1.5 : 1);
       const naso = { b, casella, oro, scade: tempo + vita, preso: false };
       b.addEventListener("pointerdown", (e) => { if (e.cancelable) e.preventDefault(); prendi(naso); });
       b.addEventListener("click", () => prendi(naso)); // tastiera
@@ -210,11 +217,10 @@
       punti += naso.oro ? 3 : 1;
       ctx.punti(punti);
       const c = ctx.centro(naso.b);
-      ctx.festa(c.x, c.y, naso.oro ? 10 : 6, naso.oro ? ["✦", "★"] : ["♥", "✦", "★"]);
-      ctx.galleggia(c.x, c.y - 24, naso.oro ? "+3" : "+1");
+      ctx.festa(c.x, c.y, naso.oro ? 8 : 5, naso.oro ? ["✦", "★"] : ["♥", "✦", "★"]);
       ctx.suono.suona(naso.oro ? "oro" : "pop", punti % 15);
       togli(naso, "is-hit");
-      prossimo = Math.max(prossimo, tempo + 250); // un attimo di respiro prima del prossimo
+      prossimo = Math.max(prossimo, tempo + (piccoli ? 700 : 250)); // un attimo di respiro prima del prossimo
     }
 
     function passo(t) {
@@ -222,30 +228,37 @@
       tempo += Math.min(60, Math.max(0, t - ultimo));
       ultimo = t;
 
-      // quanti nasi insieme: 1 all'inizio, poi 2, poi 3
-      const massimi = tempo < 8000 ? 1 : tempo < 18000 ? 2 : 3;
+      // quanti nasi insieme: Piccoli sempre 1; Sfida 1, poi 2, poi 3
+      const massimi = piccoli || tempo < 8000 ? 1 : tempo < 18000 ? 2 : 3;
       if (tempo >= prossimo && nasi.length < massimi) {
         spunta();
-        prossimo = tempo + (950 - 400 * (tempo / DURATA)) * (ctx.lento() ? 1.4 : 1) * rnd(0.8, 1.2);
+        const pausaTra = piccoli ? 1100 : 950 - 400 * (tempo / DURATA);
+        prossimo = tempo + pausaTra * (ctx.lento() ? 1.4 : 1) * (piccoli ? 1 : rnd(0.8, 1.2));
       }
       nasi.filter((n) => tempo >= n.scade).forEach((n) => togli(n, "is-gone"));
 
-      const resto = Math.max(0, Math.ceil((DURATA - tempo) / 1000));
-      if (resto !== secondi) { secondi = resto; ctx.info("Tempo " + resto, resto <= 5); }
-
-      if (tempo >= DURATA) { termina(); return; }
+      if (!piccoli) { // gli ultimi secondi restano neutri: niente rosso, niente fretta
+        const resto = Math.max(0, Math.ceil((DURATA - tempo) / 1000));
+        if (resto !== secondi) { secondi = resto; ctx.info("Tempo " + resto); }
+        if (tempo >= DURATA) { termina(); return; }
+      }
       raf = requestAnimationFrame(passo);
     }
 
     function termina() {
       corre = false; chiuso = true;
       nasi.slice().forEach((n) => togli(n, "is-gone"));
-      ctx.finito({ punteggio: punti, chiave: "naso", migliore: "alto", unita: punti === 1 ? "naso preso" : "nasi presi" });
+      ctx.finito({ punteggio: punti, unita: punti === 1 ? "naso preso" : "nasi presi" });
     }
 
     function parti() { corre = true; ultimo = performance.now(); raf = requestAnimationFrame(passo); }
     return {
-      avvia() { ctx.punti(0); ctx.info("Tempo 30"); ctx.annuncia("Via! Tocca i nasi rossi."); parti(); },
+      avvia() {
+        ctx.punti(0);
+        if (piccoli) ctx.finisci(termina); else ctx.info("Tempo 30");
+        ctx.annuncia("Via! Tocca i nasi rossi.");
+        parti();
+      },
       pausa() { corre = false; cancelAnimationFrame(raf); },
       riprendi() { if (!chiuso) parti(); },
       ferma() { corre = false; chiuso = true; cancelAnimationFrame(raf); },
@@ -319,7 +332,6 @@
       ctx.festa(p.x, p.y, 5);
       ctx.suono.suona("lancio", lanci);
       if (!partito) { partito = true; aiuto.remove(); }
-      if (lanci % 10 === 0) ctx.galleggia(L / 2, A * 0.3, lanci + " ✦");
       if (lanci === 10 || lanci === 25) aggiungi();
     }
 
@@ -378,9 +390,8 @@
       corre = false; chiuso = true;
       p.el.classList.add("is-down");
       ctx.suono.suona("caduta");
-      ctx.festa(p.x, p.y, 4, ["!", "?"]);
       setTimeout(() => {
-        if (!fermato) ctx.finito({ punteggio: lanci, chiave: "giocoleria", migliore: "alto", unita: lanci === 1 ? "lancio" : "lanci" });
+        if (!fermato) ctx.finito({ punteggio: lanci, unita: lanci === 1 ? "lancio" : "lanci" });
       }, ctx.lento() ? 300 : 850);
     }
 
@@ -408,8 +419,8 @@
   /* ============================================================
      GIOCO 3 · MEMORY DEL CIRCO
      Gira due carte: se sono uguali restano scoperte.
-     12 carte (6 coppie) o 16 carte (8 coppie). Si contano le mosse:
-     meno mosse = più bravo.
+     12 carte (6 coppie) o 16 carte (8 coppie).
+     Le mosse non si contano: si vedono solo le coppie trovate.
      ============================================================ */
   const ICONE = ["naso", "girasole", "orso", "cestino", "palla", "papillon", "scarpa", "trombetta"];
   const NOMI = {
@@ -422,7 +433,7 @@
     const coppie = quante / 2;
     const scelte = mescola(ICONE.slice()).slice(0, coppie);
     const mazzo = mescola([...scelte, ...scelte]);
-    let prima = null, blocco = false, mosse = 0, trovate = 0, timer = 0, chiuso = false;
+    let prima = null, blocco = false, trovate = 0, timer = 0, chiuso = false;
 
     campo.classList.add("game-area--memory-" + quante);
     const griglia = el("div", "game-grid");
@@ -459,13 +470,12 @@
 
       const a = prima;
       prima = null;
-      mosse++;
-      ctx.punti(mosse);
 
       if (a.dataset.icona === b.dataset.icona) { // coppia!
         [a, b].forEach((c) => { c.classList.add("is-match"); etichetta(c, "trovata"); });
         trovate++;
-        ctx.info(`Coppie ${trovate}/${coppie}`);
+        ctx.punti(trovate);
+        ctx.info(`su ${coppie}`);
         const c = ctx.centro(b);
         ctx.festa(c.x, c.y, 8);
         ctx.suono.suona("coppia");
@@ -473,7 +483,7 @@
         if (trovate === coppie) {
           chiuso = true;
           timer = setTimeout(() => ctx.finito({
-            punteggio: mosse, chiave: "memory-" + quante, migliore: "basso", unita: mosse === 1 ? "mossa" : "mosse"
+            punteggio: trovate, unita: "coppie trovate"
           }), ctx.lento() ? 400 : 800);
         }
       } else { // non sono uguali: si rigirano dopo un momento
@@ -489,7 +499,7 @@
     return {
       avvia() {
         ctx.punti(0);
-        ctx.info(`Coppie 0/${coppie}`);
+        ctx.info(`su ${coppie}`);
         ctx.annuncia(`Memory con ${quante} carte. Trova le coppie.`);
       },
       pausa() {}, riprendi() {}, // gioco a turni: non c'è niente da fermare
@@ -577,23 +587,21 @@
       ctx.punti(stato.toccate.length);
       ctx.info(`su ${nomiZone.length}`);
     }
-    function festaGrande(quante) { // stelline sparse su tutto il disegno
+    function festaGrande(quante) { // un'unica festa di stelline, larga quanto il disegno
       const c = ctx.centro(svg), r = svg.getBoundingClientRect();
-      for (let i = 0; i < quante; i++) {
-        ctx.festa(c.x + rnd(-0.42, 0.42) * r.width, c.y + rnd(-0.42, 0.42) * r.height, 4, ["✦", "★", "♥"]);
-      }
+      ctx.festa(c.x, c.y, quante, ["✦", "★", "♥"], r.width * 0.45);
     }
 
     function colora(z, pos) {
       ctx.suono.sblocca();
       riempi(z, scelto, true);
-      if (!stato.toccate.includes(z)) stato.toccate.push(z);
+      if (!stato.toccate.includes(z)) { stato.toccate.push(z); ctx.stelline(1); } // una stellina per ogni parte nuova
       ctx.suono.suona("pop", stato.toccate.length);
       if (pos) ctx.festa(pos.x, pos.y, 5, ["✦", "✦", "♥"]);
       aggiorna();
       if (stato.toccate.length === nomiZone.length && !stato.finito) {
         stato.finito = true;
-        festaGrande(6);
+        festaGrande(12);
         ctx.suono.suona("fine");
         ctx.annuncia("Che capolavoro! Hai colorato tutto Wondy.");
       }
@@ -634,7 +642,7 @@
         stato.toccate = nomiZone.slice();
         stato.finito = true;
         salva(); aggiorna();
-        festaGrande(8);
+        festaGrande(14);
         ctx.suono.suona("fine");
         ctx.annuncia("Ecco Wondy con i suoi colori veri!");
       }, nomiZone.length * passo));
@@ -693,13 +701,188 @@
   }
 
   /* ============================================================
-     REGIA: menu, avvio, pausa, schermata finale, record
+     ATTIVITÀ 5 · RESPIRO COL PALLONCINO
+     Il palloncino si gonfia in 4 secondi (inspira) e si sgonfia in 4 (espira).
+     5 cicli, niente punteggio. Con il movimento ridotto la transizione resta,
+     lenta e morbida: serve per seguire il respiro.
+     ============================================================ */
+  function creaRespiro(ctx, campo) {
+    const CICLI = 5, FASE = 4000;
+    let passo = -1, timer = [], corre = false, chiuso = false;
+
+    campo.innerHTML =
+      '<div class="game-breath">' +
+        '<p class="game-breath__word" data-parola>Mettiti comodo</p>' +
+        '<div class="game-balloon" data-palloncino>' +
+          '<svg viewBox="0 0 100 150" aria-hidden="true" focusable="false">' +
+            '<path class="game-balloon__string" d="M50 104 C44 116 56 126 48 138 C44 144 50 148 50 150" fill="none" stroke="#F4EEE4" stroke-width="1.6" stroke-linecap="round" opacity=".7"/>' +
+            '<g class="game-balloon__body">' +
+              '<ellipse cx="50" cy="54" rx="38" ry="46" fill="#D8352B"/>' +
+              '<path d="M18 66 C24 88 40 100 50 100 C34 96 22 84 18 66 Z" fill="#8E1C16" opacity=".45"/>' +
+              '<ellipse cx="36" cy="34" rx="9" ry="14" fill="#fff" opacity=".4" transform="rotate(25 36 34)"/>' +
+              '<path d="M45 99 L55 99 L52 104 L48 104 Z" fill="#B3261E"/>' +
+            '</g>' +
+          '</svg>' +
+        '</div>' +
+        '<p class="game-breath__count" data-conta aria-hidden="true"></p>' +
+        '<p class="game-breath__hint" data-sotto>Guarda il palloncino</p>' +
+      '</div>';
+    const parola = campo.querySelector("[data-parola]");
+    const sotto = campo.querySelector("[data-sotto]");
+    const conta = campo.querySelector("[data-conta]");
+    const palloncino = campo.querySelector("[data-palloncino]");
+
+    const pulisci = () => { timer.forEach(clearTimeout); timer = []; };
+
+    /* passo pari = inspira, passo dispari = espira; 10 passi = 5 cicli */
+    function fase(n) {
+      pulisci();
+      passo = n;
+      if (n >= CICLI * 2) { fine(); return; }
+      const dentro = n % 2 === 0;
+      const ciclo = Math.floor(n / 2) + 1;
+      parola.textContent = dentro ? "Inspira…" : "Espira…";
+      sotto.textContent = dentro ? "dal naso, piano piano" : "dalla bocca, come per soffiare";
+      palloncino.classList.toggle("is-full", dentro);
+      ctx.info(`${ciclo} di ${CICLI}`);
+      if (dentro) ctx.annuncia(`Respiro ${ciclo} di ${CICLI}. Inspira.`); else ctx.annuncia("Espira.");
+      ctx.suono.suona(dentro ? "giro" : "no");
+      for (let s = 1; s <= 4; s++) { // si conta insieme: 1, 2, 3, 4
+        timer.push(setTimeout(() => { conta.textContent = String(s); }, (s - 1) * 1000));
+      }
+      timer.push(setTimeout(() => fase(n + 1), FASE));
+    }
+    function fine() {
+      corre = false; chiuso = true;
+      palloncino.classList.remove("is-full");
+      ctx.finito({ senzaPunti: true, titolo: "Bravo!", messaggio: "Ora sei calmo come Wondy" });
+    }
+
+    return {
+      avvia() {
+        corre = true;
+        ctx.info(`1 di ${CICLI}`);
+        ctx.annuncia("Mettiti comodo. Guarda il palloncino.");
+        timer.push(setTimeout(() => fase(0), 1500));
+      },
+      pausa() { corre = false; pulisci(); },
+      riprendi() { if (chiuso) return; corre = true; fase(Math.max(0, passo)); }, // si riparte dall'inizio del respiro
+      ferma() { corre = false; chiuso = true; pulisci(); },
+      inCorso: () => corre
+    };
+  }
+
+  /* ============================================================
+     ATTIVITÀ 6 · SPECCHIO MIMO (genitore e bambino)
+     Una carta con un gesto da mimare: uno fa il gesto, l'altro indovina,
+     poi ci si scambia. Niente punteggio.
+     ============================================================ */
+  const svgGesto = (dentro) => `<svg viewBox="0 0 64 64" aria-hidden="true" focusable="false">${dentro}</svg>`;
+  const usa = (id) => svgGesto(`<use href="#game-i-${id}"/>`);
+  const TRATTO = 'stroke="#1A1220" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"';
+  const GESTI = [
+    { testo: "Tieni in equilibrio un fiore sul naso", icona: usa("girasole") },
+    { testo: "Lancia tre palline invisibili", icona: usa("palla") },
+    { testo: "Abbraccia l'orsetto", icona: usa("orso") },
+    { testo: "Apri un sipario pesante", icona: svgGesto(
+      `<path d="M4 8h56" ${TRATTO} stroke-width="4"/>` +
+      `<path d="M8 10c0 18 3 34 12 46H8z" fill="#D8352B" ${TRATTO}/><path d="M56 10c0 18-3 34-12 46h12z" fill="#D8352B" ${TRATTO}/>` +
+      `<path d="M14 14c0 14 1 28 4 38M50 14c0 14-1 28-4 38" fill="none" stroke="#8E1C16" stroke-width="1.6"/>` +
+      `<path d="M32 22l1.6 4 4 1.6-4 1.6-1.6 4-1.6-4-4-1.6 4-1.6z" fill="#E2B04A"/>`) },
+    { testo: "Spingi un muro invisibile", icona: svgGesto(
+      `<g fill="#C98A43" ${TRATTO}><rect x="40" y="6" width="20" height="13"/><rect x="40" y="19" width="20" height="13"/><rect x="40" y="32" width="20" height="13"/><rect x="40" y="45" width="20" height="13"/></g>` +
+      `<g fill="#F6CDB4" ${TRATTO}><rect x="14" y="16" width="5" height="16" rx="2.5"/><rect x="19.5" y="12" width="5" height="18" rx="2.5"/>` +
+      `<rect x="25" y="13" width="5" height="18" rx="2.5"/><rect x="30.5" y="17" width="5" height="15" rx="2.5"/>` +
+      `<path d="M13 29h23v10c0 8-5 12-12 12s-11-5-11-12z"/></g>`) },
+    { testo: "Sbadiglia come un leone", icona: svgGesto(
+      `<circle cx="32" cy="32" r="27" fill="#F39A3B" ${TRATTO}/><circle cx="32" cy="34" r="18" fill="#F3C33B" ${TRATTO}/>` +
+      `<path d="M23 29q3 2 6 0M35 29q3 2 6 0" fill="none" ${TRATTO}/>` +
+      `<ellipse cx="32" cy="42" rx="6.5" ry="8" fill="#7A1F2B" ${TRATTO}/><path d="M29 36.5h6" stroke="#fff" stroke-width="1.6"/>`) },
+    { testo: "Cammina in punta di piedi", icona: usa("scarpa") },
+    { testo: "Ridi senza fare rumore", icona: svgGesto(
+      `<circle cx="32" cy="32" r="24" fill="#F6CDB4" ${TRATTO}/>` +
+      `<path d="M21 27q4-4 8 0M35 27q4-4 8 0" fill="none" ${TRATTO}/>` +
+      `<path d="M20 38q12 14 24 0z" fill="#7A1F2B" ${TRATTO}/>` +
+      `<rect x="29.5" y="30" width="5" height="20" rx="2.5" fill="#F6CDB4" ${TRATTO}/>`) },
+    { testo: "Suona la trombetta, ma senza suono", icona: usa("trombetta") },
+    { testo: "Porta un cestino pesantissimo", icona: usa("cestino") },
+    { testo: "Sistemati il papillon allo specchio", icona: usa("papillon") },
+    { testo: "Mettiti il naso rosso", icona: usa("naso") },
+    { testo: "Tira una corda invisibile", icona: svgGesto(
+      `<path d="M4 44C14 22 26 50 38 30S54 22 60 18" fill="none" stroke="#1A1220" stroke-width="7" stroke-linecap="round"/>` +
+      `<path d="M4 44C14 22 26 50 38 30S54 22 60 18" fill="none" stroke="#C98A43" stroke-width="4.4" stroke-linecap="round"/>` +
+      `<path d="M4 44l-2 12M4 44l2 12M4 44v13" stroke="#D8352B" stroke-width="2" stroke-linecap="round"/>`) },
+    { testo: "Truccati prima dello spettacolo", icona: svgGesto(
+      `<ellipse cx="32" cy="27" rx="16" ry="20" fill="#CFE6F5" stroke="#E2B04A" stroke-width="4"/>` +
+      `<path d="M32 47v10M22 58h20" stroke="#E2B04A" stroke-width="4" stroke-linecap="round"/>` +
+      `<path d="M24 18l6-6M25 27l11-11" stroke="#fff" stroke-width="2" stroke-linecap="round"/>`) },
+    { testo: "Fai un inchino al pubblico", icona: usa("wondy") }
+  ];
+
+  function creaSpecchio(ctx, campo) {
+    let mazzo = [], numero = 0;
+
+    campo.innerHTML =
+      '<div class="game-mirror">' +
+        '<p class="game-mirror__how">Uno fa il gesto, l\'altro indovina. Poi scambiatevi!</p>' +
+        '<button type="button" class="game-mirror__card" data-carta>' +
+          '<span class="game-mirror__inner">' +
+            '<span class="game-mirror__face game-mirror__back" aria-hidden="true"><b>W</b><small>Tocca per vedere il gesto</small></span>' +
+            '<span class="game-mirror__face game-mirror__front"><span class="game-mirror__icon" data-icona></span><span class="game-mirror__text" data-testo></span></span>' +
+          '</span>' +
+        '</button>' +
+        '<button class="btn btn--primary" type="button" data-prossima>Prossima carta</button>' +
+      '</div>';
+    const carta = campo.querySelector("[data-carta]");
+    const iconaCarta = campo.querySelector("[data-icona]");
+    const testo = campo.querySelector("[data-testo]");
+
+    function prossima() {
+      if (!mazzo.length) mazzo = mescola(GESTI.slice()); // finito il mazzo, si rimescola
+      const g = mazzo.pop();
+      numero++;
+      carta.classList.remove("is-open");
+      carta.setAttribute("aria-label", "Carta coperta: tocca per vedere il gesto");
+      // il nuovo gesto si scrive a carta già girata, così non si intravede
+      setTimeout(() => {
+        iconaCarta.innerHTML = g.icona;
+        testo.textContent = g.testo;
+        carta.dataset.gesto = g.testo;
+      }, ctx.lento() ? 0 : 220);
+      ctx.info(`Carta ${numero}`);
+    }
+    carta.addEventListener("click", () => {
+      if (carta.classList.contains("is-open")) return;
+      ctx.suono.sblocca();
+      ctx.suono.suona("giro");
+      carta.classList.add("is-open");
+      carta.setAttribute("aria-label", "Gesto: " + carta.dataset.gesto);
+      ctx.annuncia(carta.dataset.gesto);
+    });
+    campo.querySelector("[data-prossima]").addEventListener("click", () => {
+      ctx.suono.sblocca();
+      prossima();
+      carta.focus({ preventScroll: true });
+    });
+
+    return {
+      avvia() { prossima(); ctx.annuncia("Specchio mimo. Uno fa il gesto, l'altro indovina. Poi scambiatevi!"); },
+      pausa() {}, riprendi() {}, ferma() {},
+      inCorso: () => false,
+      primo: () => carta
+    };
+  }
+
+  /* ============================================================
+     REGIA: menu, avvio, pausa, schermata finale, stelline, pausa gentile
      ============================================================ */
   const GIOCHI = {
     naso: { etichetta: "Nasi", crea: creaNaso },
     palline: { etichetta: "Lanci", crea: creaGiocoleria },
-    memory: { etichetta: "Mosse", crea: creaMemory },
-    colora: { etichetta: "Colorati", crea: creaColora }
+    memory: { etichetta: "Coppie", crea: creaMemory },
+    colora: { etichetta: "Colorati", crea: creaColora },
+    respiro: { etichetta: "", crea: creaRespiro, senzaPunti: true, calmo: true },
+    specchio: { etichetta: "", crea: creaSpecchio, senzaPunti: true, calmo: true }
   };
   let attivo = null; // { id, gioco, opzioni }
 
@@ -707,16 +890,103 @@
     const r = $('input[name="game-memory-size"]:checked');
     return r && r.value === "16" ? 16 : 12;
   };
+  const modoNaso = () => {
+    const r = $('input[name="game-naso-mode"]:checked');
+    return r && r.value === "sfida" ? "sfida" : "piccoli"; // "Piccoli" è la modalità predefinita
+  };
 
-  function aggiornaRecord() {
-    const scrivi = (dove, chiave, unita) => {
-      const v = memoria.get(chiave);
-      $(`[data-game-record="${dove}"]`).textContent = v === null ? "ancora nessuno" : `${v} ${unita}`;
-    };
-    scrivi("naso", "naso", "nasi");
-    scrivi("palline", "giocoleria", "lanci");
-    scrivi("memory", "memory-" + misuraMemory(), "mosse");
+  /* ---------- stelline raccolte: un tesoretto unico per tutti i giochi ---------- */
+  const stelleTotali = () => Math.max(0, parseInt(memoria.get("stelline"), 10) || 0);
+  function aggiungiStelline(n) {
+    if (n > 0) memoria.set("stelline", stelleTotali() + n);
+    mostraStelline();
   }
+  function mostraStelline() {
+    const t = stelleTotali();
+    $$("[data-game-stars]").forEach((b) => { b.textContent = t; });
+    // vecchie righe "Record:" eventualmente rimaste nella pagina: si nascondono
+    $$("[data-game-record]").forEach((b) => { const riga = b.closest("p"); if (riga) riga.hidden = true; });
+  }
+  ctx.stelline = aggiungiStelline;
+
+  /* ---------- "Ho finito" (modalità senza tempo) ---------- */
+  const hud = $(".game-hud");
+  const btnFinito = el("button", "game-done", "Ho finito");
+  btnFinito.type = "button";
+  btnFinito.hidden = true;
+  btnFinito.setAttribute("aria-label", "Ho finito di giocare");
+  if (hud) elInfo.after(btnFinito);
+  let azioneFinito = null;
+  btnFinito.addEventListener("click", () => { if (azioneFinito) azioneFinito(); });
+  ctx.finisci = (fn) => {
+    azioneFinito = fn;
+    btnFinito.hidden = false;
+    elInfo.hidden = true;
+  };
+  function nascondiFinito() {
+    azioneFinito = null;
+    btnFinito.hidden = true;
+    elInfo.hidden = false;
+  }
+
+  /* ---------- pausa gentile: dopo 10 minuti di gioco nella sessione ----------
+     Si conta solo il tempo passato davvero a giocare (non respiro e specchio).
+     Un solo promemoria per sessione: si può sempre continuare. */
+  const LIMITE = 10 * 60 * 1000;
+  const sessione = {
+    get(k) { try { return sessionStorage.getItem(PREFISSO + k); } catch (e) { return null; } },
+    set(k, v) { try { sessionStorage.setItem(PREFISSO + k, String(v)); } catch (e) { /* pazienza */ } }
+  };
+  const orologio = { tot: Number(sessione.get("tempo")) || 0, da: 0, timer: 0, mostrato: sessione.get("pausa-gentile") === "1" };
+  function avviaOrologio() {
+    if (orologio.da || orologio.mostrato || !attivo || GIOCHI[attivo.id].calmo) return;
+    if (root.hidden || document.hidden || !pausa.hidden || !fine.hidden) return;
+    orologio.da = Date.now();
+    orologio.timer = setTimeout(sbadiglio, Math.max(0, LIMITE - orologio.tot));
+  }
+  function fermaOrologio() {
+    if (!orologio.da) return;
+    orologio.tot += Date.now() - orologio.da;
+    orologio.da = 0;
+    clearTimeout(orologio.timer);
+    sessione.set("tempo", Math.round(orologio.tot));
+  }
+
+  const gentile = el("div", "game-overlay game-yawn");
+  gentile.hidden = true;
+  gentile.setAttribute("role", "group");
+  gentile.setAttribute("aria-labelledby", "game-yawn-h");
+  gentile.innerHTML =
+    '<svg class="game-face game-face--yawn" aria-hidden="true"><use href="#game-i-wondy"/></svg>' +
+    '<h3 class="game-overlay__title" id="game-yawn-h">Uaaah…</h3>' +
+    '<p class="game-yawn__text">È ora di una pausa: andiamo a fare un bel respiro?</p>' +
+    '<div class="game-overlay__actions">' +
+      '<button class="btn btn--primary" type="button" data-yawn-respiro>Respiro col palloncino</button>' +
+      '<button class="btn btn--ghost" type="button" data-yawn-continua>Continua a giocare</button>' +
+    '</div>';
+  board.append(gentile);
+  let messoInPausaDaWondy = false;
+
+  function sbadiglio() {
+    fermaOrologio();
+    orologio.mostrato = true;
+    sessione.set("pausa-gentile", "1");
+    if (!attivo) return;
+    messoInPausaDaWondy = attivo.gioco.inCorso();
+    if (messoInPausaDaWondy) attivo.gioco.pausa();
+    gentile.hidden = false;
+    board.classList.add("is-over");
+    annuncia("Wondy sbadiglia. È ora di una pausa: andiamo a fare un bel respiro?");
+    gentile.querySelector("[data-yawn-respiro]").focus({ preventScroll: true });
+  }
+  gentile.querySelector("[data-yawn-respiro]").addEventListener("click", () => avvia("respiro", {}));
+  gentile.querySelector("[data-yawn-continua]").addEventListener("click", () => {
+    gentile.hidden = true;
+    board.classList.remove("is-over");
+    if (attivo && messoInPausaDaWondy) attivo.gioco.riprendi();
+    messoInPausaDaWondy = false;
+    area.focus({ preventScroll: true });
+  });
 
   function avvia(id, opzioni) {
     ferma();
@@ -727,37 +997,46 @@
     nuova.setAttribute("data-game-area", "");
     area.replaceWith(nuova);
     area = nuova;
-    fx.innerHTML = "";
+    fx.replaceChildren();
     menu.hidden = true;
     stage.hidden = false;
     pausa.hidden = true;
     fine.hidden = true;
+    gentile.hidden = true;
     board.classList.remove("is-over");
     stage.dataset.game = id;
+    nascondiFinito();
+    elInfo.textContent = "";
     elPuntiNome.textContent = def.etichetta;
+    elPunti.textContent = "0";
+    elPunti.parentElement.hidden = !!def.senzaPunti;
     attivo = { id, opzioni, gioco: def.crea(ctx, area, opzioni) };
     stage.scrollIntoView({ block: "start", behavior: lento() ? "auto" : "smooth" });
     attivo.gioco.avvia();
     const fuoco = attivo.gioco.primo ? attivo.gioco.primo() : area;
     if (!fuoco.hasAttribute("tabindex") && fuoco === area) area.tabIndex = -1;
     fuoco.focus({ preventScroll: true });
+    avviaOrologio();
   }
 
   function ferma() {
+    fermaOrologio();
     if (attivo) { attivo.gioco.ferma(); attivo = null; }
   }
 
   function tornaAlMenu() {
     const ultimo = attivo && attivo.id;
     ferma();
+    nascondiFinito();
     stage.hidden = true;
     menu.hidden = false;
-    aggiornaRecord();
+    mostraStelline();
     const b = ultimo && $(`[data-game-play="${ultimo}"]`);
     if (b) b.focus({ preventScroll: true });
   }
 
   function mettiInPausa() {
+    fermaOrologio();
     if (attivo && attivo.gioco.inCorso()) {
       attivo.gioco.pausa();
       pausa.hidden = false;
@@ -766,42 +1045,54 @@
     suono.sospendi();
   }
 
+  /* messaggi finali: sempre positivi, anche con 0 */
+  const RISO = "Wondy ha riso tanto!";
   const FRASI = {
-    naso: (n) => (n >= 25 ? "Che riflessi!" : n >= 12 ? "Bravissimo!" : n > 0 ? "Bravo!" : "Riprova!"),
-    palline: (n) => (n >= 30 ? "Sei un giocoliere!" : n >= 10 ? "Bravissimo!" : n > 0 ? "Bravo!" : "Ops, è caduta!"),
+    naso: (n) => (n >= 20 ? "Che riflessi!" : n >= 8 ? "Bravissimo!" : n > 0 ? "Bravo!" : RISO),
+    palline: (n) => (n >= 25 ? "Sei un giocoliere!" : n >= 8 ? "Bravissimo!" : n > 0 ? "Bravo!" : RISO),
     memory: () => "Tutte le coppie!"
   };
   const MIMI = ["♥ ✦ !", "♪ ✿ ♥", "! ✦ ♪", "✿ ♥ ✦"];
 
   function mostraFine(r) {
     if (!attivo) return;
-    const salvato = memoria.get(r.chiave);
-    const prima = salvato === null ? null : Number(salvato);
-    const nuovo = r.migliore === "basso"
-      ? prima === null || r.punteggio < prima
-      : r.punteggio > 0 && (prima === null || r.punteggio > prima);
-    if (nuovo) memoria.set(r.chiave, r.punteggio);
-    const record = nuovo ? r.punteggio : prima === null ? r.punteggio : prima;
+    fermaOrologio();
+    nascondiFinito();
+    const n = r.punteggio || 0;
+    const frase = r.titolo || (FRASI[attivo.id] ? FRASI[attivo.id](n) : "Bravo!");
+    const elScore = $("[data-game-end-score]");
+    const elUnit = $("[data-game-end-unit]");
+    const elStelle = $("[data-game-end-record]");
+    const badge = $("[data-game-end-new]");
+    if (badge) badge.hidden = true; // niente record da battere
 
-    $("[data-game-end-title]").textContent = FRASI[attivo.id](r.punteggio);
-    $("[data-game-end-score]").textContent = r.punteggio;
-    $("[data-game-end-unit]").textContent = r.unita;
-    $("[data-game-end-new]").hidden = !nuovo;
-    $("[data-game-end-record]").textContent = nuovo ? "" : `Record: ${record}`;
-    $("[data-game-end-mime]").textContent = nuovo ? "✦ ! ✦" : MIMI[Math.floor(Math.random() * MIMI.length)];
+    $("[data-game-end-title]").textContent = frase;
+    if (r.senzaPunti) {
+      elScore.hidden = true;
+      elUnit.textContent = r.messaggio || "";
+      elStelle.textContent = "";
+    } else {
+      aggiungiStelline(n); // ogni punto diventa una stellina del tesoretto
+      elScore.hidden = n === 0;
+      elScore.textContent = n;
+      elUnit.textContent = n === 0 ? "" : r.unita;
+      const tot = stelleTotali();
+      elStelle.textContent = n > 0 ? `+${n} ✦ · stelline raccolte: ${tot}` : `Stelline raccolte: ${tot} ✦`;
+    }
+    $("[data-game-end-mime]").textContent = MIMI[Math.floor(Math.random() * MIMI.length)];
 
     fine.hidden = false;
     board.classList.add("is-over");
-    suono.suona(nuovo ? "fine" : "tromba");
-    if (nuovo) { const c = centro($("[data-game-end-score]")); festa(c.x, c.y, 12, ["✦", "♥", "★"]); }
-    annuncia(`${FRASI[attivo.id](r.punteggio)} ${r.punteggio} ${r.unita}.${nuovo ? " Nuovo record!" : ""}`);
+    suono.suona(r.senzaPunti ? "coppia" : "fine");
+    annuncia(r.senzaPunti ? `${frase} ${r.messaggio || ""}` : n > 0 ? `${frase} ${n} ${r.unita}.` : frase);
     $("[data-game-again]").focus({ preventScroll: true });
   }
 
   /* ---------- pulsanti ---------- */
   $$("[data-game-play]").forEach((b) => b.addEventListener("click", () => {
     const id = b.dataset.gamePlay;
-    avvia(id, id === "memory" ? { carte: misuraMemory() } : {});
+    const opzioni = id === "memory" ? { carte: misuraMemory() } : id === "naso" ? { modo: modoNaso() } : {};
+    avvia(id, opzioni);
   }));
   $$("[data-game-exit]").forEach((b) => b.addEventListener("click", tornaAlMenu));
   $("[data-game-again]").addEventListener("click", () => { if (attivo) avvia(attivo.id, attivo.opzioni); });
@@ -812,9 +1103,12 @@
     board.classList.remove("is-over");
     attivo.gioco.riprendi();
     area.focus({ preventScroll: true });
+    avviaOrologio();
   });
-  $$('input[name="game-memory-size"]').forEach((r) => r.addEventListener("change", aggiornaRecord));
 
+  /* ---------- audio: spento finché un adulto non lo accende ----------
+     "wondy-game-audio" vale "on" solo dopo un tocco sull'interruttore;
+     la stessa chiave la legge anche l'avatar di Wondy per la trombetta. */
   function aggiornaAudio() {
     btnAudio.setAttribute("aria-pressed", String(suono.acceso));
     btnAudio.setAttribute("aria-label", suono.acceso ? "Suoni accesi: tocca per spegnerli" : "Suoni spenti: tocca per accenderli");
@@ -828,12 +1122,18 @@
 
   /* ---------- pausa automatica ---------- */
   document.addEventListener("wondy:view", (e) => {
-    if (e.detail === "giochi") aggiornaRecord();
-    else mettiInPausa();
+    if (e.detail === "giochi") {
+      suono.acceso = memoria.get("audio") === "on"; // l'interruttore può essere cambiato altrove
+      aggiornaAudio();
+      mostraStelline();
+      avviaOrologio();
+    } else mettiInPausa();
   });
-  document.addEventListener("visibilitychange", () => { if (document.hidden) mettiInPausa(); });
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) mettiInPausa(); else avviaOrologio();
+  });
   window.addEventListener("pagehide", mettiInPausa);
 
   aggiornaAudio();
-  aggiornaRecord();
+  mostraStelline();
 })();

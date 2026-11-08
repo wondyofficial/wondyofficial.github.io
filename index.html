@@ -18,17 +18,19 @@
   <noscript><style>.reveal { opacity: 1 !important; transform: none !important; } .roles__list li { background-size: 100% 100% !important; }</style></noscript>
   <link rel="preload" as="image" href="assets/foto/benvenuti-m.jpg" media="(max-width: 759px)">
   <link rel="preload" as="image" href="assets/foto/benvenuti.jpg" media="(min-width: 760px)">
-  <link rel="stylesheet" href="css/style.css?v=20261108c">
-  <link rel="stylesheet" href="css/giochi.css?v=20261108c">
-  <link rel="stylesheet" href="css/i18n.css?v=20261108c">
-  <script defer src="js/config.js?v=20261108c"></script>
-  <script defer src="js/app.js?v=20261108c"></script>
-  <script defer src="js/calendar.js?v=20261108c"></script>
-  <script defer src="js/form.js?v=20261108c"></script>
-  <script defer src="js/wondy.js?v=20261108c"></script>
-  <script defer src="js/giochi.js?v=20261108c"></script>
-  <script defer src="js/musica.js?v=20261108c"></script>
-  <script defer src="js/i18n.js?v=20261108c"></script>
+  <link rel="stylesheet" href="css/style.css?v=20261108d">
+  <link rel="stylesheet" href="css/giochi.css?v=20261108d">
+  <link rel="stylesheet" href="css/i18n.css?v=20261108d">
+  <link rel="stylesheet" href="css/famiglie.css?v=20261108d">
+  <script defer src="js/config.js?v=20261108d"></script>
+  <script defer src="js/app.js?v=20261108d"></script>
+  <script defer src="js/calendar.js?v=20261108d"></script>
+  <script defer src="js/form.js?v=20261108d"></script>
+  <script defer src="js/wondy.js?v=20261108d"></script>
+  <script defer src="js/giochi.js?v=20261108d"></script>
+  <script defer src="js/musica.js?v=20261108d"></script>
+  <script defer src="js/famiglie.js?v=20261108d"></script>
+  <script defer src="js/i18n.js?v=20261108d"></script>
 </head>
 <body>
 
@@ -135,7 +137,7 @@
 
 <nav class="deskbar" aria-label="Navigazione">
   <a class="deskbar__logo" href="#home" aria-label="Wondy, torna all'inizio"><img src="assets/logo-wondy.png" alt="" width="1100" height="360"></a>
-  <a href="#calendario" data-nav-link="calendario">Disponibilità</a><a href="#pacchetti" data-nav-link="pacchetti">Feste</a><a href="#aziende" data-nav-link="aziende">Eventi</a><a href="#chi-sono" data-nav-link="chi-sono">Chi è Wondy</a><a href="#giochi" data-nav-link="giochi">Giochi</a><a href="#faq" data-nav-link="faq">FAQ</a>
+  <a href="#calendario" data-nav-link="calendario">Disponibilità</a><a href="#pacchetti" data-nav-link="pacchetti">Feste</a><a href="#aziende" data-nav-link="aziende">Eventi</a><a href="#chi-sono" data-nav-link="chi-sono">Chi è Wondy</a><a href="#famiglie" data-nav-link="famiglie">Famiglie</a><a href="#giochi" data-nav-link="giochi">Giochi</a><a href="#faq" data-nav-link="faq">FAQ</a>
   <button type="button" class="deskbar__music" data-music-toggle aria-pressed="false" aria-label="Musica di sottofondo">♪</button><a class="deskbar__cta" href="#richiesta">Prenota</a>
 </nav>
 
@@ -186,7 +188,8 @@
     <a class="card-link reveal" href="#chi-sono"><svg class="prop" aria-hidden="true"><use href="#game-i-orso"/></svg><span>Chi è Wondy<small>Thomas Lucaccini, da Pisa</small></span><svg class="arr" aria-hidden="true"><use href="#i-arrow"/></svg></a>
     <a class="card-link reveal" href="#faq"><svg class="prop" aria-hidden="true"><use href="#game-i-trombetta"/></svg><span>Domande frequenti<small>Spazio, pioggia, prenotazione</small></span><svg class="arr" aria-hidden="true"><use href="#i-arrow"/></svg></a>
 
-    <a class="card-link card-link--games reveal" href="#giochi"><svg class="prop" aria-hidden="true"><use href="#game-i-palla"/></svg><span>Giochi per bambini<small>Naso · Giocoleria · Memory · Colora</small></span><svg class="arr" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    <a class="card-link reveal" href="#famiglie"><svg class="prop" aria-hidden="true"><use href="#game-i-naso"/></svg><span>Per le famiglie<small>Bimbi timidi · Diploma · Biglietto</small></span><svg class="arr" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    <a class="card-link card-link--games reveal" href="#giochi"><svg class="prop" aria-hidden="true"><use href="#game-i-palla"/></svg><span>Giochi per bambini<small>Giochi, respiro e mimo da fare insieme</small></span><svg class="arr" aria-hidden="true"><use href="#i-arrow"/></svg></a>
 
     <a class="book reveal" href="https://amzn.eu/d/0if972Qw" target="_blank" rel="noopener">
       <img src="assets/foto/libro.jpg" alt="" width="420" height="560" loading="lazy">
@@ -581,6 +584,190 @@
 </section>
 
 <!-- =========================================================
+     FAMIGLIE · bambini sensibili, chi è Wondy, il tuo nome, da stampare
+     Richiede css/famiglie.css e js/famiglie.js
+     Nessun dato esce dal browser: il nome resta al massimo in sessionStorage.
+     ========================================================= -->
+<section class="view fam" data-view="famiglie" data-title="Famiglie" hidden aria-labelledby="fam-h">
+  <div class="topbar"><a class="back" href="#home" data-back><svg aria-hidden="true"><use href="#i-back"/></svg>Indietro</a><span class="topbar__title">Famiglie</span><a class="topbar__logo" href="#home" aria-label="Home">W</a></div>
+  <div class="view__head">
+    <p class="eyebrow">Per mamma, papà <span aria-hidden="true">✦</span> e bambini</p>
+    <h2 id="fam-h">Prepararsi alla festa, <em>senza sorprese brutte</em></h2>
+    <p class="lead">Qualche consiglio per i bambini più sensibili, una piccola storia da guardare insieme e tante cose da stampare e colorare.</p>
+  </div>
+
+  <nav class="fam-index" aria-label="In questa pagina">
+    <a href="#fam-timidi" data-focus>Bambini timidi</a>
+    <a href="#fam-storia" data-focus>Chi è Wondy</a>
+    <a href="#fam-nome" data-focus>Il tuo nome</a>
+    <a href="#fam-stampa" data-focus>Da stampare</a>
+  </nav>
+
+  <!-- 1 · BAMBINI SENSIBILI E TIMIDI -->
+  <section class="fam-block" id="fam-timidi" aria-labelledby="fam-timidi-h">
+    <h3 class="fam-h" id="fam-timidi-h"><svg aria-hidden="true"><use href="#game-i-orso"/></svg>Per bambini sensibili e timidi</h3>
+    <p class="fam-quote">Wondy non parla, non insegue e non obbliga nessuno: i bambini timidi o che hanno un po' paura dei clown possono guardare da lontano, in braccio a voi. Si avvicinano solo quando se la sentono, e spesso finiscono a ridere in prima fila.</p>
+
+    <h4 class="fam-sub">Cosa succede alla festa</h4>
+    <p class="fam-note">Raccontatelo prima al bambino, con calma: sapere cosa succede aiuta a stare tranquilli.</p>
+    <ol class="fam-steps">
+      <li><svg aria-hidden="true"><use href="#game-i-naso"/></svg><span><strong>Wondy arriva a sorpresa</strong>Entra piano, con un grande sorriso e il naso rosso. Non dice una parola.</span></li>
+      <li><svg aria-hidden="true"><use href="#game-i-palla"/></svg><span><strong>Gioca con i bambini</strong>Palline, bolle, piccoli scherzi. Chi vuole partecipa, chi no guarda.</span></li>
+      <li><svg aria-hidden="true"><use href="#game-i-cestino"/></svg><span><strong>Fa lo spettacolo</strong>Equilibri, giocoleria e i suoi amici: l'orsetto, il cestino e il girasole.</span></li>
+      <li><svg aria-hidden="true"><use href="#game-i-wondy"/></svg><span><strong>Saluta e va via</strong>Un inchino, un saluto con la mano. La festa continua con voi.</span></li>
+    </ol>
+
+    <h4 class="fam-sub">Quanto è forte il rumore</h4>
+    <ul class="fam-noise">
+      <li><svg aria-hidden="true"><use href="#game-i-trombetta"/></svg><span><strong>La trombetta</strong>Fa un “pe-pe” corto e squillante, ogni tanto, per far ridere. Non viene suonata vicino alle orecchie.</span><span class="fam-meter" role="img" aria-label="Rumore: medio"><i></i><i></i><i></i><b></b><b></b></span></li>
+      <li><svg aria-hidden="true"><use href="#i-star"/></svg><span><strong>Applausi e risate</strong>Sono la parte più rumorosa: tutti insieme possono essere forti, soprattutto al chiuso.</span><span class="fam-meter" role="img" aria-label="Rumore: forte"><i></i><i></i><i></i><i></i><b></b></span></li>
+      <li><svg aria-hidden="true"><use href="#game-i-papillon"/></svg><span><strong>Musica</strong>Di sottofondo, a volume da festa in casa.</span><span class="fam-meter" role="img" aria-label="Rumore: basso"><i></i><i></i><b></b><b></b><b></b></span></li>
+    </ul>
+    <p class="fam-note">Se il bambino è sensibile ai suoni, le cuffie antirumore vanno benissimo: Wondy parla con le mani, quindi si capisce tutto lo stesso.</p>
+
+    <div class="fam-cards">
+      <div class="fam-card">
+        <h4>Si può guardare da lontano</h4>
+        <p>In braccio, dietro il divano, dalla porta della cucina: ogni posto va bene. Non serve salutare, non serve avvicinarsi, non serve ridere. Guardare è già partecipare.</p>
+      </div>
+      <div class="fam-card fam-card--pause">
+        <svg class="fam-t" viewBox="0 0 80 80" aria-hidden="true"><rect x="10" y="14" width="60" height="16" rx="8"/><rect x="32" y="22" width="16" height="50" rx="8"/></svg>
+        <h4>Il segnale “pausa”: le mani a T</h4>
+        <p>Insegnatelo al bambino prima della festa: una mano piatta sopra, l'altra in piedi sotto, come una T. Quando la vede, <strong>Wondy si ferma</strong> e aspetta. Funziona sempre, per tutti.</p>
+      </div>
+    </div>
+
+    <div class="fam-write">
+      <p><strong>Il vostro bambino ha esigenze particolari?</strong> Paura dei clown, suoni, spazi, autismo, disabilità, un momento delicato in famiglia: scrivetelo a Wondy prima della festa. Lo spettacolo si adatta, con discrezione.</p>
+      <div class="fam-write__btns">
+        <a class="btn btn--primary" href="https://wa.me/393755718877?text=Ciao%20Wondy!%20Vorrei%20segnalarti%20un'esigenza%20particolare%20per%20la%20festa." target="_blank" rel="noopener"><svg aria-hidden="true" width="22" height="22"><use href="#i-wa"/></svg>Scrivi su WhatsApp</a>
+        <a class="btn btn--ghost" href="mailto:wondymanagement@gmail.com?subject=Esigenze%20particolari%20per%20la%20festa"><svg aria-hidden="true" width="22" height="22"><use href="#i-mail"/></svg>Scrivi un'email</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 · CHI È WONDY IN 5 TAVOLE -->
+  <section class="fam-block" id="fam-storia" aria-labelledby="fam-storia-h">
+    <h3 class="fam-h" id="fam-storia-h"><svg aria-hidden="true"><use href="#game-i-wondy"/></svg>Chi è Wondy</h3>
+    <p class="fam-note">Una piccola storia da sfogliare insieme prima della festa: dietro il clown c'è una persona vera.</p>
+    <div class="fam-story" data-fam-story role="region" aria-roledescription="carosello" aria-label="Chi è Wondy, in 5 tavole">
+      <ul class="fam-story__track" data-fam-track tabindex="0" aria-label="Tavole: scorri o usa le frecce">
+        <li class="fam-slide" role="group" aria-roledescription="tavola" aria-label="1 di 5">
+          <img src="assets/foto/trucco.jpg" alt="Thomas, ancora senza naso rosso, si trucca gli occhi con una matita" loading="lazy" style="object-position:55% 40%">
+          <p class="fam-slide__n" aria-hidden="true">1</p>
+          <p class="fam-slide__t">Ciao, io sono <em>Thomas</em>.</p>
+          <p class="fam-slide__s">Prima di diventare Wondy, mi trucco.</p>
+        </li>
+        <li class="fam-slide" role="group" aria-roledescription="tavola" aria-label="2 di 5">
+          <img src="assets/foto/stupore.jpg" alt="Primo piano di Thomas truccato, con il naso rosso e gli occhi spalancati" loading="lazy" style="object-position:42% 40%">
+          <p class="fam-slide__n" aria-hidden="true">2</p>
+          <p class="fam-slide__t">Metto il <em>naso rosso</em>.</p>
+          <p class="fam-slide__s">È piccolo, morbido e fa ridere.</p>
+        </li>
+        <li class="fam-slide" role="group" aria-roledescription="tavola" aria-label="3 di 5">
+          <img src="assets/foto/corda.jpg" alt="Wondy ride con la bocca spalancata" loading="lazy">
+          <p class="fam-slide__n" aria-hidden="true">3</p>
+          <p class="fam-slide__t">Divento <em>Wondy</em> e non parlo.</p>
+          <p class="fam-slide__s">Parlo con le mani, con gli occhi e con il sorriso.</p>
+        </li>
+        <li class="fam-slide" role="group" aria-roledescription="tavola" aria-label="4 di 5">
+          <img src="assets/foto/fiore.jpg" alt="Wondy tiene in equilibrio un girasole sul naso" loading="lazy">
+          <p class="fam-slide__n" aria-hidden="true">4</p>
+          <p class="fam-slide__t">Gioco con i miei <em>amici</em>.</p>
+          <p class="fam-slide__s">L'orsetto, il cestino e il girasole.</p>
+        </li>
+        <li class="fam-slide" role="group" aria-roledescription="tavola" aria-label="5 di 5">
+          <img src="assets/foto/benvenuti.jpg" alt="Wondy sul palco saluta il pubblico con le braccia aperte" loading="lazy">
+          <p class="fam-slide__n" aria-hidden="true">5</p>
+          <p class="fam-slide__t">E poi <em>saluto</em>…</p>
+          <p class="fam-slide__s">…tolgo il naso e torno Thomas. Ciao!</p>
+        </li>
+      </ul>
+      <div class="fam-story__nav">
+        <button class="fam-arrow" type="button" data-fam-prev aria-label="Tavola precedente"><svg aria-hidden="true"><use href="#i-back"/></svg></button>
+        <div class="fam-dots" data-fam-dots></div>
+        <button class="fam-arrow" type="button" data-fam-next aria-label="Tavola successiva"><svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
+      </div>
+      <p class="sr-only" aria-live="polite" data-fam-story-live></p>
+    </div>
+  </section>
+
+  <!-- 3 · IL TUO NOME NELLO SPETTACOLO -->
+  <section class="fam-block" id="fam-nome" aria-labelledby="fam-nome-h">
+    <h3 class="fam-h" id="fam-nome-h"><svg aria-hidden="true"><use href="#game-i-girasole"/></svg>Il tuo nome nello spettacolo</h3>
+    <form class="fam-form" data-fam-sign-form novalidate>
+      <label class="fam-label" for="fam-nome-in">Come ti chiami?</label>
+      <div class="fam-row">
+        <input class="fam-input" id="fam-nome-in" name="nome" type="text" maxlength="16" autocomplete="off" autocapitalize="words" spellcheck="false" enterkeyhint="go" placeholder="Il tuo nome" data-fam-name>
+        <button class="btn btn--primary fam-go" type="submit">Accendi!</button>
+      </div>
+      <p class="fam-privacy">Il nome resta solo qui, sul tuo telefono: non viene inviato a nessuno e si cancella quando chiudi la pagina.</p>
+    </form>
+    <div class="fam-show" data-fam-show>
+      <div class="fam-sign" data-fam-sign data-i18n-skip>
+        <div class="fam-sign__bulbs" data-fam-bulbs aria-hidden="true"></div>
+        <p class="fam-sign__top" aria-hidden="true">Stasera in scena</p>
+        <p class="fam-sign__name" data-fam-sign-name aria-hidden="true"></p>
+      </div>
+      <div class="fam-stage" aria-hidden="true">
+        <svg class="fam-stage__wondy"><use href="#game-i-wondy"/></svg>
+        <svg class="fam-stage__flower"><use href="#game-i-girasole"/></svg>
+      </div>
+      <p class="fam-show__live" aria-live="polite" data-fam-sign-live data-i18n-skip></p>
+    </div>
+  </section>
+
+  <!-- 4 · DA STAMPARE E COLORARE -->
+  <section class="fam-block" id="fam-stampa" aria-labelledby="fam-stampa-h">
+    <h3 class="fam-h" id="fam-stampa-h"><svg aria-hidden="true"><use href="#game-i-scarpa"/></svg>Da stampare e colorare</h3>
+    <p class="fam-note">Tutto viene preparato qui sul telefono o sul computer: niente viene inviato.</p>
+
+    <!-- a · diploma -->
+    <article class="fam-print" aria-labelledby="fam-dip-h">
+      <h4 class="fam-print__h" id="fam-dip-h">Diploma di Aiutante del mimo</h4>
+      <p class="fam-note">Un foglio A4 in bianco e nero, tutto da colorare.</p>
+      <div class="fam-fields">
+        <div><label class="fam-label" for="fam-dip-nome">Nome del bambino</label><input class="fam-input" id="fam-dip-nome" type="text" maxlength="24" autocomplete="off" autocapitalize="words" spellcheck="false" data-fam-name></div>
+        <div><label class="fam-label" for="fam-dip-data">Data</label><input class="fam-input" id="fam-dip-data" type="date" data-fam-dip-date></div>
+      </div>
+      <div class="fam-sheet" data-fam-dip-preview data-i18n-skip role="img" aria-label="Anteprima del diploma"></div>
+      <button class="btn btn--primary" type="button" data-fam-dip-print>Stampa il diploma</button>
+    </article>
+
+    <!-- b · calendario -->
+    <article class="fam-print" aria-labelledby="fam-cal-h">
+      <h4 class="fam-print__h" id="fam-cal-h">Calendario dell'attesa</h4>
+      <p class="fam-note">“Mancano ___ nasi alla festa!”: ogni sera si colora un naso, fino al grande giorno.</p>
+      <div class="fam-fields">
+        <div><label class="fam-label" for="fam-cal-data">Giorno della festa</label><input class="fam-input" id="fam-cal-data" type="date" data-fam-party></div>
+      </div>
+      <p class="fam-status" data-fam-cal-status aria-live="polite"></p>
+      <div class="fam-sheet" data-fam-cal-preview data-i18n-skip role="img" aria-label="Anteprima del calendario" hidden></div>
+      <button class="btn btn--primary" type="button" data-fam-cal-print hidden>Stampa il calendario</button>
+    </article>
+
+    <!-- c · biglietto -->
+    <article class="fam-print" id="fam-biglietto" aria-labelledby="fam-tix-h">
+      <h4 class="fam-print__h" id="fam-tix-h" tabindex="-1">Biglietto ricordo</h4>
+      <p class="fam-note">Il biglietto del circo con il nome del festeggiato: da tenere, stampare o mandare ai nonni.</p>
+      <div class="fam-fields">
+        <div><label class="fam-label" for="fam-tix-nome">Nome del festeggiato</label><input class="fam-input" id="fam-tix-nome" type="text" maxlength="24" autocomplete="off" autocapitalize="words" spellcheck="false" data-fam-name></div>
+        <div><label class="fam-label" for="fam-tix-data">Giorno della festa</label><input class="fam-input" id="fam-tix-data" type="date" data-fam-party></div>
+      </div>
+      <canvas class="fam-ticket" data-fam-ticket width="1400" height="620" role="img" aria-label="Biglietto ricordo"></canvas>
+      <button class="btn btn--primary" type="button" data-fam-tix-dl>Scarica il biglietto</button>
+      <p class="fam-status" data-fam-tix-status aria-live="polite"></p>
+    </article>
+  </section>
+
+  <!-- 5 · ALTRO DA FARE -->
+  <div class="fam-more">
+    <a class="card-link" href="https://amzn.eu/d/0if972Qw" target="_blank" rel="noopener"><svg class="prop" aria-hidden="true"><use href="#i-book"/></svg><span>Il libro da colorare “Wondy Paint”<small>Su Amazon · si apre in una nuova scheda</small></span><svg class="arr" aria-hidden="true"><use href="#i-out"/></svg></a>
+    <a class="card-link" href="#giochi"><svg class="prop" aria-hidden="true"><use href="#game-i-palla"/></svg><span>Giochi per bambini<small>Naso · Giocoleria · Memory · Colora</small></span><svg class="arr" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+  </div>
+</section>
+
+<!-- =========================================================
      GIOCHI PER BAMBINI (js/giochi.js)
      ========================================================= -->
 <!-- =========================================================
@@ -592,7 +779,7 @@
   <div class="view__head">
     <p class="eyebrow">Il circo in tasca <span aria-hidden="true">✦</span> dai 4 ai 10 anni</p>
     <h2 id="game-h">Gioca con <em>Wondy</em></h2>
-    <p class="lead">Quattro giochi piccoli piccoli, da fare insieme a mamma e papà.</p>
+    <p class="lead">Piccoli giochi, un respiro e un gioco di mimo, da fare insieme a mamma e papà.</p>
   </div>
 
   <!-- icone dei giochi, disegnate a mano in SVG -->
@@ -601,26 +788,30 @@
   <div class="game-app" data-game-app>
     <div class="game-bar">
       <p class="game-bar__mime" aria-hidden="true"><svg class="game-bar__face"><use href="#game-i-wondy"/></svg><span>♥ ✦ ! ? ♪ ✿</span></p>
-      <button class="game-sound" type="button" data-game-audio aria-pressed="true" aria-label="Suoni accesi: tocca per spegnerli">
+      <button class="game-sound" type="button" data-game-audio aria-pressed="false" aria-label="Suoni spenti: tocca per accenderli">
         <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z" fill="currentColor"/><g class="game-sound__on" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11"/></g><g class="game-sound__off" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M16 9.5l5 5M21 9.5l-5 5"/></g></svg>
       </button>
     </div>
+    <p class="game-stars"><span aria-hidden="true">✦</span> Stelline raccolte: <b data-game-stars>0</b></p>
 
     <!-- scelta del gioco -->
     <div class="game-menu" data-game-menu>
       <article class="game-pick" aria-labelledby="game-t-naso">
         <svg class="game-pick__icon" aria-hidden="true"><use href="#game-i-naso"/></svg>
         <h3 id="game-t-naso">Acchiappa il naso</h3>
-        <p class="game-pick__how">Tocca i nasi rossi prima che spariscano!</p>
-        <p class="game-pick__record">Record: <b data-game-record="naso">–</b></p>
+        <p class="game-pick__how">Tocca i nasi rossi!</p>
+        <fieldset class="game-modes">
+          <legend class="sr-only">Come vuoi giocare?</legend>
+          <label class="game-size"><input type="radio" name="game-naso-mode" value="piccoli" checked><span>Piccoli</span></label>
+          <label class="game-size"><input type="radio" name="game-naso-mode" value="sfida"><span>Sfida 30 s</span></label>
+        </fieldset>
         <button class="btn btn--primary" type="button" data-game-play="naso" aria-label="Gioca ad Acchiappa il naso">Gioca</button>
       </article>
 
       <article class="game-pick" aria-labelledby="game-t-palline">
         <svg class="game-pick__icon game-pick__icon--ball" aria-hidden="true"><use href="#game-i-palla"/></svg>
         <h3 id="game-t-palline">Giocoleria</h3>
-        <p class="game-pick__how">Tocca le palline e non farle cadere!</p>
-        <p class="game-pick__record">Record: <b data-game-record="palline">–</b></p>
+        <p class="game-pick__how">Tocca le palline e lanciale in alto!</p>
         <button class="btn btn--primary" type="button" data-game-play="palline" aria-label="Gioca a Giocoleria">Gioca</button>
       </article>
 
@@ -633,15 +824,29 @@
           <label class="game-size"><input type="radio" name="game-memory-size" value="12" checked><span>12 carte</span></label>
           <label class="game-size"><input type="radio" name="game-memory-size" value="16"><span>16 carte</span></label>
         </fieldset>
-        <p class="game-pick__record">Record: <b data-game-record="memory">–</b></p>
         <button class="btn btn--primary" type="button" data-game-play="memory" aria-label="Gioca a Memory del circo">Gioca</button>
       </article>
+
       <article class="game-pick" aria-labelledby="game-t-colora">
         <svg class="game-pick__icon" aria-hidden="true"><use href="#game-i-wondy"/></svg>
         <h3 id="game-t-colora">Colora Wondy</h3>
         <p class="game-pick__how">Scegli un colore e tocca Wondy!</p>
         <p class="game-pick__record">Dal libro <b>Wondy Paint</b> · il disegno resta salvato</p>
         <button class="btn btn--primary" type="button" data-game-play="colora" aria-label="Gioca a Colora Wondy">Gioca</button>
+      </article>
+
+      <article class="game-pick" aria-labelledby="game-t-respiro">
+        <svg class="game-pick__icon" viewBox="0 0 64 64" aria-hidden="true"><path d="M32 46c-3 5 3 8 0 14" fill="none" stroke="#F4EEE4" stroke-width="1.6" stroke-linecap="round" opacity=".7"/><ellipse cx="32" cy="25" rx="16" ry="20" fill="#D8352B"/><ellipse cx="26" cy="17" rx="4" ry="6" fill="#fff" opacity=".4" transform="rotate(25 26 17)"/><path d="M29.5 44.5h5l-1.5 2.5h-2z" fill="#B3261E"/></svg>
+        <h3 id="game-t-respiro">Respiro col palloncino</h3>
+        <p class="game-pick__how">Gonfia e sgonfia il palloncino con il respiro.</p>
+        <button class="btn btn--primary" type="button" data-game-play="respiro" aria-label="Inizia Respiro col palloncino">Gioca</button>
+      </article>
+
+      <article class="game-pick" aria-labelledby="game-t-specchio">
+        <svg class="game-pick__icon" viewBox="0 0 64 64" aria-hidden="true"><ellipse cx="32" cy="27" rx="15" ry="19" fill="#CFE6F5" stroke="#E2B04A" stroke-width="4"/><path d="M32 46v10M22 57h20" stroke="#E2B04A" stroke-width="4" stroke-linecap="round"/><path d="M25 19l6-6M26 28l10-10" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
+        <h3 id="game-t-specchio">Specchio mimo</h3>
+        <p class="game-pick__how">Uno fa il gesto, l'altro indovina. Poi scambiatevi!</p>
+        <button class="btn btn--primary" type="button" data-game-play="specchio" aria-label="Gioca a Specchio mimo, per grandi e piccoli">Gioca</button>
       </article>
     </div>
 

@@ -153,6 +153,7 @@
         ${!okSent && C.contacts.email ? `<a class="btn btn--ghost" href="mailto:${encodeURIComponent(C.contacts.email)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(text)}">Invia via email</a>` : ""}
         ${okSent ? "" : `<button type="button" class="btn btn--link" data-copy>Copia il riepilogo</button>`}
         <a class="btn btn--ghost" href="https://ig.me/m/${encodeURIComponent(C.contacts.instagram)}" target="_blank" rel="noopener">Scrivimi su Instagram</a>
+        ${okSent && W.ticket ? `<button type="button" class="btn btn--ghost" data-ticket>Crea il biglietto ricordo ✦</button>` : ""}
         <a class="btn btn--link" href="#home" data-new>Torna alla home</a>
       </div>`;
     form.hidden = true;
@@ -168,6 +169,13 @@
         copy.replaceWith(ta); ta.focus(); ta.select();
       }
     });
+    /* biglietto ricordo con il nome del festeggiato e la prima data scelta (resta solo nel browser) */
+    const tk = done.querySelector("[data-ticket]");
+    if (tk) {
+      const nome = (form.querySelector("[name=festeggiato]") || {}).value || "";
+      const data = (W.store.selection[0] && W.store.selection[0].date) || (form.querySelector("[name=data_manuale]") || {}).value || "";
+      tk.addEventListener("click", () => W.ticket(nome, data));
+    }
     if (okSent) { form.reset(); W.reset(); }
   }
   done.addEventListener("click", (e) => {
