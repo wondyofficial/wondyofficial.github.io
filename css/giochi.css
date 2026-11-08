@@ -45,7 +45,8 @@
 .game-pick .btn { grid-column: 1 / -1; margin-top: 10px; }
 
 .game-sizes { grid-column: 1 / -1; display: flex; gap: 8px; margin: 12px 0 0; padding: 0; border: 0; min-width: 0; }
-.game-size { position: relative; flex: 1; }
+.game-size { position: relative; flex: 1; display: flex; }
+.game-size span { flex: 1; text-wrap: balance; }
 .game-size input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; }
 .game-size span {
   display: flex; align-items: center; justify-content: center; min-height: 48px; border-radius: 999px;
