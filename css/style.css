@@ -791,3 +791,48 @@ input[aria-invalid="true"], select[aria-invalid="true"] { border-color: var(--re
   }
 }
 @media (max-width: 420px) { .tag-pill { font-size: .62rem; letter-spacing: .08em; padding: 7px 12px; white-space: nowrap; } }
+
+/* ============================================================
+   OGGETTI DI SCENA, CORDA E INSEGNA (dopo il lancio)
+   ============================================================ */
+.fx-prop { position: fixed; left: 0; top: 0; z-index: 15; pointer-events: none; filter: drop-shadow(0 8px 12px rgba(0, 0, 0, .6)); }
+.fx-prop svg { width: 100%; height: 100%; }
+
+/* corda con nappa che pende accanto al palco (solo PC) */
+.pull-rope { display: none; }
+@media (min-width: 1024px) {
+  .pull-rope {
+    display: block; position: fixed; top: 0; right: clamp(16px, 2.4vw, 40px); z-index: 31; width: 44px; height: 230px; padding: 0;
+    border: 0; background: none; cursor: grab; transform-origin: 50% 0; animation: rope-sway 4.5s ease-in-out infinite alternate;
+  }
+  body:not([data-current="home"]) .pull-rope { display: none; }
+  .pull-rope__cord { position: absolute; left: 50%; top: 0; width: 4px; height: 180px; margin-left: -2px; border-radius: 2px;
+    background: repeating-linear-gradient(170deg, #E2B04A 0 5px, #A8741F 5px 9px); box-shadow: 0 2px 6px rgba(0,0,0,.5); }
+  .pull-rope__tassel { position: absolute; left: 50%; top: 176px; width: 26px; height: 48px; margin-left: -13px;
+    background: radial-gradient(circle at 50% 8px, #F3D58A 0 7px, transparent 8px), repeating-linear-gradient(90deg, #E2B04A 0 2px, #A8741F 2px 4px);
+    clip-path: polygon(30% 0, 70% 0, 70% 22%, 100% 100%, 0 100%, 30% 22%); }
+  .pull-rope:hover { animation-play-state: paused; }
+  .pull-rope:hover .pull-rope__tassel { filter: brightness(1.15); }
+  .pull-rope.is-pulled { animation: rope-pull .7s var(--spring); }
+  .pull-rope:focus-visible { outline: 2px solid var(--gold-light); outline-offset: 4px; }
+}
+@keyframes rope-sway { from { transform: rotate(-2.5deg); } to { transform: rotate(2.5deg); } }
+@keyframes rope-pull { 30% { transform: translateY(46px); } 60% { transform: translateY(-6px); } }
+.js-replay .intro__logo { display: none; }
+
+/* insegna ad arco con lampadine per i titoli di sezione */
+.section-title {
+  position: relative; display: table; margin: 0 auto; padding: 22px 30px 16px; color: #9E1B1B;
+  background: linear-gradient(180deg, #FBE7A1, #E9BE5C 70%, #C9952F);
+  border-radius: 999px 999px 16px 16px / 70px 70px 16px 16px;
+  box-shadow: inset 0 0 0 3px #9E1B1B, inset 0 0 0 7px #FBE7A1, inset 0 0 0 9px #9E1B1B, 0 14px 40px -14px rgba(226, 176, 74, .6);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, .45);
+}
+.section-title em { background: none; -webkit-background-clip: border-box; background-clip: border-box; color: #B3261E; -webkit-text-fill-color: currentColor; }
+.section-title::before {
+  content: ""; position: absolute; inset: -7px; border-radius: inherit; pointer-events: none;
+  border: 5px dotted #FFF3C4; filter: drop-shadow(0 0 4px rgba(255, 214, 120, .9));
+  animation: bulbs 1.6s steps(2) infinite;
+}
+@keyframes bulbs { 50% { filter: brightness(.6); } }
+@media (max-width: 420px) { .section-title { font-size: 1.7rem; padding: 18px 22px 13px; } }

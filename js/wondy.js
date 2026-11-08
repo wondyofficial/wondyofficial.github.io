@@ -75,6 +75,15 @@
     update();
   }
 
+  /* ---------- corda con nappa (PC): tirandola il sipario si richiude e si riapre ---------- */
+  const rope = $("[data-pull-rope]");
+  if (rope) rope.addEventListener("click", () => {
+    if (reduce || root.classList.contains("js-intro")) return;
+    rope.classList.remove("is-pulled"); void rope.offsetWidth; rope.classList.add("is-pulled");
+    root.classList.add("js-intro", "js-replay");
+    setTimeout(() => { root.classList.remove("js-intro", "js-replay"); confettiBurst(innerWidth / 2, innerHeight * 0.35, 120); }, 1500);
+  });
+
   /* ---------- 4. freccia "scopri" ---------- */
   document.addEventListener("click", (e) => {
     const b = e.target.closest("[data-scroll-to]");
@@ -112,11 +121,11 @@
   const cf = $(".fx-confetti");
   const cctx = cf && cf.getContext("2d");
   let confetti = [], cfRunning = false;
-  function confettiBurst(x, y, n = 90) {
+  function confettiBurst(x, y, n = 90, palette) {
     if (!cf || reduce) return;
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
     cf.width = innerWidth * dpr; cf.height = innerHeight * dpr; cctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    const colors = ["#F3D58A", "#E2B04A", "#D8352B", "#FFF8EA", "#A6E9BA", "#7FB3FF"];
+    const colors = palette || ["#F3D58A", "#E2B04A", "#D8352B", "#FFF8EA", "#A6E9BA", "#7FB3FF"];
     for (let i = 0; i < n; i++) {
       const a = rand(-Math.PI * 0.95, -Math.PI * 0.05), sp = rand(5, 13);
       confetti.push({ x, y, vx: Math.cos(a) * sp, vy: Math.sin(a) * sp, g: rand(0.18, 0.3), w: rand(5, 9), h: rand(8, 14), r: rand(0, 6.28), vr: rand(-0.3, 0.3), c: pick(colors), life: 0 });
@@ -297,11 +306,62 @@
     await sleep(3000);
     day.classList.remove("is-hinted");
   }
-  const ALL = { wave, juggle, balanceWalk, steal, lightsOut, party, loseNose, flower, peekaboo, hintDay };
+  /* oggetti di scena veri: orsetto e cestino (simboli SVG del blocco globale) */
+  function prop(symbol, size) {
+    const el = document.createElement("div");
+    el.className = "fx-prop";
+    el.style.width = el.style.height = size + "px";
+    el.innerHTML = `<svg viewBox="0 0 48 48" aria-hidden="true"><use href="#${symbol}"/></svg>`;
+    document.body.appendChild(el);
+    return el;
+  }
+  const floorY = () => innerHeight - (innerWidth < 760 ? 92 : 124);
+  /* l'orsetto sbuca dall'altro lato, Wondy lo vede e lo abbraccia */
+  async function teddyHug() {
+    const r = wondy.getBoundingClientRect();
+    const size = innerWidth < 760 ? 56 : 72;
+    const bear = prop("game-i-orso", size);
+    const y = floorY();
+    const xEnd = r.left - size * 0.7;
+    place("out"); pose("is-surprised"); sign("!", 1200);
+    await bear.animate([{ transform: `translate(${-size}px, ${y}px) rotate(-12deg)` }, { transform: `translate(14px, ${y}px) rotate(0)` }], { duration: 700, easing: "cubic-bezier(.34,1.56,.64,1)", fill: "forwards" }).finished.catch(() => {});
+    await sleep(500);
+    pose("is-reaching");
+    await bear.animate([{ transform: `translate(14px, ${y}px)` }, { transform: `translate(${(14 + xEnd) / 2}px, ${y - 40}px) rotate(8deg)`, offset: 0.5 }, { transform: `translate(${xEnd}px, ${y}px) rotate(0)` }], { duration: 1100, easing: "ease-in-out", fill: "forwards" }).finished.catch(() => {});
+    pose("is-cheer"); sign("♥", 2200);
+    const c = wondyCenter(); confettiBurst(c.x - 30, c.y + 20, 40, ["#FF6B8A", "#FF9DB0", "#E5262F", "#FFF8EA"]);
+    await sleep(2200);
+    await bear.animate([{ opacity: 1, transform: `translate(${xEnd}px, ${y}px)` }, { opacity: 0, transform: `translate(${xEnd - 60}px, ${y + 30}px) scale(.6)` }], { duration: 500, fill: "forwards" }).finished.catch(() => {});
+    bear.remove();
+  }
+  /* il cestino ribelle scappa di mano e Wondy lo rincorre */
+  async function basketRun() {
+    const r = wondy.getBoundingClientRect();
+    const dist = Math.max(0, r.left - 40);
+    if (dist < 120) return juggle();
+    const size = innerWidth < 760 ? 46 : 60;
+    const basket = prop("game-i-cestino", size);
+    const y = floorY(), x0 = r.left, x1 = x0 - dist;
+    place("out"); pose("is-reaching"); sign("!", 1400);
+    const hops = [];
+    for (let i = 0; i <= 6; i++) { const k = i / 6; hops.push({ transform: `translate(${x0 - dist * k}px, ${y - (i % 2 ? 0 : 50 * (1 - k))}px) rotate(${-k * 540}deg)`, offset: k }); }
+    const fly = basket.animate(hops, { duration: 1800, easing: "ease-out", fill: "forwards" });
+    await sleep(400);
+    pose("is-surprised");
+    await wondy.animate([{ transform: "translate(0, 6%)" }, { transform: `translate(${-(dist - 30)}px, 6%)` }], { duration: 2200, easing: "ease-in", fill: "forwards" }).finished.catch(() => {});
+    await fly.finished.catch(() => {});
+    pose("is-cheer"); sign("✦", 1400);
+    await basket.animate([{ transform: `translate(${x1}px, ${y}px)` }, { transform: `translate(${x1 + 20}px, ${y - 60}px) scale(.8)`, opacity: 0 }], { duration: 500, fill: "forwards" }).finished.catch(() => {});
+    basket.remove();
+    await sleep(600);
+    await wondy.animate([{ transform: `translate(${-(dist - 30)}px, 6%)` }, { transform: "translate(0, 6%)" }], { duration: Math.min(4000, dist * 9), easing: "ease-in-out", fill: "forwards" }).finished.catch(() => {});
+    wondy.getAnimations().forEach((a) => a.cancel());
+  }
+  const ALL = { wave, teddyHug, basketRun, juggle, balanceWalk, steal, lightsOut, party, loseNose, flower, peekaboo, hintDay };
   const PRANKS = {
-    home: [juggle, juggle, balanceWalk, balanceWalk, steal, lightsOut, party, loseNose, flower, peekaboo],
+    home: [teddyHug, basketRun, juggle, juggle, balanceWalk, balanceWalk, steal, lightsOut, party, loseNose, flower, peekaboo],
     calendario: [hintDay, hintDay, juggle, flower, loseNose],
-    other: [juggle, balanceWalk, flower, loseNose, party, steal],
+    other: [teddyHug, basketRun, juggle, balanceWalk, flower, loseNose, party, steal],
   };
   /* per provare un numero dalla console: Wondy.prank("juggle") */
   W.prank = (name) => run(ALL[name] || wave);

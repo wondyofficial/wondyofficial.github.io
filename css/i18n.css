@@ -33,8 +33,10 @@
 /* (a) home su mobile: in alto a destra nell'hero */
 .lang-switch--hero { position: absolute; top: calc(16px + env(safe-area-inset-top)); right: 16px; z-index: 6; }
 /* (c) schermate interne su mobile: al posto del cerchio con la W */
+/* selettore e "W" del tendalino affiancati nella barra delle schermate interne */
+.topbar:has(.lang-switch--topbar) { grid-template-columns: 1fr auto 1fr auto; column-gap: 8px; }
 .lang-switch--topbar { justify-self: end; grid-column: 3; }
-.topbar .lang-switch--topbar + .topbar__logo { display: none; }
+.topbar .lang-switch--topbar + .topbar__logo { grid-column: 4; }
 /* (b) barra desktop */
 .lang-switch--desk .lang-switch__btn { background: transparent; }
 @media (min-width: 1024px) { .lang-switch--hero { display: none; } }
