@@ -148,6 +148,115 @@
     return s;
   }
 
+
+  /* ---------- INVITI ALLA FESTA (4 per foglio A4, da ritagliare) ---------- */
+  const INV_T = {
+    it: { title: "Ti invito alla mia festa!", per: "Per", age: (n) => `Compio ${n} ${n === 1 ? "anno" : "anni"}!`, day: "Giorno", time: "Ore", place: "Dove", rsvp: "Rispondi a", show: "Con lo spettacolo di Wondy!" },
+    en: { title: "You're invited to my party!", per: "To", age: (n) => `I'm turning ${n}!`, day: "Date", time: "Time", place: "Where", rsvp: "RSVP", show: "With Wondy's show!" },
+    fr: { title: "Je t'invite à ma fête !", per: "Pour", age: (n) => `J'aurai ${n} ${n === 1 ? "an" : "ans"} !`, day: "Date", time: "Heure", place: "Où", rsvp: "Réponds à", show: "Avec le spectacle de Wondy !" },
+    de: { title: "Ich lade dich zu meiner Feier ein!", per: "Für", age: (n) => `Ich werde ${n}!`, day: "Datum", time: "Uhrzeit", place: "Wo", rsvp: "Antwort an", show: "Mit der Show von Wondy!" },
+    es: { title: "¡Te invito a mi fiesta!", per: "Para", age: (n) => `¡Cumplo ${n} ${n === 1 ? "año" : "años"}!`, day: "Día", time: "Hora", place: "Dónde", rsvp: "Confirma a", show: "¡Con el espectáculo de Wondy!" },
+    mk: { title: "Те канам на мојот роденден!", per: "За", age: (n) => `Полнам ${n} ${n === 1 ? "година" : "години"}!`, day: "Датум", time: "Час", place: "Каде", rsvp: "Јави се на", show: "Со претставата на Wondy!" },
+  };
+  const curLang = () => (INV_T[document.documentElement.lang] ? document.documentElement.lang : "it");
+  const INV_H = 143.5;
+
+  /* un invito (100 × 143,5 mm) disegnato nel gruppo g */
+  function drawInvite(g, d) {
+    const L = curLang(), t = INV_T[L], col = d.color;
+    const INK = col ? "#1E1A3A" : "#000", RED = col ? "#D7322B" : "#fff", GOLD = col ? "#B8862A" : "#000", FILLG = col ? "#E9B84A" : "#fff";
+    const TITLE_F = L === "mk" ? "Forum, 'Cormorant Garamond', Georgia, serif" : "Cinzel, Georgia, serif";
+    const SERIF = "'Cormorant Garamond', Georgia, serif";
+    el("rect", { x: 0, y: 0, width: 100, height: INV_H, fill: col ? "#FFF8EC" : "#fff" }, g);
+    el("rect", { x: 3.2, y: 3.2, width: 93.6, height: INV_H - 6.4, rx: 2.5, fill: "none", stroke: GOLD, "stroke-width": col ? ".7" : ".45" }, g);
+    // tendalino a strisce
+    const aw = el("g", { stroke: INK, "stroke-width": ".45" }, g);
+    const AL = 12, AR = 88, top = 8, bot = 18, n = 8, w = (AR - AL) / n;
+    for (let i = 0; i < n; i++) {
+      const x0 = AL + i * w, x1 = x0 + w;
+      el("path", { d: `M${x0} ${top}H${x1}V${bot}A${w / 2} ${w / 2.4} 0 0 1 ${x0} ${bot}Z`, fill: i % 2 ? "#fff" : RED }, aw);
+    }
+    el("path", { d: `M${AL - 3} ${top}H${AR + 3}`, stroke: INK, "stroke-width": "1.2", "stroke-linecap": "round" }, g);
+    // "Per ______" da scrivere a mano
+    el("text", { x: 12, y: 31, "font-size": "4.4", "font-family": SERIF, "font-style": "italic", "font-weight": "600", fill: INK }, g, t.per);
+    el("path", { d: `M${14 + t.per.length * 2.1} 31.6H88`, stroke: INK, "stroke-width": ".3" }, g);
+    // titolo, nome, anni
+    fitText(g, 50, 42, t.title, 5.6, 82, { "font-family": TITLE_F, "font-weight": "700", fill: INK });
+    if (d.nome) fitText(g, 50, 56.5, d.nome, 13, 80, { "font-family": TITLE_F, "font-weight": "700", fill: RED, stroke: INK, "stroke-width": col ? ".25" : ".45" });
+    else el("path", { d: "M20 56.5H80", stroke: INK, "stroke-width": ".35" }, g);
+    if (d.anni) el("text", { x: 50, y: 63.5, "font-size": "5.4", "text-anchor": "middle", "font-family": SERIF, "font-style": "italic", "font-weight": "700", fill: GOLD }, g, t.age(d.anni));
+    // Wondy che fa giocoleria, il girasole e le stelle
+    const art = el("g", { transform: "translate(0 4.5)" }, g);
+    const f = el("g", { transform: "translate(38 81) scale(.42) translate(-88 -215)", stroke: INK, "stroke-width": "1.2", fill: "#fff", "stroke-linecap": "round", "stroke-linejoin": "round" }, art);
+    el("circle", { cx: 88, cy: 210, r: 22 }, f);
+    el("path", { d: "M70 202c2-13 15-19 24-14 5-5 13-3 13 5-4-1-6 0-7 1 4 1 5 5 5 8-8-7-21-8-35 0z", fill: col ? "#2A2140" : "#fff" }, f);
+    el("path", { d: "M78 204q3-3 6 0M92 204q3-3 6 0", fill: "none" }, f);
+    el("circle", { cx: 81, cy: 209, r: 1.5, fill: INK }, f); el("circle", { cx: 95, cy: 209, r: 1.5, fill: INK }, f);
+    el("circle", { cx: 88, cy: 215, r: 6, fill: RED }, f);
+    el("ellipse", { cx: 86, cy: 213, rx: 1.8, ry: 1.1, transform: "rotate(-35 86 213)", fill: "#fff", stroke: col ? "none" : INK, "stroke-width": ".4" }, f);
+    el("path", { d: "M79 222q9 7 18 0", fill: "none" }, f);
+    el("path", { d: "M88 236l-11-6v12zM88 236l11-6v12z", fill: RED }, f);
+    el("circle", { cx: 88, cy: 236, r: 2.4, fill: RED }, f);
+    // palline in aria
+    [[27, 70, RED], [38, 66, FILLG], [49, 70, col ? "#3E7BC4" : "#fff"]].forEach(([x, y, c]) => el("circle", { cx: x, cy: y, r: 2.3, fill: c, stroke: INK, "stroke-width": ".4" }, art));
+    el("path", { d: "M27 73.5Q38 60 49 73.5", fill: "none", stroke: INK, "stroke-width": ".25", "stroke-dasharray": ".8 1" }, art);
+    // girasole
+    const sf = el("g", {}, art);
+    sunflower(sf, 68, 77, 7.2, true);
+    if (col) {
+      sf.querySelectorAll("ellipse").forEach((e) => e.setAttribute("fill", FILLG));
+      sf.querySelectorAll("circle").forEach((e) => e.setAttribute("fill", "#7A4A22"));
+      sf.querySelectorAll("path").forEach((e, i) => { e.setAttribute("stroke", INK); if (i) e.setAttribute("fill", "#7DB35A"); });
+    }
+    star(art, 82, 70, 2.6); star(art, 18, 84, 2.2); star(art, 56, 90, 1.8);
+    if (col) art.querySelectorAll("path[stroke-linejoin]").forEach((e) => e.setAttribute("fill", FILLG));
+    // righe: giorno, ora, dove, rispondi a
+    const rows = [[t.day, d.data ? (W.dateLabel ? W.dateLabel(toISO(d.data), false) : d.data.toLocaleDateString(L, { weekday: "long", day: "numeric", month: "long" })) : ""], [t.time, d.ora], [t.place, d.dove], [t.rsvp, d.rsvp]];
+    /* solo l'indirizzo può andare su due righe: le altre restano su una, rimpicciolite */
+    const twoL = (v, i) => i === 2 && v && v.length > 26 && v.includes(" ");
+    let y = twoL(rows[2][1], 2) ? 103 : 105.5;
+    rows.forEach(([lab, val], i) => {
+      if (i) y += 8.4;
+      if (twoL(val, i)) y += 3.8;
+      el("text", { x: 10, y, "font-size": "3.1", "font-weight": "700", "letter-spacing": ".25", "font-family": TITLE_F, fill: GOLD }, g, lab.toUpperCase());
+      const lx = 12 + Math.max(14, lab.length * 2.55);
+      el("path", { d: `M${lx} ${y + 1.1}H90`, stroke: INK, "stroke-width": ".25" }, g);
+      const vw = 90 - lx - 2, va = { "font-family": SERIF, "font-weight": "700", fill: INK };
+      /* testo lungo (di solito l'indirizzo): va su due righe invece di diventare minuscolo */
+      if (twoL(val, i)) {
+        const mid = val.length / 2;
+        let cut = -1;
+        for (let k = 0; k < val.length; k++) if (val[k] === " " && (cut < 0 || Math.abs(k - mid) < Math.abs(cut - mid))) cut = k;
+        const a = val.slice(0, cut).trim(), b = val.slice(cut + 1).trim();
+        const size = Math.min(4.2, vw / (Math.max(a.length, b.length) * 0.5));
+        el("text", Object.assign({ x: (lx + 90) / 2, y: y - size * 1.05, "font-size": size.toFixed(2), "text-anchor": "middle" }, va), g, a);
+        el("text", Object.assign({ x: (lx + 90) / 2, y, "font-size": size.toFixed(2), "text-anchor": "middle" }, va), g, b);
+      } else if (val) {
+        el("text", Object.assign({ x: (lx + 90) / 2, y, "font-size": Math.min(5, vw / (val.length * 0.5)).toFixed(2), "text-anchor": "middle" }, va), g, val);
+      }
+    });
+    // chiusura
+    if (d.show) fitText(g, 50, 138.6, t.show, 3.9, 80, { "font-family": TITLE_F, "font-weight": "700", fill: col ? RED : INK });
+    else { star(g, 42, 137, 1.6); star(g, 50, 136.6, 2.2); star(g, 58, 137, 1.6); }
+    if (col) g.querySelectorAll(":scope > path[stroke-linejoin]").forEach((e) => e.setAttribute("fill", FILLG));
+  }
+  function buildInvitePreview(d) {
+    const s = el("svg", { xmlns: SVGNS, viewBox: `0 0 100 ${INV_H}`, "aria-hidden": "true", "font-family": "Cinzel, Georgia, serif" });
+    drawInvite(s, d);
+    return s;
+  }
+  function buildInviteSheet(d) {
+    const s = a4();
+    el("rect", { x: 0, y: 0, width: 210, height: 297, fill: "#fff" }, s);
+    for (let r = 0; r < 2; r++) for (let c = 0; c < 2; c++) drawInvite(el("g", { transform: `translate(${5 + c * 100} ${5 + r * INV_H})` }, s), d);
+    // linee da ritagliare
+    const cut = { stroke: "#777", "stroke-width": ".3", "stroke-dasharray": "2 1.4", fill: "none" };
+    el("rect", Object.assign({ x: 5, y: 5, width: 200, height: 2 * INV_H }, cut), s);
+    el("path", Object.assign({ d: `M105 5V${5 + 2 * INV_H}M5 ${5 + INV_H}H205` }, cut), s);
+    el("text", { x: 1, y: 5 + INV_H + 1.6, "font-size": "4.6", fill: "#777", "font-family": "system-ui, sans-serif" }, s, "✂");
+    return s;
+  }
+
   /* ---------- stampa: solo il foglio scelto ---------- */
   function printSheet(svg) {
     document.getElementById("fam-print-root")?.remove();
@@ -258,12 +367,12 @@
     function setName(v, from) {
       state.nome = cleanName(v, 24); persist();
       nameInputs.forEach((i) => { if (i !== from) i.value = state.nome.slice(0, +i.maxLength || 24); });
-      renderDiploma(); scheduleTicket();
+      renderDiploma(); renderInvite(); scheduleTicket();
     }
     function setParty(v, from) {
       state.festa = fromISO(v) ? v : ""; persist();
       partyInputs.forEach((i) => { if (i !== from) i.value = state.festa; });
-      renderCalendar(); scheduleTicket();
+      renderCalendar(); renderInvite(); scheduleTicket();
     }
     nameInputs.forEach((i) => i.addEventListener("input", () => setName(i.value, i)));
     partyInputs.forEach((i) => {
@@ -352,6 +461,26 @@
       sign.scrollIntoView({ behavior: reduce.matches ? "auto" : "smooth", block: "center" });
     });
 
+    /* ---------- 4·0 · inviti alla festa ---------- */
+    const invPrev = $("[data-fam-inv-preview]");
+    function inviteData() {
+      const anni = parseInt($("#fam-inv-anni").value, 10);
+      return {
+        nome: cleanName($("#fam-inv-nome").value, 16),
+        anni: anni >= 1 && anni <= 18 ? anni : 0,
+        data: fromISO(state.festa),
+        ora: cleanName($("#fam-inv-ora").value, 5),
+        dove: cleanName($("#fam-inv-dove").value, 44),
+        rsvp: cleanName($("#fam-inv-rsvp").value, 34),
+        show: $("#fam-inv-show").checked,
+        color: (view.querySelector('input[name="fam-inv-style"]:checked') || {}).value !== "bn",
+      };
+    }
+    function renderInvite() { invPrev.replaceChildren(buildInvitePreview(inviteData())); }
+    $$("[data-fam-inv]").forEach((i) => i.addEventListener(i.type === "text" || i.type === "number" ? "input" : "change", renderInvite));
+    $("[data-fam-inv-print]").addEventListener("click", () => printSheet(buildInviteSheet(inviteData())));
+    document.addEventListener("wondy:change", renderInvite);
+
     /* ---------- 4a · diploma ---------- */
     const dipDate = $("[data-fam-dip-date]");
     const dipPrev = $("[data-fam-dip-preview]");
@@ -410,8 +539,8 @@
     /* valori iniziali dalla sessione */
     nameInputs.forEach((i) => { i.value = state.nome.slice(0, +i.maxLength || 24); });
     partyInputs.forEach((i) => { i.value = fromISO(state.festa) ? state.festa : ""; });
-    renderDiploma(); renderCalendar(); scheduleTicket();
-    if (document.fonts) document.fonts.ready.then(scheduleTicket);
+    renderDiploma(); renderCalendar(); renderInvite(); scheduleTicket();
+    if (document.fonts) document.fonts.ready.then(() => { scheduleTicket(); renderInvite(); });
 
     /* ---------- API: apre il biglietto già compilato ---------- */
     let pendingTicket = false;

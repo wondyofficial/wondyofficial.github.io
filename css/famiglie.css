@@ -205,3 +205,11 @@
   /* stampa dal menu del browser senza pulsante: niente animazioni né pezzi interattivi */
   .fam-story__nav, .fam-form, .fam-index { display: none !important; }
 }
+
+/* ---------- inviti alla festa ---------- */
+.fam-sheet--invite { max-width: 300px; padding: 0; border-radius: 4px; overflow: hidden; }
+.fam-sheet--invite svg { aspect-ratio: 100 / 143.5; display: block; }
+.fam-check { display: flex; align-items: center; gap: 12px; min-height: 48px; cursor: pointer; font-weight: 600; color: var(--text); }
+.fam-check input { width: 24px; height: 24px; flex: none; margin: 0; accent-color: var(--gold); cursor: pointer; }
+.fam-inv-style { margin: 0; }
+@media (min-width: 760px) { .fam-check { grid-column: 1 / -1; } }

@@ -18,19 +18,19 @@
   <noscript><style>.reveal { opacity: 1 !important; transform: none !important; } .roles__list li { background-size: 100% 100% !important; }</style></noscript>
   <link rel="preload" as="image" href="assets/foto/benvenuti-m.jpg" media="(max-width: 759px)">
   <link rel="preload" as="image" href="assets/foto/benvenuti.jpg" media="(min-width: 760px)">
-  <link rel="stylesheet" href="css/style.css?v=20261108n">
-  <link rel="stylesheet" href="css/giochi.css?v=20261108n">
-  <link rel="stylesheet" href="css/i18n.css?v=20261108n">
-  <link rel="stylesheet" href="css/famiglie.css?v=20261108n">
-  <script defer src="js/config.js?v=20261108n"></script>
-  <script defer src="js/app.js?v=20261108n"></script>
-  <script defer src="js/calendar.js?v=20261108n"></script>
-  <script defer src="js/form.js?v=20261108n"></script>
-  <script defer src="js/wondy.js?v=20261108n"></script>
-  <script defer src="js/giochi.js?v=20261108n"></script>
-  <script defer src="js/musica.js?v=20261108n"></script>
-  <script defer src="js/famiglie.js?v=20261108n"></script>
-  <script defer src="js/i18n.js?v=20261108n"></script>
+  <link rel="stylesheet" href="css/style.css?v=20261108p">
+  <link rel="stylesheet" href="css/giochi.css?v=20261108p">
+  <link rel="stylesheet" href="css/i18n.css?v=20261108p">
+  <link rel="stylesheet" href="css/famiglie.css?v=20261108p">
+  <script defer src="js/config.js?v=20261108p"></script>
+  <script defer src="js/app.js?v=20261108p"></script>
+  <script defer src="js/calendar.js?v=20261108p"></script>
+  <script defer src="js/form.js?v=20261108p"></script>
+  <script defer src="js/wondy.js?v=20261108p"></script>
+  <script defer src="js/giochi.js?v=20261108p"></script>
+  <script defer src="js/musica.js?v=20261108p"></script>
+  <script defer src="js/famiglie.js?v=20261108p"></script>
+  <script defer src="js/i18n.js?v=20261108p"></script>
 </head>
 <body>
 
@@ -721,6 +721,28 @@
   <section class="fam-block" id="fam-stampa" aria-labelledby="fam-stampa-h">
     <h3 class="fam-h" id="fam-stampa-h"><svg aria-hidden="true"><use href="#game-i-scarpa"/></svg>Da stampare e colorare</h3>
     <p class="fam-note">Tutto viene preparato qui sul telefono o sul computer: niente viene inviato.</p>
+
+    <!-- 0 · inviti -->
+    <article class="fam-print" id="fam-inviti" aria-labelledby="fam-inv-h">
+      <h4 class="fam-print__h" id="fam-inv-h">Inviti alla festa</h4>
+      <p class="fam-note">Quattro inviti su un foglio A4: stampa, ritaglia lungo la linea tratteggiata e consegna. Le righe lasciate vuote si possono scrivere a mano.</p>
+      <div class="fam-fields">
+        <div><label class="fam-label" for="fam-inv-nome">Nome del festeggiato</label><input class="fam-input" id="fam-inv-nome" type="text" maxlength="16" autocomplete="off" autocapitalize="words" spellcheck="false" data-fam-name></div>
+        <div><label class="fam-label" for="fam-inv-anni">Quanti anni compie</label><input class="fam-input" id="fam-inv-anni" type="number" inputmode="numeric" min="1" max="18" data-fam-inv></div>
+        <div><label class="fam-label" for="fam-inv-data">Giorno della festa</label><input class="fam-input" id="fam-inv-data" type="date" data-fam-party></div>
+        <div><label class="fam-label" for="fam-inv-ora">Orario</label><input class="fam-input" id="fam-inv-ora" type="time" data-fam-inv></div>
+        <div><label class="fam-label" for="fam-inv-dove">Dove si fa la festa</label><input class="fam-input" id="fam-inv-dove" type="text" maxlength="44" autocomplete="off" data-fam-inv></div>
+        <div><label class="fam-label" for="fam-inv-rsvp">Per rispondere (nome e telefono)</label><input class="fam-input" id="fam-inv-rsvp" type="text" maxlength="34" autocomplete="off" data-fam-inv></div>
+      </div>
+      <label class="fam-check"><input type="checkbox" id="fam-inv-show" data-fam-inv><span>Alla festa c'è lo spettacolo di Wondy</span></label>
+      <fieldset class="game-sizes fam-inv-style">
+        <legend class="sr-only">Come vuoi gli inviti?</legend>
+        <label class="game-size"><input type="radio" name="fam-inv-style" value="colori" checked data-fam-inv><span>A colori</span></label>
+        <label class="game-size"><input type="radio" name="fam-inv-style" value="bn" data-fam-inv><span>Da colorare</span></label>
+      </fieldset>
+      <div class="fam-sheet fam-sheet--invite" data-fam-inv-preview data-i18n-skip role="img" aria-label="Anteprima dell'invito"></div>
+      <button class="btn btn--primary" type="button" data-fam-inv-print>Stampa gli inviti</button>
+    </article>
 
     <!-- a · diploma -->
     <article class="fam-print" aria-labelledby="fam-dip-h">
