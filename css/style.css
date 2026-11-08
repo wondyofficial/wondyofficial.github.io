@@ -815,6 +815,9 @@ input[aria-invalid="true"], select[aria-invalid="true"] { border-color: var(--re
   .pull-rope:hover .pull-rope__tassel { filter: brightness(1.15); }
   .pull-rope.is-pulled { animation: rope-pull .7s var(--spring); }
   .pull-rope:focus-visible { outline: 2px solid var(--gold-light); outline-offset: 4px; }
+  /* la corda non deve intercettare i clic sul pulsante "Prenota": si tira solo dalla nappa */
+  .pull-rope { right: 6px; width: 28px; pointer-events: none; }
+  .pull-rope__tassel { pointer-events: auto; }
 }
 @keyframes rope-sway { from { transform: rotate(-2.5deg); } to { transform: rotate(2.5deg); } }
 @keyframes rope-pull { 30% { transform: translateY(46px); } 60% { transform: translateY(-6px); } }
@@ -836,3 +839,6 @@ input[aria-invalid="true"], select[aria-invalid="true"] { border-color: var(--re
 }
 @keyframes bulbs { 50% { filter: brightness(.6); } }
 @media (max-width: 420px) { .section-title { font-size: 1.7rem; padding: 18px 22px 13px; } }
+
+/* parole lunghe (es. tedesco) nelle arti di Wondy */
+.roles__list li { hyphens: auto; overflow-wrap: anywhere; }
