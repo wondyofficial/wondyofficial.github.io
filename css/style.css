@@ -939,3 +939,9 @@ input[aria-invalid="true"], select[aria-invalid="true"] { border-color: var(--re
   .topbar:has(.lang-switch--topbar) .back svg { width: 24px; height: 24px; }
   .topbar:has(.lang-switch--topbar) { column-gap: 6px; }
 }
+/* pacchetti su PC: respiro tra le schede e il riquadro "Quanto è 4×5 metri?" */
+@media (min-width: 1024px) {
+  .view[data-view="pacchetti"] { row-gap: 32px; }
+  .view[data-view="pacchetti"] .pack { margin-bottom: 0; }
+  .view[data-view="pacchetti"] > .btn--big { margin-top: 0; }
+}
