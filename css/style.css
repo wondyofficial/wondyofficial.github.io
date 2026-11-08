@@ -876,3 +876,66 @@ input[aria-invalid="true"], select[aria-invalid="true"] { border-color: var(--re
 }
 /* telefono: ♪ e lingua sotto la frangia della mantovana */
 @media (max-width: 1023px) { .hero__music { top: calc(40px + env(safe-area-inset-top)); } }
+
+/* ============================================================
+   REVISIONE VISIVA DEL DESIGNER
+   ============================================================ */
+/* 1. barra interna: freccia "Indietro" sempre visibile, titolo al centro, W e lingua a destra */
+.back { white-space: nowrap; }
+.back svg { flex: none; }
+.topbar:has(.lang-switch--topbar) { grid-template-columns: auto 1fr auto auto; }
+.topbar:has(.lang-switch--topbar) .topbar__title { justify-self: center; text-align: center; padding: 0 6px; }
+
+/* 2. sul telefono Wondy non sta sopra le schermate con pulsanti fitti */
+@media (max-width: 759px) {
+  body:is([data-current="giochi"], [data-current="calendario"], [data-current="richiesta"], [data-current="pacchetti"], [data-current="famiglie"]) .wondy { display: none; }
+}
+
+/* 3. menu del PC leggibile anche sopra l'insegna illuminata della foto */
+@media (min-width: 1024px) {
+  .deskbar { background: linear-gradient(180deg, rgba(13, 10, 20, .88), rgba(13, 10, 20, 0)); }
+  /* 4. foto dell'hero sfumata a sinistra senza stacchi */
+  .hero__media { left: 28%; -webkit-mask: linear-gradient(90deg, transparent, #000 30%); mask: linear-gradient(90deg, transparent, #000 30%); }
+  .hero__media::after { background: linear-gradient(180deg, transparent 65%, var(--bg)); }
+  /* 6. calendario: niente vuoto tra intestazione e griglia */
+  .view[data-view="calendario"] .cal { grid-row: 2 / span 2; }
+  .view[data-view="calendario"] .small-note { grid-row: 2; }
+  .view[data-view="calendario"] .sticky-bar { grid-row: 3; }
+  /* 7. galleria: tre colonne regolari */
+  .gallery__track { grid-template-columns: repeat(3, 1fr); }
+  .gallery figure:first-child { grid-row: auto; aspect-ratio: 4 / 5; }
+}
+/* 5. foto: zoom animato più leggero (le foto originali sono larghe 1440px) */
+@keyframes kenburns { to { transform: scale(1.08) translate(-1%, .5%); } }
+.hero__media img { transform: scale(1.02); }
+
+/* 8. biglietti dell'hero tutti alti uguali */
+.hero__ctas { grid-auto-rows: 1fr; }
+@media (min-width: 1024px) and (max-width: 1279px) { .hero__ctas { grid-template-columns: 1fr; max-width: 440px; } }
+
+/* 9. pulsanti social: con testi lunghi gli ultimi due prendono tutta la riga */
+@media (max-width: 420px) { .socials .social:nth-last-child(-n+2) { grid-column: 1 / -1; } }
+
+/* 10. contrasto */
+.pack__tag { color: #FF7A6E; }
+.tag-pill { background: rgba(13, 10, 20, .65); }
+
+/* 11. calendario non leggibile: niente legenda né nota "aggiornata" */
+.cal:has(.cal-status--error:not([hidden])) .legend { display: none; }
+.view[data-view="calendario"]:has(.cal-status--error:not([hidden])) .small-note { display: none; }
+
+/* 12. simboli con il carattere giusto */
+.hero__music, .deskbar__music, .cal-nav, .wondy__close { font-family: var(--serif); }
+
+/* 13. footer */
+.credits__list { text-wrap: balance; }
+
+/* 14. coerenza: titoli dei giochi come le altre card, icone dei link alla stessa misura ottica */
+.game-pick h3 { font: 600 1.3rem/1.2 var(--serif); letter-spacing: 0; text-transform: none; }
+.card-link .prop { width: 36px; height: 36px; padding: 2px; }
+/* schermi stretti: "Indietro" diventa solo freccia (il testo resta per i lettori di schermo) */
+@media (max-width: 420px) {
+  .topbar:has(.lang-switch--topbar) .back { font-size: 0; gap: 0; min-width: 44px; justify-content: center; padding: 0; }
+  .topbar:has(.lang-switch--topbar) .back svg { width: 24px; height: 24px; }
+  .topbar:has(.lang-switch--topbar) { column-gap: 6px; }
+}
