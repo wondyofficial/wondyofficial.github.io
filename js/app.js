@@ -79,6 +79,7 @@ document.addEventListener("DOMContentLoaded", function () {
       show();
       if (link) { const h = document.querySelector("[data-view]:not([hidden]) .view__head h2"); if (h) h.style.viewTransitionName = "hero-link"; }
     });
+    vt.ready.catch(() => {}); /* transizione saltata navigando molto in fretta: nessun problema */
     vt.finished.finally(() => { document.querySelectorAll(".view__head h2").forEach((h) => { h.style.viewTransitionName = ""; }); });
     lastLink = null;
   });
