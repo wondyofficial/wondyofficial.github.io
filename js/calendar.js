@@ -185,11 +185,10 @@
   function renderBar() {
     if (!el.bar) return;
     const n = W.store.selection.length;
-    const show = W.store.mode === "azienda" && n > 0;
+    const show = n > 0;
     el.bar.hidden = !show;
     if (show) {
       el.bar.querySelector("[data-bar-count]").textContent = `${n} ${n === 1 ? "giorno selezionato" : "giorni selezionati"}`;
-      el.bar.querySelector("[data-opt48]").checked = !!W.store.option48h;
     }
   }
 
@@ -205,22 +204,16 @@
     const b = e.target.closest("[data-day]");
     if (!b || b.disabled) return;
     const k = b.dataset.day;
-    if (W.store.mode === "azienda") {
-      const sel = W.store.selection;
-      const i = sel.findIndex((x) => x.date === k);
-      if (i >= 0) sel.splice(i, 1); else sel.push({ date: k });
-      sel.sort((a, b2) => a.date.localeCompare(b2.date));
-      W.save();
-    } else {
-      W.store.selection = [{ date: k }];
-      W.save();
-      location.hash = "#richiesta";
-    }
+    /* un solo percorso per tutti: si toccano uno o più giorni, poi "Continua" */
+    const sel = W.store.selection;
+    const i = sel.findIndex((x) => x.date === k);
+    if (i >= 0) sel.splice(i, 1); else sel.push({ date: k });
+    sel.sort((a, b2) => a.date.localeCompare(b2.date));
+    W.save();
   });
   el.prev.addEventListener("click", () => { if (monthIdx > 0) { monthIdx--; renderGrid(); } });
   el.next.addEventListener("click", () => { if (monthIdx < months.length - 1) { monthIdx++; renderGrid(); } });
   if (el.bar) {
-    el.bar.querySelector("[data-opt48]").addEventListener("change", (e) => { W.store.option48h = e.target.checked; W.save(); });
     el.bar.querySelector("[data-bar-clear]").addEventListener("click", () => { W.store.selection = []; W.save(); });
   }
   document.addEventListener("wondy:change", render);
@@ -260,5 +253,8 @@
         if (i >= 0) monthIdx = i;
       }
       render();
+      /* giorni liberi a disposizione degli altri script (striscia in home, Wondy digitale) */
+      W.freeDays = [...days].filter(([, st]) => st === "libero").map(([k]) => k);
+      document.dispatchEvent(new CustomEvent("wondy:days"));
     });
 })();

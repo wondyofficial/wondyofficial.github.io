@@ -47,16 +47,41 @@ document.addEventListener("DOMContentLoaded", function () {
     views.forEach((v) => { v.hidden = v !== target; });
     document.body.dataset.current = target.dataset.view;
     document.title = target.dataset.title ? `${target.dataset.title} · ${baseTitle}` : baseTitle;
+    document.querySelectorAll("[data-nav-link]").forEach((a) => { if (a.dataset.navLink === target.dataset.view) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current"); });
     if (current !== null) {
-      window.scrollTo(0, 0);
+      const back = document.documentElement.dataset.nav === "back";
+      window.scrollTo(0, back && history.state && history.state.y ? history.state.y : 0);
       const h = target.querySelector("h1, h2");
       if (h) { h.setAttribute("tabindex", "-1"); h.focus({ preventScroll: true }); }
-      if (!reduce.matches) { target.classList.remove("is-entering"); void target.offsetWidth; target.classList.add("is-entering"); }
+      if (!reduce.matches && !document.startViewTransition) { target.classList.remove("is-entering"); void target.offsetWidth; target.classList.add("is-entering"); }
     }
     current = target.dataset.view;
     document.dispatchEvent(new CustomEvent("wondy:view", { detail: current }));
   }
-  window.addEventListener("hashchange", show);
+  /* il link toccato "diventa" il titolo della schermata successiva (View Transitions) */
+  let lastLink = null;
+  if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+  /* prima di cambiare schermata ricorda dov'eri, per ritrovarlo con "Indietro" */
+  document.addEventListener("click", (e) => {
+    if (e.target.closest('a[href^="#"]')) history.replaceState(Object.assign({}, history.state, { y: scrollY }), "");
+  }, true);
+  const deskbar = document.querySelector(".deskbar");
+  if (deskbar) addEventListener("scroll", () => deskbar.classList.toggle("is-scrolled", scrollY > 40), { passive: true });
+  document.addEventListener("click", (e) => { lastLink = e.target.closest('a[href^="#"]'); }, true);
+  window.addEventListener("hashchange", () => {
+    const back = !lastLink || lastLink.matches("[data-back]");
+    document.documentElement.dataset.nav = back ? "back" : "fwd";
+    if (!document.startViewTransition || reduce.matches) { show(); lastLink = null; return; }
+    const link = lastLink && !back && lastLink.closest(".ticket, .card-link") ? lastLink : null;
+    if (link) link.style.viewTransitionName = "hero-link";
+    const vt = document.startViewTransition(() => {
+      if (link) link.style.viewTransitionName = "";
+      show();
+      if (link) { const h = document.querySelector("[data-view]:not([hidden]) .view__head h2"); if (h) h.style.viewTransitionName = "hero-link"; }
+    });
+    vt.finished.finally(() => { document.querySelectorAll(".view__head h2").forEach((h) => { h.style.viewTransitionName = ""; }); });
+    lastLink = null;
+  });
 
   /* "Indietro": conta quante schermate del sito ci sono nella cronologia.
      Se non ce ne sono (es. arrivo diretto da Instagram) va alla home invece di uscire dal sito. */
@@ -64,7 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
   history.replaceState({ depth: 0 }, "");
   window.addEventListener("hashchange", () => {
     if (history.state && typeof history.state.depth === "number") depth = history.state.depth;
-    else { depth += 1; history.replaceState({ depth }, ""); }
+    else { depth += 1; history.replaceState(Object.assign({}, history.state, { depth }), ""); }
   });
   document.addEventListener("click", (e) => {
     const back = e.target.closest("[data-back]");
@@ -116,7 +141,7 @@ document.addEventListener("DOMContentLoaded", function () {
   document.querySelectorAll("[data-email]").forEach((a) => {
     if (C.contacts.email) a.href = "mailto:" + C.contacts.email; else a.closest("[data-optional]")?.remove() || a.remove();
   });
-  [["tiktok", (v) => "https://www.tiktok.com/@" + v], ["youtube", (v) => v]].forEach(([k, url]) => {
+  [["tiktok", (v) => "https://www.tiktok.com/@" + v], ["youtube", (v) => v], ["facebook", (v) => v]].forEach(([k, url]) => {
     document.querySelectorAll(`[data-${k}]`).forEach((a) => { if (C.contacts[k]) a.href = url(C.contacts[k]); else a.remove(); });
   });
   document.querySelectorAll("[data-techsheet]").forEach((a) => {

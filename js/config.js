@@ -34,8 +34,9 @@ window.CONFIG = {
     instagram: "wondy_real",
     whatsapp: "393755718877",   // prefisso 39 senza +
     email: "wondymanagement@gmail.com",
-    tiktok: "",            // username, facoltativo
-    youtube: ""            // URL del canale, facoltativo
+    youtube: "https://www.youtube.com/@wondychannel",
+    facebook: "https://www.facebook.com/clownwondy/",
+    tiktok: ""             // username, facoltativo
   },
 
   /* --- Materiali -------------------------------------------- */

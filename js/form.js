@@ -15,13 +15,6 @@
 
   /* ---------- modalità: il fieldset non attivo è disabilitato (non viene validato né inviato) ---------- */
   function applyMode() {
-    $$("fieldset[data-for]").forEach((fs) => {
-      const on = fs.dataset.for === W.store.mode;
-      fs.disabled = !on;
-      fs.hidden = !on;
-    });
-    $("[name=tipo_cliente]").value = W.store.mode === "azienda" ? "Azienda / ente" : "Festa privata";
-    $("[data-submit-label]").textContent = W.store.mode === "azienda" ? "Invia la richiesta di preventivo" : "Invia la richiesta";
     renderDates();
     syncPicks();
   }
@@ -33,7 +26,7 @@
       dateBox.innerHTML = sel.map((x, i) =>
         `<span class="chip">${W.esc(W.dateLabel(x.date))}
           <button type="button" class="chip__x" data-remove="${i}" aria-label="Rimuovi ${W.esc(W.dateLabel(x.date))}">×</button></span>`
-      ).join("") + `<a class="chip chip--link" href="#calendario">${W.store.mode === "azienda" ? "+ aggiungi date" : "cambia data"}</a>`;
+      ).join("") + `<a class="chip chip--link" href="#calendario">+ aggiungi o cambia</a>`;
       manual.hidden = true;
       $$("input, select", manual).forEach((i) => { i.disabled = true; });
     } else {
@@ -41,8 +34,6 @@
       manual.hidden = false;
       $$("input, select", manual).forEach((i) => { i.disabled = false; });
     }
-    const opt = $("[name=opzione_48h]");
-    if (opt) opt.checked = !!W.store.option48h;
   }
   dateBox.addEventListener("click", (e) => {
     const b = e.target.closest("[data-remove]");
@@ -63,7 +54,6 @@
   }
   form.addEventListener("change", (e) => {
     if (e.target.name === "pacchetto") { W.store.pacchetto = e.target.value; W.save(); }
-    if (e.target.name === "opzione_48h") { W.store.option48h = e.target.checked; W.save(); }
     if (e.target.getAttribute("aria-invalid") === "true") validateField(e.target);
     spaceWarning();
   });
@@ -129,7 +119,6 @@
   function collect() {
     const fd = new FormData(form);
     fd.set("date_richieste", datesText());
-    if (W.store.mode === "azienda") fd.set("opzione_48h", W.store.option48h ? "Sì, chiedo di bloccare la data per 48 ore" : "No");
     const rows = [];
     for (const [k, v] of fd.entries()) {
       if (k.startsWith("_") || k === "privacy" || k === "date_richieste" || k === "data_manuale" || !String(v).trim()) continue;
@@ -138,9 +127,7 @@
       if (prev) prev[1] += ", " + v; else rows.push([lab, String(v)]);
     }
     rows.unshift(["Date richieste", fd.get("date_richieste") || "da definire"]);
-    const subj = W.store.mode === "azienda"
-      ? `Preventivo aziendale – ${fd.get("ragione_sociale") || ""} – ${fd.get("date_richieste") || ""}`
-      : `Festa – ${fd.get("festeggiato") || fd.get("nome") || ""} – ${fd.get("date_richieste") || ""}`;
+    const subj = `Richiesta – ${fd.get("tipo_evento") || ""} – ${fd.get("festeggiato") || fd.get("nome") || ""} – ${fd.get("date_richieste") || ""}`;
     fd.set("_subject", subj.slice(0, 180));
     return { fd, rows };
   }
@@ -155,9 +142,7 @@
       <div class="done__seal" aria-hidden="true">${okSent ? "✦" : "✎"}</div>
       <h2 tabindex="-1">${okSent ? "Richiesta ricevuta!" : "La tua richiesta è pronta"}</h2>
       <p class="lead">${okSent
-        ? (W.store.mode === "azienda"
-          ? "Grazie. Riceverete un preventivo dettagliato entro 48 ore lavorative."
-          : "Grazie! Ti rispondo entro 24 ore con disponibilità e preventivo.")
+        ? "Grazie! Ti rispondo entro 24 ore con disponibilità e preventivo."
         : "Ultimo passo: mandami il riepilogo con un tocco" + (wa ? " su WhatsApp" : "") + (C.contacts.email ? " o via email" : "") + "."}</p>
       ${okSent ? `<p class="note">La data non è ancora bloccata: lo diventa quando confermiamo insieme.</p>` : ""}
       ${rowsHtml(rows)}
@@ -214,6 +199,24 @@
       btn.classList.remove("is-loading");
     }
   });
+
+  /* ricorda i campi già scritti durante la sessione (se il browser ricarica la pagina non si perde nulla) */
+  const DRAFT = "wondy-form-draft";
+  try {
+    const d = JSON.parse(sessionStorage.getItem(DRAFT) || "{}");
+    Object.entries(d).forEach(([k, v]) => {
+      $$(`[name="${k}"]`).forEach((f) => {
+        if (f.type === "radio" || f.type === "checkbox") f.checked = [].concat(v).includes(f.value);
+        else if (f.type !== "hidden") f.value = v;
+      });
+    });
+  } catch (e) {}
+  form.addEventListener("input", () => {
+    const d = {};
+    for (const [k, v] of new FormData(form).entries()) { if (k.startsWith("_") || k === "privacy") continue; d[k] = d[k] ? [].concat(d[k], v) : v; }
+    try { sessionStorage.setItem(DRAFT, JSON.stringify(d)); } catch (e) {}
+  });
+  form.addEventListener("reset", () => { try { sessionStorage.removeItem(DRAFT); } catch (e) {} });
 
   document.addEventListener("wondy:change", applyMode);
   document.addEventListener("wondy:view", (e) => {

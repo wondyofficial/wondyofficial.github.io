@@ -4,22 +4,30 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Wondy · Thomas Lucaccini</title>
-  <meta name="description" content="Wondy, il clown funambolo di Thomas Lucaccini. Verifica subito la disponibilità e richiedi un preventivo per feste private ed eventi aziendali.">
-  <meta name="theme-color" content="#F6EFE3">
+  <meta name="description" content="Wondy · Thomas Lucaccini: clown, physical actor, fantasista. Verifica subito la disponibilità e richiedi un preventivo per feste private ed eventi aziendali.">
+  <meta name="theme-color" content="#0D0A14">
   <meta property="og:title" content="Wondy · Thomas Lucaccini">
-  <meta property="og:description" content="Clown, funambolo, giocoliere. Verifica la disponibilità e richiedi una data.">
-  <meta property="og:image" content="assets/logo-wondy.png">
+  <meta property="og:description" content="Clown · Physical actor · Fantasista. Verifica la disponibilità e richiedi una data.">
+  <meta property="og:image" content="https://wondyofficial.github.io/assets/foto/benvenuti.jpg">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <script>/* sipario d'apertura: solo alla prima visita della sessione e se non si chiede di ridurre il movimento */
+    try { if (!sessionStorage.getItem("wondy-intro") && (!location.hash || location.hash === "#home") && !matchMedia("(prefers-reduced-motion: reduce)").matches) { document.documentElement.classList.add("js-intro"); sessionStorage.setItem("wondy-intro", "1"); } } catch (e) {}</script>
+  <noscript><style>.reveal { opacity: 1 !important; transform: none !important; } .roles__list li { background-size: 100% 100% !important; }</style></noscript>
+  <link rel="preload" as="image" href="assets/foto/benvenuti-m.jpg" media="(max-width: 759px)">
+  <link rel="preload" as="image" href="assets/foto/benvenuti.jpg" media="(min-width: 760px)">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/giochi.css">
   <script defer src="js/config.js"></script>
   <script defer src="js/app.js"></script>
   <script defer src="js/calendar.js"></script>
   <script defer src="js/form.js"></script>
+  <script defer src="js/wondy.js"></script>
+  <script defer src="js/giochi.js"></script>
 </head>
-<body data-mode="privato">
+<body>
 
 <!-- Simboli SVG riutilizzati -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -31,12 +39,23 @@
   <symbol id="i-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="3.5" y="5.5" width="17" height="13" rx="2"/><path d="M4 7l8 6 8-6"/></g></symbol>
   <symbol id="i-book" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M4 5.5C6.5 4 9.5 4 12 6c2.5-2 5.5-2 8-.5V19c-2.5-1.5-5.5-1.5-8 .5-2.5-2-5.5-2-8-.5z"/><path d="M12 6v13.5"/><circle cx="7.5" cy="10" r="1" fill="currentColor"/><circle cx="16.5" cy="10" r="1" fill="#9E2B25" stroke="none"/></g></symbol>
   <symbol id="i-out" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-yt" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="M10 9.2v5.6l4.8-2.8z" fill="currentColor" stroke="none"/></g></symbol>
+  <symbol id="i-fb" viewBox="0 0 24 24"><path d="M14 8.5V7c0-.8.5-1.2 1.2-1.2H17V3h-2.5C11.9 3 11 4.6 11 6.7v1.8H8.5V11.5H11V21h3v-9.5h2.6l.4-3z" fill="currentColor"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="8.5" r="3.6"/><path d="M4.5 20c1.2-3.6 4-5.3 7.5-5.3s6.3 1.7 7.5 5.3"/><path d="M19 4v4M17 6h4"/></g></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="i-back" viewBox="0 0 24 24"><path d="M19 12H6M11 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="i-flourish" viewBox="0 0 240 24"><g fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><path d="M4 12h86M150 12h86"/><path d="M120 4l5 8-5 8-5-8z" fill="currentColor"/><path d="M110 12c-6-7-14-7-16 0 2 7 10 7 16 0zM130 12c6-7 14-7 16 0-2 7-10 7-16 0z"/></g></symbol>
 </svg>
 
 <div class="stage" aria-hidden="true"><span class="curtain curtain--l"></span><span class="curtain curtain--r"></span><span class="spot"></span></div>
+<div class="intro" aria-hidden="true"><span class="intro__half intro__half--l"></span><span class="intro__half intro__half--r"></span><img class="intro__logo" src="assets/logo-wondy.png" alt=""></div>
+
+<nav class="deskbar" aria-label="Navigazione">
+  <a class="deskbar__logo" href="#home" aria-label="Wondy, torna all'inizio"><img src="assets/logo-wondy.png" alt="" width="1100" height="360"></a>
+  <a href="#calendario" data-nav-link="calendario">Disponibilità</a><a href="#pacchetti" data-nav-link="pacchetti">Feste</a><a href="#aziende" data-nav-link="aziende">Eventi</a><a href="#chi-sono" data-nav-link="chi-sono">Chi è Wondy</a><a href="#giochi" data-nav-link="giochi">Giochi</a><a href="#faq" data-nav-link="faq">FAQ</a>
+  <a class="deskbar__cta" href="#richiesta">Prenota</a>
+</nav>
 
 <main class="column">
 
@@ -45,45 +64,89 @@
      ========================================================= -->
 <section class="view view--home" data-view="home" aria-labelledby="home-title">
   <header class="hero">
-    <h1 id="home-title" class="logo" aria-label="Wondy · Thomas Lucaccini">
-      <img data-logo src="assets/logo-wondy.png" alt="Wondy · Thomas Lucaccini" width="1100" height="360">
-      <span class="logo__text" aria-hidden="true"><span class="logo__name">Wondy</span><span class="logo__sub">Thomas Lucaccini</span></span>
-    </h1>
-    <p class="eyebrow">Clown · Funambolo · Giocoliere · Mimo</p>
-    <p class="bio">Compleanni, feste private ed <em>eventi aziendali</em>, da Pisa.<br><span class="bio__poem">Entra in scena, e tutto il resto sparisce.</span></p>
+    <div class="hero__media" aria-hidden="true"><picture><source media="(max-width: 759px)" srcset="assets/foto/benvenuti-m.jpg" width="680" height="960"><img src="assets/foto/benvenuti.jpg" alt="" width="1400" height="932" fetchpriority="high"></picture></div>
+    <div class="hero__spot" aria-hidden="true"></div>
+    <canvas class="hero__sparks" aria-hidden="true"></canvas>
+    <div class="hero__content">
+      <p class="tag-pill reveal">✦ Clown · Physical actor · Fantasista ✦</p>
+      <h1 id="home-title" class="logo reveal" aria-label="Wondy · Thomas Lucaccini">
+        <img data-logo src="assets/logo-wondy.png" alt="" width="760" height="249">
+        <span class="logo__text" aria-hidden="true"><span class="logo__name">Wondy</span><span class="logo__sub">Thomas Lucaccini</span></span>
+      </h1>
+      <p class="hero__tag reveal">Compleanni, feste private ed <em>eventi aziendali</em>.<span>Entra in scena, e tutto il resto sparisce.</span></p>
+      <div class="hero__ctas">
+        <a class="ticket reveal" href="#calendario">
+          <span class="ticket__stub" aria-hidden="true"><span class="roman">I</span><svg class="ico"><use href="#i-cal"/></svg></span>
+          <span class="ticket__body"><strong>Verifica disponibilità</strong><small>Vedi subito i giorni liberi</small></span>
+          <svg class="ticket__arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
+        </a>
+        <a class="ticket ticket--gold reveal" href="#richiesta">
+          <span class="ticket__stub" aria-hidden="true"><span class="roman">II</span><svg class="ico"><use href="#i-quill"/></svg></span>
+          <span class="ticket__body"><strong>Richiedi un preventivo</strong><small>Feste, eventi, spettacoli</small></span>
+          <svg class="ticket__arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
+        </a>
+      </div>
+    </div>
+    <button type="button" class="scroll-cue" data-scroll-to="scopri" aria-label="Scopri di più"><svg aria-hidden="true"><use href="#i-down"/></svg></button>
   </header>
 
-  <nav class="links" aria-label="Menu principale">
-    <a class="ticket" href="#calendario">
-      <span class="ticket__stub" aria-hidden="true"><span class="roman">I</span><svg class="ico"><use href="#i-cal"/></svg></span>
-      <span class="ticket__body"><strong>Verifica disponibilità</strong><small>Vedi subito i giorni liberi</small></span>
-      <svg class="ticket__arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
+  <a class="ticker" href="#calendario" aria-label="Vai al calendario dei giorni liberi">
+    <span class="ticker__label">Giorni liberi</span>
+    <span class="ticker__viewport"><span class="ticker__track" data-ticker>
+      <span class="ticker__items">Clown <i>✦</i> Physical actor <i>✦</i> Fantasista <i>✦</i> Gardaland <i>✦</i> Tanka Village <i>✦</i> VOI Colonna <i>✦</i></span>
+    </span></span>
+  </a>
+
+  <nav class="links" id="scopri" aria-label="Menu principale">
+    <a class="card-link reveal" href="#pacchetti"><svg class="star" aria-hidden="true"><use href="#i-star"/></svg><span>Pacchetti per feste<small>Surprise · Fantasy · Wondy</small></span><svg class="arr" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    <a class="card-link reveal" href="#aziende"><svg class="star" aria-hidden="true"><use href="#i-star"/></svg><span>Spettacoli ed eventi<small>Formati per ogni occasione</small></span><svg class="arr" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    <a class="card-link reveal" href="#chi-sono"><svg class="star" aria-hidden="true"><use href="#i-star"/></svg><span>Chi è Wondy<small>Thomas Lucaccini, da Pisa</small></span><svg class="arr" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    <a class="card-link reveal" href="#faq"><svg class="star" aria-hidden="true"><use href="#i-star"/></svg><span>Domande frequenti<small>Spazio, pioggia, prenotazione</small></span><svg class="arr" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+
+    <a class="card-link card-link--games reveal" href="#giochi"><svg class="star" aria-hidden="true"><use href="#i-star"/></svg><span>Giochi per bambini<small>Acchiappa il naso · Giocoleria · Memory</small></span><svg class="arr" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+
+    <a class="book reveal" href="https://amzn.eu/d/0if972Qw" target="_blank" rel="noopener">
+      <img src="assets/foto/libro.jpg" alt="" width="420" height="560" loading="lazy">
+      <span class="book__body"><em>Il libro di Wondy</em><strong>Wondy Paint</strong><small>Summer Coloring Book · su Amazon</small></span>
+      <svg class="arr" aria-hidden="true"><use href="#i-out"/></svg>
     </a>
-    <a class="ticket" href="#richiesta">
-      <span class="ticket__stub" aria-hidden="true"><span class="roman">II</span><svg class="ico"><use href="#i-quill"/></svg></span>
-      <span class="ticket__body"><strong>Richiedi un preventivo</strong><small>Feste private e aziende</small></span>
-      <svg class="ticket__arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
-    </a>
 
-    <svg class="flourish" aria-hidden="true"><use href="#i-flourish"/></svg>
-
-    <a class="card-link" href="#pacchetti"><svg class="star" aria-hidden="true"><use href="#i-star"/></svg><span>Pacchetti per feste<small>Surprise · Fantasy · Wondy</small></span><svg class="arr" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-    <a class="card-link" href="#aziende"><svg class="star" aria-hidden="true"><use href="#i-star"/></svg><span>Aziende ed eventi<small>Family day, inaugurazioni, villaggi</small></span><svg class="arr" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-    <a class="card-link" href="#chi-sono"><svg class="star" aria-hidden="true"><use href="#i-star"/></svg><span>Chi è Wondy<small>Thomas Lucaccini, da Pisa</small></span><svg class="arr" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-    <a class="card-link" href="#faq"><svg class="star" aria-hidden="true"><use href="#i-star"/></svg><span>Domande frequenti<small>Spazio, pioggia, prenotazione</small></span><svg class="arr" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-
-    <a class="card-link card-link--book" href="https://amzn.eu/d/0if972Qw" target="_blank" rel="noopener"><svg class="book" aria-hidden="true"><use href="#i-book"/></svg><span><em class="card-link__tag">Il libro di Wondy</em>Wondy Paint<small>Summer Coloring Book · su Amazon</small></span><svg class="arr" aria-hidden="true"><use href="#i-out"/></svg></a>
-
-    <div class="socials">
+    <div class="socials reveal">
       <a class="social" data-instagram href="https://www.instagram.com/wondy_real/" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-ig"/></svg><span data-instagram-handle>@wondy_real</span></a>
       <a class="social" data-whatsapp target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg><span>WhatsApp</span><em data-soon>presto</em></a>
-      <a class="social social--span" data-email href="#"><svg aria-hidden="true"><use href="#i-mail"/></svg><span>Scrivi una email</span></a>
+      <a class="social" data-youtube href="#" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-yt"/></svg><span>YouTube</span></a>
+      <a class="social" data-facebook href="#" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-fb"/></svg><span>Facebook</span></a>
+      <a class="social" data-email href="#"><svg aria-hidden="true"><use href="#i-mail"/></svg><span>Email</span></a>
+      <a class="social" href="assets/wondy.vcf" download="Wondy.vcf"><svg aria-hidden="true"><use href="#i-user"/></svg><span>Salva contatto</span></a>
     </div>
   </nav>
+
+  <section class="roles" aria-label="Le arti di Wondy">
+    <p class="tag-pill reveal">✦ L'arte della meraviglia ✦</p>
+    <ul class="roles__list">
+      <li>Clown</li><li>Physical actor</li><li>Fantasista</li>
+    </ul>
+  </section>
+
+  <section class="gallery" aria-labelledby="gal-h">
+    <h2 id="gal-h" class="section-title reveal">I mille volti di <em>Wondy</em></h2>
+    <div class="gallery__track" tabindex="0" aria-label="Galleria fotografica, scorri di lato">
+      <figure><img src="assets/foto/fiore.jpg" alt="Wondy tiene in equilibrio un girasole sul naso" loading="lazy" style="object-position:52% 30%"><figcaption>Equilibrio su un fiore</figcaption></figure>
+      <figure><img src="assets/foto/cestino.jpg" alt="Wondy sul palco lancia un cestino" loading="lazy" style="object-position:55% 40%"><figcaption>Il cestino ribelle</figcaption></figure>
+      <figure><img src="assets/foto/orsetto.jpg" alt="Wondy con un orsacchiotto e una luce in mano" loading="lazy" style="object-position:45% 30%"><figcaption>L'orso e la luce</figcaption></figure>
+      <figure><img src="assets/foto/corda.jpg" alt="Wondy ride tenendo una corda" loading="lazy" style="object-position:45% 30%"><figcaption>La corda</figcaption></figure>
+      <figure><img src="assets/foto/stupore.jpg" alt="Primo piano di Wondy stupito" loading="lazy" style="object-position:45% 40%"><figcaption>Stupore</figcaption></figure>
+      <figure><img src="assets/foto/trucco.jpg" alt="Thomas si trucca prima di entrare in scena" loading="lazy" style="object-position:55% 40%"><figcaption>Prima di entrare in scena</figcaption></figure>
+    </div>
+  </section>
 
   <footer class="credits">
     <p class="eyebrow eyebrow--small">Visto in scena a</p>
     <p class="credits__list">Gardaland <span>✦</span> Tanka Village <span>✦</span> VOI Colonna</p>
+    <a class="ticket ticket--small" href="#calendario">
+      <span class="ticket__body"><strong>Prenota la tua data</strong></span>
+      <svg class="ticket__arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
+    </a>
     <p class="fineprint">© <span id="year"></span> Wondy · Thomas Lucaccini · <a href="privacy.html">Privacy</a></p>
   </footer>
 </section>
@@ -97,15 +160,10 @@
   <div class="view__head">
     <p class="eyebrow"><span class="roman">I</span> Il calendario</p>
     <h2 id="cal-h">Quando vuoi <em>Wondy</em>?</h2>
-    <p class="lead">Tocca un giorno libero: il modulo si compila da solo.</p>
+    <p class="lead">Tocca uno o più giorni liberi, poi continua con la richiesta.</p>
     <p class="hint-wa">Non trovi il giorno che vuoi? <a data-whatsapp target="_blank" rel="noopener">Scrivimi su WhatsApp</a>: a volte si libera un posto.</p>
   </div>
 
-  <div class="switch" data-mode-switch role="group" aria-label="Tipo di evento">
-    <button type="button" data-mode="privato">Festa privata</button>
-    <button type="button" data-mode="azienda">Azienda / evento</button>
-  </div>
-  <p class="mode-note only-azienda">Tocca tutti i giorni che vi interessano, poi continuate con la richiesta.</p>
 
   <div id="cal" class="cal">
     <p class="cal-status" data-cal-status role="status" aria-live="polite" hidden></p>
@@ -130,8 +188,7 @@
       <span data-bar-count></span>
       <button type="button" class="btn btn--link btn--small" data-bar-clear>Svuota</button>
     </div>
-    <label class="check check--inline"><input type="checkbox" data-opt48> Chiedo di tenere la data in opzione per 48 ore</label>
-    <a class="btn btn--primary" href="#richiesta?tipo=azienda">Continua con la richiesta</a>
+    <a class="btn btn--primary" href="#richiesta">Continua con la richiesta</a>
   </div>
 </section>
 
@@ -144,18 +201,12 @@
   <div class="view__head">
     <p class="eyebrow"><span class="roman">II</span> Il preventivo</p>
     <h2 id="req-h">Raccontami il tuo <em>evento</em></h2>
-    <p class="lead only-privato">Due minuti, e ti rispondo entro 24 ore.</p>
-    <p class="lead only-azienda">Riceverete un preventivo scritto entro 48 ore lavorative.</p>
+    <p class="lead">Due minuti, e ti rispondo entro 24 ore con disponibilità e preventivo.</p>
   </div>
 
-  <div class="switch" data-mode-switch role="group" aria-label="Tipo di evento">
-    <button type="button" data-mode="privato">Festa privata</button>
-    <button type="button" data-mode="azienda">Azienda / evento</button>
-  </div>
 
   <form id="richiesta-form" class="form" novalidate>
     <div class="errors" data-errors tabindex="-1" role="alert" hidden></div>
-    <input type="hidden" name="tipo_cliente" data-label="Tipo di cliente">
     <div class="hp" aria-hidden="true"><label>Non compilare <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
 
     <fieldset class="group">
@@ -170,16 +221,28 @@
       </div>
     </fieldset>
 
-    <!-- ---------- FESTA PRIVATA ---------- -->
-    <fieldset class="group" data-for="privato">
-      <legend class="group__title"><span class="roman">ii</span> La festa</legend>
+    <!-- ---------- L'EVENTO ---------- -->
+    <fieldset class="group">
+      <legend class="group__title"><span class="roman">ii</span> L'evento</legend>
+
+      <div class="field">
+        <label for="f-tipo">Che evento è? *</label>
+        <select id="f-tipo" name="tipo_evento" required data-label="Tipo di evento" data-required="Dimmi che tipo di evento è.">
+          <option value="">Seleziona</option>
+          <option>Compleanno</option><option>Festa privata</option><option>Battesimo / Comunione / Cresima</option><option>Matrimonio</option>
+          <option>Evento aziendale / Family day</option><option>Festa di Natale</option><option>Inaugurazione / negozio</option>
+          <option>Centro commerciale / fiera</option><option>Hotel / villaggio turistico</option><option>Scuola / evento pubblico</option><option>Altro</option>
+        </select>
+        <p class="field__error" aria-live="polite"></p>
+      </div>
 
       <fieldset class="field">
-        <legend>Pacchetto *</legend>
+        <legend>Cosa ti piacerebbe? *</legend>
         <div class="choices choices--cards">
-          <label class="choice"><input type="radio" id="f-pac" name="pacchetto" value="Surprise" required data-label="Pacchetto" data-required="Scegli un pacchetto (va bene anche “consigliami tu”)."><span><strong>Surprise</strong><small>Ingresso a sorpresa, giochi e un regalo per ogni bambino</small></span></label>
+          <label class="choice"><input type="radio" id="f-pac" name="pacchetto" value="Surprise" required data-label="Spettacolo" data-required="Scegli una proposta (va bene anche “consigliami tu”)."><span><strong>Surprise</strong><small>Ingresso a sorpresa, giochi e un regalo per ogni bambino</small></span></label>
           <label class="choice"><input type="radio" name="pacchetto" value="Fantasy"><span><strong>Fantasy</strong><small>Surprise + spettacolo di magia di circa 30 minuti</small></span></label>
           <label class="choice"><input type="radio" name="pacchetto" value="Wondy"><span><strong>Wondy</strong><small>Ingresso a sorpresa + show di circa un'ora</small></span></label>
+          <label class="choice"><input type="radio" name="pacchetto" value="Animazione itinerante / meet & greet"><span><strong>Animazione itinerante</strong><small>Wondy tra il pubblico, foto e sorprese</small></span></label>
           <label class="choice"><input type="radio" name="pacchetto" value="Consigliami tu"><span><strong>Consigliami tu</strong><small>Decidiamo insieme</small></span></label>
         </div>
         <p class="field__error" aria-live="polite"></p>
@@ -187,31 +250,32 @@
 
       <div class="row">
         <div class="field">
-          <label for="f-fest">Nome del festeggiato</label>
-          <input id="f-fest" name="festeggiato" autocomplete="off" data-label="Festeggiato" placeholder="Così Wondy lo chiama per nome">
+          <label for="f-fest">C'è un festeggiato?</label>
+          <input id="f-fest" name="festeggiato" autocomplete="off" data-label="Festeggiato" placeholder="Così Wondy lo saluta per nome">
         </div>
         <div class="field field--short">
           <label for="f-eta">Anni che compie</label>
-          <input id="f-eta" name="eta_festeggiato" type="number" inputmode="numeric" min="1" max="99" data-label="Età" data-range="Inserisci un'età tra 1 e 99.">
+          <input id="f-eta" name="eta_festeggiato" type="number" inputmode="numeric" pattern="[0-9]*" min="1" max="120" data-label="Età" data-range="Inserisci un'età valida.">
           <p class="field__error" aria-live="polite"></p>
         </div>
       </div>
 
       <div class="field">
-        <label for="f-bimbi">Quanti bambini, più o meno?</label>
-        <select id="f-bimbi" name="numero_bambini" data-label="Bambini">
-          <option value="">Seleziona</option><option>Fino a 10</option><option>10–20</option><option>20–30</option><option>30–50</option><option>Più di 50</option>
+        <label for="f-bimbi">Quante persone, più o meno?</label>
+        <select id="f-bimbi" name="partecipanti" data-label="Partecipanti">
+          <option value="">Seleziona</option><option>Fino a 15</option><option>15–30</option><option>30–60</option><option>60–150</option><option>Più di 150</option>
         </select>
       </div>
 
       <fieldset class="field">
         <legend>Dove si svolge?</legend>
         <div class="choices choices--pills">
-          <label class="pill"><input type="radio" name="location" value="Casa" data-label="Location"><span>Casa</span></label>
+          <label class="pill"><input type="radio" name="location" value="Casa" data-label="Luogo"><span>Casa</span></label>
           <label class="pill"><input type="radio" name="location" value="Giardino"><span>Giardino</span></label>
-          <label class="pill"><input type="radio" name="location" value="Sala feste"><span>Sala feste</span></label>
-          <label class="pill"><input type="radio" name="location" value="Ristorante / locale"><span>Locale</span></label>
-          <label class="pill"><input type="radio" name="location" value="Altro"><span>Altro</span></label>
+          <label class="pill"><input type="radio" name="location" value="Sala feste / locale"><span>Sala / locale</span></label>
+          <label class="pill"><input type="radio" name="location" value="Azienda / negozio"><span>Azienda / negozio</span></label>
+          <label class="pill"><input type="radio" name="location" value="Piazza / spazio pubblico"><span>Piazza</span></label>
+          <label class="pill"><input type="radio" name="location" value="Hotel / villaggio"><span>Hotel / villaggio</span></label>
         </div>
       </fieldset>
 
@@ -235,105 +299,16 @@
         <p class="warn" data-space-warning hidden>Senza spazio 4×5 lo show completo è difficile: nessun problema, nel preventivo ti propongo l'alternativa giusta.</p>
       </fieldset>
 
-      <div class="field field--short">
-        <label for="f-ora">Ora di inizio (se la sai)</label>
-        <input id="f-ora" type="time" name="ora_inizio" data-label="Ora inizio">
-      </div>
-    </fieldset>
-
-    <!-- ---------- AZIENDA ---------- -->
-    <fieldset class="group" data-for="azienda" disabled hidden>
-      <legend class="group__title"><span class="roman">ii</span> L'evento</legend>
-
-      <div class="field">
-        <label for="f-rs">Azienda / ente *</label>
-        <input id="f-rs" name="ragione_sociale" required autocomplete="organization" data-label="Ragione sociale" data-required="Indica l'azienda o l'ente.">
-        <p class="field__error" aria-live="polite"></p>
-      </div>
       <div class="row">
         <div class="field">
-          <label for="f-piva">Partita IVA</label>
-          <input id="f-piva" name="partita_iva" inputmode="numeric" pattern="(IT)? ?[0-9]{11}" data-label="P.IVA" data-pattern="La partita IVA ha 11 cifre.">
-          <p class="field__error" aria-live="polite"></p>
+          <label for="f-ora">Ora di inizio (se la sai)</label>
+          <input id="f-ora" type="time" name="ora_inizio" data-label="Ora inizio">
         </div>
         <div class="field">
-          <label for="f-ruolo">Il tuo ruolo</label>
-          <input id="f-ruolo" name="ruolo" autocomplete="organization-title" data-label="Ruolo" placeholder="es. Event manager">
+          <label for="f-rs">Azienda o ente <small>(facoltativo)</small></label>
+          <input id="f-rs" name="azienda" autocomplete="organization" data-label="Azienda / ente" placeholder="Solo se serve la fattura">
         </div>
       </div>
-
-      <div class="field">
-        <label for="f-tipo">Tipo di evento *</label>
-        <select id="f-tipo" name="tipo_evento" required data-label="Tipo di evento" data-required="Scegli il tipo di evento.">
-          <option value="">Seleziona</option>
-          <option>Family day</option><option>Festa di Natale aziendale</option><option>Inaugurazione / apertura</option>
-          <option>Centro commerciale</option><option>Fiera / stand</option><option>Hotel / villaggio turistico</option>
-          <option>Evento pubblico / comune</option><option>Altro</option>
-        </select>
-        <p class="field__error" aria-live="polite"></p>
-      </div>
-
-      <fieldset class="field">
-        <legend>Formati che vi interessano</legend>
-        <div class="choices choices--checks">
-          <label class="check"><input type="checkbox" name="formati" value="Walking act" data-label="Formati"> Walking act / animazione itinerante</label>
-          <label class="check"><input type="checkbox" name="formati" value="Show su palco"> Show su palco (30, 45 o 60 min)</label>
-          <label class="check"><input type="checkbox" name="formati" value="Meet & greet e foto"> Meet & greet e foto</label>
-          <label class="check"><input type="checkbox" name="formati" value="Laboratorio di circo"> Laboratorio di circo per bambini</label>
-          <label class="check"><input type="checkbox" name="formati" value="Personalizzazione brand"> Personalizzazione con il vostro brand</label>
-          <label class="check"><input type="checkbox" name="formati" value="Da valutare"> Non so, consigliatemi</label>
-        </div>
-      </fieldset>
-
-      <div class="row">
-        <div class="field">
-          <label for="f-part">Partecipanti previsti</label>
-          <input id="f-part" name="partecipanti" type="number" inputmode="numeric" min="1" data-label="Partecipanti">
-        </div>
-        <div class="field">
-          <label for="f-rep">Repliche al giorno</label>
-          <select id="f-rep" name="repliche" data-label="Repliche"><option value="">—</option><option>1</option><option>2</option><option>3</option><option>4 o più</option></select>
-        </div>
-      </div>
-
-      <fieldset class="field">
-        <legend>Ambiente</legend>
-        <div class="choices choices--pills">
-          <label class="pill"><input type="radio" name="ambiente" value="Indoor" data-label="Ambiente"><span>Indoor</span></label>
-          <label class="pill"><input type="radio" name="ambiente" value="Outdoor"><span>Outdoor</span></label>
-          <label class="pill"><input type="radio" name="ambiente" value="Outdoor con piano B"><span>Outdoor + piano B</span></label>
-        </div>
-      </fieldset>
-
-      <div class="row">
-        <div class="field">
-          <label for="f-palco">Palco / audio</label>
-          <select id="f-palco" name="palco_audio" data-label="Palco e audio"><option value="">—</option><option>Palco e audio presenti</option><option>Solo audio</option><option>Nessuno</option><option>Da valutare</option></select>
-        </div>
-        <div class="field">
-          <label for="f-budget">Budget indicativo</label>
-          <select id="f-budget" name="budget" data-label="Budget"><option value="">Preferisco non dirlo</option><option>Fino a 1.000 €</option><option>1.000–2.500 €</option><option>2.500–5.000 €</option><option>Oltre 5.000 €</option><option>Da definire</option></select>
-        </div>
-      </div>
-      <div class="field">
-        <label for="f-loc">Location (nome e indirizzo)</label>
-        <input id="f-loc" name="location_evento" data-label="Location" autocomplete="off" placeholder="es. Centro commerciale X, via…">
-      </div>
-      <div class="row">
-        <div class="field">
-          <label for="f-acc">Orari di accesso / montaggio</label>
-          <input id="f-acc" name="orari_accesso" data-label="Orari accesso" placeholder="es. dalle 14:00">
-        </div>
-        <div class="field">
-          <label for="f-trasf">Trasferta / alloggio</label>
-          <select id="f-trasf" name="trasferta" data-label="Trasferta"><option value="">—</option><option>Non serve</option><option>A vostro carico</option><option>Da includere nel preventivo</option><option>Da valutare</option></select>
-        </div>
-      </div>
-      <div class="field">
-        <label for="f-sdi">Codice SDI o PEC (per la fattura)</label>
-        <input id="f-sdi" name="sdi_pec" data-label="SDI / PEC" autocomplete="off">
-      </div>
-      <label class="check"><input type="checkbox" name="opzione_48h" value="si"> Chiedo di tenere la data in opzione per 48 ore</label>
     </fieldset>
 
     <!-- ---------- CONTATTI ---------- -->
@@ -341,17 +316,17 @@
       <legend class="group__title"><span class="roman">iii</span> I tuoi contatti</legend>
       <div class="field">
         <label for="f-nome">Nome e cognome *</label>
-        <input id="f-nome" name="nome" required autocomplete="name" data-label="Nome" data-required="Come ti chiami?">
+        <input id="f-nome" name="nome" required autocomplete="name" autocapitalize="words" enterkeyhint="next" data-label="Nome" data-required="Come ti chiami?">
         <p class="field__error" aria-live="polite"></p>
       </div>
       <div class="field">
         <label for="f-tel">Telefono / WhatsApp *</label>
-        <input id="f-tel" name="telefono" type="tel" required inputmode="tel" autocomplete="tel" pattern="[+0-9 .\(\)\/\-]{6,20}" data-label="Telefono" data-required="Lasciami un numero per risponderti." data-pattern="Controlla il numero di telefono.">
+        <input id="f-tel" name="telefono" type="tel" enterkeyhint="next" required inputmode="tel" autocomplete="tel" pattern="[+0-9 .\(\)\/\-]{6,20}" data-label="Telefono" data-required="Lasciami un numero per risponderti." data-pattern="Controlla il numero di telefono.">
         <p class="field__error" aria-live="polite"></p>
       </div>
       <div class="field">
         <label for="f-email">Email *</label>
-        <input id="f-email" name="email" type="email" required autocomplete="email" data-label="Email" data-required="Serve per mandarti il riepilogo e il preventivo.">
+        <input id="f-email" name="email" type="email" required autocomplete="email" autocapitalize="off" spellcheck="false" enterkeyhint="next" data-label="Email" data-required="Serve per mandarti il riepilogo e il preventivo.">
         <p class="field__error" aria-live="polite"></p>
       </div>
       <fieldset class="field">
@@ -364,12 +339,12 @@
       </fieldset>
       <div class="field">
         <label for="f-comune">Comune dell'evento *</label>
-        <input id="f-comune" name="comune" required autocomplete="address-level2" data-label="Comune" data-required="In che comune si svolge?" placeholder="es. Pisa">
+        <input id="f-comune" name="comune" required autocomplete="address-level2" enterkeyhint="next" data-label="Comune" data-required="In che comune si svolge?" placeholder="es. Pisa">
         <p class="field__error" aria-live="polite"></p>
       </div>
       <div class="field">
         <label for="f-note">Altro da raccontarmi?</label>
-        <textarea id="f-note" name="note" rows="3" data-label="Note" placeholder="Tema della festa, sorprese, orari di accesso…"></textarea>
+        <textarea id="f-note" name="note" rows="3" enterkeyhint="done" data-label="Note" placeholder="Tema della festa, sorprese, orari di accesso…"></textarea>
       </div>
       <div class="field">
         <label class="check"><input id="f-priv" type="checkbox" name="privacy" required data-required="Serve il consenso per poterti rispondere."> Ho letto l'<a href="privacy.html" target="_blank">informativa privacy</a> e acconsento al trattamento dei dati per gestire la richiesta. *</label>
@@ -390,6 +365,7 @@
      ========================================================= -->
 <section class="view" data-view="pacchetti" data-title="Pacchetti feste" hidden aria-labelledby="pac-h">
   <div class="topbar"><a class="back" href="#home" data-back><svg aria-hidden="true"><use href="#i-back"/></svg>Indietro</a><span class="topbar__title">Pacchetti</span><a class="topbar__logo" href="#home" aria-label="Home">W</a></div>
+  <figure class="banner"><img src="assets/foto/fiore.jpg" alt="" loading="lazy" style="object-position:50% 38%"></figure>
   <div class="view__head">
     <p class="eyebrow">Feste private</p>
     <h2 id="pac-h">Tre modi per far <em>entrare la magia</em></h2>
@@ -401,14 +377,14 @@
     <header class="pack__head"><span class="roman">I</span><h3>Surprise</h3><p class="pack__tag">La sorpresa</p></header>
     <ul class="pack__list"><li>Ingresso a sorpresa di Wondy</li><li>Giochi con tutti i bambini</li><li>Un regalo per ogni bambino</li></ul>
     <p class="pack__meta">Spazio: nessuna esigenza particolare</p>
-    <a class="btn btn--ghost" href="#calendario?tipo=privato" data-pick-pacchetto="Surprise">Scegli Surprise</a>
+    <a class="btn btn--ghost" href="#calendario" data-pick-pacchetto="Surprise">Scegli Surprise</a>
   </article>
 
   <article class="pack">
     <header class="pack__head"><span class="roman">II</span><h3>Fantasy</h3><p class="pack__tag">La magia</p></header>
     <ul class="pack__list"><li>Tutto il pacchetto Surprise</li><li>Spettacolo di magia di circa 30 minuti</li></ul>
     <p class="pack__meta">Spazio libero: almeno 4×5 m</p>
-    <a class="btn btn--ghost" href="#calendario?tipo=privato" data-pick-pacchetto="Fantasy">Scegli Fantasy</a>
+    <a class="btn btn--ghost" href="#calendario" data-pick-pacchetto="Fantasy">Scegli Fantasy</a>
   </article>
 
   <article class="pack pack--star">
@@ -416,25 +392,26 @@
     <header class="pack__head"><span class="roman">III</span><h3>Wondy</h3><p class="pack__tag">Lo show</p></header>
     <ul class="pack__list"><li>Ingresso a sorpresa</li><li>Show di circa un'ora: clownerie, giocoleria, equilibrio e magia</li><li>Area scenica completa</li></ul>
     <p class="pack__meta">Spazio libero: almeno 4×5 m</p>
-    <a class="btn btn--primary" href="#calendario?tipo=privato" data-pick-pacchetto="Wondy">Scegli Wondy</a>
+    <a class="btn btn--primary" href="#calendario" data-pick-pacchetto="Wondy">Scegli Wondy</a>
   </article>
 
   <div class="space-box">
     <svg viewBox="0 0 120 90" aria-hidden="true"><rect x="10" y="10" width="100" height="70" rx="3" fill="none" stroke="currentColor" stroke-dasharray="4 3"/><text x="60" y="8" text-anchor="middle" font-size="7" fill="currentColor">5 metri</text><text x="116" y="47" font-size="7" fill="currentColor" transform="rotate(90 116 47)" text-anchor="middle">4 metri</text><circle cx="60" cy="45" r="7" fill="currentColor" opacity=".2"/><path d="M53 36h14l-3-8h-8z" fill="currentColor" opacity=".55"/></svg>
     <p><strong>Quanto è 4×5 metri?</strong> Più o meno un salotto grande sgombro, o un angolo di giardino. Se non sei sicuro, nel modulo puoi rispondere “non so”.</p>
   </div>
-  <a class="btn btn--primary btn--big" href="#calendario?tipo=privato">Verifica la tua data</a>
+  <a class="btn btn--primary btn--big" href="#calendario">Verifica la tua data</a>
 </section>
 
 <!-- =========================================================
      AZIENDE
      ========================================================= -->
-<section class="view view--night" data-view="aziende" data-title="Aziende ed eventi" hidden aria-labelledby="biz-h">
-  <div class="topbar"><a class="back" href="#home" data-back><svg aria-hidden="true"><use href="#i-back"/></svg>Indietro</a><span class="topbar__title">Aziende</span><a class="topbar__logo" href="#home" aria-label="Home">W</a></div>
+<section class="view view--night" data-view="aziende" data-title="Spettacoli ed eventi" hidden aria-labelledby="biz-h">
+  <div class="topbar"><a class="back" href="#home" data-back><svg aria-hidden="true"><use href="#i-back"/></svg>Indietro</a><span class="topbar__title">Eventi</span><a class="topbar__logo" href="#home" aria-label="Home">W</a></div>
+  <figure class="banner"><img src="assets/foto/cestino.jpg" alt="" loading="lazy" style="object-position:55% 40%"></figure>
   <div class="view__head">
-    <p class="eyebrow">Aziende · Enti · Strutture</p>
-    <h2 id="biz-h">Meraviglia <em>su misura</em> per il vostro evento</h2>
-    <p class="lead">Un artista di circo e teatro, abituato ai palchi dei parchi e dei villaggi turistici, per family day, inaugurazioni e grandi eventi.</p>
+    <p class="eyebrow">Feste · Eventi · Spettacoli</p>
+    <h2 id="biz-h">Meraviglia <em>su misura</em> per ogni occasione</h2>
+    <p class="lead">Un artista di circo e teatro, abituato ai palchi dei parchi e dei villaggi turistici: dal compleanno in giardino al grande evento in piazza.</p>
   </div>
 
   <h3 class="sub">I formati</h3>
@@ -459,17 +436,15 @@
 
   <h3 class="sub">Come lavoriamo</h3>
   <ul class="promise">
-    <li>Preventivo scritto entro 48 ore lavorative</li>
-    <li>Possibilità di tenere una data in opzione</li>
+    <li>Risposta con preventivo entro 24 ore</li>
     <li>Scheda tecnica con spazi, tempi di montaggio ed esigenze</li>
-    <li>Documentazione amministrativa per il vostro ufficio acquisti: su richiesta, insieme al preventivo</li>
   </ul>
   <p class="techline">Area scenica minima 4×5 m · show da 30 a 60 minuti</p>
   <a class="card-link card-link--night" data-techsheet href="#"><svg class="star" aria-hidden="true"><use href="#i-star"/></svg><span>Scheda tecnica<small>Scarica il PDF</small></span><svg class="arr" aria-hidden="true"><use href="#i-arrow"/></svg></a>
 
   <div class="stack">
-    <a class="btn btn--primary btn--big" href="#calendario?tipo=azienda">Verifica le date</a>
-    <a class="btn btn--ghost" href="#richiesta?tipo=azienda">Richiedi un preventivo</a>
+    <a class="btn btn--primary btn--big" href="#calendario">Verifica le date</a>
+    <a class="btn btn--ghost" href="#richiesta">Richiedi un preventivo</a>
   </div>
 </section>
 
@@ -479,22 +454,20 @@
 <section class="view" data-view="chi-sono" data-title="Chi è Wondy" hidden aria-labelledby="bio-h">
   <div class="topbar"><a class="back" href="#home" data-back><svg aria-hidden="true"><use href="#i-back"/></svg>Indietro</a><span class="topbar__title">Chi è Wondy</span><a class="topbar__logo" href="#home" aria-label="Home">W</a></div>
   <figure class="portrait">
-    <div class="portrait__frame">
-      <!-- Sostituisci con: <img src="assets/thomas.jpg" alt="Thomas Lucaccini nei panni di Wondy"> -->
-      <svg viewBox="0 0 120 150" aria-hidden="true" class="portrait__ph"><ellipse cx="60" cy="150" rx="46" ry="34" fill="currentColor" opacity=".18"/><circle cx="60" cy="78" r="26" fill="currentColor" opacity=".18"/><rect x="40" y="30" width="40" height="30" rx="3" fill="currentColor" opacity=".55"/><rect x="30" y="56" width="60" height="7" rx="3.5" fill="currentColor" opacity=".55"/><circle cx="60" cy="84" r="6" fill="#9E2B25"/></svg>
-    </div>
+    <div class="portrait__frame"><img src="assets/foto/stupore.jpg" alt="Thomas Lucaccini nei panni di Wondy" loading="lazy" style="object-position:42% 40%"></div>
     <figcaption>Guarda Wondy in azione su Instagram ↓</figcaption>
   </figure>
   <div class="view__head">
     <p class="eyebrow">Thomas Lucaccini · Pisa, 1998</p>
-    <h2 id="bio-h">Un clown, un filo, <em>un pizzico di magia</em></h2>
+    <h2 id="bio-h">Un clown, un fiore, <em>un pizzico di magia</em></h2>
   </div>
   <div class="prose">
-    <p>Wondy è il personaggio creato e interpretato da Thomas Lucaccini, artista pisano formato tra circo e teatro. Clown, funambolo, giocoliere, mimo e ballerino, porta in scena uno spettacolo in cui il silenzio di un equilibrio vale quanto la risata più forte.</p>
+    <p>Wondy è il personaggio creato e interpretato da Thomas Lucaccini, artista pisano formato tra circo e teatro. Clown, mimo, giocoliere ed equilibrista, porta in scena uno spettacolo in cui il silenzio di un equilibrio vale quanto la risata più forte.</p>
     <p>Ha portato Wondy sui palchi di Gardaland con “Il Circo di Wondy”, nei villaggi turistici con “Il magico mondo di Wondy” e con “Qui per magia”, uno spettacolo che ha scritto e interpretato.</p>
     <p>Oggi Wondy entra anche nelle feste di compleanno e negli eventi aziendali, con la stessa cura di un vero palcoscenico.</p>
   </div>
-  <p class="disciplines">Clown <span>✦</span> Funambolo <span>✦</span> Giocoliere <span>✦</span> Mimo <span>✦</span> Ballerino</p>
+  <figure class="banner banner--inline"><img src="assets/foto/trucco.jpg" alt="Thomas si trucca prima dello spettacolo" loading="lazy" style="object-position:55% 40%"><figcaption>Il trucco, prima di entrare in scena</figcaption></figure>
+  <p class="disciplines">Clown <span>✦</span> Mimo <span>✦</span> Giocoliere <span>✦</span> Equilibrista <span>✦</span> Attore</p>
   <a class="social social--wide" data-instagram href="https://www.instagram.com/wondy_real/" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-ig"/></svg><span>Guarda i video su Instagram</span></a>
   <a class="btn btn--primary btn--big" href="#calendario">Verifica disponibilità</a>
 </section>
@@ -509,18 +482,323 @@
     <h2 id="faq-h">Tutto quello che <em>vorresti sapere</em></h2>
   </div>
   <div class="faq">
-    <details><summary>Quanto costa?</summary><p>Ogni evento è diverso: il prezzo dipende dal pacchetto, dalla data e dalla distanza. Compila la richiesta (due minuti): per le feste private ti rispondo entro 24 ore, alle aziende invio un preventivo scritto entro 48 ore lavorative. Sempre gratis e senza impegno.</p></details>
+    <details><summary>Quanto costa?</summary><p>Ogni evento è diverso: il prezzo dipende dalla proposta scelta, dalla data e dalla distanza. Compila la richiesta (due minuti) e ricevi una risposta chiara entro 24 ore, gratis e senza impegno.</p></details>
     <details><summary>Quanto spazio serve?</summary><p>Per il pacchetto Surprise basta lo spazio della festa. Per Fantasy e Wondy serve un'area libera di circa 4×5 metri, più o meno un salotto grande sgombro.</p></details>
     <details><summary>E se piove?</summary><p>Se c'è uno spazio al chiuso, lo spettacolo si sposta lì. Se non c'è, ne parliamo prima dell'evento per trovare insieme la soluzione migliore. Nel modulo puoi indicare “all'aperto + piano B”.</p></details>
     <details><summary>Per che età è adatto?</summary><p>Lo spettacolo è pensato per i bambini, ma fa ridere anche i grandi. Indica l'età del festeggiato e dei bambini: Wondy adatta giochi e numeri al pubblico.</p></details>
     <details><summary>In quali zone lavori?</summary><p>Wondy parte da Pisa. Indica il comune dell'evento: nel preventivo trovi anche l'eventuale trasferta.</p></details>
-    <details><summary>Come si conferma la data?</summary><p>Il calendario mostra le date libere, ma la data si blocca solo quando confermiamo insieme il preventivo. Le aziende possono chiedere di tenerla in opzione per 48 ore.</p></details>
+    <details><summary>Come si conferma la data?</summary><p>Il calendario mostra le date libere, ma la data si blocca solo quando confermiamo insieme il preventivo.</p></details>
     <details><summary>Cosa devo preparare io?</summary><p>Lo spazio libero e i bambini pronti alla sorpresa. Tutti i dettagli pratici te li scrivo insieme al preventivo.</p></details>
   </div>
   <a class="btn btn--primary btn--big" href="#richiesta">Fai una domanda o richiedi una data</a>
   <a class="social social--wide" data-instagram href="https://www.instagram.com/wondy_real/" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-ig"/></svg><span>Scrivimi su Instagram</span></a>
 </section>
 
+<!-- =========================================================
+     GIOCHI PER BAMBINI (js/giochi.js)
+     ========================================================= -->
+<!-- =========================================================
+     GIOCHI · i minigiochi di Wondy
+     Richiede css/giochi.css e js/giochi.js
+     ========================================================= -->
+<section class="view" data-view="giochi" data-title="Giochi" hidden aria-labelledby="game-h">
+  <div class="topbar"><a class="back" href="#home" data-back><svg aria-hidden="true"><use href="#i-back"/></svg>Indietro</a><span class="topbar__title">Giochi</span><a class="topbar__logo" href="#home" aria-label="Home">W</a></div>
+  <div class="view__head">
+    <p class="eyebrow">Il circo in tasca <span aria-hidden="true">✦</span> dai 4 ai 10 anni</p>
+    <h2 id="game-h">Gioca con <em>Wondy</em></h2>
+    <p class="lead">Tre giochi piccoli piccoli, da fare insieme a mamma e papà.</p>
+  </div>
+
+  <!-- icone dei giochi, disegnate a mano in SVG -->
+  <svg class="game-sprites" aria-hidden="true" focusable="false" width="0" height="0">
+    <symbol id="game-i-wondy" viewBox="0 0 64 64">
+      <circle cx="32" cy="32" r="19" fill="#F4EEE4"/>
+      <path d="M19 25c1-10 11-15 19-11 4-4 11-2 11 4-3-1-5 0-6 1 3 1 4 4 4 7-7-6-18-7-28-1z" fill="#14101C"/>
+      <path d="M22 26.5q3-3 6 0M36 26.5q3-3 6 0" fill="none" stroke="#14101C" stroke-width="1.8" stroke-linecap="round"/>
+      <circle cx="25" cy="30.5" r="2" fill="#14101C"/><circle cx="39" cy="30.5" r="2" fill="#14101C"/>
+      <circle cx="21" cy="38" r="3" fill="#D8352B" opacity=".25"/><circle cx="43" cy="38" r="3" fill="#D8352B" opacity=".25"/>
+      <circle cx="32" cy="35.5" r="5.5" fill="#D8352B"/><circle cx="30.2" cy="33.7" r="1.6" fill="#fff" opacity=".75"/>
+      <path d="M25 42.5q7 6 14 0" fill="none" stroke="#B3261E" stroke-width="2.4" stroke-linecap="round"/>
+      <path d="M32 55l-10-5v10zM32 55l10-5v10z" fill="#D8352B"/><circle cx="32" cy="55" r="2.6" fill="#B3261E"/>
+    </symbol>
+    <symbol id="game-i-naso" viewBox="0 0 64 64">
+      <circle cx="32" cy="32" r="24" fill="#D8352B"/>
+      <path d="M12 38a22 22 0 0 0 40 0 24 24 0 0 1-40 0z" fill="#8E1C16" opacity=".55"/>
+      <ellipse cx="23" cy="22" rx="8" ry="5" fill="#fff" opacity=".7" transform="rotate(-35 23 22)"/>
+      <circle cx="32" cy="32" r="24" fill="none" stroke="#6E1712" stroke-width="2"/>
+    </symbol>
+    <symbol id="game-i-naso-oro" viewBox="0 0 64 64">
+      <circle cx="32" cy="32" r="24" fill="#E2B04A"/>
+      <path d="M12 38a22 22 0 0 0 40 0 24 24 0 0 1-40 0z" fill="#A8741F" opacity=".7"/>
+      <ellipse cx="23" cy="22" rx="8" ry="5" fill="#FFF6D6" opacity=".85" transform="rotate(-35 23 22)"/>
+      <circle cx="32" cy="32" r="24" fill="none" stroke="#FBE7A1" stroke-width="2"/>
+      <path d="M48 6l2 5 5 2-5 2-2 5-2-5-5-2 5-2z" fill="#FBE7A1"/>
+    </symbol>
+    <symbol id="game-i-girasole" viewBox="0 0 64 64">
+      <path d="M32 40v21" stroke="#4E9A3E" stroke-width="4" stroke-linecap="round"/>
+      <path d="M32 53c-6-6-12-5-15-2 4 4 10 5 15 2z" fill="#5DAE4A"/>
+      <g fill="#F3C33B" transform="translate(32 26)">
+        <ellipse rx="5" ry="10" cy="-12"/><ellipse rx="5" ry="10" cy="-12" transform="rotate(45)"/>
+        <ellipse rx="5" ry="10" cy="-12" transform="rotate(90)"/><ellipse rx="5" ry="10" cy="-12" transform="rotate(135)"/>
+        <ellipse rx="5" ry="10" cy="-12" transform="rotate(180)"/><ellipse rx="5" ry="10" cy="-12" transform="rotate(225)"/>
+        <ellipse rx="5" ry="10" cy="-12" transform="rotate(270)"/><ellipse rx="5" ry="10" cy="-12" transform="rotate(315)"/>
+      </g>
+      <circle cx="32" cy="26" r="9" fill="#6B3E1E"/>
+      <g fill="#3E220F"><circle cx="29" cy="24" r="1.3"/><circle cx="34" cy="23" r="1.3"/><circle cx="35" cy="28" r="1.3"/><circle cx="30" cy="29" r="1.3"/></g>
+    </symbol>
+    <symbol id="game-i-orso" viewBox="0 0 64 64">
+      <circle cx="18" cy="18" r="8" fill="#A86A3D"/><circle cx="46" cy="18" r="8" fill="#A86A3D"/>
+      <circle cx="18" cy="18" r="4" fill="#E3B98A"/><circle cx="46" cy="18" r="4" fill="#E3B98A"/>
+      <circle cx="32" cy="35" r="20" fill="#A86A3D"/>
+      <ellipse cx="32" cy="43" rx="10" ry="8" fill="#E3B98A"/>
+      <circle cx="24.5" cy="31" r="2.6" fill="#14101C"/><circle cx="39.5" cy="31" r="2.6" fill="#14101C"/>
+      <ellipse cx="32" cy="39" rx="3.6" ry="2.6" fill="#14101C"/>
+      <path d="M32 41.5v3M28 46q4 3 8 0" fill="none" stroke="#14101C" stroke-width="1.8" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="game-i-cestino" viewBox="0 0 64 64">
+      <path d="M17 31C17 12 47 12 47 31" fill="none" stroke="#B9783A" stroke-width="4.5" stroke-linecap="round"/>
+      <path d="M10 31h44l-6 25H16z" fill="#C98A43"/>
+      <path d="M13 39h38M15 47h34M22 31l2 25M32 31v25M42 31l-2 25" stroke="#8A5A26" stroke-width="2"/>
+      <rect x="7" y="27" width="50" height="7" rx="3.5" fill="#E0A75A"/>
+    </symbol>
+    <symbol id="game-i-palla" viewBox="0 0 64 64">
+      <circle cx="32" cy="32" r="24" fill="currentColor"/>
+      <path d="M32 8c-9 7-9 41 0 48 9-7 9-41 0-48z" style="fill:var(--game-ball-2, #F3D58A)"/>
+      <ellipse cx="22" cy="21" rx="6.5" ry="4" fill="#fff" opacity=".55" transform="rotate(-35 22 21)"/>
+      <circle cx="32" cy="32" r="24" fill="none" stroke="rgba(0,0,0,.28)" stroke-width="2"/>
+    </symbol>
+    <symbol id="game-i-papillon" viewBox="0 0 64 64">
+      <path d="M32 32L7 17v30zM32 32l25-15v30z" fill="#D8352B"/>
+      <path d="M12 24l12 8-12 8M52 24l-12 8 12 8" fill="none" stroke="#8E1C16" stroke-width="2" stroke-linejoin="round"/>
+      <rect x="26.5" y="25" width="11" height="14" rx="3.5" fill="#B3261E" stroke="#6E1712" stroke-width="1.5"/>
+    </symbol>
+    <symbol id="game-i-scarpa" viewBox="0 0 64 64">
+      <path d="M6 48c0-11 11-17 24-17 3-7 9-9 14-7 10 3 15 11 15 19v5z" fill="#D8352B"/>
+      <path d="M30 31c3 4 9 5 13 3" fill="none" stroke="#8E1C16" stroke-width="2" stroke-linecap="round"/>
+      <circle cx="36" cy="28" r="2.2" fill="#F4EEE4"/><circle cx="41" cy="27" r="2.2" fill="#F4EEE4"/>
+      <ellipse cx="50" cy="34" rx="5" ry="3" fill="#fff" opacity=".45" transform="rotate(25 50 34)"/>
+      <rect x="4" y="47" width="57" height="8" rx="4" fill="#6E1712"/>
+    </symbol>
+    <symbol id="game-i-trombetta" viewBox="0 0 64 64">
+      <ellipse cx="14" cy="32" rx="10" ry="12" fill="#D8352B"/>
+      <ellipse cx="11" cy="27" rx="3.5" ry="2.5" fill="#fff" opacity=".5"/>
+      <rect x="22" y="28.5" width="14" height="7" rx="2" fill="#C99332"/>
+      <path d="M34 28.5L57 14v36L34 35.5z" fill="#E2B04A"/>
+      <ellipse cx="57" cy="32" rx="3.5" ry="18" fill="#A8741F"/>
+      <path d="M40 27l12-7" stroke="#FBE7A1" stroke-width="2" stroke-linecap="round" opacity=".8"/>
+    </symbol>
+  </svg>
+
+  <div class="game-app" data-game-app>
+    <div class="game-bar">
+      <p class="game-bar__mime" aria-hidden="true"><svg class="game-bar__face"><use href="#game-i-wondy"/></svg><span>♥ ✦ ! ? ♪ ✿</span></p>
+      <button class="game-sound" type="button" data-game-audio aria-pressed="true" aria-label="Suoni accesi: tocca per spegnerli">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z" fill="currentColor"/><g class="game-sound__on" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11"/></g><g class="game-sound__off" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M16 9.5l5 5M21 9.5l-5 5"/></g></svg>
+      </button>
+    </div>
+
+    <!-- scelta del gioco -->
+    <div class="game-menu" data-game-menu>
+      <article class="game-pick" aria-labelledby="game-t-naso">
+        <svg class="game-pick__icon" aria-hidden="true"><use href="#game-i-naso"/></svg>
+        <h3 id="game-t-naso">Acchiappa il naso</h3>
+        <p class="game-pick__how">Tocca i nasi rossi prima che spariscano!</p>
+        <p class="game-pick__record">Record: <b data-game-record="naso">–</b></p>
+        <button class="btn btn--primary" type="button" data-game-play="naso" aria-label="Gioca ad Acchiappa il naso">Gioca</button>
+      </article>
+
+      <article class="game-pick" aria-labelledby="game-t-palline">
+        <svg class="game-pick__icon game-pick__icon--ball" aria-hidden="true"><use href="#game-i-palla"/></svg>
+        <h3 id="game-t-palline">Giocoleria</h3>
+        <p class="game-pick__how">Tocca le palline e non farle cadere!</p>
+        <p class="game-pick__record">Record: <b data-game-record="palline">–</b></p>
+        <button class="btn btn--primary" type="button" data-game-play="palline" aria-label="Gioca a Giocoleria">Gioca</button>
+      </article>
+
+      <article class="game-pick" aria-labelledby="game-t-memory">
+        <svg class="game-pick__icon" aria-hidden="true"><use href="#game-i-girasole"/></svg>
+        <h3 id="game-t-memory">Memory del circo</h3>
+        <p class="game-pick__how">Gira due carte e trova quelle uguali!</p>
+        <fieldset class="game-sizes">
+          <legend class="sr-only">Quante carte?</legend>
+          <label class="game-size"><input type="radio" name="game-memory-size" value="12" checked><span>12 carte</span></label>
+          <label class="game-size"><input type="radio" name="game-memory-size" value="16"><span>16 carte</span></label>
+        </fieldset>
+        <p class="game-pick__record">Record: <b data-game-record="memory">–</b></p>
+        <button class="btn btn--primary" type="button" data-game-play="memory" aria-label="Gioca a Memory del circo">Gioca</button>
+      </article>
+    </div>
+
+    <!-- il gioco in corso -->
+    <div class="game-stage" data-game-stage hidden>
+      <div class="game-hud">
+        <button class="game-exit" type="button" data-game-exit aria-label="Torna alla scelta dei giochi"><svg aria-hidden="true"><use href="#i-back"/></svg><span>Giochi</span></button>
+        <p class="game-hud__score"><span data-game-score-label>Punti</span> <b data-game-score>0</b></p>
+        <p class="game-hud__info" data-game-info></p>
+      </div>
+      <div class="game-board" data-game-board>
+        <div class="game-area" data-game-area></div>
+        <div class="game-fx" data-game-fx aria-hidden="true"></div>
+
+        <div class="game-overlay" data-game-pause hidden>
+          <svg class="game-face" aria-hidden="true"><use href="#game-i-wondy"/></svg>
+          <h3 class="game-overlay__title">Pausa</h3>
+          <p class="game-overlay__text">Wondy ti aspetta <span aria-hidden="true">♪</span></p>
+          <div class="game-overlay__actions">
+            <button class="btn btn--primary" type="button" data-game-resume>Continua</button>
+            <button class="btn btn--ghost" type="button" data-game-exit>Altri giochi</button>
+          </div>
+        </div>
+
+        <div class="game-overlay game-end" data-game-end hidden role="group" aria-labelledby="game-end-h">
+          <div class="game-end__top">
+            <svg class="game-face" aria-hidden="true"><use href="#game-i-wondy"/></svg>
+            <p class="game-bubble" data-game-end-mime aria-hidden="true">♥ ✦ !</p>
+          </div>
+          <h3 class="game-overlay__title" id="game-end-h" data-game-end-title>Bravo!</h3>
+          <p class="game-end__score" data-game-end-score>0</p>
+          <p class="game-end__unit" data-game-end-unit></p>
+          <p class="game-end__record"><span class="game-badge" data-game-end-new hidden>Nuovo record!</span> <span data-game-end-record></span></p>
+          <div class="game-overlay__actions game-overlay__actions--row">
+            <button class="btn btn--primary" type="button" data-game-again aria-label="Gioca ancora">Ancora!</button>
+            <button class="btn btn--ghost" type="button" data-game-exit aria-label="Torna alla scelta dei giochi">Giochi</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="sr-only" aria-live="polite" data-game-live></p>
+  </div>
+</section>
+
 </main>
+
+<!-- =========================================================
+     WONDY DIGITALE — il clown che fa i dispetti (js/wondy.js)
+     ========================================================= -->
+<canvas class="fx-confetti" aria-hidden="true"></canvas>
+<div class="fx-lights" aria-hidden="true"></div>
+<div class="wondy" data-wondy>
+  <div class="wondy__bubble" aria-hidden="true"><span data-wondy-say></span></div>
+  <button type="button" class="wondy__close" data-wondy-close aria-label="Nascondi Wondy">×</button>
+  <button type="button" class="wondy__btn" data-wondy-tap aria-label="Wondy: toccalo per un dispetto">
+    <svg class="wondy__svg" viewBox="0 0 120 190" aria-hidden="true">
+  <defs>
+    <linearGradient id="wSkin" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFE3D2"/><stop offset="1" stop-color="#F6C7AD"/></linearGradient>
+    <linearGradient id="wHair" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3B3552"/><stop offset=".55" stop-color="#1C1828"/><stop offset="1" stop-color="#0E0B16"/></linearGradient>
+    <radialGradient id="wNose" cx="36%" cy="30%" r="72%"><stop offset="0" stop-color="#FF9A8F"/><stop offset=".45" stop-color="#F0383A"/><stop offset="1" stop-color="#A3101C"/></radialGradient>
+    <radialGradient id="wIris" cx="45%" cy="35%" r="70%"><stop offset="0" stop-color="#A5703F"/><stop offset=".6" stop-color="#6B3F1E"/><stop offset="1" stop-color="#3A2010"/></radialGradient>
+    <linearGradient id="wVest" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2E2640"/><stop offset=".5" stop-color="#17121F"/><stop offset="1" stop-color="#0B0811"/></linearGradient>
+    <linearGradient id="wPants" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#9E1020"/><stop offset=".35" stop-color="#E0303A"/><stop offset=".6" stop-color="#C81E2C"/><stop offset="1" stop-color="#8E0C1A"/></linearGradient>
+    <linearGradient id="wShirt" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#DCD8EA"/></linearGradient>
+    <linearGradient id="wShoe" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F0434B"/><stop offset="1" stop-color="#A3101C"/></linearGradient>
+  </defs>
+
+  <!-- gambe: pantaloni rossi di velluto a sbuffo, arricciati al polpaccio, scarponcini con lacci -->
+  <g class="w-legs">
+    <path d="M42 121 C38 132 36 146 41 160 L47 162 L55 160 C56 150 58 142 60 136 C62 142 64 150 65 160 L73 162 L79 160 C84 146 82 132 78 121 Z" fill="url(#wPants)"/>
+    <path d="M44 150 Q48 153 45 157 M49 148 Q53 151 50 156 M76 150 Q72 153 75 157 M71 148 Q67 151 70 156" stroke="#7E0A17" stroke-width="1.1" fill="none" stroke-linecap="round"/>
+    <path d="M60 128 L60 138" stroke="#8E0C1A" stroke-width="1" opacity=".7"/>
+    <path d="M42 159 Q48 163 55 159 L55 165 L42 165 Z M65 159 Q72 163 78 159 L78 165 L65 165 Z" fill="#B3121F"/>
+    <rect x="43.5" y="164" width="10" height="4" rx="1.2" fill="#FFFFFF"/><rect x="66.5" y="164" width="10" height="4" rx="1.2" fill="#FFFFFF"/>
+    <path d="M31 177 C31 169 38 166 46 167 C53 167 56 170 56 176 L56 178 L31 178 Z" fill="url(#wShoe)"/>
+    <path d="M89 177 C89 169 82 166 74 167 C67 167 64 170 64 176 L64 178 L89 178 Z" fill="url(#wShoe)"/>
+    <rect x="30" y="177" width="27" height="3" rx="1.5" fill="#5E0911"/><rect x="63" y="177" width="27" height="3" rx="1.5" fill="#5E0911"/>
+    <path d="M45 169 L50 171 M45 172 L50 170 M70 169 L75 171 M70 172 L75 170" stroke="#FFFFFF" stroke-width=".9" stroke-linecap="round"/>
+    <ellipse cx="37" cy="171" rx="3.5" ry="1.4" fill="#FF8A8F" opacity=".75"/><ellipse cx="83" cy="171" rx="3.5" ry="1.4" fill="#FF8A8F" opacity=".75"/>
+  </g>
+
+  <!-- busto: camicia bianca e gilet di velluto nero -->
+  <path d="M46 86 C52 84 68 84 74 86 L79 123 L41 123 Z" fill="url(#wShirt)"/>
+  <path d="M46 86 C49 85 52 85 54 86 L60 104 L60 124 L41 123 Z" fill="url(#wVest)"/>
+  <path d="M74 86 C71 85 68 85 66 86 L60 104 L60 124 L79 123 Z" fill="url(#wVest)"/>
+  <path d="M54 86 L60 104 L66 86" stroke="#3E3556" stroke-width=".8" fill="none"/>
+  <path d="M48 92 C47 102 46 112 46 120" stroke="#4A4063" stroke-width=".7" fill="none" opacity=".8"/>
+  <circle cx="58.3" cy="109" r="1.5" fill="#F0383A"/><circle cx="58.3" cy="114.5" r="1.5" fill="#F0383A"/><circle cx="58.3" cy="120" r="1.5" fill="#F0383A"/>
+  <rect x="45" y="114" width="8.5" height="1.9" rx=".9" fill="#F0383A"/><rect x="66.5" y="114" width="8.5" height="1.9" rx=".9" fill="#F0383A"/>
+  <g fill="#C9D8FF"><circle cx="58" cy="92" r=".6"/><circle cx="61.5" cy="95.5" r=".6"/><circle cx="58.6" cy="99" r=".6"/></g>
+
+  <!-- braccia: maniche a sbuffo, polsini con brillantini -->
+  <g class="w-arm w-arm--l">
+    <path d="M47 88 C39 88 35 95 36 102 C37 106 40 107 43 106 C46 101 48 95 47 88 Z" fill="url(#wShirt)"/>
+    <path d="M40 101 C37.5 105.5 35.5 109 34.6 112.5" stroke="#F1EEF8" stroke-width="7.4" stroke-linecap="round" fill="none"/>
+    <rect x="30.6" y="110.6" width="8" height="3.4" rx="1.6" transform="rotate(-12 34.6 112.3)" fill="#E6ECFF"/>
+    <g fill="#8FB4FF"><circle cx="32.4" cy="112.6" r=".5"/><circle cx="34.6" cy="112.1" r=".5"/><circle cx="36.8" cy="111.6" r=".5"/></g>
+    <circle cx="34" cy="116.5" r="4.4" fill="url(#wSkin)"/><path d="M30.6 115 Q31 113 33 113.4" stroke="#E9B497" stroke-width=".8" fill="none"/>
+  </g>
+  <g class="w-arm w-arm--r">
+    <path d="M73 88 C81 88 85 95 84 102 C83 106 80 107 77 106 C74 101 72 95 73 88 Z" fill="url(#wShirt)"/>
+    <path d="M80 101 C82.5 105.5 84.5 109 85.4 112.5" stroke="#F1EEF8" stroke-width="7.4" stroke-linecap="round" fill="none"/>
+    <rect x="81.4" y="110.6" width="8" height="3.4" rx="1.6" transform="rotate(12 85.4 112.3)" fill="#E6ECFF"/>
+    <g fill="#8FB4FF"><circle cx="83.2" cy="111.6" r=".5"/><circle cx="85.4" cy="112.1" r=".5"/><circle cx="87.6" cy="112.6" r=".5"/></g>
+    <circle cx="86" cy="116.5" r="4.4" fill="url(#wSkin)"/><path d="M89.4 115 Q89 113 87 113.4" stroke="#E9B497" stroke-width=".8" fill="none"/>
+  </g>
+
+  <!-- colletto e papillon -->
+  <path d="M53 83 L60 89 L56 91 Z M67 83 L60 89 L64 91 Z" fill="#FFFFFF"/>
+  <path d="M60 88 L50.5 83.5 C49 86 49 90 50.5 92.5 Z" fill="#E5262F"/><path d="M60 88 L69.5 83.5 C71 86 71 90 69.5 92.5 Z" fill="#E5262F"/>
+  <path d="M51.5 86 L56 87.5 M68.5 86 L64 87.5" stroke="#A3101C" stroke-width=".8" stroke-linecap="round"/>
+  <rect x="57.6" y="85.6" width="4.8" height="4.8" rx="1.4" fill="#B8141F"/>
+
+  <!-- testa -->
+  <g class="w-head">
+    <rect x="55" y="74" width="10" height="11" rx="3" fill="#EDB89C"/>
+    <!-- orecchie -->
+    <path d="M38.5 44 C33 42 31.5 50 34 55 C35.5 58 38 58.5 39.5 57 Z" fill="#F4C3A7"/>
+    <path d="M81.5 44 C87 42 88.5 50 86 55 C84.5 58 82 58.5 80.5 57 Z" fill="#F4C3A7"/>
+    <path d="M36.5 48 Q35 51 37 54" stroke="#D99B7E" stroke-width="1" fill="none" stroke-linecap="round"/>
+    <path d="M83.5 48 Q85 51 83 54" stroke="#D99B7E" stroke-width="1" fill="none" stroke-linecap="round"/>
+    <!-- viso: ovale con mento definito -->
+    <path d="M39 44 C39 29 48 22 60 22 C72 22 81 29 81 44 C81 58 77 69 69 76 C65 79.5 55 79.5 51 76 C43 69 39 58 39 44 Z" fill="url(#wSkin)"/>
+    <path d="M45 66 C48 72 53 76 60 77 C67 76 72 72 75 66 C72 73 66 78.5 60 78.5 C54 78.5 48 73 45 66 Z" fill="#EDB89C" opacity=".55"/>
+    <!-- capelli: corti ai lati, ciuffo alto e spettinato -->
+    <path d="M38.5 46 C37 37 38.5 28 44 23 C47 18 52 15.5 57 15 C63 13 72 13.5 78 17 C84 20.5 86 28 84.5 35 C84 39 83 43 81.5 46 C80 38 77 33.5 71 31 C64 33.5 55 33.5 48 31 C43 34 40.5 39.5 38.5 46 Z" fill="url(#wHair)"/>
+    <path d="M47 21 C48 12 56 4.5 67 3.5 C77 3 85 8 87 15 C83 12 78 11.5 74 13 C79 14.5 82 18.5 83 23 C77 18 70 16.5 63 17.5 C57 18 51 19.5 47 21 Z" fill="url(#wHair)"/>
+    <path d="M55 7.5 L58.5 1 L61.5 6.5 Z M63.5 4.8 L68 -1.2 L70 5 Z M72.5 5.5 L78.5 1 L77.8 8 Z M80.5 9.5 L86.5 7.5 L84.8 13 Z" fill="#1E1A2C"/>
+    <path d="M52 16 C56 9 63 6 70 6.5 M60 15 C64 11 70 9.5 76 10.5" stroke="#5B5378" stroke-width="1.1" fill="none" stroke-linecap="round" opacity=".9"/>
+    <path d="M45 26 Q52 21 60 22" stroke="#5B5378" stroke-width="1.3" fill="none" stroke-linecap="round" opacity=".8"/>
+    <!-- sopracciglia disegnate, morbide -->
+    <path d="M44 39 Q49 35.5 54.5 38.4" stroke="#1C1828" stroke-width="2.3" fill="none" stroke-linecap="round"/>
+    <path d="M65.5 38.4 Q71 35.5 76 39" stroke="#1C1828" stroke-width="2.3" fill="none" stroke-linecap="round"/>
+    <!-- trucco bianco leggero intorno agli occhi -->
+    <ellipse cx="49.3" cy="46.3" rx="7.2" ry="6" fill="#FFFFFF"/>
+    <ellipse cx="70.7" cy="46.3" rx="7.2" ry="6" fill="#FFFFFF"/>
+    <path d="M42.6 48.5 Q49.3 54 56 48.5" stroke="#3A3352" stroke-width=".9" fill="none" stroke-linecap="round"/>
+    <path d="M64 48.5 Q70.7 54 77.4 48.5" stroke="#3A3352" stroke-width=".9" fill="none" stroke-linecap="round"/>
+    <g class="w-eyes">
+      <g class="w-pupils">
+        <circle cx="49.5" cy="46.4" r="3.4" fill="url(#wIris)"/><circle cx="70.5" cy="46.4" r="3.4" fill="url(#wIris)"/>
+        <circle cx="49.6" cy="46.6" r="1.6" fill="#1A0F08"/><circle cx="70.6" cy="46.6" r="1.6" fill="#1A0F08"/>
+        <circle cx="48.4" cy="45.2" r="1.15" fill="#FFFFFF"/><circle cx="69.4" cy="45.2" r="1.15" fill="#FFFFFF"/>
+        <circle cx="50.8" cy="47.8" r=".5" fill="#FFFFFF"/><circle cx="71.8" cy="47.8" r=".5" fill="#FFFFFF"/>
+      </g>
+      <path d="M44.6 44.6 Q49.4 40.6 54.4 44.4" stroke="#1C1828" stroke-width="1.7" fill="none" stroke-linecap="round"/>
+      <path d="M65.6 44.4 Q70.6 40.6 75.4 44.6" stroke="#1C1828" stroke-width="1.7" fill="none" stroke-linecap="round"/>
+      <path d="M44.6 44.6 L43.3 43.4 M54.4 44.4 L55.6 43.3 M65.6 44.4 L64.4 43.3 M75.4 44.6 L76.7 43.4" stroke="#1C1828" stroke-width="1" stroke-linecap="round"/>
+    </g>
+    <!-- guance -->
+    <ellipse cx="44.5" cy="59" rx="5" ry="3.2" fill="#FF7E95" opacity=".45"/>
+    <ellipse cx="75.5" cy="59" rx="5" ry="3.2" fill="#FF7E95" opacity=".45"/>
+    <!-- bocca: sorriso aperto, labbra rosse -->
+    <g class="w-mouth">
+      <path d="M50.5 64.8 Q60 77.5 69.5 64.8 Q60 68.2 50.5 64.8 Z" fill="#6E1424"/>
+      <path d="M52.6 66.1 Q60 69.4 67.4 66.1 L66.8 67.9 Q60 70.6 53.2 67.9 Z" fill="#FFFFFF"/>
+      <ellipse cx="60" cy="71" rx="3.4" ry="1.5" fill="#E8657A"/>
+      <path d="M50.5 64.8 Q60 77.5 69.5 64.8 Q60 68.2 50.5 64.8 Z" fill="none" stroke="#D0283E" stroke-width="1.5" stroke-linejoin="round"/>
+    </g>
+    <!-- naso rosso da clown -->
+    <circle class="w-nose" cx="60" cy="58" r="5.9" fill="url(#wNose)"/>
+    <ellipse cx="57.9" cy="55.8" rx="2" ry="1.4" fill="#FFFFFF" opacity=".75" transform="rotate(-30 57.9 55.8)"/>
+  </g>
+
+  <!-- girasole in equilibrio sul naso (visibile solo durante il numero) -->
+  <g class="w-flower"><path d="M60 58 Q57 26 60 -4" stroke="#6E9B3A" stroke-width="2.2" fill="none" stroke-linecap="round"/><path d="M59 14 Q51 10 49 4 Q56 6 59 12" fill="#7FB04A"/><g transform="translate(60 -10)"><g fill="#FFC23D"><ellipse rx="3.6" ry="7.5" transform="translate(0 -9)"/><ellipse rx="3.6" ry="7.5" transform="rotate(45) translate(0 -9)"/><ellipse rx="3.6" ry="7.5" transform="rotate(90) translate(0 -9)"/><ellipse rx="3.6" ry="7.5" transform="rotate(135) translate(0 -9)"/><ellipse rx="3.6" ry="7.5" transform="rotate(180) translate(0 -9)"/><ellipse rx="3.6" ry="7.5" transform="rotate(225) translate(0 -9)"/><ellipse rx="3.6" ry="7.5" transform="rotate(270) translate(0 -9)"/><ellipse rx="3.6" ry="7.5" transform="rotate(315) translate(0 -9)"/></g><circle r="5.5" fill="#7A4A1E"/><circle cx="-1.6" cy="-1.6" r="1.6" fill="#A8743E"/></g></g>
+
+  <!-- palline da giocoleria -->
+  <g class="w-balls"><circle cx="34" cy="112" r="5" fill="#EF3B36"/><circle cx="60" cy="70" r="5" fill="#F3C64A"/><circle cx="86" cy="112" r="5" fill="#4F8BFF"/></g>
+</svg>
+  </button>
+</div>
+<div class="fx-nose" aria-hidden="true"></div>
 </body>
 </html>
