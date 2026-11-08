@@ -413,6 +413,200 @@ Su questo telefono non riesco a salvare il disegno. | I can't save the drawing o
 Disegno salvato! | Drawing saved! | Dessin enregistré ! | Bild gespeichert! | ¡Dibujo guardado! | Цртежот е зачуван!
 Scegli un colore, poi tocca una parte di Wondy. | Pick a colour, then tap a part of Wondy. | Choisis une couleur, puis touche une partie de Wondy. | Such dir eine Farbe aus und tipp dann auf einen Teil von Wondy. | Elige un color y luego toca una parte de Wondy. | Избери боја, па допри дел од Wondy.
 Colorati | Coloured | Coloriés | Ausgemalt | Coloreados | Обоени
+Famiglie | Families | Familles | Familien | Familias | Семејства
+Musica di sottofondo | Background music | Musique de fond | Hintergrundmusik | Música de fondo | Музика во позадина
+Per le famiglie<small>Bimbi timidi · Diploma · Biglietto</small> | For families<small>Shy kids · Diploma · Ticket</small> | Pour les familles<small>Enfants timides · Diplôme · Billet</small> | Für Familien<small>Schüchterne Kinder · Diplom · Eintrittskarte</small> | Para las familias<small>Niños tímidos · Diploma · Entrada</small> | За семејствата<small>Срамежливи деца · Диплома · Билет</small>
+Per le famiglie | For families | Pour les familles | Für Familien | Para las familias | За семејствата
+Bimbi timidi · Diploma · Biglietto | Shy kids · Diploma · Ticket | Enfants timides · Diplôme · Billet | Schüchterne Kinder · Diplom · Eintrittskarte | Niños tímidos · Diploma · Entrada | Срамежливи деца · Диплома · Билет
+Giochi per bambini<small>Giochi, respiro e mimo da fare insieme</small> | Games for kids<small>Games, breathing and mime to share</small> | Jeux pour enfants<small>Jeux, respiration et mime à faire ensemble</small> | Spiele für Kinder<small>Spiele, Atmen und Pantomime zum Mitmachen</small> | Juegos para niños<small>Juegos, respiración y mímica para hacer juntos</small> | Игри за деца<small>Игри, дишење и мимика за заедно</small>
+Giochi, respiro e mimo da fare insieme | Games, breathing and mime to share | Jeux, respiration et mime à faire ensemble | Spiele, Atmen und Pantomime zum Mitmachen | Juegos, respiración y mímica para hacer juntos | Игри, дишење и мимика за заедно
+<span aria-hidden="true">♪</span> Musica | <span aria-hidden="true">♪</span> Music | <span aria-hidden="true">♪</span> Musique | <span aria-hidden="true">♪</span> Musik | <span aria-hidden="true">♪</span> Música | <span aria-hidden="true">♪</span> Музика
+Musica | Music | Musique | Musik | Música | Музика
+<span class="dot" aria-hidden="true"></span> Modalità calma | <span class="dot" aria-hidden="true"></span> Calm mode | <span class="dot" aria-hidden="true"></span> Mode calme | <span class="dot" aria-hidden="true"></span> Ruhemodus | <span class="dot" aria-hidden="true"></span> Modo tranquilo | <span class="dot" aria-hidden="true"></span> Мирен режим
+Modalità calma | Calm mode | Mode calme | Ruhemodus | Modo tranquilo | Мирен режим
+Richiama Wondy | Call Wondy back | Rappeler Wondy | Wondy zurückholen | Llamar a Wondy | Повикај го Wondy
+Wondy, riposa | Wondy, take a rest | Wondy, repose-toi | Wondy, ruh dich aus | Wondy, descansa | Wondy, одмори се
+Per mamma, papà <span aria-hidden="true">✦</span> e bambini | For Mum, Dad <span aria-hidden="true">✦</span> and kids | Pour maman, papa <span aria-hidden="true">✦</span> et les enfants | Für Mama, Papa <span aria-hidden="true">✦</span> und Kinder | Para mamá, papá <span aria-hidden="true">✦</span> y niños | За мама, тато <span aria-hidden="true">✦</span> и децата
+Per mamma, papà | For Mum, Dad | Pour maman, papa | Für Mama, Papa | Para mamá, papá | За мама, тато
+e bambini | and kids | et les enfants | und Kinder | y niños | и децата
+Prepararsi alla festa, <em>senza sorprese brutte</em> | Getting ready for the party, <em>with no nasty surprises</em> | Se préparer à la fête, <em>sans mauvaises surprises</em> | Gut vorbereitet zur Feier, <em>ohne böse Überraschungen</em> | Prepararse para la fiesta, <em>sin sustos</em> | Подготовка за забавата, <em>без непријатни изненадувања</em>
+Prepararsi alla festa, | Getting ready for the party, | Se préparer à la fête, | Gut vorbereitet zur Feier, | Prepararse para la fiesta, | Подготовка за забавата,
+senza sorprese brutte | with no nasty surprises | sans mauvaises surprises | ohne böse Überraschungen | sin sustos | без непријатни изненадувања
+Qualche consiglio per i bambini più sensibili, una piccola storia da guardare insieme e tante cose da stampare e colorare. | A few tips for more sensitive children, a little story to look at together and lots of things to print and colour in. | Quelques conseils pour les enfants plus sensibles, une petite histoire à regarder ensemble et plein de choses à imprimer et à colorier. | Ein paar Tipps für sensible Kinder, eine kleine Geschichte zum gemeinsamen Anschauen und vieles zum Ausdrucken und Ausmalen. | Algunos consejos para los niños más sensibles, una pequeña historia para mirar juntos y muchas cosas para imprimir y colorear. | Неколку совети за почувствителните деца, мала приказна за гледање заедно и многу работи за печатење и боење.
+In questa pagina | On this page | Sur cette page | Auf dieser Seite | En esta página | На оваа страница
+Bambini timidi | Shy children | Enfants timides | Schüchterne Kinder | Niños tímidos | Срамежливи деца
+Il tuo nome | Your name | Ton prénom | Dein Name | Tu nombre | Твоето име
+Da stampare | To print | À imprimer | Zum Ausdrucken | Para imprimir | За печатење
+Per bambini sensibili e timidi | For sensitive and shy children | Pour les enfants sensibles et timides | Für sensible und schüchterne Kinder | Para niños sensibles y tímidos | За чувствителни и срамежливи деца
+Wondy non parla, non insegue e non obbliga nessuno: i bambini timidi o che hanno un po' paura dei clown possono guardare da lontano, in braccio a voi. Si avvicinano solo quando se la sentono, e spesso finiscono a ridere in prima fila. | Wondy doesn't talk, doesn't chase anyone and never makes anyone join in: shy children, or those a little scared of clowns, can watch from a distance, in your arms. They come closer only when they feel ready, and often end up laughing in the front row. | Wondy ne parle pas, ne poursuit personne et n'oblige personne : les enfants timides, ou qui ont un peu peur des clowns, peuvent regarder de loin, dans vos bras. Ils s'approchent seulement quand ils se sentent prêts, et finissent souvent par rire au premier rang. | Wondy spricht nicht, läuft niemandem hinterher und zwingt niemanden: Schüchterne Kinder oder Kinder, die ein bisschen Angst vor Clowns haben, können aus der Ferne zuschauen, auf eurem Arm. Sie kommen erst näher, wenn sie sich trauen – und lachen am Ende oft in der ersten Reihe. | Wondy no habla, no persigue ni obliga a nadie: los niños tímidos o que tienen un poco de miedo a los payasos pueden mirar de lejos, en vuestros brazos. Se acercan solo cuando se sienten preparados, y a menudo acaban riendo en primera fila. | Wondy не зборува, не брка никого и никого не присилува: срамежливите деца, или оние што малку се плашат од кловнови, можат да гледаат оддалеку, во вашите прегратки. Се приближуваат само кога ќе се почувствуваат подготвени, и често завршуваат смеејќи се во првиот ред.
+Cosa succede alla festa | What happens at the party | Ce qui se passe à la fête | Was auf der Feier passiert | Qué pasa en la fiesta | Што се случува на забавата
+Raccontatelo prima al bambino, con calma: sapere cosa succede aiuta a stare tranquilli. | Tell your child beforehand, calmly: knowing what will happen helps them feel at ease. | Racontez-le à l'enfant avant, calmement : savoir ce qui va se passer aide à rester serein. | Erzählt es eurem Kind vorher in Ruhe: Wer weiß, was passiert, bleibt entspannter. | Contádselo antes al niño, con calma: saber lo que va a pasar ayuda a estar tranquilo. | Раскажете му на детето однапред, смирено: кога знае што ќе се случи, полесно е мирно.
+<strong>Wondy arriva a sorpresa</strong>Entra piano, con un grande sorriso e il naso rosso. Non dice una parola. | <strong>Wondy arrives as a surprise</strong>He comes in quietly, with a big smile and his red nose. He doesn't say a word. | <strong>Wondy arrive par surprise</strong>Il entre doucement, avec un grand sourire et son nez rouge. Il ne dit pas un mot. | <strong>Wondy kommt überraschend</strong>Er kommt leise herein, mit einem breiten Lächeln und roter Nase. Er sagt kein Wort. | <strong>Wondy llega por sorpresa</strong>Entra despacio, con una gran sonrisa y la nariz roja. No dice ni una palabra. | <strong>Wondy доаѓа изненадно</strong>Влегува тивко, со голема насмевка и црвен нос. Не кажува ниту збор.
+Wondy arriva a sorpresa | Wondy arrives as a surprise | Wondy arrive par surprise | Wondy kommt überraschend | Wondy llega por sorpresa | Wondy доаѓа изненадно
+Entra piano, con un grande sorriso e il naso rosso. Non dice una parola. | He comes in quietly, with a big smile and his red nose. He doesn't say a word. | Il entre doucement, avec un grand sourire et son nez rouge. Il ne dit pas un mot. | Er kommt leise herein, mit einem breiten Lächeln und roter Nase. Er sagt kein Wort. | Entra despacio, con una gran sonrisa y la nariz roja. No dice ni una palabra. | Влегува тивко, со голема насмевка и црвен нос. Не кажува ниту збор.
+<strong>Gioca con i bambini</strong>Palline, bolle, piccoli scherzi. Chi vuole partecipa, chi no guarda. | <strong>He plays with the children</strong>Balls, bubbles, little jokes. Whoever wants to joins in; whoever doesn't, just watches. | <strong>Il joue avec les enfants</strong>Balles, bulles, petites blagues. Qui veut participe, les autres regardent. | <strong>Er spielt mit den Kindern</strong>Bälle, Seifenblasen, kleine Späße. Wer will, macht mit, wer nicht, schaut zu. | <strong>Juega con los niños</strong>Pelotas, burbujas, pequeñas bromas. Quien quiere participa, quien no, mira. | <strong>Си игра со децата</strong>Топчиња, меурчиња, мали шеги. Кој сака учествува, кој не – гледа.
+Gioca con i bambini | He plays with the children | Il joue avec les enfants | Er spielt mit den Kindern | Juega con los niños | Си игра со децата
+Palline, bolle, piccoli scherzi. Chi vuole partecipa, chi no guarda. | Balls, bubbles, little jokes. Whoever wants to joins in; whoever doesn't, just watches. | Balles, bulles, petites blagues. Qui veut participe, les autres regardent. | Bälle, Seifenblasen, kleine Späße. Wer will, macht mit, wer nicht, schaut zu. | Pelotas, burbujas, pequeñas bromas. Quien quiere participa, quien no, mira. | Топчиња, меурчиња, мали шеги. Кој сака учествува, кој не – гледа.
+<strong>Fa lo spettacolo</strong>Equilibri, giocoleria e i suoi amici: l'orsetto, il cestino e il girasole. | <strong>He does the show</strong>Balancing acts, juggling and his friends: the teddy bear, the basket and the sunflower. | <strong>Il fait le spectacle</strong>Équilibres, jonglage et ses amis : l'ourson, le panier et le tournesol. | <strong>Er spielt die Show</strong>Balance-Akte, Jonglage und seine Freunde: der Teddy, der Korb und die Sonnenblume. | <strong>Hace el espectáculo</strong>Equilibrios, malabares y sus amigos: el osito, la cesta y el girasol. | <strong>Го изведува шоуто</strong>Балансирање, жонглирање и неговите пријатели: мечето, кошничката и сончогледот.
+Fa lo spettacolo | He does the show | Il fait le spectacle | Er spielt die Show | Hace el espectáculo | Го изведува шоуто
+Equilibri, giocoleria e i suoi amici: l'orsetto, il cestino e il girasole. | Balancing acts, juggling and his friends: the teddy bear, the basket and the sunflower. | Équilibres, jonglage et ses amis : l'ourson, le panier et le tournesol. | Balance-Akte, Jonglage und seine Freunde: der Teddy, der Korb und die Sonnenblume. | Equilibrios, malabares y sus amigos: el osito, la cesta y el girasol. | Балансирање, жонглирање и неговите пријатели: мечето, кошничката и сончогледот.
+<strong>Saluta e va via</strong>Un inchino, un saluto con la mano. La festa continua con voi. | <strong>He says goodbye and leaves</strong>A bow, a wave of the hand. The party carries on with you. | <strong>Il salue et s'en va</strong>Une révérence, un signe de la main. La fête continue avec vous. | <strong>Er verabschiedet sich und geht</strong>Eine Verbeugung, ein Winken. Die Feier geht mit euch weiter. | <strong>Se despide y se va</strong>Una reverencia, un saludo con la mano. La fiesta sigue con vosotros. | <strong>Се поздравува и си заминува</strong>Поклон, мавтање со рака. Забавата продолжува со вас.
+Saluta e va via | He says goodbye and leaves | Il salue et s'en va | Er verabschiedet sich und geht | Se despide y se va | Се поздравува и си заминува
+Un inchino, un saluto con la mano. La festa continua con voi. | A bow, a wave of the hand. The party carries on with you. | Une révérence, un signe de la main. La fête continue avec vous. | Eine Verbeugung, ein Winken. Die Feier geht mit euch weiter. | Una reverencia, un saludo con la mano. La fiesta sigue con vosotros. | Поклон, мавтање со рака. Забавата продолжува со вас.
+Quanto è forte il rumore | How loud does it get | Quel est le niveau de bruit | Wie laut wird es | Cuánto ruido hay | Колку е гласно
+<strong>La trombetta</strong>Fa un “pe-pe” corto e squillante, ogni tanto, per far ridere. Non viene suonata vicino alle orecchie. | <strong>The horn</strong>Now and then it goes “parp-parp”, short and bright, to make everyone laugh. It's never played close to anyone's ears. | <strong>La trompette</strong>De temps en temps, elle fait un « pouet-pouet » court et aigu, pour faire rire. Elle n'est jamais jouée près des oreilles. | <strong>Die Hupe</strong>Ab und zu macht sie ein kurzes, helles „Tröt-tröt“, damit alle lachen. Sie wird nie nah an den Ohren gespielt. | <strong>La bocina</strong>De vez en cuando hace un «pe-pe» corto y agudo, para hacer reír. Nunca se toca cerca de las orejas. | <strong>Трубата</strong>Понекогаш прави кратко, звонко „пи-пи“, за смеа. Никогаш не се свири близу до ушите.
+La trombetta | The horn | La trompette | Die Hupe | La bocina | Трубата
+Fa un “pe-pe” corto e squillante, ogni tanto, per far ridere. Non viene suonata vicino alle orecchie. | Now and then it goes “parp-parp”, short and bright, to make everyone laugh. It's never played close to anyone's ears. | De temps en temps, elle fait un « pouet-pouet » court et aigu, pour faire rire. Elle n'est jamais jouée près des oreilles. | Ab und zu macht sie ein kurzes, helles „Tröt-tröt“, damit alle lachen. Sie wird nie nah an den Ohren gespielt. | De vez en cuando hace un «pe-pe» corto y agudo, para hacer reír. Nunca se toca cerca de las orejas. | Понекогаш прави кратко, звонко „пи-пи“, за смеа. Никогаш не се свири близу до ушите.
+Rumore: medio | Noise: medium | Bruit : moyen | Lautstärke: mittel | Ruido: medio | Бучава: средна
+<strong>Applausi e risate</strong>Sono la parte più rumorosa: tutti insieme possono essere forti, soprattutto al chiuso. | <strong>Applause and laughter</strong>They're the noisiest part: all together they can be loud, especially indoors. | <strong>Applaudissements et rires</strong>C'est la partie la plus bruyante : tous ensemble, ils peuvent être forts, surtout en intérieur. | <strong>Applaus und Lachen</strong>Das ist der lauteste Teil: Alle zusammen können ganz schön laut sein, vor allem drinnen. | <strong>Aplausos y risas</strong>Son la parte más ruidosa: todos juntos pueden sonar fuerte, sobre todo en interior. | <strong>Аплауз и смеа</strong>Тоа е најгласниот дел: сите заедно можат да бидат гласни, особено внатре.
+Applausi e risate | Applause and laughter | Applaudissements et rires | Applaus und Lachen | Aplausos y risas | Аплауз и смеа
+Sono la parte più rumorosa: tutti insieme possono essere forti, soprattutto al chiuso. | They're the noisiest part: all together they can be loud, especially indoors. | C'est la partie la plus bruyante : tous ensemble, ils peuvent être forts, surtout en intérieur. | Das ist der lauteste Teil: Alle zusammen können ganz schön laut sein, vor allem drinnen. | Son la parte más ruidosa: todos juntos pueden sonar fuerte, sobre todo en interior. | Тоа е најгласниот дел: сите заедно можат да бидат гласни, особено внатре.
+Rumore: forte | Noise: loud | Bruit : fort | Lautstärke: laut | Ruido: fuerte | Бучава: силна
+<strong>Musica</strong>Di sottofondo, a volume da festa in casa. | <strong>Music</strong>In the background, at home-party volume. | <strong>Musique</strong>En fond, au volume d'une fête à la maison. | <strong>Musik</strong>Im Hintergrund, so laut wie bei einer Feier zu Hause. | <strong>Música</strong>De fondo, a volumen de fiesta en casa. | <strong>Музика</strong>Во позадина, со јачина како за забава дома.
+Di sottofondo, a volume da festa in casa. | In the background, at home-party volume. | En fond, au volume d'une fête à la maison. | Im Hintergrund, so laut wie bei einer Feier zu Hause. | De fondo, a volumen de fiesta en casa. | Во позадина, со јачина како за забава дома.
+Rumore: basso | Noise: low | Bruit : faible | Lautstärke: leise | Ruido: bajo | Бучава: слаба
+Se il bambino è sensibile ai suoni, le cuffie antirumore vanno benissimo: Wondy parla con le mani, quindi si capisce tutto lo stesso. | If your child is sensitive to sound, ear defenders are perfect: Wondy talks with his hands, so they'll understand everything anyway. | Si l'enfant est sensible aux bruits, un casque antibruit convient très bien : Wondy parle avec les mains, on comprend donc tout quand même. | Wenn euer Kind geräuschempfindlich ist, sind Kapselgehörschützer völlig in Ordnung: Wondy spricht mit den Händen, man versteht also trotzdem alles. | Si el niño es sensible a los ruidos, los cascos antirruido van genial: Wondy habla con las manos, así que se entiende todo igual. | Ако детето е чувствително на звуци, слушалките против бучава се одлични: Wondy зборува со рацете, па сè се разбира исто.
+Si può guardare da lontano | It's fine to watch from afar | On peut regarder de loin | Zuschauen aus der Ferne ist völlig okay | Se puede mirar desde lejos | Може да се гледа оддалеку
+In braccio, dietro il divano, dalla porta della cucina: ogni posto va bene. Non serve salutare, non serve avvicinarsi, non serve ridere. Guardare è già partecipare. | In someone's arms, behind the sofa, from the kitchen door: every spot is fine. No need to say hello, no need to come closer, no need to laugh. Watching is already taking part. | Dans les bras, derrière le canapé, depuis la porte de la cuisine : chaque place convient. Pas besoin de dire bonjour, pas besoin de s'approcher, pas besoin de rire. Regarder, c'est déjà participer. | Auf dem Arm, hinter dem Sofa, von der Küchentür aus: Jeder Platz ist gut. Man muss nicht Hallo sagen, nicht näherkommen, nicht lachen. Zuschauen ist schon Mitmachen. | En brazos, detrás del sofá, desde la puerta de la cocina: cualquier sitio vale. No hace falta saludar, ni acercarse, ni reír. Mirar ya es participar. | Во прегратка, зад каучот, од вратата на кујната: секое место е добро. Не мора да се поздрави, не мора да се приближи, не мора да се смее. Гледањето е веќе учество.
+Il segnale “pausa”: le mani a T | The “pause” signal: hands in a T | Le signal « pause » : les mains en T | Das „Pause“-Zeichen: Hände als T | La señal de «pausa»: las manos en T | Знакот „пауза“: рацете во Т
+Insegnatelo al bambino prima della festa: una mano piatta sopra, l'altra in piedi sotto, come una T. Quando la vede, <strong>Wondy si ferma</strong> e aspetta. Funziona sempre, per tutti. | Teach it to your child before the party: one hand flat on top, the other upright underneath, like a T. When he sees it, <strong>Wondy stops</strong> and waits. It always works, for everyone. | Apprenez-le à l'enfant avant la fête : une main à plat dessus, l'autre debout dessous, comme un T. Quand il le voit, <strong>Wondy s'arrête</strong> et attend. Ça marche toujours, pour tout le monde. | Bringt es eurem Kind vor der Feier bei: eine Hand flach oben, die andere senkrecht darunter, wie ein T. Sobald er es sieht, <strong>hält Wondy an</strong> und wartet. Das klappt immer, bei allen. | Enseñádselo al niño antes de la fiesta: una mano plana arriba y la otra de pie debajo, como una T. Cuando la ve, <strong>Wondy se para</strong> y espera. Funciona siempre, con todos. | Научете го детето пред забавата: едната рака рамно горе, другата исправена долу, како Т. Кога ќе го види, <strong>Wondy застанува</strong> и чека. Секогаш функционира, за сите.
+Insegnatelo al bambino prima della festa: una mano piatta sopra, l'altra in piedi sotto, come una T. Quando la vede, | Teach it to your child before the party: one hand flat on top, the other upright underneath, like a T. When he sees it, | Apprenez-le à l'enfant avant la fête : une main à plat dessus, l'autre debout dessous, comme un T. Quand il le voit, | Bringt es eurem Kind vor der Feier bei: eine Hand flach oben, die andere senkrecht darunter, wie ein T. Sobald er es sieht, | Enseñádselo al niño antes de la fiesta: una mano plana arriba y la otra de pie debajo, como una T. Cuando la ve, | Научете го детето пред забавата: едната рака рамно горе, другата исправена долу, како Т. Кога ќе го види,
+Wondy si ferma | Wondy stops | Wondy s'arrête | hält Wondy an | Wondy se para | Wondy застанува
+e aspetta. Funziona sempre, per tutti. | and waits. It always works, for everyone. | et attend. Ça marche toujours, pour tout le monde. | und wartet. Das klappt immer, bei allen. | y espera. Funciona siempre, con todos. | и чека. Секогаш функционира, за сите.
+<strong>Il vostro bambino ha esigenze particolari?</strong> Paura dei clown, suoni, spazi, autismo, disabilità, un momento delicato in famiglia: scrivetelo a Wondy prima della festa. Lo spettacolo si adatta, con discrezione. | <strong>Does your child have particular needs?</strong> Fear of clowns, sounds, spaces, autism, disability, a delicate time in the family: let Wondy know before the party. The show adapts, discreetly. | <strong>Votre enfant a des besoins particuliers ?</strong> Peur des clowns, bruits, espaces, autisme, handicap, un moment délicat en famille : écrivez-le à Wondy avant la fête. Le spectacle s'adapte, avec discrétion. | <strong>Hat euer Kind besondere Bedürfnisse?</strong> Angst vor Clowns, Geräusche, Räume, Autismus, Behinderung, eine schwierige Zeit in der Familie: Schreibt es Wondy vor der Feier. Die Show passt sich an, ganz diskret. | <strong>¿Vuestro hijo tiene necesidades especiales?</strong> Miedo a los payasos, ruidos, espacios, autismo, discapacidad, un momento delicado en la familia: escribídselo a Wondy antes de la fiesta. El espectáculo se adapta, con discreción. | <strong>Дали вашето дете има посебни потреби?</strong> Страв од кловнови, звуци, простори, аутизам, попреченост, деликатен момент во семејството: напишете му на Wondy пред забавата. Шоуто се прилагодува, дискретно.
+Il vostro bambino ha esigenze particolari? | Does your child have particular needs? | Votre enfant a des besoins particuliers ? | Hat euer Kind besondere Bedürfnisse? | ¿Vuestro hijo tiene necesidades especiales? | Дали вашето дете има посебни потреби?
+Paura dei clown, suoni, spazi, autismo, disabilità, un momento delicato in famiglia: scrivetelo a Wondy prima della festa. Lo spettacolo si adatta, con discrezione. | Fear of clowns, sounds, spaces, autism, disability, a delicate time in the family: let Wondy know before the party. The show adapts, discreetly. | Peur des clowns, bruits, espaces, autisme, handicap, un moment délicat en famille : écrivez-le à Wondy avant la fête. Le spectacle s'adapte, avec discrétion. | Angst vor Clowns, Geräusche, Räume, Autismus, Behinderung, eine schwierige Zeit in der Familie: Schreibt es Wondy vor der Feier. Die Show passt sich an, ganz diskret. | Miedo a los payasos, ruidos, espacios, autismo, discapacidad, un momento delicado en la familia: escribídselo a Wondy antes de la fiesta. El espectáculo se adapta, con discreción. | Страв од кловнови, звуци, простори, аутизам, попреченост, деликатен момент во семејството: напишете му на Wondy пред забавата. Шоуто се прилагодува, дискретно.
+Scrivi su WhatsApp | Write on WhatsApp | Écrire sur WhatsApp | Auf WhatsApp schreiben | Escribir por WhatsApp | Пиши на WhatsApp
+Scrivi un'email | Send an email | Envoyer un e-mail | E-Mail schreiben | Enviar un correo | Испрати е-пошта
+Una piccola storia da sfogliare insieme prima della festa: dietro il clown c'è una persona vera. | A little story to leaf through together before the party: behind the clown there's a real person. | Une petite histoire à feuilleter ensemble avant la fête : derrière le clown, il y a une vraie personne. | Eine kleine Geschichte zum gemeinsamen Durchblättern vor der Feier: Hinter dem Clown steckt ein echter Mensch. | Una pequeña historia para hojear juntos antes de la fiesta: detrás del clown hay una persona de verdad. | Мала приказна за прелистување заедно пред забавата: зад кловнот има вистински човек.
+Chi è Wondy, in 5 tavole | Who is Wondy, in 5 pictures | Qui est Wondy, en 5 images | Wer ist Wondy – in 5 Bildern | Quién es Wondy, en 5 láminas | Кој е Wondy, во 5 слики
+Tavole: scorri o usa le frecce | Pictures: swipe or use the arrows | Images : faites défiler ou utilisez les flèches | Bilder: wischen oder die Pfeile benutzen | Láminas: desliza o usa las flechas | Слики: лизгај или користи ги стрелките
+Thomas, ancora senza naso rosso, si trucca gli occhi con una matita | Thomas, still without his red nose, does his eye make-up with a pencil | Thomas, encore sans nez rouge, se maquille les yeux au crayon | Thomas, noch ohne rote Nase, schminkt sich mit einem Stift die Augen | Thomas, todavía sin nariz roja, se maquilla los ojos con un lápiz | Thomas, сè уште без црвен нос, си ги шминка очите со молив
+Ciao, io sono <em>Thomas</em>. | Hello, I'm <em>Thomas</em>. | Bonjour, moi c'est <em>Thomas</em>. | Hallo, ich bin <em>Thomas</em>. | Hola, soy <em>Thomas</em>. | Здраво, јас сум <em>Thomas</em>.
+Ciao, io sono | Hello, I'm | Bonjour, moi c'est | Hallo, ich bin | Hola, soy | Здраво, јас сум
+Prima di diventare Wondy, mi trucco. | Before I become Wondy, I put on my make-up. | Avant de devenir Wondy, je me maquille. | Bevor ich zu Wondy werde, schminke ich mich. | Antes de convertirme en Wondy, me maquillo. | Пред да станам Wondy, се шминкам.
+Primo piano di Thomas truccato, con il naso rosso e gli occhi spalancati | Close-up of Thomas in make-up, with his red nose and wide-open eyes | Gros plan de Thomas maquillé, avec le nez rouge et les yeux grands ouverts | Nahaufnahme von Thomas, geschminkt, mit roter Nase und weit aufgerissenen Augen | Primer plano de Thomas maquillado, con la nariz roja y los ojos muy abiertos | Крупен план на нашминканиот Thomas, со црвен нос и широко отворени очи
+Metto il <em>naso rosso</em>. | I put on my <em>red nose</em>. | Je mets mon <em>nez rouge</em>. | Ich setze die <em>rote Nase</em> auf. | Me pongo la <em>nariz roja</em>. | Си го ставам <em>црвениот нос</em>.
+Metto il | I put on my | Je mets mon | Ich setze die | Me pongo la | Си го ставам
+È piccolo, morbido e fa ridere. | It's small, soft and funny. | Il est petit, tout doux et il fait rire. | Sie ist klein, weich und macht alle fröhlich. | Es pequeña, blandita y hace reír. | Мал е, мек и смешен.
+Wondy ride con la bocca spalancata | Wondy laughing with his mouth wide open | Wondy rit, la bouche grande ouverte | Wondy lacht mit weit offenem Mund | Wondy ríe con la boca muy abierta | Wondy се смее со широко отворена уста
+Divento <em>Wondy</em> e non parlo. | I become <em>Wondy</em> and I don't talk. | Je deviens <em>Wondy</em> et je ne parle pas. | Ich werde zu <em>Wondy</em> und spreche nicht. | Me convierto en <em>Wondy</em> y no hablo. | Станувам <em>Wondy</em> и не зборувам.
+Divento | I become | Je deviens | Ich werde zu | Me convierto en | Станувам
+e non parlo. | and I don't talk. | et je ne parle pas. | und spreche nicht. | y no hablo. | и не зборувам.
+Parlo con le mani, con gli occhi e con il sorriso. | I talk with my hands, my eyes and my smile. | Je parle avec les mains, les yeux et le sourire. | Ich spreche mit den Händen, den Augen und meinem Lächeln. | Hablo con las manos, con los ojos y con la sonrisa. | Зборувам со рацете, со очите и со насмевката.
+Gioco con i miei <em>amici</em>. | I play with my <em>friends</em>. | Je joue avec mes <em>amis</em>. | Ich spiele mit meinen <em>Freunden</em>. | Juego con mis <em>amigos</em>. | Си играм со моите <em>пријатели</em>.
+Gioco con i miei | I play with my | Je joue avec mes | Ich spiele mit meinen | Juego con mis | Си играм со моите
+amici | friends | amis | Freunden | amigos | пријатели
+L'orsetto, il cestino e il girasole. | The teddy bear, the basket and the sunflower. | L'ourson, le panier et le tournesol. | Der Teddy, der Korb und die Sonnenblume. | El osito, la cesta y el girasol. | Мечето, кошничката и сончогледот.
+Wondy sul palco saluta il pubblico con le braccia aperte | Wondy on stage greeting the audience with open arms | Wondy sur scène salue le public, les bras ouverts | Wondy auf der Bühne begrüßt das Publikum mit offenen Armen | Wondy en el escenario saluda al público con los brazos abiertos | Wondy на сцената ја поздравува публиката со раширени раце
+E poi <em>saluto</em>… | And then I <em>wave goodbye</em>… | Et puis je <em>dis au revoir</em>… | Und dann <em>verabschiede</em> ich mich… | Y luego me <em>despido</em>… | А потоа <em>се поздравувам</em>…
+E poi | And then I | Et puis je | Und dann | Y luego me | А потоа
+saluto | wave goodbye | dis au revoir | verabschiede ich mich | despido | се поздравувам
+…tolgo il naso e torno Thomas. Ciao! | …I take off my nose and I'm Thomas again. Bye! | …j'enlève mon nez et je redeviens Thomas. Salut ! | …ich nehme die Nase ab und bin wieder Thomas. Tschüss! | …me quito la nariz y vuelvo a ser Thomas. ¡Adiós! | …го вадам носот и пак сум Thomas. Чао!
+Tavola precedente | Previous picture | Image précédente | Vorheriges Bild | Lámina anterior | Претходна слика
+Tavola successiva | Next picture | Image suivante | Nächstes Bild | Lámina siguiente | Следна слика
+Il tuo nome nello spettacolo | Your name in the show | Ton prénom dans le spectacle | Dein Name in der Show | Tu nombre en el espectáculo | Твоето име во шоуто
+Accendi! | Light it up! | Allume ! | Einschalten! | ¡Enciéndelo! | Запали!
+Il nome resta solo qui, sul tuo telefono: non viene inviato a nessuno e si cancella quando chiudi la pagina. | The name stays right here on your phone: it isn't sent to anyone and is deleted when you close the page. | Le prénom reste ici, sur ton téléphone : il n'est envoyé à personne et s'efface quand tu fermes la page. | Der Name bleibt nur hier auf deinem Handy: Er wird an niemanden geschickt und gelöscht, wenn du die Seite schließt. | El nombre se queda solo aquí, en tu teléfono: no se envía a nadie y se borra al cerrar la página. | Името останува само тука, на твојот телефон: не се испраќа никому и се брише кога ќе ја затвориш страницата.
+Stasera in scena | Tonight on stage | Ce soir en scène | Heute Abend auf der Bühne | Esta noche en escena | Вечерва на сцена
+Scrivi prima il tuo nome, poi tocca Accendi. | Write your name first, then tap Light it up. | Écris d'abord ton prénom, puis touche Allume. | Schreib zuerst deinen Namen und tipp dann auf Einschalten. | Escribe primero tu nombre y luego toca Enciéndelo. | Прво напиши го твоето име, па допри Запали.
+Da stampare e colorare | To print and colour in | À imprimer et à colorier | Zum Ausdrucken und Ausmalen | Para imprimir y colorear | За печатење и боење
+Tutto viene preparato qui sul telefono o sul computer: niente viene inviato. | Everything is prepared right here on your phone or computer: nothing is sent anywhere. | Tout est préparé ici, sur le téléphone ou l'ordinateur : rien n'est envoyé. | Alles wird hier auf dem Handy oder Computer erstellt: Nichts wird verschickt. | Todo se prepara aquí, en el teléfono o el ordenador: no se envía nada. | Сè се подготвува тука, на телефонот или компјутерот: ништо не се испраќа.
+Diploma di Aiutante del mimo | Mime's Helper Diploma | Diplôme d'Assistant du mime | Diplom als Pantomimen-Helfer | Diploma de Ayudante del mimo | Диплома за помошник на мимот
+Un foglio A4 in bianco e nero, tutto da colorare. | A black-and-white A4 sheet, ready to colour in. | Une feuille A4 en noir et blanc, à colorier. | Ein A4-Blatt in Schwarz-Weiß, zum Ausmalen. | Una hoja A4 en blanco y negro, para colorear. | Лист А4 црно-бело, цел за боење.
+Nome del bambino | Child's name | Prénom de l'enfant | Name des Kindes | Nombre del niño | Име на детето
+Data | Date | Date | Datum | Fecha | Датум
+Anteprima del diploma | Diploma preview | Aperçu du diplôme | Vorschau des Diploms | Vista previa del diploma | Преглед на дипломата
+Stampa il diploma | Print the diploma | Imprimer le diplôme | Diplom drucken | Imprimir el diploma | Испечати ја дипломата
+Calendario dell'attesa | Countdown calendar | Calendrier de l'attente | Countdown-Kalender | Calendario de la espera | Календар на чекањето
+“Mancano ___ nasi alla festa!”: ogni sera si colora un naso, fino al grande giorno. | “___ noses to go until the party!”: colour in one nose each evening, until the big day. | « Plus que ___ nez avant la fête ! » : chaque soir, on colorie un nez, jusqu'au grand jour. | „Noch ___ Nasen bis zur Feier!“: Jeden Abend wird eine Nase ausgemalt, bis zum großen Tag. | «¡Faltan ___ narices para la fiesta!»: cada noche se colorea una nariz, hasta el gran día. | „Уште ___ носеви до забавата!“: секоја вечер се бои по еден нос, до големиот ден.
+Giorno della festa | Party day | Jour de la fête | Tag der Feier | Día de la fiesta | Ден на забавата
+Anteprima del calendario | Calendar preview | Aperçu du calendrier | Vorschau des Kalenders | Vista previa del calendario | Преглед на календарот
+Stampa il calendario | Print the calendar | Imprimer le calendrier | Kalender drucken | Imprimir el calendario | Испечати го календарот
+Biglietto ricordo | Keepsake ticket | Billet souvenir | Erinnerungskarte | Entrada de recuerdo | Билет за спомен
+Il biglietto del circo con il nome del festeggiato: da tenere, stampare o mandare ai nonni. | A circus ticket with the guest of honour's name: to keep, print or send to Grandma and Grandpa. | Le billet de cirque avec le prénom de l'enfant fêté : à garder, imprimer ou envoyer aux grands-parents. | Die Zirkuskarte mit dem Namen des Geburtstagskinds: zum Aufheben, Ausdrucken oder für Oma und Opa. | La entrada de circo con el nombre del homenajeado: para guardar, imprimir o enviar a los abuelos. | Циркуски билет со името на славеникот: за чување, печатење или за баба и дедо.
+Nome del festeggiato | Name of the guest of honour | Prénom de l'enfant fêté | Name des Geburtstagskinds | Nombre del homenajeado | Име на славеникот
+Scarica il biglietto | Download the ticket | Télécharger le billet | Karte herunterladen | Descargar la entrada | Преземи го билетот
+Il libro da colorare “Wondy Paint”<small>Su Amazon · si apre in una nuova scheda</small> | The colouring book “Wondy Paint”<small>On Amazon · opens in a new tab</small> | Le livre de coloriage « Wondy Paint »<small>Sur Amazon · s'ouvre dans un nouvel onglet</small> | Das Malbuch „Wondy Paint“<small>Bei Amazon · öffnet sich in einem neuen Tab</small> | El libro para colorear «Wondy Paint»<small>En Amazon · se abre en una pestaña nueva</small> | Книгата за боење „Wondy Paint“<small>На Amazon · се отвора во нова картичка</small>
+Il libro da colorare “Wondy Paint” | The colouring book “Wondy Paint” | Le livre de coloriage « Wondy Paint » | Das Malbuch „Wondy Paint“ | El libro para colorear «Wondy Paint» | Книгата за боење „Wondy Paint“
+Su Amazon · si apre in una nuova scheda | On Amazon · opens in a new tab | Sur Amazon · s'ouvre dans un nouvel onglet | Bei Amazon · öffnet sich in einem neuen Tab | En Amazon · se abre en una pestaña nueva | На Amazon · се отвора во нова картичка
+Scegli il giorno della festa: preparo i nasi da colorare. | Choose the party day: I'll get the noses ready to colour in. | Choisis le jour de la fête : je prépare les nez à colorier. | Wähl den Tag der Feier: Ich bereite die Nasen zum Ausmalen vor. | Elige el día de la fiesta: preparo las narices para colorear. | Избери го денот на забавата: ќе ги подготвам носевите за боење.
+Questa data è già passata: scegline una nei prossimi giorni. | This date has already passed: pick one in the coming days. | Cette date est déjà passée : choisis-en une dans les prochains jours. | Dieses Datum ist schon vorbei: Wähl eins in den nächsten Tagen. | Esta fecha ya ha pasado: elige una de los próximos días. | Овој датум веќе помина: избери еден во следните денови.
+La festa è oggi! Niente nasi da aspettare: buon divertimento! | The party's today! No noses to wait for: have fun! | La fête, c'est aujourd'hui ! Pas de nez à attendre : amuse-toi bien ! | Die Feier ist heute! Keine Nasen zum Warten: Viel Spaß! | ¡La fiesta es hoy! No hay narices que esperar: ¡a disfrutar! | Забавата е денес! Нема носеви за чекање: убаво забавувај се!
+Biglietto pronto: lo trovi tra i download. Sul telefono puoi anche tenere premuta l'immagine per salvarla. | Ticket ready: you'll find it in your downloads. On a phone you can also press and hold the image to save it. | Billet prêt : tu le trouveras dans les téléchargements. Sur le téléphone, tu peux aussi appuyer longuement sur l'image pour l'enregistrer. | Karte fertig: Du findest sie bei den Downloads. Auf dem Handy kannst du das Bild auch lange gedrückt halten, um es zu speichern. | Entrada lista: la encontrarás en las descargas. En el teléfono también puedes mantener pulsada la imagen para guardarla. | Билетот е подготвен: ќе го најдеш во преземањата. На телефон можеш и да ја задржиш сликата притисната за да ја зачуваш.
+il festeggiato | the guest of honour | l'enfant fêté | das Geburtstagskind | el homenajeado | славеникот
+DIPLOMA | = | DIPLÔME | DIPLOM | = | ДИПЛОМА
+di Aiutante del Mimo | for the Mime's Helper | d'Assistant du Mime | als Helfer des Pantomimen | de Ayudante del Mimo | за помошник на мимот
+Si certifica che | This certifies that | Nous certifions que | Hiermit wird bestätigt, dass | Se certifica que | Се потврдува дека
+ha aiutato Wondy durante lo spettacolo: | helped Wondy during the show: | a aidé Wondy pendant le spectacle : | Wondy bei der Show geholfen hat: | ha ayudado a Wondy durante el espectáculo: | му помогна на Wondy за време на шоуто:
+ha riso, applaudito e parlato con le mani, | laughed, clapped and talked with their hands, | a ri, applaudi et parlé avec les mains, | gelacht, geklatscht und mit den Händen gesprochen hat, | ha reído, aplaudido y hablado con las manos, | се смееше, аплаудираше и зборуваше со рацете,
+senza dire nemmeno una parola! | without saying a single word! | sans dire un seul mot ! | ohne ein einziges Wort zu sagen! | ¡sin decir ni una sola palabra! | без да каже ниту еден збор!
+DATA | DATE | DATE | DATUM | FECHA | ДАТУМ
+IL MIMO | THE MIME | LE MIME | DER PANTOMIME | EL MIMO | МИМОТ
+Mancano | Only | Plus que | Noch | Faltan | Уште
+naso | nose | nez | Nase | nariz | нос
+alla festa! | to go until the party! | avant la fête ! | bis zur Feier! | para la fiesta! | до забавата!
+Ogni sera colora un naso. Quando li hai colorati tutti, è il giorno della festa! | Colour in one nose every evening. When they're all coloured in, it's party day! | Chaque soir, colorie un nez. Quand ils sont tous coloriés, c'est le jour de la fête ! | Mal jeden Abend eine Nase aus. Wenn alle ausgemalt sind, ist der Tag der Feier da! | Cada noche colorea una nariz. Cuando las hayas coloreado todas, ¡es el día de la fiesta! | Секоја вечер обој по еден нос. Кога ќе ги обоиш сите, дојде денот на забавата!
+IL CIRCO DI WONDY | WONDY'S CIRCUS | LE CIRQUE DE WONDY | WONDYS ZIRKUS | EL CIRCO DE WONDY | ЦИРКУСОТ НА WONDY
+Biglietto ricordo · ingresso d'onore per | Keepsake ticket · guest of honour entry for | Billet souvenir · entrée d'honneur pour | Erinnerungskarte · Ehreneintritt für | Entrada de recuerdo · acceso de honor para | Билет за спомен · почесен влез за
+IL FESTEGGIATO | THE GUEST OF HONOUR | L'ENFANT FÊTÉ | DAS GEBURTSTAGSKIND | EL HOMENAJEADO | СЛАВЕНИКОТ
+Festa di compleanno | Birthday party | Fête d'anniversaire | Geburtstagsfeier | Fiesta de cumpleaños | Роденденска забава
+CLOWN ✦ PHYSICAL ACTOR ✦ FANTASISTA | CLOWN ✦ PHYSICAL ACTOR ✦ ENTERTAINER | CLOWN ✦ PHYSICAL ACTOR ✦ FANTAISISTE | CLOWN ✦ PHYSICAL ACTOR ✦ VARIETÉKÜNSTLER | CLOWN ✦ PHYSICAL ACTOR ✦ ARTISTA DE VARIEDADES | КЛОВН ✦ PHYSICAL ACTOR ✦ ВАРИЕТЕТСКИ УМЕТНИК
+AMMETTE 1 | ADMIT ONE | ENTRÉE : 1 | EINLASS: 1 | VÁLIDA PARA 1 | ВЛЕЗ ЗА 1
+posto in prima fila | front-row seat | place au premier rang | Platz in der ersten Reihe | asiento en primera fila | место во првиот ред
+Crea il biglietto ricordo ✦ | Create the keepsake ticket ✦ | Créer le billet souvenir ✦ | Erinnerungskarte erstellen ✦ | Crear la entrada de recuerdo ✦ | Направи билет за спомен ✦
+Piccoli giochi, un respiro e un gioco di mimo, da fare insieme a mamma e papà. | Little games, a breathing exercise and a mime game, to play together with Mum and Dad. | Des petits jeux, une respiration et un jeu de mime, à faire avec papa et maman. | Kleine Spiele, eine Atemübung und ein Pantomimespiel – zum Mitmachen mit Mama und Papa. | Pequeños juegos, una respiración y un juego de mímica, para hacer con mamá y papá. | Мали игри, едно дишење и една игра со мимика, за заедно со мама и тато.
+Stelline raccolte: | Stars collected: | Étoiles gagnées : | Gesammelte Sternchen: | Estrellitas conseguidas: | Собрани ѕвездички:
+Tocca i nasi rossi! | Tap the red noses! | Touche les nez rouges ! | Tipp die roten Nasen an! | ¡Toca las narices rojas! | Допри ги црвените носеви!
+Come vuoi giocare? | How do you want to play? | Comment veux-tu jouer ? | Wie willst du spielen? | ¿Cómo quieres jugar? | Како сакаш да играш?
+Piccoli | Little ones | Petits | Für Kleine | Peques | За малите
+Sfida 30 s | 30-second challenge | Défi 30 s | 30-Sekunden-Challenge | Reto 30 s | Предизвик 30 с
+Tocca le palline e lanciale in alto! | Tap the balls and throw them up high! | Touche les balles et lance-les en l'air ! | Tipp die Bälle an und wirf sie hoch! | ¡Toca las pelotas y lánzalas hacia arriba! | Допри ги топчињата и фрли ги високо!
+Respiro col palloncino | Balloon breathing | Respire avec le ballon | Atmen mit dem Luftballon | Respira con el globo | Дишење со балонот
+Gonfia e sgonfia il palloncino con il respiro. | Blow the balloon up and let it go down, just by breathing. | Gonfle et dégonfle le ballon avec ta respiration. | Blas den Luftballon mit deinem Atem auf und lass ihn wieder klein werden. | Infla y desinfla el globo con tu respiración. | Надувај го и издувај го балонот со дишењето.
+Inizia Respiro col palloncino | Start Balloon breathing | Commencer Respire avec le ballon | Atmen mit dem Luftballon starten | Empezar Respira con el globo | Почни „Дишење со балонот“
+Specchio mimo | Mime mirror | Miroir mime | Pantomime-Spiegel | Espejo mímico | Мимичко огледало
+Uno fa il gesto, l'altro indovina. Poi scambiatevi! | One does the gesture, the other guesses. Then swap! | L'un fait le geste, l'autre devine. Puis on échange ! | Einer macht die Geste, der andere rät. Dann tauscht ihr! | Uno hace el gesto, el otro adivina. ¡Luego os cambiáis! | Едниот прави гест, другиот погодува. Потоа заменете се!
+Gioca a Specchio mimo, per grandi e piccoli | Play Mime mirror, for grown-ups and kids | Jouer à Miroir mime, pour petits et grands | Pantomime-Spiegel spielen, für Groß und Klein | Jugar a Espejo mímico, para mayores y peques | Играј „Мимичко огледало“, за големи и мали
+Ho finito | I'm done | J'ai fini | Fertig! | ¡He terminado! | Готов сум
+Ho finito di giocare | I've finished playing | J'ai fini de jouer | Ich bin fertig mit Spielen | He terminado de jugar | Завршив со играње
+Uaaah… | Yaaawn… | Ouaaah… | Gäääähn… | Uaaah… | Уааа…
+È ora di una pausa: andiamo a fare un bel respiro? | Time for a break: shall we take a nice deep breath? | C'est l'heure d'une pause : on va respirer un grand coup ? | Zeit für eine Pause: Wollen wir mal tief durchatmen? | Es hora de una pausa: ¿vamos a respirar hondo? | Време е за пауза: ќе вдишеме длабоко?
+Continua a giocare | Keep playing | Continuer à jouer | Weiterspielen | Seguir jugando | Продолжи со играње
+Wondy sbadiglia. È ora di una pausa: andiamo a fare un bel respiro? | Wondy yawns. Time for a break: shall we take a nice deep breath? | Wondy bâille. C'est l'heure d'une pause : on va respirer un grand coup ? | Wondy gähnt. Zeit für eine Pause: Wollen wir mal tief durchatmen? | Wondy bosteza. Es hora de una pausa: ¿vamos a respirar hondo? | Wondy се проѕева. Време е за пауза: ќе вдишеме длабоко?
+Mettiti comodo | Get comfy | Installe-toi bien | Mach es dir bequem | Ponte cómodo | Намести се удобно
+Guarda il palloncino | Watch the balloon | Regarde le ballon | Schau auf den Luftballon | Mira el globo | Гледај го балонот
+Inspira… | Breathe in… | Inspire… | Einatmen… | Inspira… | Вдиши…
+Espira… | Breathe out… | Expire… | Ausatmen… | Espira… | Издиши…
+dal naso, piano piano | through your nose, nice and slow | par le nez, tout doucement | durch die Nase, ganz langsam | por la nariz, despacito | низ носот, полека-полека
+dalla bocca, come per soffiare | through your mouth, as if you're blowing | par la bouche, comme pour souffler | durch den Mund, wie beim Pusten | por la boca, como si soplaras | низ устата, како да дуваш
+Espira. | Breathe out. | Expire. | Ausatmen. | Espira. | Издиши.
+Ora sei calmo come Wondy | Now you're as calm as Wondy | Maintenant tu es calme comme Wondy | Jetzt bist du so ruhig wie Wondy | Ahora estás tranquilo como Wondy | Сега си смирен како Wondy
+Bravo! Ora sei calmo come Wondy | Well done! Now you're as calm as Wondy | Bravo ! Maintenant tu es calme comme Wondy | Super! Jetzt bist du so ruhig wie Wondy | ¡Muy bien! Ahora estás tranquilo como Wondy | Браво! Сега си смирен како Wondy
+Mettiti comodo. Guarda il palloncino. | Get comfy. Watch the balloon. | Installe-toi bien. Regarde le ballon. | Mach es dir bequem. Schau auf den Luftballon. | Ponte cómodo. Mira el globo. | Намести се удобно. Гледај го балонот.
+Tocca per vedere il gesto | Tap to see the gesture | Touche pour voir le geste | Tippen, um die Geste zu sehen | Toca para ver el gesto | Допри за да го видиш гестот
+Prossima carta | Next card | Carte suivante | Nächste Karte | Siguiente carta | Следна карта
+Carta coperta: tocca per vedere il gesto | Face-down card: tap to see the gesture | Carte cachée : touche pour voir le geste | Verdeckte Karte: Tippen, um die Geste zu sehen | Carta boca abajo: toca para ver el gesto | Затворена карта: допри за да го видиш гестот
+Specchio mimo. Uno fa il gesto, l'altro indovina. Poi scambiatevi! | Mime mirror. One does the gesture, the other guesses. Then swap! | Miroir mime. L'un fait le geste, l'autre devine. Puis on échange ! | Pantomime-Spiegel. Einer macht die Geste, der andere rät. Dann tauscht ihr! | Espejo mímico. Uno hace el gesto, el otro adivina. ¡Luego os cambiáis! | Мимичко огледало. Едниот прави гест, другиот погодува. Потоа заменете се!
+Tieni in equilibrio un fiore sul naso | Balance a flower on your nose | Tiens une fleur en équilibre sur ton nez | Balancier eine Blume auf der Nase | Mantén una flor en equilibrio sobre la nariz | Држи цвет во рамнотежа на носот
+Lancia tre palline invisibili | Juggle three invisible balls | Lance trois balles invisibles | Wirf drei unsichtbare Bälle | Lanza tres pelotas invisibles | Фрли три невидливи топчиња
+Abbraccia l'orsetto | Hug the teddy bear | Fais un câlin à l'ourson | Umarme den Teddy | Abraza al osito | Гушни го мечето
+Apri un sipario pesante | Open a heavy curtain | Ouvre un rideau très lourd | Öffne einen schweren Vorhang | Abre un telón muy pesado | Отвори тешка завеса
+Spingi un muro invisibile | Push an invisible wall | Pousse un mur invisible | Drück gegen eine unsichtbare Wand | Empuja una pared invisible | Турни невидлив ѕид
+Sbadiglia come un leone | Yawn like a lion | Bâille comme un lion | Gähne wie ein Löwe | Bosteza como un león | Проѕевај се како лав
+Cammina in punta di piedi | Walk on tiptoe | Marche sur la pointe des pieds | Geh auf Zehenspitzen | Camina de puntillas | Оди на прсти
+Ridi senza fare rumore | Laugh without making a sound | Ris sans faire de bruit | Lach, ohne ein Geräusch zu machen | Ríete sin hacer ruido | Смеј се без звук
+Suona la trombetta, ma senza suono | Play the horn, but without a sound | Joue de la trompette, mais sans bruit | Spiel die Hupe, aber ganz ohne Ton | Toca la bocina, pero sin sonido | Свири на трубата, но без звук
+Porta un cestino pesantissimo | Carry a super-heavy basket | Porte un panier très très lourd | Trag einen superschweren Korb | Lleva una cesta pesadísima | Носи многу тешка кошничка
+Sistemati il papillon allo specchio | Straighten your bow tie in the mirror | Ajuste ton nœud papillon devant le miroir | Rück deine Fliege vor dem Spiegel zurecht | Arréglate la pajarita en el espejo | Намести ја папионката пред огледалото
+Mettiti il naso rosso | Put on your red nose | Mets ton nez rouge | Setz die rote Nase auf | Ponte la nariz roja | Стави си го црвениот нос
+Tira una corda invisibile | Pull an invisible rope | Tire une corde invisible | Zieh an einem unsichtbaren Seil | Tira de una cuerda invisible | Повлечи невидливо јаже
+Truccati prima dello spettacolo | Put on your make-up before the show | Maquille-toi avant le spectacle | Schmink dich vor der Show | Maquíllate antes del espectáculo | Нашминкај се пред шоуто
+Fai un inchino al pubblico | Take a bow to the audience | Fais une révérence au public | Verbeug dich vor dem Publikum | Haz una reverencia al público | Поклони се пред публиката
+Coppie | Pairs | Paires | Paare | Parejas | Парови
+coppie trovate | pairs found | paires trouvées | Paare gefunden | parejas encontradas | пронајдени парови
+Wondy ha riso tanto! | Wondy laughed so much! | Wondy a bien ri ! | Wondy hat ganz viel gelacht! | ¡Wondy se ha reído un montón! | Wondy многу се смееше!
+FESTA! | PARTY! | FÊTE ! | FEIER! | ¡FIESTA! | ЗАБАВА!
 `;
 
   /* ---------- costruzione delle tabelle ---------- */
@@ -450,7 +644,26 @@ Colorati | Coloured | Coloriés | Ausgemalt | Coloreados | Обоени
     iniziali: ["П","В","С","Ч","П","С","Н"] // da lunedì
   };
   const MESI = ["gennaio","febbraio","marzo","aprile","maggio","giugno","luglio","agosto","settembre","ottobre","novembre","dicembre"];
-  const UNITA = ["nasi", "naso preso", "nasi presi", "lancio", "lanci", "mossa", "mosse"];
+  const UNITA = ["naso", "nasi", "naso preso", "nasi presi", "lancio", "lanci", "mossa", "mosse", "coppie trovate"];
+  /* date lunghe italiane ("14 novembre 2026", da famiglie.js) e brevi ("sab 14 nov") nella lingua attiva */
+  const ITD = new RegExp("^(\\d{1,2}) (" + MESI.join("|") + ") (\\d{4})$");
+  const ITS = /^(dom|lun|mar|mer|gio|ven|sab) (\d{1,2}) (gen|feb|mar|apr|mag|giu|lug|ago|set|ott|nov|dic)$/;
+  function dateL(s) {
+    const m = String(s).match(ITD);
+    if (!m || L === "it") return s;
+    const d = +m[1], mi = MESI.indexOf(m[2]), y = +m[3];
+    if (L === "mk") return d + " " + MK.mesi[mi] + " " + y;
+    return new Intl.DateTimeFormat(LOC[L], { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" }).format(Date.UTC(y, mi, d));
+  }
+  function dateS(m) {
+    const g = ["dom","lun","mar","mer","gio","ven","sab"].indexOf(m[1]);
+    const mi = ["gen","feb","mar","apr","mag","giu","lug","ago","set","ott","nov","dic"].indexOf(m[3]);
+    const c = (x) => String(x).replace(/\.$/, "");
+    if (L === "mk") return MK.g3[g] + " " + m[2] + " " + MK.m3[mi];
+    const wd = c(new Intl.DateTimeFormat(LOC[L], { weekday: "short", timeZone: "UTC" }).format(Date.UTC(2024, 0, 7 + g)));
+    const mo = c(new Intl.DateTimeFormat(LOC[L], { month: "short", timeZone: "UTC" }).format(Date.UTC(2024, mi, 15)));
+    return wd + " " + m[2] + (L === "de" ? ". " : " ") + mo;
+  }
   const RULES = [
     [/^(\d+) (giorno selezionato|giorni selezionati)$/, (m) => {
       const one = +m[1] === 1;
@@ -467,6 +680,32 @@ Colorati | Coloured | Coloriés | Ausgemalt | Coloreados | Обоени
     [/^Rimuovi (.+)$/, (m) => pick({ en: "Remove $1", fr: "Retirer $1", de: "$1 entfernen", es: "Quitar $1", mk: "Отстрани $1" }, m)],
     [/^(.+) \(da verificare\)$/, (m) => pick({ en: "$1 (to be checked)", fr: "$1 (à vérifier)", de: "$1 (zu prüfen)", es: "$1 (por verificar)", mk: "$1 (да се провери)" }, m)],
     [/^su (\d+)$/, (m) => pick({ en: "of $1", fr: "sur $1", de: "von $1", es: "de $1", mk: "од $1" }, m)],
+    /* date e testi di famiglie.js (i nomi scritti dagli utenti restano come sono) */
+    [ITD, (m) => dateL(m[0])],
+    [ITS, (m) => dateS(m)],
+    [/^(\d+) di (\d+)$/, (m) => pick({ en: "$1 of $2", fr: "$1 sur $2", de: "$1 von $2", es: "$1 de $2", mk: "$1 од $2" }, m)],
+    [/^Tavola (\d+)$/, (m) => pick({ en: "Picture $1", fr: "Image $1", de: "Bild $1", es: "Lámina $1", mk: "Слика $1" }, m)],
+    [/^Tavola (\d+) di (\d+): (.+)$/, (m) => pick({ en: "Picture $1 of $2: $3", fr: "Image $1 sur $2 : $3", de: "Bild $1 von $2: $3", es: "Lámina $1 de $2: $3", mk: "Слика $1 од $2: $3" }, m)],
+    [/^Stasera in scena: (.+)! Wondy si inchina e dedica il girasole a (.+)\.$/, (m) => pick({ en: "Tonight on stage: $1! Wondy bows and dedicates the sunflower to $2.", fr: "Ce soir en scène : $1 ! Wondy s'incline et dédie le tournesol à $2.", de: "Heute Abend auf der Bühne: $1! Wondy verbeugt sich und widmet $2 die Sonnenblume.", es: "Esta noche en escena: ¡$1! Wondy hace una reverencia y le dedica el girasol a $2.", mk: "Вечерва на сцена: $1! Wondy се поклонува и му го посветува сончогледот на $2." }, m)],
+    [/^La festa è tra (\d+) giorni\. Il calendario conta gli ultimi 14: si comincia a colorare il (.+)\.$/, (m) => pick({ en: "The party is in $1 days. The calendar counts the last 14: colouring starts on $2.", fr: "La fête est dans $1 jours. Le calendrier compte les 14 derniers : on commence à colorier le $2.", de: "Die Feier ist in $1 Tagen. Der Kalender zählt die letzten 14: Mit dem Ausmalen geht es am $2 los.", es: "La fiesta es dentro de $1 días. El calendario cuenta los últimos 14: se empieza a colorear el $2.", mk: "Забавата е за $1 дена. Календарот ги брои последните 14: боењето почнува на $2." }, [0, m[1], dateL(m[2])])],
+    [/^Mancano (\d+) (naso|nasi) alla festa del (.+)\. Il primo si colora stasera!$/, (m) => {
+      const one = m[2] === "naso";
+      return pick({ en: one ? "$1 nose to go until the party on $2. Colour it in tonight!" : "$1 noses to go until the party on $2. Colour in the first one tonight!",
+        fr: "Plus que $1 nez avant la fête du $2. " + (one ? "On le colorie ce soir !" : "Le premier se colorie ce soir !"),
+        de: (one ? "Noch $1 Nase" : "Noch $1 Nasen") + " bis zur Feier am $2. " + (one ? "Sie wird heute Abend ausgemalt!" : "Die erste wird heute Abend ausgemalt!"),
+        es: (one ? "Falta $1 nariz" : "Faltan $1 narices") + " para la fiesta del $2. " + (one ? "¡Se colorea esta noche!" : "¡La primera se colorea esta noche!"),
+        mk: "Уште $1 " + (one ? "нос" : "носеви") + " до забавата на $2. " + (one ? "Се бои вечерва!" : "Првиот се бои вечерва!") }, [0, m[1], dateL(m[3])]);
+    }],
+    [/^Anteprima: (\d+) nasi da colorare, dal (.+) alla festa del (.+)$/, (m) => pick({ en: "Preview: $1 noses to colour in, from $2 to the party on $3", fr: "Aperçu : $1 nez à colorier, du $2 à la fête du $3", de: "Vorschau: $1 Nasen zum Ausmalen, vom $2 bis zur Feier am $3", es: "Vista previa: $1 narices para colorear, del $2 a la fiesta del $3", mk: "Преглед: $1 носеви за боење, од $2 до забавата на $3" }, [0, m[1], dateL(m[2]), dateL(m[3])])],
+    [/^Biglietto ricordo del Circo di Wondy per (.+?)(, festa del (.+))?$/, (m) => pick({ en: "Keepsake ticket for Wondy's Circus for $1", fr: "Billet souvenir du Cirque de Wondy pour $1", de: "Erinnerungskarte für Wondys Zirkus für $1", es: "Entrada de recuerdo del Circo de Wondy para $1", mk: "Билет за спомен од Циркусот на Wondy за $1" }, [0, m[1] === "il festeggiato" ? dict(m[1]) : m[1]]) +
+      (m[3] ? pick({ en: ", party on $1", fr: ", fête du $1", de: ", Feier am $1", es: ", fiesta del $1", mk: ", забава на $1" }, [0, dateL(m[3])]) : "")],
+    [/^Festa del (.+)$/, (m) => ITD.test(m[1]) ? pick({ en: "Party on $1", fr: "Fête du $1", de: "Feier am $1", es: "Fiesta del $1", mk: "Забава на $1" }, [0, dateL(m[1])]) : null],
+    /* giochi: specchio mimo, respiro, stelline */
+    [/^Carta (\d+)$/, (m) => pick({ en: "Card $1", fr: "Carte $1", de: "Karte $1", es: "Carta $1", mk: "Карта $1" }, m)],
+    [/^Gesto: (.+)$/, (m) => pick({ en: "Gesture: $1", fr: "Geste : $1", de: "Geste: $1", es: "Gesto: $1", mk: "Гест: $1" }, [0, T(m[1])])],
+    [/^Respiro (\d+) di (\d+)\. Inspira\.$/, (m) => pick({ en: "Breath $1 of $2. Breathe in.", fr: "Respiration $1 sur $2. Inspire.", de: "Atemzug $1 von $2. Einatmen.", es: "Respiración $1 de $2. Inspira.", mk: "Вдиш $1 од $2. Вдиши." }, m)],
+    [/^\+(\d+) ✦ · stelline raccolte: (\d+)$/, (m) => pick({ en: "+$1 ✦ · stars collected: $2", fr: "+$1 ✦ · étoiles gagnées : $2", de: "+$1 ✦ · gesammelte Sternchen: $2", es: "+$1 ✦ · estrellitas conseguidas: $2", mk: "+$1 ✦ · собрани ѕвездички: $2" }, m)],
+    [/^Stelline raccolte: (\d+) ✦$/, (m) => pick({ en: "Stars collected: $1 ✦", fr: "Étoiles gagnées : $1 ✦", de: "Gesammelte Sternchen: $1 ✦", es: "Estrellitas conseguidas: $1 ✦", mk: "Собрани ѕвездички: $1 ✦" }, m)],
     [/^Tempo (\d+)$/, (m) => pick({ en: "Time $1", fr: "Temps $1", de: "Zeit $1", es: "Tiempo $1", mk: "Време $1" }, m)],
     [/^Coppie (\d+)\/(\d+)$/, (m) => pick({ en: "Pairs $1/$2", fr: "Paires $1/$2", de: "Paare $1/$2", es: "Parejas $1/$2", mk: "Парови $1/$2" }, m)],
     [/^Record: (.+)$/, (m) => dict("Record:") + " " + T(m[1])],
@@ -551,7 +790,9 @@ Colorati | Coloured | Coloriés | Ausgemalt | Coloreados | Обоени
     if (node.nodeType === 3) { doText(node); return; }
     if (node.nodeType !== 1) return;
     if (node.nodeName === "TEXTAREA") { doAttrs(node); return; } // solo placeholder e data-label
-    if (node instanceof SVGElement) { doAttrs(node); node.querySelectorAll("[aria-label]").forEach(doAttrs); return; }
+    if (node instanceof SVGElement) { svgWalk(node); return; }
+    /* data-i18n-skip (es. anteprime con i nomi dei bambini): si traducono solo l'etichetta e le scritte fisse degli svg */
+    if (node.matches("[data-i18n-skip]")) { doAttrs(node); safeWalk(node); return; }
     if (node.matches(SKIP)) return;
     doAttrs(node);
     if (doBlock(node)) return;
@@ -583,7 +824,12 @@ Colorati | Coloured | Coloriés | Ausgemalt | Coloreados | Обоени
   const mo = new MutationObserver((recs) => {
     mo.disconnect(); // le nostre modifiche non generano nuovi eventi: niente loop
     for (const r of recs) {
-      if (r.type === "childList") r.addedNodes.forEach((n) => { if (n.isConnected && !(n.parentElement && n.parentElement.closest(SKIP))) walk(n); });
+      if (r.type === "childList") r.addedNodes.forEach((n) => {
+        if (!n.isConnected) return;
+        const p = n.parentElement;
+        if (!p || !p.closest(SKIP)) walk(n);
+        else if (n instanceof SVGSVGElement && !p.closest("script,style,template,.lang-switch")) svgWalk(n); // fogli da stampare
+      });
       else if (r.type === "characterData") { if (r.target.isConnected && !skipped(r.target)) doText(r.target); }
       else if (r.target.isConnected && !r.target.closest(SKIP_ATTR)) doAttrs(r.target);
     }
@@ -607,6 +853,44 @@ Colorati | Coloured | Coloriés | Ausgemalt | Coloreados | Обоени
     return c(p.weekday) + " " + p.day + (L === "de" ? ". " : " ") + c(p.month); // es. "Sat 14 Nov"
   }
   W.dateLabel = localLabel;
+
+  /* ---------- testi dentro gli svg e sul canvas (fogli da stampare, biglietto ricordo) ----------
+     Solo frasi note o date: un nome scritto dall'utente (es. "Viola", "Rosa") non va mai tradotto. */
+  const PRINT_OK = new Set(["DIPLOMA", "di Aiutante del Mimo", "Si certifica che", "ha aiutato Wondy durante lo spettacolo:", "ha riso, applaudito e parlato con le mani,",
+    "senza dire nemmeno una parola!", "DATA", "IL MIMO", "Mancano", "FESTA!", "Stasera in scena", "alla festa!", "Ogni sera colora un naso. Quando li hai colorati tutti, è il giorno della festa!",
+    "IL CIRCO DI WONDY", "Biglietto ricordo · ingresso d'onore per", "IL FESTEGGIATO", "Festa di compleanno", "CLOWN ✦ PHYSICAL ACTOR ✦ FANTASISTA", "AMMETTE 1", "posto in prima fila"]);
+  const printOk = (o) => PRINT_OK.has(o) || ITD.test(o) || ITS.test(o) || /^\d+ nas[oi]$/.test(o) || (/^Festa del /.test(o) && ITD.test(o.slice(10)));
+  /* zone con data-i18n-skip: solo le scritte fisse note, mai i nomi */
+  function safeWalk(root) {
+    root.querySelectorAll("svg").forEach(svgWalk);
+    const tw = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+    while (tw.nextNode()) {
+      const c = tw.currentNode;
+      if (c.parentElement.closest("svg")) continue;
+      const rec = TXT.get(c), o = rec && c.data === rec.t ? rec.o : N(c.data);
+      if (printOk(o)) doText(c);
+    }
+  }
+  function svgWalk(svg) {
+    doAttrs(svg);
+    svg.querySelectorAll("[aria-label]").forEach(doAttrs);
+    svg.querySelectorAll("text, tspan").forEach((t) => t.childNodes.forEach((c) => {
+      if (c.nodeType !== 3) return;
+      const rec = TXT.get(c), o = rec && c.data === rec.t ? rec.o : N(c.data);
+      if (printOk(o)) doText(c);
+    }));
+  }
+  /* il biglietto ricordo è disegnato su canvas: si traducono le scritte fisse al momento del disegno */
+  if (window.CanvasRenderingContext2D) {
+    const fill = CanvasRenderingContext2D.prototype.fillText;
+    CanvasRenderingContext2D.prototype.fillText = function (t, ...rest) {
+      if (L !== "it" && typeof t === "string") {
+        const o = N(t);
+        if (printOk(o)) { let out = T(o); if (/ {2}✦ {2}/.test(t)) out = out.replace(/ ✦ /g, "  ✦  "); t = out; }
+      }
+      return fill.call(this, t, ...rest);
+    };
+  }
 
   /* ---------- selettore di lingua ---------- */
   const GLOBE = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.8 3.8 5.8 3.8 9s-1.2 6.2-3.8 9c-2.6-2.8-3.8-5.8-3.8-9S9.4 5.8 12 3z"/></g></svg>';
