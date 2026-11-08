@@ -39,3 +39,14 @@
 .lang-switch--desk .lang-switch__btn { background: transparent; }
 @media (min-width: 1024px) { .lang-switch--hero { display: none; } }
 @media (prefers-reduced-motion: reduce) { .lang-switch__btn { transition: none; } }
+
+/* ---------- macedone (cirillico): Cinzel non ha i glifi cirillici, Instrument Sans neppure ----------
+   "Forum" (Google Fonts, con cirillico) è un capitale romano simile a Cinzel; se non è caricato
+   si ripiega su Cormorant Garamond (ha il cirillico) e sui serif di sistema. */
+html:lang(mk) {
+  --display: "Forum", "Cormorant Garamond", "Noto Serif", Georgia, "Times New Roman", serif;
+  --serif: "Cormorant Garamond", "Noto Serif", Georgia, "Times New Roman", serif;
+  --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", Arial, sans-serif;
+}
+/* i titoli che con Cinzel erano maiuscoli restano leggibili: spaziatura un po' più stretta */
+html:lang(mk) .topbar__title, html:lang(mk) .lang-switch__btn { letter-spacing: .08em; }
