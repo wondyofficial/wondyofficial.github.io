@@ -464,7 +464,7 @@
   document.addEventListener("wondy:change", () => { if (!busy) rest(); });
   async function director() {
     await sleep(introOn ? 2600 : 1400);
-    if (allowedHere()) await run(wave); else rest();
+    if (allowedHere() && !isCalm()) await run(wave); else rest();
     if (reduce) return;
     for (;;) {
       await sleep(rand(14000, 22000));

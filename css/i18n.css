@@ -55,3 +55,6 @@ html:lang(mk) .topbar__title, html:lang(mk) .lang-switch__btn { letter-spacing: 
 
 /* spazio prima del link all'informativa nelle lingue tradotte */
 html:not([lang="it"]) .check a { margin-left: .28em; }
+
+/* telefono: il selettore nell'hero sotto la frangia della mantovana */
+@media (max-width: 1023px) { .lang-switch--hero { top: calc(40px + env(safe-area-inset-top)) !important; } }

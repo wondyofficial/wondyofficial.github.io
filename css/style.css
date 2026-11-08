@@ -866,3 +866,13 @@ input[aria-invalid="true"], select[aria-invalid="true"] { border-color: var(--re
 @keyframes music-pulse { 50% { transform: scale(1.08); } }
 @media (min-width: 1024px) { .hero__music { display: none; } }
 .deskbar__music { flex: none; }
+
+/* menu PC stretto (1024-1279px): tutte le voci e "Prenota" stanno prima della corda, in ogni lingua */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .deskbar { gap: 12px; padding-inline: 20px 48px; }
+  .deskbar a:not(.deskbar__logo):not(.deskbar__cta) { white-space: nowrap; font-size: .7rem; letter-spacing: .06em; }
+  .deskbar__logo img { width: 104px; }
+  .deskbar__cta { padding-inline: 16px; }
+}
+/* telefono: ♪ e lingua sotto la frangia della mantovana */
+@media (max-width: 1023px) { .hero__music { top: calc(40px + env(safe-area-inset-top)); } }

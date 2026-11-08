@@ -401,7 +401,7 @@
         const a = document.createElement("a");
         a.href = url; a.download = file; document.body.appendChild(a); a.click(); a.remove();
         if (revoke) setTimeout(() => URL.revokeObjectURL(url), 4000);
-        tixStatus.textContent = "Biglietto pronto: lo trovi tra i download. Sul telefono puoi anche tenere premuta l'immagine per salvarla.";
+        tixStatus.textContent = "Biglietto pronto: lo trovi tra i download.";
       };
       if (cv.toBlob) cv.toBlob((b) => (b ? save(URL.createObjectURL(b), true) : save(cv.toDataURL("image/png"))), "image/png");
       else save(cv.toDataURL("image/png"));
