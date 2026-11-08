@@ -544,7 +544,7 @@ Stelline raccolte: | Stars collected: | Étoiles gagnées : | Gesammelte Sternch
 Tocca i nasi rossi! | Tap the red noses! | Touche les nez rouges ! | Tipp die roten Nasen an! | ¡Toca las narices rojas! | Допри ги црвените носеви!
 Come vuoi giocare? | How do you want to play? | Comment veux-tu jouer ? | Wie willst du spielen? | ¿Cómo quieres jugar? | Како сакаш да играш?
 Piccoli | Little ones | Petits | Für Kleine | Peques | За малите
-Sfida 30 s | 30-second challenge | Défi 30 s | 30-Sekunden-Challenge | Reto 30 s | Предизвик 30 с
+Sfida 30 s | Challenge 30 s | Défi 30 s | Challenge 30 s | Reto 30 s | Предизвик 30 с
 Tocca le palline e lanciale in alto! | Tap the balls and throw them up high! | Touche les balles et lance-les en l'air ! | Tipp die Bälle an und wirf sie hoch! | ¡Toca las pelotas y lánzalas hacia arriba! | Допри ги топчињата и фрли ги високо!
 Respiro col palloncino | Balloon breathing | Respire avec le ballon | Atmen mit dem Luftballon | Respira con el globo | Дишење со балонот
 Gonfia e sgonfia il palloncino con il respiro. | Blow the balloon up and let it go down, just by breathing. | Gonfle et dégonfle le ballon avec ta respiration. | Blas den Luftballon mit deinem Atem auf und lass ihn wieder klein werden. | Infla y desinfla el globo con tu respiración. | Надувај го и издувај го балонот со дишењето.

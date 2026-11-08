@@ -49,6 +49,7 @@
 .game-size input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; }
 .game-size span {
   display: flex; align-items: center; justify-content: center; min-height: 48px; border-radius: 999px;
+  padding: 6px 14px; text-align: center; line-height: 1.15; overflow-wrap: anywhere;
   border: 1.5px solid var(--line-strong); color: var(--muted); font-weight: 600; transition: background .2s, color .2s;
 }
 .game-size input:checked + span { background: rgba(226, 176, 74, .16); border-color: var(--gold); color: var(--gold-light); }
