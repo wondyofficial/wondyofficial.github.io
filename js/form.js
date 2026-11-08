@@ -142,7 +142,7 @@
       <div class="done__seal" aria-hidden="true">${okSent ? "✦" : "✎"}</div>
       <h2 tabindex="-1">${okSent ? "Richiesta ricevuta!" : "La tua richiesta è pronta"}</h2>
       <p class="lead">${okSent
-        ? "Grazie! Ti rispondo entro 24 ore con disponibilità e preventivo."
+        ? "Grazie! Ti rispondo al più presto con disponibilità e preventivo."
         : "Ultimo passo: mandami il riepilogo con un tocco" + (wa ? " su WhatsApp" : "") + (C.contacts.email ? " o via email" : "") + "."}</p>
       ${okSent ? `<p class="note">La data non è ancora bloccata: lo diventa quando confermiamo insieme.</p>` : ""}
       ${rowsHtml(rows)}

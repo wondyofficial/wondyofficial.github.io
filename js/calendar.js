@@ -229,7 +229,7 @@
   loadBusy()
     .then(({ busy, source }) => {
       days = buildDays(busy, source === "offline");
-      if (source === "offline") setStatus("demo", "<strong>Calendario in aggiornamento.</strong> Scegli il giorno che preferisci: ti confermo la disponibilità entro 24 ore.");
+      if (source === "offline") setStatus("demo", "<strong>Calendario in aggiornamento.</strong> Scegli il giorno che preferisci: ti confermo la disponibilità al più presto.");
       else if (source === "demo") setStatus("demo", "<strong>Disponibilità dimostrativa.</strong> Il calendario reale si collega appena viene configurato.");
       else setStatus("ok", "Disponibilità aggiornata in tempo reale. La data si conferma solo dopo la risposta di Wondy.");
     })

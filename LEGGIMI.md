@@ -91,8 +91,8 @@ Foto di Thomas: in `index.html`, sezione *Chi è Wondy*, sostituisci il segnapos
 `<img src="assets/thomas.jpg" alt="Thomas Lucaccini nei panni di Wondy">`.
 
 ## 6. Prima di condividere il link
-- `privacy.html`: inserire nome, indirizzo ed email reali del titolare.
-- Rileggere i testi (FAQ, "risposta entro 24 ore", "preventivo entro 48 ore lavorative").
+- `privacy.html`: se serve, aggiungere l'indirizzo del titolare.
+- Rileggere i testi delle FAQ e dei pacchetti.
 - Fare una richiesta di prova dal telefono.
 
 ## 7. Link diretti utili
