@@ -513,7 +513,7 @@ input[aria-invalid="true"], select[aria-invalid="true"] { border-color: var(--re
 @keyframes w-jump { to { transform: translateY(-16px); } }
 .wondy.is-giggle .w-head { animation: w-giggle .18s ease-in-out 10 alternate; }
 @keyframes w-giggle { from { transform: rotate(-7deg); } to { transform: rotate(7deg); } }
-.wondy.is-surprised .w-mouth { transform: scale(.75, 1.7); transform-origin: 60px 70px; }
+.wondy.is-surprised .w-mouth { transform: scale(.55, 1.1); transform-origin: 60px 70px; }
 .wondy.is-surprised .w-pupils { transform: scale(1.08); transform-origin: 60px 46px; }
 .wondy.is-noseless .w-nose { opacity: 0; transform: scale(.2); }
 .wondy.is-flower .w-flower { opacity: 1; animation: w-balance 1.2s ease-in-out infinite alternate; }
@@ -547,7 +547,7 @@ input[aria-invalid="true"], select[aria-invalid="true"] { border-color: var(--re
 .wondy.is-peek .wondy__btn .w-head { pointer-events: auto; }
 .fx-lights, .fx-confetti, .fx-nose { z-index: 66; }
 /* luci spente */
-.fx-lights { position: fixed; inset: 0; z-index: 65; pointer-events: none; opacity: 0; transition: opacity .5s; background: radial-gradient(circle 120px at var(--lx, 50%) var(--ly, 40%), transparent 0, rgba(3, 2, 6, .94) 100%); }
+.fx-lights { position: fixed; inset: 0; z-index: 65; pointer-events: none; opacity: 0; transition: opacity .5s; background: radial-gradient(circle 150px at var(--lx, 50%) var(--ly, 40%), transparent 0, rgba(3, 2, 6, .6) 100%); }
 .fx-lights.is-on { opacity: 1; }
 .fx-confetti { position: fixed; inset: 0; z-index: 66; width: 100%; height: 100%; pointer-events: none; }
 .fx-nose { position: fixed; z-index: 71; width: 18px; height: 18px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #FF8A80, #E53935 55%, #B71C1C); box-shadow: 0 4px 10px rgba(0,0,0,.5); pointer-events: none; opacity: 0; left: 0; top: 0; }
@@ -761,3 +761,33 @@ input[aria-invalid="true"], select[aria-invalid="true"] { border-color: var(--re
 @keyframes px-bg { to { transform: translateY(28%); } }
 @keyframes px-fg { to { transform: translateY(-14%); opacity: 0; } }
 @keyframes fade-out { to { opacity: 0; } }
+
+/* ============================================================
+   REVISIONE PROJECT LEAD
+   ============================================================ */
+/* Wondy non copre i pulsanti sul telefono: sbirciando resta basso e non intercetta i tocchi */
+@media (max-width: 759px) {
+  .wondy { width: 72px; }
+  .wondy.is-peek { transform: translateY(56%); }
+  .wondy.is-peek .wondy__btn .w-head { pointer-events: none; }
+}
+/* icone degli oggetti di scena nei link */
+.card-link .prop { width: 34px; height: 34px; flex: none; transition: transform .5s var(--spring); filter: drop-shadow(0 4px 8px rgba(0, 0, 0, .5)); }
+@media (hover: hover) { .card-link:hover .prop { transform: rotate(-10deg) scale(1.12); } }
+/* la "W" ricamata del tendalino blu di scena */
+.topbar__logo { background: #1E2A5A; color: #E0303A; border: 1.5px solid var(--gold); box-shadow: inset 0 -4px 0 rgba(226, 176, 74, .35); font-weight: 700; }
+/* mantovana di velluto rosso sopra l'hero anche sul telefono */
+@media (max-width: 1023px) {
+  .hero::before {
+    content: ""; position: absolute; top: 0; left: 0; right: 0; height: 30px; z-index: 2; pointer-events: none;
+    background:
+      radial-gradient(circle at 18px -4px, #8E1B15 0 19px, transparent 20px) 0 6px / 36px 30px repeat-x,
+      linear-gradient(#6E1712, #6E1712) 0 0 / 100% 8px no-repeat;
+    filter: drop-shadow(0 6px 8px rgba(0, 0, 0, .55));
+  }
+  .hero::after {
+    content: ""; position: absolute; top: 25px; left: 0; right: 0; height: 4px; z-index: 2; pointer-events: none;
+    background: repeating-linear-gradient(90deg, var(--gold) 0 3px, transparent 3px 7px); opacity: .7;
+  }
+}
+@media (max-width: 420px) { .tag-pill { font-size: .62rem; letter-spacing: .08em; padding: 7px 12px; white-space: nowrap; } }

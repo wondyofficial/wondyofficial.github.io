@@ -220,7 +220,7 @@
   }
   async function steal() {
     const v = currentView();
-    const target = $$(`[data-view="${v}"] .card-link, [data-view="${v}"] .book, [data-view="${v}"] .social, [data-view="${v}"] .ticket`).filter(visibleIn);
+    const target = $$(`[data-view="${v}"] .card-link, [data-view="${v}"] .book, [data-view="${v}"] .social`).filter(visibleIn);
     if (!target.length) return juggle();
     const el = pick(target);
     const left = wondy.classList.contains("is-left");

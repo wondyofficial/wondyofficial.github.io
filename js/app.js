@@ -63,11 +63,11 @@ document.addEventListener("DOMContentLoaded", function () {
   if ("scrollRestoration" in history) history.scrollRestoration = "manual";
   /* prima di cambiare schermata ricorda dov'eri, per ritrovarlo con "Indietro" */
   document.addEventListener("click", (e) => {
-    if (e.target.closest('a[href^="#"]')) history.replaceState(Object.assign({}, history.state, { y: scrollY }), "");
+    if (e.target.closest('a[href^="#"]:not([data-focus])')) history.replaceState(Object.assign({}, history.state, { y: scrollY }), "");
   }, true);
   const deskbar = document.querySelector(".deskbar");
   if (deskbar) addEventListener("scroll", () => deskbar.classList.toggle("is-scrolled", scrollY > 40), { passive: true });
-  document.addEventListener("click", (e) => { lastLink = e.target.closest('a[href^="#"]'); }, true);
+  document.addEventListener("click", (e) => { lastLink = e.target.closest('a[href^="#"]:not([data-focus])'); }, true);
   window.addEventListener("hashchange", () => {
     const back = !lastLink || lastLink.matches("[data-back]");
     document.documentElement.dataset.nav = back ? "back" : "fwd";
