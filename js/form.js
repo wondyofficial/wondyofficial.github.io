@@ -113,8 +113,10 @@
 
   /* ---------- riepilogo leggibile (per conferma, copia, WhatsApp) ---------- */
   function datesText() {
-    if (W.store.selection.length) return W.store.selection.map((x) => W.dateLabel(x.date)).join("; ");
-    return dm.value ? `${W.dateLabel(dm.value)} (da verificare)` : "";
+    /* la data in numeri arriva sempre chiara a Wondy, qualunque sia la lingua del visitatore */
+    const num = (k) => k.split("-").reverse().join("/");
+    if (W.store.selection.length) return W.store.selection.map((x) => `${W.dateLabel(x.date)} (${num(x.date)})`).join("; ");
+    return dm.value ? `${W.dateLabel(dm.value)} (${num(dm.value)}, da verificare)` : "";
   }
   function collect() {
     const fd = new FormData(form);

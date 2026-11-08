@@ -50,3 +50,6 @@ html:lang(mk) {
 }
 /* i titoli che con Cinzel erano maiuscoli restano leggibili: spaziatura un po' più stretta */
 html:lang(mk) .topbar__title, html:lang(mk) .lang-switch__btn { letter-spacing: .08em; }
+
+/* spazio prima del link all'informativa nelle lingue tradotte */
+html:not([lang="it"]) .check a { margin-left: .28em; }
