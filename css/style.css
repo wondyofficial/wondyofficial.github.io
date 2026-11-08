@@ -547,7 +547,7 @@ input[aria-invalid="true"], select[aria-invalid="true"] { border-color: var(--re
 .wondy.is-peek .wondy__btn .w-head { pointer-events: auto; }
 .fx-lights, .fx-confetti, .fx-nose { z-index: 66; }
 /* luci spente */
-.fx-lights { position: fixed; inset: 0; z-index: 65; pointer-events: none; opacity: 0; transition: opacity .5s; background: radial-gradient(circle 150px at var(--lx, 50%) var(--ly, 40%), transparent 0, rgba(3, 2, 6, .6) 100%); }
+.fx-lights { position: fixed; inset: 0; z-index: 65; pointer-events: none; opacity: 0; transition: opacity .5s; background: radial-gradient(circle 170px at var(--lx, 50%) var(--ly, 40%), transparent 0, rgba(3, 2, 6, .3) 100%); }
 .fx-lights.is-on { opacity: 1; }
 .fx-confetti { position: fixed; inset: 0; z-index: 66; width: 100%; height: 100%; pointer-events: none; }
 .fx-nose { position: fixed; z-index: 71; width: 18px; height: 18px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #FF8A80, #E53935 55%, #B71C1C); box-shadow: 0 4px 10px rgba(0,0,0,.5); pointer-events: none; opacity: 0; left: 0; top: 0; }
@@ -842,3 +842,27 @@ input[aria-invalid="true"], select[aria-invalid="true"] { border-color: var(--re
 
 /* parole lunghe (es. tedesco) nelle arti di Wondy */
 .roles__list li { hyphens: auto; overflow-wrap: anywhere; }
+
+/* ---------- controlli per le famiglie: modalità calma, richiama Wondy, musica ---------- */
+.family-controls { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin: 22px 0 0; }
+.family-btn {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 8px 16px; border-radius: 999px; cursor: pointer;
+  border: 1px solid var(--line-strong); background: rgba(255, 255, 255, .04); color: var(--text); font: 500 .92rem var(--sans);
+}
+.family-btn[aria-pressed="true"] { background: var(--gold-grad); color: #1A1206; border-color: transparent; font-weight: 600; }
+.family-btn .dot { width: 10px; height: 10px; border-radius: 50%; border: 1.5px solid currentColor; }
+.family-btn[aria-pressed="true"] .dot { background: currentColor; }
+/* modalità calma: la scena si ferma */
+.is-calm .hero__media img, .is-calm .hero__spot, .is-calm .ticker__track, .is-calm .ticket::after, .is-calm .section-title::before, .is-calm .banner img { animation: none !important; }
+.is-calm .hero__sparks, .is-calm .fx-confetti { display: none; }
+
+/* pulsante musica: in alto a sinistra nell'hero (telefono) e nella barra del PC */
+.hero__music, .deskbar__music {
+  width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line-strong); background: rgba(13, 10, 20, .55);
+  color: var(--gold-light); font-size: 1.2rem; cursor: pointer; display: grid; place-items: center; -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+}
+.hero__music { position: absolute; top: calc(16px + env(safe-area-inset-top)); left: 16px; z-index: 3; }
+.hero__music[aria-pressed="true"], .deskbar__music[aria-pressed="true"] { background: var(--gold-grad); color: #1A1206; animation: music-pulse 1.2s ease-in-out infinite; }
+@keyframes music-pulse { 50% { transform: scale(1.08); } }
+@media (min-width: 1024px) { .hero__music { display: none; } }
+.deskbar__music { flex: none; }

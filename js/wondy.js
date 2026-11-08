@@ -63,7 +63,7 @@
       requestAnimationFrame(frame);
     };
     const update = () => {
-      const should = visible && document.visibilityState === "visible" && currentView() === "home";
+      const should = visible && document.visibilityState === "visible" && currentView() === "home" && !document.documentElement.classList.contains("is-calm");
       if (should && !running) { running = true; requestAnimationFrame(frame); }
       if (!should) running = false;
     };
@@ -245,6 +245,8 @@
     await sleep(1800);
   }
   async function lightsOut() {
+    place("out"); pose("is-reaching"); sign("✦", 700);
+    await sleep(700);
     place("out"); pose("is-surprised"); sign("?", 2600);
     lights.classList.add("is-on");
     const start = performance.now();
@@ -358,11 +360,23 @@
     wondy.getAnimations().forEach((a) => a.cancel());
   }
   const ALL = { wave, teddyHug, basketRun, juggle, balanceWalk, steal, lightsOut, party, loseNose, flower, peekaboo, hintDay };
+  /* Indicazioni della psicologa: all'inizio solo numeri gentili e prevedibili.
+     I dispetti arrivano solo dopo che il bambino ha "fatto amicizia" toccando Wondy.
+     Il buio (lightsOut) non parte mai da solo: solo come risposta a un tocco. */
+  const GENTLE = {
+    home: [wave, teddyHug, juggle, juggle, flower, balanceWalk],
+    calendario: [hintDay, hintDay, juggle, flower],
+    other: [wave, teddyHug, juggle, flower],
+  };
   const PRANKS = {
-    home: [teddyHug, basketRun, juggle, juggle, balanceWalk, balanceWalk, steal, lightsOut, party, loseNose, flower, peekaboo],
+    home: [teddyHug, basketRun, juggle, balanceWalk, steal, party, loseNose, flower, peekaboo],
     calendario: [hintDay, hintDay, juggle, flower, loseNose],
     other: [teddyHug, basketRun, juggle, balanceWalk, flower, loseNose, party, steal],
   };
+  const ON_TAP = { home: [...PRANKS.home, lightsOut], calendario: PRANKS.calendario, other: [...PRANKS.other, lightsOut] };
+  let befriended = false;
+  /* modalità calma: niente numeri automatici, niente effetti (scelta della famiglia, ricordata sul telefono) */
+  const isCalm = () => { try { return localStorage.getItem("wondy-calm") === "1"; } catch (e) { return false; } };
   /* per provare un numero dalla console: Wondy.prank("juggle") */
   W.prank = (name) => run(ALL[name] || wave);
   async function run(fn) {
@@ -374,6 +388,9 @@
   /* ---------- tocco: trombetta (è un oggetto di scena, non una voce) + un numero ---------- */
   let actx = null;
   function honk() {
+    let on = false;
+    try { on = localStorage.getItem("wondy-game-audio") === "on"; } catch (e) {}
+    if (!on) return;
     try {
       actx = actx || new (window.AudioContext || window.webkitAudioContext)();
       [0, 0.18].forEach((t0, i) => {
@@ -386,10 +403,11 @@
   }
   $("[data-wondy-tap]", wondy).addEventListener("click", () => {
     honk();
-    if (reduce) { sign("♥", 1800); return; }
+    befriended = true;
+    if (reduce || isCalm()) { sign("♥", 1800); return; }
     if (busy) { pose("is-giggle"); return; }
     pose("is-honk");
-    setTimeout(() => run(pick(PRANKS[currentView()] || PRANKS.other)), 220);
+    setTimeout(() => run(pick(ON_TAP[currentView()] || ON_TAP.other)), 220);
   });
   $("[data-wondy-close]", wondy).addEventListener("click", (e) => {
     e.stopPropagation();
@@ -397,7 +415,27 @@
     lights.classList.remove("is-on");
     wondy.classList.add("is-gone");
     try { sessionStorage.setItem("wondy-hidden", "1"); } catch (err) {}
+    syncFamilyControls();
   });
+  /* controlli per le famiglie (in fondo alla home): modalità calma e "richiama Wondy" */
+  function syncFamilyControls() {
+    $$("[data-calm-toggle]").forEach((b) => { b.setAttribute("aria-pressed", String(isCalm())); });
+    $$("[data-wondy-recall]").forEach((b) => { b.hidden = !wondy.classList.contains("is-gone"); });
+    document.documentElement.classList.toggle("is-calm", isCalm());
+  }
+  document.addEventListener("click", (e) => {
+    if (e.target.closest("[data-calm-toggle]")) {
+      try { localStorage.setItem("wondy-calm", isCalm() ? "0" : "1"); } catch (err) {}
+      if (isCalm()) { wondy.getAnimations().forEach((a) => a.cancel()); lights.classList.remove("is-on"); }
+      syncFamilyControls(); rest();
+    }
+    if (e.target.closest("[data-wondy-recall]")) {
+      wondy.classList.remove("is-gone");
+      try { sessionStorage.removeItem("wondy-hidden"); } catch (err) {}
+      syncFamilyControls(); rest(); run(wave);
+    }
+  });
+  syncFamilyControls();
 
   /* ---------- occhi che seguono il dito/puntatore ---------- */
   const pupils = $(".w-pupils", wondy);
@@ -417,7 +455,7 @@
   if (done) new MutationObserver(() => {
     if (!done.hidden && done.querySelector(".done__seal")) {
       const r = done.querySelector(".done__seal").getBoundingClientRect();
-      confettiBurst(r.left + r.width / 2, r.top + r.height / 2, 140);
+      if (!isCalm()) confettiBurst(r.left + r.width / 2, r.top + r.height / 2, 70);
     }
   }).observe(done, { attributes: true, attributeFilter: ["hidden"] });
 
@@ -431,8 +469,9 @@
     for (;;) {
       await sleep(rand(14000, 22000));
       const idle = Date.now() - lastUserAction > 2500;
-      if (document.visibilityState !== "visible" || !idle || !allowedHere()) continue;
-      await run(pick(PRANKS[currentView()] || PRANKS.other));
+      if (document.visibilityState !== "visible" || !idle || !allowedHere() || isCalm()) continue;
+      const pool = befriended ? PRANKS : GENTLE;
+      await run(pick(pool[currentView()] || pool.other));
     }
   }
 
